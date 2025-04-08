@@ -1,5 +1,5 @@
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **1**
-- 📆 Problems solved this month: **1**
-- 🏷️ Most frequent tags: **DSA** (1)
+- ✅ Problems solved this week: **2**
+- 📆 Problems solved this month: **2**
+- 🏷️ Most frequent tags: **DSA** (2)
