@@ -6,3 +6,4 @@
 | 2025-04-09 | [Concatenation of Array](.\2025-04-09\concatenation_of_array.md) | LeetCode | DSA |
 | 2025-04-09 | [Valid Palindrome](.\2025-04-09\valid_palindrome.md) | LeetCode | DSA |
 | 2025-04-10 | [Longest Common Prefix](.\2025-04-10\longest_common_prefix.md) | LeetCode | DSA |
+| 2025-04-11 | [Group Anagrams](.\2025-04-11\group_anagrams.md) | LeetCode | DSA |
