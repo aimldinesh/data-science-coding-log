@@ -9,3 +9,4 @@
 | 2025-04-11 | [Group Anagrams](.\2025-04-11\group_anagrams.md) | LeetCode | DSA |
 | 2025-04-12 | [Binary Search](.\2025-04-12\binary_search.md) | LeetCode | DSA, Array, Binary Search |
 | 2025-04-13 | [Search Insert Position](.\2025-04-13\search_insert_position.md) | LeetCode | DSA, Binary Search, Array |
+| 2025-04-13 | [class Solution:](.\2025-04-13\class_solution:.md) | def nextGreatestLetter(self, letters: List[str], target: str) -> str: |  |
