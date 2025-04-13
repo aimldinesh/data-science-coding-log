@@ -12,3 +12,4 @@
 | 2025-04-13 | [class Solution:](.\2025-04-13\class_solution:.md) | def nextGreatestLetter(self, letters: List[str], target: str) -> str: |  |
 | 2025-04-13 | [Find Smallest Letter Greater Than Target](.\2025-04-13\find_smallest_letter_greater_than_target.md) | LeetCode | DSA, Binary Search, Array |
 | Count Negative Numbers in a Sorted Matrix | [](.\Count%20Negative%20Numbers%20in%20a%20Sorted%20Matrix\.md) |  |  |
+| 2025-04-13 | [Count Negative Numbers in a Sorted Matrix](.\2025-04-13\count_negative_numbers_in_a_sorted_matrix.md) | LeetCode | Binary Search, Array, DSA |
