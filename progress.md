@@ -8,3 +8,4 @@
 | 2025-04-10 | [Longest Common Prefix](.\2025-04-10\longest_common_prefix.md) | LeetCode | DSA |
 | 2025-04-11 | [Group Anagrams](.\2025-04-11\group_anagrams.md) | LeetCode | DSA |
 | 2025-04-12 | [Binary Search](.\2025-04-12\binary_search.md) | LeetCode | DSA, Array, Binary Search |
+| 2025-04-13 | [Search Insert Position](.\2025-04-13\search_insert_position.md) | LeetCode | DSA, Binary Search, Array |
