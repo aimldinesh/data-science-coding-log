@@ -9,7 +9,6 @@
 | 2025-04-11 | [Group Anagrams](.\2025-04-11\group_anagrams.md) | LeetCode | DSA |
 | 2025-04-12 | [Binary Search](.\2025-04-12\binary_search.md) | LeetCode | DSA, Array, Binary Search |
 | 2025-04-13 | [Search Insert Position](.\2025-04-13\search_insert_position.md) | LeetCode | DSA, Binary Search, Array |
-| 2025-04-13 | [class Solution:](.\2025-04-13\class_solution:.md) | def nextGreatestLetter(self, letters: List[str], target: str) -> str: |  |
 | 2025-04-13 | [Find Smallest Letter Greater Than Target](.\2025-04-13\find_smallest_letter_greater_than_target.md) | LeetCode | DSA, Binary Search, Array |
-| Count Negative Numbers in a Sorted Matrix | [](.\Count%20Negative%20Numbers%20in%20a%20Sorted%20Matrix\.md) |  |  |
 | 2025-04-13 | [Count Negative Numbers in a Sorted Matrix](.\2025-04-13\count_negative_numbers_in_a_sorted_matrix.md) | LeetCode | Binary Search, Array, DSA |
+| 2025-04-13 | [Find First and Last Position of Element in Sorted Array](.\2025-04-13\find_first_and_last_position_of_element_in_sorted_array.md) | LeetCode | Binary Search, Array, DSA |
