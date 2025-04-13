@@ -10,3 +10,4 @@
 | 2025-04-12 | [Binary Search](.\2025-04-12\binary_search.md) | LeetCode | DSA, Array, Binary Search |
 | 2025-04-13 | [Search Insert Position](.\2025-04-13\search_insert_position.md) | LeetCode | DSA, Binary Search, Array |
 | 2025-04-13 | [class Solution:](.\2025-04-13\class_solution:.md) | def nextGreatestLetter(self, letters: List[str], target: str) -> str: |  |
+| 2025-04-13 | [Find Smallest Letter Greater Than Target](.\2025-04-13\find_smallest_letter_greater_than_target.md) | LeetCode | DSA, Binary Search, Array |
