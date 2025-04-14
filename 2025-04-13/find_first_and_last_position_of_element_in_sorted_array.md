@@ -13,7 +13,7 @@
 ---
 
 ## 🚀 My Approach
-- - Use **binary search** twice:
+- Use **binary search** twice:
   - First, to find the **leftmost (first)** occurrence of the target.
   - Second, to find the **rightmost (last)** occurrence of the target.
 - Binary search is modified slightly with a `leftBias` flag to find either side of the target.
