@@ -14,3 +14,4 @@
 | 2025-04-13 | [Find First and Last Position of Element in Sorted Array](.\2025-04-13\find_first_and_last_position_of_element_in_sorted_array.md) | LeetCode | Binary Search, Array, DSA |
 | 2025-04-14 | [Find Right Interval](.\2025-04-14\find_right_interval.md) | LeetCode | Array, Binary Search, DSA |
 | 2025-04-14 | [Time-Based Key-Value Store](.\2025-04-14\time-based_key-value_store.md) | LeetCode | Array, Binary Search, DSA |
+| 2025-04-14 | [Snapshot Array](.\2025-04-14\snapshot_array.md) | LeetCode | Binary Search, Array, DSA |
