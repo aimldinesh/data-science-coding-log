@@ -1,11 +1,5 @@
-## 📊 Weekly Progress
+# 📊 Coding Practice Stats
 
-- Problems solved this week: 12
-- Most frequent topic: Binary Search, Sliding Window
-- Platform(s): LeetCode, GeeksforGeeks
-
-## 📅 Monthly Stats
-
-- Problems solved this month: 43
-- Total problems solved so far: 370
-
+- ✅ Problems solved this week: **16**
+- 📆 Problems solved this month: **16**
+- 🏷️ Most frequent tags: **DSA** (16), **Array** (11), **Binary Search** (9), **HashSet** (1), **Sorting** (1)
