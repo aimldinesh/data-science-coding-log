@@ -1,49 +1,34 @@
-import re
+# update_readme_with_stats.py
 
 # 1. Read stats from stats.md
 with open("stats.md", "r", encoding="utf-8") as stats_file:
-    stats_content = stats_file.read()
+    stats_content = stats_file.read().strip()
 
 # 2. Read progress from progress.md
 with open("progress.md", "r", encoding="utf-8") as progress_file:
-    progress_content = progress_file.read()
+    progress_content = progress_file.read().strip()
 
-# 3. Read current README.md
+# 3. Read README.md
 with open("README.md", "r", encoding="utf-8") as readme_file:
     readme = readme_file.read()
 
-# 4. Replace the stats section between markers
-start_marker = "<!-- STATS-START -->"
-end_marker = "<!-- STATS-END -->"
+# Helper function to safely replace content between markers
+def replace_between_markers(text, start_marker, end_marker, new_content):
+    if start_marker in text and end_marker in text:
+        start = text.index(start_marker) + len(start_marker)
+        end = text.index(end_marker)
+        return text[:start] + "\n" + new_content + "\n" + text[end:]
+    else:
+        return text.strip() + f"\n\n{start_marker}\n{new_content}\n{end_marker}"
 
-if start_marker in readme and end_marker in readme:
-    updated_readme = re.sub(
-        f"{start_marker}.*?{end_marker}",
-        f"{start_marker}\n{stats_content.strip()}\n{end_marker}",
-        readme,
-        flags=re.DOTALL
-    )
-else:
-    # If markers don't exist, add them at the end
-    updated_readme = readme.strip() + f"\n\n{start_marker}\n{stats_content.strip()}\n{end_marker}"
+# 4. Replace stats section
+readme = replace_between_markers(readme, "<!-- STATS-START -->", "<!-- STATS-END -->", stats_content)
 
-# 5. Replace the progress section between markers
-progress_start_marker = "<!-- PROGRESS-START -->"
-progress_end_marker = "<!-- PROGRESS-END -->"
+# 5. Replace progress section
+readme = replace_between_markers(readme, "<!-- PROGRESS-START -->", "<!-- PROGRESS-END -->", progress_content)
 
-if progress_start_marker in updated_readme and progress_end_marker in updated_readme:
-    updated_readme = re.sub(
-        f"{progress_start_marker}.*?{progress_end_marker}",
-        f"{progress_start_marker}\n{progress_content.strip()}\n{progress_end_marker}",
-        updated_readme,
-        flags=re.DOTALL
-    )
-else:
-    # If markers don't exist, add them at the end
-    updated_readme = updated_readme.strip() + f"\n\n{progress_start_marker}\n{progress_content.strip()}\n{progress_end_marker}"
-
-# 6. Write the updated README.md
+# 6. Write updated README.md
 with open("README.md", "w", encoding="utf-8") as readme_file:
-    readme_file.write(updated_readme)
+    readme_file.write(readme)
 
 print("✅ GitHub README.md updated with latest stats and progress!")
