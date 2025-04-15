@@ -46,8 +46,13 @@ readme = replace_between_markers(readme, "<!-- STATS-START -->", "<!-- STATS-END
 # Replace progress section in the README
 readme = replace_between_markers(readme, "<!-- PROGRESS-START -->", "<!-- PROGRESS-END -->", progress_content)
 
-# Replace monthly stats section with progress bar
-readme = replace_between_markers(readme, "<!-- MONTHLY-START -->", "<!-- MONTHLY-END -->", monthly_stats)
+# Check if monthly stats section exists already and update it, or add if not
+if "<!-- MONTHLY-START -->" in readme and "<!-- MONTHLY-END -->" in readme:
+    # If the monthly section exists, replace it
+    readme = replace_between_markers(readme, "<!-- MONTHLY-START -->", "<!-- MONTHLY-END -->", monthly_stats)
+else:
+    # If it doesn't exist, add it at the end of the README
+    readme = readme.strip() + f"\n\n<!-- MONTHLY-START -->\n{monthly_stats}\n<!-- MONTHLY-END -->"
 
 # Optional: Add color badges at the top of README
 badges = """
