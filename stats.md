@@ -1,5 +1,5 @@
-# 📊 Coding Practice Stats
+## 📊 Weekly Progress
 
-- ✅ Problems solved this week: **17**
-- 📆 Problems solved this month: **17**
-- 🏷️ Most frequent tags: **DSA** (17), **Array** (12), **Binary Search** (10), **HashSet** (1), **Sorting** (1)
+- Problems solved this week: 5
+- Most frequent topic: DSA
+- Platform(s): LeetCode
