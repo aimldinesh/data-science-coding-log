@@ -21,14 +21,46 @@ def replace_between_markers(text, start_marker, end_marker, new_content):
     else:
         return text.strip() + f"\n\n{start_marker}\n{new_content}\n{end_marker}"
 
-# 4. Replace stats section
+# Function to create an emoji progress bar
+def create_progress_bar(current, total, bar_length=15):
+    filled = int((current / total) * bar_length)
+    bar = "█" * filled + "-" * (bar_length - filled)
+    percentage = int((current / total) * 100)
+    return f"[{bar}] {percentage}%"
+
+# Extract current month problem count and generate progress bar
+monthly_stats_raw = "".join(progress_content.splitlines()).strip()
+
+import re
+match = re.search(r"Problems Solved This Month: \*\*(\d+)\*\*", monthly_stats_raw)
+current_count = int(match.group(1)) if match else 0
+goal = 30  # Customize this goal
+progress_bar = create_progress_bar(current_count, goal)
+
+# Add progress bar to the monthly stats
+monthly_stats = f"{monthly_stats_raw}\n- 📈 Progress: {progress_bar}"
+
+# Replace stats section in the README
 readme = replace_between_markers(readme, "<!-- STATS-START -->", "<!-- STATS-END -->", stats_content)
 
-# 5. Replace progress section
+# Replace progress section in the README
 readme = replace_between_markers(readme, "<!-- PROGRESS-START -->", "<!-- PROGRESS-END -->", progress_content)
 
-# 6. Write updated README.md
+# Replace monthly stats section with progress bar
+readme = replace_between_markers(readme, "<!-- MONTHLY-START -->", "<!-- MONTHLY-END -->", monthly_stats)
+
+# Optional: Add color badges at the top of README
+badges = """
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat&logo=leetcode&logoColor=black)
+![Daily](https://img.shields.io/badge/Daily%20Coding-Yes-brightgreen)
+"""
+
+# Insert badges at the top of the README (after the title, for example)
+readme = badges + readme
+
+# 4. Write updated README.md
 with open("README.md", "w", encoding="utf-8") as readme_file:
     readme_file.write(readme)
 
-print("✅ GitHub README.md updated with latest stats and progress!")
+print("✅ GitHub README.md updated with latest stats, progress, and badges!")
