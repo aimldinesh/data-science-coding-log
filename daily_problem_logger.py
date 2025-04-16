@@ -117,12 +117,33 @@ with open("stats.md", "w", encoding="utf-8") as f:
         f.write("None yet.")
     f.write("\n")
 
-# 9. Git Commit + Push
+# 9. Update README.md between <!-- STATS_START --> and <!-- STATS_END -->
+readme_path = "README.md"
+stats_path = "stats.md"
+
+if os.path.exists(readme_path) and os.path.exists(stats_path):
+    with open(readme_path, "r", encoding="utf-8") as f:
+        readme_content = f.read()
+
+    with open(stats_path, "r", encoding="utf-8") as f:
+        stats_content = f.read()
+
+    updated_readme = re.sub(
+        r"<!-- STATS_START -->(.*?)<!-- STATS_END -->",
+        f"<!-- STATS_START -->\n{stats_content}\n<!-- STATS_END -->",
+        readme_content,
+        flags=re.DOTALL
+    )
+
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(updated_readme)
+
+# 10. Git Commit + Push
 try:
-    subprocess.run(["git", "add", file_path, tracker_path, "stats.md"], check=True)
+    subprocess.run(["git", "add", file_path, tracker_path, "stats.md", readme_path], check=True)
     commit_message = f"🧠 Add: {problem_name} [{date_input}]"
     subprocess.run(["git", "commit", "-m", commit_message], check=True)
     subprocess.run(["git", "push"], check=True)
-    print("\n🚀 Successfully committed and pushed to GitHub with updated stats!")
+    print("\n🚀 Successfully committed and pushed to GitHub with updated stats and README!")
 except subprocess.CalledProcessError:
     print("⚠️ Git push failed. Make sure you're in a repo and authenticated.")
