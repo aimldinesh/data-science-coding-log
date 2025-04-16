@@ -39,3 +39,4 @@ This file tracks my daily problem-solving activity and overall progress. Each en
 **Platform(s) Used:** LeetCode
 | 2025-04-16 | [Sqrt(x)](2025-04-16\sqrt(x).md) | https://leetcode.com/problems/sqrtx/description/ | Math, Binary Search, DSA |
 | 2025-04-16 | [Arranging Coins](2025-04-16\arranging_coins.md) | LeetCode | Math, Binary Search, DSA |
+| 2025-04-16 | [Kth Missing Positive Number](2025-04-16/kth_missing_positive_number.md) | LeetCode | Array, Binary Search, DSA |
