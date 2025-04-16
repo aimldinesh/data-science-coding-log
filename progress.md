@@ -1,8 +1,9 @@
 # 📊 Daily Coding Progress Log
 
 ### 📅 April 2025 (2025-04)
-- ✅ Problems Solved This Month: **27**
-- 🎯 Total Problems Solved: **27**
+- ✅ Problems Solved This Month: **25**
+- 🎯 Total Problems Solved: **25**
+
 This file tracks my daily problem-solving activity and overall progress. Each entry logs the problems solved, platform used, and topics practiced.
 
 ---
@@ -25,7 +26,7 @@ This file tracks my daily problem-solving activity and overall progress. Each en
 | 2025-04-14 | [Time-Based Key-Value Store](./2025-04-14/time-based_key-value_store.md)                               | LeetCode  | Hash Map, Binary Search, DSA      |
 | 2025-04-14 | [Snapshot Array](./2025-04-14/snapshot_array.md)                                                       | LeetCode  | Design, Binary Search, DSA        |
 | 2025-04-14 | [Search in Rotated Sorted Array](./2025-04-14/search_in_rotated_sorted_array.md)                       | LeetCode  | Binary Search, Array, DSA         |
-| 2025-04-15 | [Find Minimum in Rotated Sorted Array II](./2025-04-15/find_minimum_in_rotated_sorted_array_ii.md)      | LeetCode  | Binary Search, Array, DSA         |
+| 2025-04-15 | [Find Minimum in Rotated Sorted Array II](./2025-04-15/find_minimum_in_rotated_sorted_array_ii.md)     | LeetCode  | Binary Search, Array, DSA         |
 | 2025-04-15 | [Guess Number Higher or Lower](./2025-04-15/guess_number_higher_or_lower.md)                           | LeetCode  | Binary Search, Game Theory, DSA   |
 | 2025-04-16 | [First Bad Version](./2025-04-16/first_bad_version.md)                                                 | LeetCode  | Binary Search, DSA                |
 | 2025-04-16 | [Search a 2D Matrix](./2025-04-16/search_a_2d_matrix.md)                                               | LeetCode  | Matrix, Binary Search, DSA        |
@@ -33,12 +34,15 @@ This file tracks my daily problem-solving activity and overall progress. Each en
 | 2025-04-16 | [Sqrt(x)](./2025-04-16/sqrt(x).md)                                                                     | LeetCode  | Math, Binary Search, DSA          |
 | 2025-04-16 | [Arranging Coins](./2025-04-16/arranging_coins.md)                                                     | LeetCode  | Math, Binary Search, DSA          |
 | 2025-04-16 | [Kth Missing Positive Number](./2025-04-16/kth_missing_positive_number.md)                             | LeetCode  | Array, Binary Search, DSA         |
+| 2025-04-16 | [Valid Triangle Number](./2025-04-16/valid_triangle_number.md)                                         | LeetCode  | Array, Binary Search, DSA         |
 
 ---
 
-**Total Problems Solved:** 24  
-**Most Frequent Topic:** DSA  
-**Platform(s) Used:** LeetCode
-| 2025-04-16 | [Two Sum](./2025-04-16/two_sum.md) | LeetCode | Array, Hash Map, DSA |
-| 2025-04-16 | [Two Sum](./2025-04-16/two_sum.md) | LeetCode | Array, Hash Map, DSA |
-| 2025-04-16 | [Valid Triangle Number](.\2025-04-16\valid_triangle_number.md) | LeetCode | Array, Binary Search, DSA |
+### 📈 Summary
+
+- **Total Problems Solved:** 25  
+- **Most Frequent Topic:** DSA  
+- **Most Used Tags:** Binary Search, Array, Hash Map  
+- **Platform(s) Used:** LeetCode
+
+| 2025-04-16 | [Successful Pairs of Spells and Potions](.\2025-04-16\successful_pairs_of_spells_and_potions.md) | LeetCode | Array, Binary Search, DSA |
