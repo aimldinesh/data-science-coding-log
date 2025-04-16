@@ -1,5 +1,5 @@
 ## 📊 Weekly Progress
 
-- ✅ Problems solved this week: **12**
+- ✅ Problems solved this week: **13**
 - 📚 Most frequent topic: **DSA**
-- 🌐 Platforms used: LeetCode (12)
+- 🌐 Platforms used: LeetCode (13)

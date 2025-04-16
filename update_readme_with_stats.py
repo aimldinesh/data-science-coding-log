@@ -1,69 +1,84 @@
-import re
-import argparse
+import os
+import datetime
 
-BADGES = """
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat&logo=leetcode&logoColor=black)
-![Daily](https://img.shields.io/badge/Daily%20Coding-Yes-brightgreen)
+def update_readme_with_stats(stats_file='stats.md', progress_file='progress.md', readme_file='README.md'):
+    # Read stats from stats.md
+    if not os.path.exists(stats_file):
+        print(f"Error: {stats_file} does not exist.")
+        return
+
+    with open(stats_file, 'r', encoding='utf-8') as file:  # Ensure UTF-8 encoding
+        stats_content = file.read()
+
+    # Extract values
+    problems_solved = None
+    most_frequent_topic = None
+    platforms_used = None
+
+    for line in stats_content.split('\n'):
+        if 'Problems solved this week:' in line:
+            problems_solved = line.split(':')[1].strip().split(' ')[0]
+        elif 'Most frequent topic:' in line:
+            most_frequent_topic = line.split(':')[1].strip()
+        elif 'Platforms used:' in line:
+            platforms_used = line.split(':')[1].strip()
+
+    if not all([problems_solved, most_frequent_topic, platforms_used]):
+        print("Error: Could not extract all necessary data from stats.md.")
+        return
+
+    # Read progress.md
+    if not os.path.exists(progress_file):
+        print(f"Error: {progress_file} does not exist.")
+        return
+
+    with open(progress_file, 'r', encoding='utf-8') as file:  # Ensure UTF-8 encoding
+        progress_content = file.read()
+
+    # Today's date
+    date_today = datetime.datetime.today().strftime('%Y-%m-%d')
+
+    # Build badge section
+    badges = f"""
+![Problems Solved](https://img.shields.io/badge/Problems_Solved-{problems_solved}-brightgreen)
+![Platform](https://img.shields.io/badge/Platform-{platforms_used.replace(" ", "_")}-orange)
+![Focus Topic](https://img.shields.io/badge/Focus-{most_frequent_topic.replace(" ", "_")}-blue)
+![Last Updated](https://img.shields.io/badge/Last_Updated-{date_today}-informational)
 """
 
-def read_file(filepath):
-    with open(filepath, "r", encoding="utf-8") as f:
-        return f.read().strip()
+    # New content for README
+    new_content = f"""
+{badges}
 
-def write_file(filepath, content):
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
+## 📊 Weekly Stats for {date_today}
 
-def replace_between_markers(text, start_marker, end_marker, new_content):
-    if start_marker in text and end_marker in text:
-        start = text.index(start_marker) + len(start_marker)
-        end = text.index(end_marker)
-        return text[:start] + "\n" + new_content + "\n" + text[end:]
-    else:
-        # If markers are not found, just add the new content at the end
-        return text.strip() + f"\n\n{start_marker}\n{new_content}\n{end_marker}"
+- ✅ Problems solved this week: **{problems_solved}**
+- 📚 Most frequent topic: **{most_frequent_topic}**
+- 🌐 Platforms used: {platforms_used}
 
-def create_progress_bar(current, total, bar_length=15):
-    filled = int((current / total) * bar_length)
-    bar = "█" * filled + "-" * (bar_length - filled)
-    percentage = int((current / total) * 100)
-    return f"[{bar}] {percentage}%"
+## 📈 Weekly Progress
 
-def extract_monthly_progress(progress_md, goal):
-    flat_text = "".join(progress_md.splitlines())
-    match = re.search(r"Problems Solved This Month: \*\*(\d+)\*\*", flat_text)
-    current = int(match.group(1)) if match else 0
-    bar = create_progress_bar(current, goal)
-    return f"{progress_md}\n- 📈 Progress: {bar}"
+{progress_content}
+"""
 
-def insert_badges(readme):
-    if BADGES.strip() not in readme:
-        return BADGES + "\n" + readme
-    return readme
+    # Read or create README.md
+    if not os.path.exists(readme_file):
+        with open(readme_file, 'w', encoding='utf-8') as file:  # Ensure UTF-8 encoding
+            file.write("# My Coding Journey\n\n")
+            file.write(new_content)
+        print(f"Created and updated {readme_file} for {date_today}.")
+        return
 
-def main(goal):
-    stats_content = read_file("stats.md")
-    progress_content = read_file("progress.md")
-    readme = read_file("README.md")
+    with open(readme_file, 'r', encoding='utf-8') as file:  # Ensure UTF-8 encoding
+        old_content = file.read()
 
-    # Monthly section with emoji bar
-    monthly_stats = extract_monthly_progress(progress_content, goal)
+    # Prepend new content
+    updated_readme = new_content + "\n" + old_content
 
-    # Replace sections between markers, ensuring not to add duplicates
-    readme = replace_between_markers(readme, "<!-- STATS-START -->", "<!-- STATS-END -->", stats_content)
-    readme = replace_between_markers(readme, "<!-- PROGRESS-START -->", "<!-- PROGRESS-END -->", progress_content)
-    readme = replace_between_markers(readme, "<!-- MONTHLY-START -->", "<!-- MONTHLY-END -->", monthly_stats)
+    with open(readme_file, 'w', encoding='utf-8') as file:  # Ensure UTF-8 encoding
+        file.write(updated_readme)
 
-    # Add badges if missing
-    readme = insert_badges(readme)
-
-    # Save updated README
-    write_file("README.md", readme)
-    print("✅ GitHub README.md updated with latest stats, progress, and badges!")
+    print(f"✅ README updated successfully for {date_today} with badges and progress.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Update README with progress stats.")
-    parser.add_argument("--goal", type=int, default=30, help="Monthly goal for problems solved.")
-    args = parser.parse_args()
-    main(goal=args.goal)
+    update_readme_with_stats()
