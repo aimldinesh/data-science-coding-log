@@ -1,10 +1,33 @@
-## 📅 April 2025
+# 📊 Daily Coding Progress Log
 
-- ✅ Problems Solved This Month: **0**
-- 🎯 Total Problems Solved: **0**
+This file tracks my daily problem-solving activity and overall progress. Each entry logs the problems solved, platform used, and topics practiced.
 
-| Date       | Problem                                | Platform  | Tags       |
-|------------|-----------------------------------------|-----------|------------|
-| 2025-04-01 | [Example Problem](https://example.com)  | LeetCode  | Array      |
-| 2025-04-02 | [Another Problem](https://example.com)  | GFG       | DSA        |
-| 2025-04-16 | [Search a 2D Matrix](2025-04-16\search_a_2d_matrix.md) | LeetCode | Array, Binary Search, DSA |
+---
+
+| Date       | Problem                                                                                           | Platform  | Tags                              |
+|------------|---------------------------------------------------------------------------------------------------|-----------|-----------------------------------|
+| 2025-04-08 | [Two Sum](./2025-04-08/two_sum.md)                                                                | LeetCode  | Array, Hash Map, DSA              |
+| 2025-04-08 | [Valid Anagram](./2025-04-08/valid_anagram.md)                                                    | LeetCode  | Array, DSA                        |
+| 2025-04-08 | [Contains Duplicate](./2025-04-08/contains_duplicate.md)                                          | LeetCode  | Array, Duplicate, DSA             |
+| 2025-04-09 | [Concatenation of Array](./2025-04-09/concatenation_of_array.md)                                  | LeetCode  | Array, Concatenation, DSA         |
+| 2025-04-09 | [Valid Palindrome](./2025-04-09/valid_palindrome.md)                                              | LeetCode  | String, Two Pointers, DSA         |
+| 2025-04-10 | [Longest Common Prefix](./2025-04-10/longest_common_prefix.md)                                    | LeetCode  | String, Prefix, DSA               |
+| 2025-04-11 | [Group Anagrams](./2025-04-11/group_anagrams.md)                                                  | LeetCode  | Hash Map, Sorting, DSA            |
+| 2025-04-12 | [Binary Search](./2025-04-12/binary_search.md)                                                    | LeetCode  | Binary Search, Array, DSA         |
+| 2025-04-13 | [Search Insert Position](./2025-04-13/search_insert_position.md)                                  | LeetCode  | Binary Search, Array, DSA         |
+| 2025-04-13 | [Find Smallest Letter Greater Than Target](./2025-04-13/find_smallest_letter_greater_than_target.md) | LeetCode  | Binary Search, Array, DSA         |
+| 2025-04-13 | [Count Negative Numbers in a Sorted Matrix](./2025-04-13/count_negative_numbers_in_a_sorted_matrix.md) | LeetCode  | Binary Search, Matrix, DSA        |
+| 2025-04-13 | [Find First and Last Position of Element in Sorted Array](./2025-04-13/find_first_and_last_position_of_element_in_sorted_array.md) | LeetCode | Binary Search, Array, DSA         |
+| 2025-04-14 | [Find Right Interval](./2025-04-14/find_right_interval.md)                                        | LeetCode  | Binary Search, Intervals, DSA     |
+| 2025-04-14 | [Time-Based Key-Value Store](./2025-04-14/time-based_key-value_store.md)                          | LeetCode  | Hash Map, Binary Search, DSA      |
+| 2025-04-14 | [Snapshot Array](./2025-04-14/snapshot_array.md)                                                  | LeetCode  | Design, Binary Search, DSA        |
+| 2025-04-14 | [Search in Rotated Sorted Array](./2025-04-14/search_in_rotated_sorted_array.md)                  | LeetCode  | Binary Search, Array, DSA         |
+| 2025-04-15 | [Find Minimum in Rotated Sorted Array II](./2025-04-15/find_minimum_in_rotated_sorted_array_ii.md)| LeetCode  | Binary Search, Array, DSA         |
+| 2025-04-15 | [Guess Number Higher or Lower](./2025-04-15/guess_number_higher_or_lower.md)                      | LeetCode  | Binary Search, Game Theory, DSA   |
+| 2025-04-16 | [Search a 2D Matrix](./2025-04-16/search_a_2d_matrix.md)                                           | LeetCode  | Matrix, Binary Search, DSA        |
+
+---
+
+**Total Problems Solved:** 18  
+**Most Frequent Topic:** DSA  
+**Platform(s) Used:** LeetCode  
