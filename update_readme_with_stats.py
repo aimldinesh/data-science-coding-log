@@ -72,7 +72,12 @@ def update_readme_with_stats(stats_file='stats.md', progress_file='progress.md',
     with open(readme_file, 'r', encoding='utf-8') as file:  # Ensure UTF-8 encoding
         old_content = file.read()
 
-    # Prepend new content
+    # Check if today's content is already present
+    if new_content in old_content:
+        print("No update needed: Today's stats and progress already exist in the README.")
+        return
+
+    # Prepend new content if it's not already in the README
     updated_readme = new_content + "\n" + old_content
 
     with open(readme_file, 'w', encoding='utf-8') as file:  # Ensure UTF-8 encoding
