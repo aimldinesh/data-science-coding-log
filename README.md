@@ -1,11 +1,11 @@
 
 
-![LeetCode](https://img.shields.io/badge/LeetCode)
-![GeeksforGeeks](https://img.shields.io/badge/GeeksforGeeks)
-![HackerRank](https://img.shields.io/badge/HackerRank)
-![DSA](https://img.shields.io/badge/DSA)
-![Data Science](https://img.shields.io/badge/Data_Science)
-![Artificial Intelligence](https://img.shields.io/badge/AI- brightgreen)
+![LeetCode](https://img.shields.io/badge/LeetCode-****-brightgreen)
+![GeeksforGeeks](https://img.shields.io/badge/GeeksforGeeks-****-brightgreen)
+![HackerRank](https://img.shields.io/badge/HackerRank-****-brightgreen)
+![DSA](https://img.shields.io/badge/DSA-**14**-brightgreen)
+![Data Science](https://img.shields.io/badge/Data_Science-****-brightgreen)
+![Artificial Intelligence](https://img.shields.io/badge/AI-****-brightgreen)
 
 
 ## 📊 Weekly Stats for 2025-04-16
