@@ -1,5 +1,3 @@
-# update_readme_with_stats.py
-
 import re
 import argparse
 
@@ -23,6 +21,7 @@ def replace_between_markers(text, start_marker, end_marker, new_content):
         end = text.index(end_marker)
         return text[:start] + "\n" + new_content + "\n" + text[end:]
     else:
+        # If markers are not found, just add the new content at the end
         return text.strip() + f"\n\n{start_marker}\n{new_content}\n{end_marker}"
 
 def create_progress_bar(current, total, bar_length=15):
@@ -51,7 +50,7 @@ def main(goal):
     # Monthly section with emoji bar
     monthly_stats = extract_monthly_progress(progress_content, goal)
 
-    # Replace all sections
+    # Replace sections between markers, ensuring not to add duplicates
     readme = replace_between_markers(readme, "<!-- STATS-START -->", "<!-- STATS-END -->", stats_content)
     readme = replace_between_markers(readme, "<!-- PROGRESS-START -->", "<!-- PROGRESS-END -->", progress_content)
     readme = replace_between_markers(readme, "<!-- MONTHLY-START -->", "<!-- MONTHLY-END -->", monthly_stats)

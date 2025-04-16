@@ -40,9 +40,17 @@ def update_progress_tracker(tracker_path: str, date_input: str, problem_name: st
             f.write("| Date | Problem | Platform | Tags |\n")
             f.write("|------|---------|----------|------|\n")
 
-    line = f"| {date_input} | [{problem_name}]({file_path.replace(' ', '%20')}) | {platform} | {tags} |\n"
-    with open(tracker_path, "a", encoding="utf-8") as f:
-        f.write(line)
+    # Generate correct relative path and encode spaces
+    relative_path = os.path.relpath(file_path, os.path.dirname(tracker_path)).replace("\\", "/")
+    relative_path = relative_path.replace(" ", "%20")
+
+    line = f"| {date_input} | [{problem_name}]({relative_path}) | {platform} | {tags} |\n"
+
+    # Avoid duplicate entries
+    with open(tracker_path, "r+", encoding="utf-8") as f:
+        content = f.read()
+        if problem_name not in content:
+            f.write(line)
 
 
 def analyze_logs(directory: str = "."):
@@ -129,7 +137,7 @@ def main():
     input("\n✍️ Fill out your markdown file in VS Code.\n✅ When you're done, press Enter here to commit and update stats...")
 
     # Update tracker
-    tracker_path = "progress.md"
+    tracker_path = os.path.join(".", "progress.md")
     update_progress_tracker(tracker_path, date_input, problem_name, file_path, platform, tags)
 
     # Analyze logs and update stats
