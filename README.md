@@ -1,4 +1,3 @@
-
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat&logo=leetcode&logoColor=black)
 ![Daily](https://img.shields.io/badge/Daily%20Coding-Yes-brightgreen)
@@ -6,9 +5,9 @@
 <!-- STATS-START -->
 ## 📊 Weekly Progress
 
-- ✅ Problems solved this week: **10**
+- ✅ Problems solved this week: **11**
 - 📚 Most frequent topic: **DSA**
-- 🌐 Platforms used: LeetCode (10)
+- 🌐 Platforms used: LeetCode (11)
 <!-- STATS-END -->
 
 <!-- PROGRESS-START -->
@@ -16,8 +15,8 @@
 
 
 ### 📅 April 2025 (2025-04)
-- ✅ Problems Solved This Month: **22**
-- 🎯 Total Problems Solved: **22**
+- ✅ Problems Solved This Month: **23**
+- 🎯 Total Problems Solved: **23**
 This file tracks my daily problem-solving activity and overall progress. Each entry logs the problems solved, platform used, and topics practiced.
 
 ---
@@ -52,6 +51,7 @@ This file tracks my daily problem-solving activity and overall progress. Each en
 **Most Frequent Topic:** DSA  
 **Platform(s) Used:** LeetCode
 | 2025-04-16 | [Sqrt(x)](2025-04-16\sqrt(x).md) | https://leetcode.com/problems/sqrtx/description/ | Math, Binary Search, DSA |
+| 2025-04-16 | [Arranging Coins](2025-04-16\arranging_coins.md) | LeetCode | Math, Binary Search, DSA |
 <!-- PROGRESS-END -->
 
 <!-- MONTHLY-START -->
@@ -59,8 +59,8 @@ This file tracks my daily problem-solving activity and overall progress. Each en
 
 
 ### 📅 April 2025 (2025-04)
-- ✅ Problems Solved This Month: **22**
-- 🎯 Total Problems Solved: **22**
+- ✅ Problems Solved This Month: **23**
+- 🎯 Total Problems Solved: **23**
 This file tracks my daily problem-solving activity and overall progress. Each entry logs the problems solved, platform used, and topics practiced.
 
 ---
@@ -95,5 +95,6 @@ This file tracks my daily problem-solving activity and overall progress. Each en
 **Most Frequent Topic:** DSA  
 **Platform(s) Used:** LeetCode
 | 2025-04-16 | [Sqrt(x)](2025-04-16\sqrt(x).md) | https://leetcode.com/problems/sqrtx/description/ | Math, Binary Search, DSA |
-- 📈 Progress: [███████████----] 73%
+| 2025-04-16 | [Arranging Coins](2025-04-16\arranging_coins.md) | LeetCode | Math, Binary Search, DSA |
+- 📈 Progress: [███████████----] 76%
 <!-- MONTHLY-END -->
