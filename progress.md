@@ -41,3 +41,4 @@ This file tracks my daily problem-solving activity and overall progress. Each en
 **Platform(s) Used:** LeetCode
 | 2025-04-16 | [Two Sum](./2025-04-16/two_sum.md) | LeetCode | Array, Hash Map, DSA |
 | 2025-04-16 | [Two Sum](./2025-04-16/two_sum.md) | LeetCode | Array, Hash Map, DSA |
+| 2025-04-16 | [Valid Triangle Number](.\2025-04-16\valid_triangle_number.md) | LeetCode | Array, Binary Search, DSA |
