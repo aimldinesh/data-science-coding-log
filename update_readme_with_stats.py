@@ -46,7 +46,6 @@ def update_readme_with_stats(stats_file='stats.md', progress_file='progress.md',
 ![DSA](https://img.shields.io/badge/DSA-{problems_solved}-brightgreen)
 ![Data Science](https://img.shields.io/badge/Data_Science-{problems_solved}-brightgreen)
 ![Artificial Intelligence](https://img.shields.io/badge/AI-{problems_solved}-brightgreen)
-![Last Updated](https://img.shields.io/badge/Last_Updated-{date_today}-informational)
 """
 
     # New content for README
@@ -59,7 +58,6 @@ def update_readme_with_stats(stats_file='stats.md', progress_file='progress.md',
 - 📚 Most frequent topic: **{most_frequent_topic}**
 - 🌐 Platforms used: {platforms_used}
 
-## 📈 Weekly Progress
 
 {progress_content}
 """
