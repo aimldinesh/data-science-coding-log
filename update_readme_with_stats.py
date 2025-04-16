@@ -40,9 +40,12 @@ def update_readme_with_stats(stats_file='stats.md', progress_file='progress.md',
 
     # Build badge section
     badges = f"""
-![Problems Solved](https://img.shields.io/badge/Problems_Solved-{problems_solved}-brightgreen)
-![Platform](https://img.shields.io/badge/Platform-{platforms_used.replace(" ", "_")}-orange)
-![Focus Topic](https://img.shields.io/badge/Focus-{most_frequent_topic.replace(" ", "_")}-blue)
+![LeetCode](https://img.shields.io/badge/LeetCode-{problems_solved}-brightgreen)
+![GeeksforGeeks](https://img.shields.io/badge/GeeksforGeeks-{problems_solved}-brightgreen)
+![HackerRank](https://img.shields.io/badge/HackerRank-{problems_solved}-brightgreen)
+![DSA](https://img.shields.io/badge/DSA-{problems_solved}-brightgreen)
+![Data Science](https://img.shields.io/badge/Data_Science-{problems_solved}-brightgreen)
+![Artificial Intelligence](https://img.shields.io/badge/AI-{problems_solved}-brightgreen)
 ![Last Updated](https://img.shields.io/badge/Last_Updated-{date_today}-informational)
 """
 
