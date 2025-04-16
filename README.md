@@ -1,17 +1,17 @@
 
 
-![LeetCode](https://img.shields.io/badge/LeetCode-**14**-brightgreen)
-![GeeksforGeeks](https://img.shields.io/badge/GeeksforGeeks-**14**-brightgreen)
-![HackerRank](https://img.shields.io/badge/HackerRank-**14**-brightgreen)
-![DSA](https://img.shields.io/badge/DSA-**14**-brightgreen)
-![Data Science](https://img.shields.io/badge/Data_Science-**14**-brightgreen)
-![Artificial Intelligence](https://img.shields.io/badge/AI-**14**-brightgreen)
+![LeetCode](https://img.shields.io/badge/LeetCode)
+![GeeksforGeeks](https://img.shields.io/badge/GeeksforGeeks)
+![HackerRank](https://img.shields.io/badge/HackerRank)
+![DSA](https://img.shields.io/badge/DSA)
+![Data Science](https://img.shields.io/badge/Data_Science)
+![Artificial Intelligence](https://img.shields.io/badge/AI)
 
 
 ## 📊 Weekly Stats for 2025-04-16
 
 - ✅ Problems solved this week: ****14****
-- 📚 Most frequent topic: ****DSA****
+- 📚 Most frequent topic: ***Binary Search***
 - 🌐 Platforms used: LeetCode (14)
 
 
