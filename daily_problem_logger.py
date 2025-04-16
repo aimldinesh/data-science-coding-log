@@ -1,78 +1,51 @@
 import os
-from datetime import datetime, timedelta
-import subprocess
-from collections import Counter, defaultdict
 import re
+import subprocess
+from datetime import datetime, timedelta
+from collections import Counter, defaultdict
 
-# 1. Get today's date
-today = datetime.today().strftime('%Y-%m-%d')
 
-# 2. Inputs
-date_input = input(f"📅 Enter date (default: {today}): ") or today
-problem_name = input("🧠 Problem name (e.g., Two Sum): ").strip()
-platform = input("🌐 Platform (e.g., LeetCode, GFG): ").strip()
-tags = input("🏷️ Tags (comma separated, e.g., DSA, SQL, Pandas): ").strip()
-problem_link = input("🔗 Problem link (optional): ").strip()
-submission_link = input("✅ Your solution link (optional): ").strip()
+def get_input(prompt: str, default: str = "") -> str:
+    return input(prompt).strip() or default
 
-# 3. File prep
-folder_path = os.path.join(".", date_input)
-os.makedirs(folder_path, exist_ok=True)
 
-file_name = problem_name.strip().lower().replace(" ", "_") + ".md"
-file_path = os.path.join(folder_path, file_name)
+def create_markdown(problem_name: str, platform: str, tags: str, date_input: str, problem_link: str, submission_link: str) -> str:
+    return (
+        f"# 🧮 Problem: {problem_name}\n\n"
+        f"- **Platform**: [{platform}]({problem_link or '#'})\n"
+        f"- **Submission**: [{submission_link or 'Not provided'}]({submission_link or '#'})\n"
+        f"- **Date Solved**: {date_input}\n"
+        f"- **Tags**: {tags}\n\n"
+        f"---\n\n"
+        f"## ✅ Problem Statement\n"
+        f"*(Write a brief summary or paste problem link)*\n\n"
+        f"---\n\n"
+        f"## 🚀 My Approach\n"
+        f"*(Explain your logic in simple terms)*\n\n"
+        f"---\n\n"
+        f"## 💻 Code (Python)\n\n"
+        f"```python\n"
+        f"# Paste your solution here\n"
+        f"```\n\n"
+        f"---\n\n"
+        f"## 💡 Time and Space Complexity\n"
+        f"- **Time**: O(?)\n"
+        f"- **Space**: O(?)\n"
+    )
 
-# 4. Markdown content
-markdown = (
-    f"# 🧮 Problem: {problem_name}\n\n"
-    f"- **Platform**: [{platform}]({problem_link if problem_link else '#'})\n"
-    f"- **Submission**: [{submission_link if submission_link else 'Not provided'}]({submission_link if submission_link else '#'})\n"
-    f"- **Date Solved**: {date_input}\n"
-    f"- **Tags**: {tags}\n\n"
-    f"---\n\n"
-    f"## ✅ Problem Statement\n"
-    f"*(Write a brief summary or paste problem link)*\n\n"
-    f"---\n\n"
-    f"## 🚀 My Approach\n"
-    f"*(Explain your logic in simple terms)*\n\n"
-    f"---\n\n"
-    f"## 💻 Code (Python)\n\n"
-    f"```python\n"
-    f"# Paste your solution here\n"
-    f"```\n\n"
-    f"---\n\n"
-    f"## 💡 Time and Space Complexity\n"
-    f"- **Time**: O(?)\n"
-    f"- **Space**: O(?)\n"
-)
 
-with open(file_path, "w", encoding="utf-8") as f:
-    f.write(markdown)
+def update_progress_tracker(tracker_path: str, date_input: str, problem_name: str, file_path: str, platform: str, tags: str):
+    if not os.path.exists(tracker_path):
+        with open(tracker_path, "w", encoding="utf-8") as f:
+            f.write("| Date | Problem | Platform | Tags |\n")
+            f.write("|------|---------|----------|------|\n")
 
-print(f"\n✅ Created: {file_path}")
+    line = f"| {date_input} | [{problem_name}]({file_path.replace(' ', '%20')}) | {platform} | {tags} |\n"
+    with open(tracker_path, "a", encoding="utf-8") as f:
+        f.write(line)
 
-# 5. Open file in VS Code
-try:
-    subprocess.run(["code", file_path])
-except:
-    print("⚠️ Could not open in VS Code.")
 
-input("\n✍️ Fill out your markdown file in VS Code.\n✅ When you're done, press Enter here to commit and update stats...")
-
-# 6. Update tracker table
-tracker_path = "progress.md"
-tracker_line = f"| {date_input} | [{problem_name}]({file_path.replace(' ', '%20')}) | {platform} | {tags} |\n"
-
-if not os.path.exists(tracker_path):
-    with open(tracker_path, "w", encoding="utf-8") as f:
-        f.write("| Date | Problem | Platform | Tags |\n")
-        f.write("|------|---------|----------|------|\n")
-
-with open(tracker_path, "a", encoding="utf-8") as f:
-    f.write(tracker_line)
-
-# 7. Analyze past logs to update stats
-def analyze_logs(directory="."):
+def analyze_logs(directory: str = "."):
     tag_counter = Counter()
     problems_per_day = defaultdict(int)
 
@@ -81,8 +54,7 @@ def analyze_logs(directory="."):
         if os.path.isdir(folder_path) and re.match(r"\d{4}-\d{2}-\d{2}", folder):
             for file in os.listdir(folder_path):
                 if file.endswith(".md"):
-                    file_path = os.path.join(folder_path, file)
-                    with open(file_path, "r", encoding="utf-8") as f:
+                    with open(os.path.join(folder_path, file), "r", encoding="utf-8") as f:
                         content = f.read()
                         date_match = re.search(r"\*\*Date Solved\*\*: (\d{4}-\d{2}-\d{2})", content)
                         tags_match = re.search(r"\*\*Tags\*\*: (.+)", content)
@@ -90,39 +62,84 @@ def analyze_logs(directory="."):
                             solved_date = date_match.group(1)
                             problems_per_day[solved_date] += 1
                         if tags_match:
-                            tags = tags_match.group(1).split(",")
-                            tag_counter.update(tag.strip() for tag in tags)
+                            tag_counter.update(tag.strip() for tag in tags_match.group(1).split(","))
 
     today = datetime.today()
     week_ago = (today - timedelta(days=7)).strftime("%Y-%m-%d")
     month_ago = (today - timedelta(days=30)).strftime("%Y-%m-%d")
 
-    weekly_count = sum(v for k, v in problems_per_day.items() if k >= week_ago)
-    monthly_count = sum(v for k, v in problems_per_day.items() if k >= month_ago)
-
+    weekly_count = sum(count for date, count in problems_per_day.items() if date >= week_ago)
+    monthly_count = sum(count for date, count in problems_per_day.items() if date >= month_ago)
     most_common_tags = tag_counter.most_common(5)
 
     return weekly_count, monthly_count, most_common_tags
 
-# 8. Update stats.md
-weekly_count, monthly_count, most_common_tags = analyze_logs()
-with open("stats.md", "w", encoding="utf-8") as f:
-    f.write("# 📊 Coding Practice Stats\n\n")
-    f.write(f"- ✅ Problems solved this week: **{weekly_count}**\n")
-    f.write(f"- 📆 Problems solved this month: **{monthly_count}**\n")
-    f.write(f"- 🏷️ Most frequent tags: ")
-    if most_common_tags:
-        f.write(", ".join([f"**{tag}** ({count})" for tag, count in most_common_tags]))
-    else:
-        f.write("None yet.")
-    f.write("\n")
 
-# 9. Git Commit + Push
-try:
-    subprocess.run(["git", "add", file_path, tracker_path, "stats.md"], check=True)
-    commit_message = f"🧠 Add: {problem_name} [{date_input}]"
-    subprocess.run(["git", "commit", "-m", commit_message], check=True)
-    subprocess.run(["git", "push"], check=True)
-    print("\n🚀 Successfully committed and pushed to GitHub with updated stats!")
-except subprocess.CalledProcessError:
-    print("⚠️ Git push failed. Make sure you're in a repo and authenticated.")
+def update_stats_md(weekly_count: int, monthly_count: int, most_common_tags: list):
+    with open("stats.md", "w", encoding="utf-8") as f:
+        f.write("# 📊 Coding Practice Stats\n\n")
+        f.write(f"- ✅ Problems solved this week: **{weekly_count}**\n")
+        f.write(f"- 📆 Problems solved this month: **{monthly_count}**\n")
+        f.write(f"- 🏷️ Most frequent tags: ")
+        f.write(", ".join([f"**{tag}** ({count})" for tag, count in most_common_tags]) if most_common_tags else "None yet.")
+        f.write("\n")
+
+
+def git_commit_push(files: list, message: str):
+    try:
+        subprocess.run(["git", "add"] + files, check=True)
+        subprocess.run(["git", "commit", "-m", message], check=True)
+        subprocess.run(["git", "push"], check=True)
+        print("\n🚀 Successfully committed and pushed to GitHub with updated stats!")
+    except subprocess.CalledProcessError:
+        print("⚠️ Git push failed. Make sure you're in a Git repo and authenticated.")
+
+
+def main():
+    today = datetime.today().strftime('%Y-%m-%d')
+
+    # Inputs
+    date_input = get_input(f"📅 Enter date (default: {today}): ", today)
+    problem_name = get_input("🧠 Problem name (e.g., Two Sum): ")
+    platform = get_input("🌐 Platform (e.g., LeetCode, GFG): ")
+    tags = get_input("🏷️ Tags (comma separated, e.g., DSA, SQL, Pandas): ")
+    problem_link = get_input("🔗 Problem link (optional): ")
+    submission_link = get_input("✅ Your solution link (optional): ")
+
+    # File handling
+    folder_path = os.path.join(".", date_input)
+    os.makedirs(folder_path, exist_ok=True)
+
+    file_name = problem_name.lower().replace(" ", "_") + ".md"
+    file_path = os.path.normpath(os.path.join(folder_path, file_name))
+
+    # Write markdown
+    markdown_content = create_markdown(problem_name, platform, tags, date_input, problem_link, submission_link)
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(markdown_content)
+
+    print(f"\n✅ Created: {file_path}")
+
+    # Open in VS Code
+    try:
+        subprocess.run(["code", file_path])
+    except Exception:
+        print("⚠️ Could not open in VS Code.")
+
+    input("\n✍️ Fill out your markdown file in VS Code.\n✅ When you're done, press Enter here to commit and update stats...")
+
+    # Update tracker
+    tracker_path = "progress.md"
+    update_progress_tracker(tracker_path, date_input, problem_name, file_path, platform, tags)
+
+    # Analyze logs and update stats
+    weekly_count, monthly_count, most_common_tags = analyze_logs()
+    update_stats_md(weekly_count, monthly_count, most_common_tags)
+
+    # Git commit and push
+    commit_msg = f"🧠 Add: {problem_name} [{date_input}]"
+    git_commit_push([file_path, tracker_path, "stats.md"], commit_msg)
+
+
+if __name__ == "__main__":
+    main()
