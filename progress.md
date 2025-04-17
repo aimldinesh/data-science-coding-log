@@ -46,3 +46,4 @@ This file tracks my daily problem-solving activity and overall progress. Each en
 - **Platform(s) Used:** LeetCode
 
 | 2025-04-16 | [Successful Pairs of Spells and Potions](.\2025-04-16\successful_pairs_of_spells_and_potions.md) | LeetCode | Array, Binary Search, DSA |
+| 2025-04-17 | [Single Element in a Sorted Array](.\2025-04-17\single_element_in_a_sorted_array.md) | LeetCode | Binary Search, Array, DSA |
