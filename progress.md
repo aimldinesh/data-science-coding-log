@@ -31,4 +31,4 @@
 | 2025-04-17 | [Find K Closest Elements](./2025-04-17/find_k_closest_elements.md)                                         | LeetCode    | Medium     | Binary Search, Array, DSA               |
 | 2025-04-17 | [Median of Two Sorted Arrays](./2025-04-17/median_of_two_sorted_arrays.md)                                 | LeetCode    | Hard       | Binary Search, Array, DSA               |
 | 2025-04-17 | [Single Element in a Sorted Array](./2025-04-17/single_element_in_a_sorted_array.md)                       | LeetCode    | Medium     | Binary Search, Array, DSA               |
-| 2025-04-17 | [Random Pick with Weight](.\2025-04-17\random_pick_with_weight.md)                                         | LeetCode    | Medium     | Binary Search, Array, DSA               |
+| 2025-04-17 | [Random Pick with Weight](./2025-04-17/random_pick_with_weight.md)                                         | LeetCode    | Medium     | Binary Search, Array, DSA               |
