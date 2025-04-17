@@ -20,8 +20,6 @@ To build consistent problem-solving habits and improve my data science and algor
 
 <!-- STATS_END -->
 
-> 🧠 This section auto-updates with problem count and most-used tags weekly/monthly!
-
 ---
 
 ## 📅 Daily Problem Tracker
@@ -65,7 +63,6 @@ To build consistent problem-solving habits and improve my data science and algor
 
 <!-- PROBLEM_TABLE_END -->
 
-> 🧠 This table auto-updates with all problems solved across platforms. You can view your progress directly on the homepage!
 
 ---
 
