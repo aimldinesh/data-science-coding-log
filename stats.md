@@ -1,5 +1,6 @@
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **25**
-- 📆 Problems solved this month: **30**
-- 🏷️ Most frequent tags: **DSA** (30), **Binary Search** (23), **Array** (22), **Math** (3), **HashSet** (1)
+- ✅ Problems solved this week: **26**
+- 🗖️ Problems solved this month: **31**
+- 📌 Current daily streak: **10 days**
+- 🏷️ Most frequent tags: **DSA** (31), **Binary Search** (24), **Array** (23), **Math** (3), **HashSet** (1)
