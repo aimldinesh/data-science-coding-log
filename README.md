@@ -59,9 +59,8 @@ To build consistent problem-solving habits and improve my data science and algor
 | 2025-04-17 | [Median of Two Sorted Arrays](./2025-04-17/median_of_two_sorted_arrays.md)                                 | LeetCode    | Hard       | Binary Search, Array, DSA               |
 | 2025-04-17 | [Single Element in a Sorted Array](./2025-04-17/single_element_in_a_sorted_array.md)                       | LeetCode    | Medium     | Binary Search, Array, DSA               |
 | 2025-04-17 | [Random Pick with Weight](./2025-04-17/random_pick_with_weight.md)                                         | LeetCode    | Medium     | Binary Search, Array, DSA               |
-| 2025-04-18 | [Longest Increasing Subsequence](.\2025-04-18\longest_increasing_subsequence.md) | LeetCode | Medium | Array, Binary Search, DSA |
-| 2025-04-18 | [Longest Increasing Subsequence](.\2025-04-18\longest_increasing_subsequence.md) | LeetCode | Medium | Array, Binary Search, DSA |
-| 2025-04-18 | [Longest Increasing Subsequence](.\2025-04-18\longest_increasing_subsequence.md) | LeetCode | Medium | Array, Binary Search, DSA |
+| 2025-04-18 | [Longest Increasing Subsequence](./2025-04-18/longest_increasing_subsequence.md) | LeetCode | Medium | Array, Binary Search, DSA |
+
 
 <!-- PROBLEM_TABLE_END -->
 

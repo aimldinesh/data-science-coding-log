@@ -63,7 +63,7 @@ input("\n✍️ Fill out your markdown file in VS Code.\n✅ When you're done, p
 
 # 6. Update tracker table
 tracker_path = "progress.md"
-tracker_line = f"| {date_input} | [{problem_name}]({file_path.replace(' ', '%20')}) | {platform} | {difficulty} | {tags} |\n"
+tracker_line = f"| {date_input} | [{problem_name}]({file_path.replace(os.sep, '/').replace(' ', '%20')}) | {platform} | {difficulty} | {tags} |\n"
 
 if not os.path.exists(tracker_path):
     with open(tracker_path, "w", encoding="utf-8") as f:
@@ -72,6 +72,7 @@ if not os.path.exists(tracker_path):
 
 with open(tracker_path, "a", encoding="utf-8") as f:
     f.write(tracker_line)
+
 
 # 7. Analyze past logs to update stats
 
@@ -130,32 +131,39 @@ with open("stats.md", "w", encoding="utf-8") as f:
 # 9. Update README.md with stats and full problem table
 readme_path = "README.md"
 
-if os.path.exists(readme_path):
+def update_readme(file_path, tracker_path):
+    # Reading existing README content
     with open(readme_path, "r", encoding="utf-8") as f:
         readme_content = f.read()
 
+    # Reading stats content
     with open("stats.md", "r", encoding="utf-8") as f:
         stats_content = f.read()
 
+    # Reading progress content
     with open("progress.md", "r", encoding="utf-8") as f:
         progress_content = f.read()
 
+    # Replacing the relevant sections in the README
     readme_content = re.sub(
         r"<!-- STATS_START -->(.*?)<!-- STATS_END -->",
-        f"<!-- STATS_START -->\n{stats_content}\n<!-- STATS_END -->",
+        lambda m: f"<!-- STATS_START -->\n{stats_content}\n<!-- STATS_END -->",
         readme_content,
         flags=re.DOTALL
     )
 
     readme_content = re.sub(
         r"<!-- PROBLEM_TABLE_START -->(.*?)<!-- PROBLEM_TABLE_END -->",
-        f"<!-- PROBLEM_TABLE_START -->\n{progress_content}\n<!-- PROBLEM_TABLE_END -->",
+        lambda m: f"<!-- PROBLEM_TABLE_START -->\n{progress_content}\n<!-- PROBLEM_TABLE_END -->",
         readme_content,
         flags=re.DOTALL
     )
 
+    # Writing the updated content back to the README
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(readme_content)
+
+update_readme(file_path, tracker_path)
 
 # 10. Git Commit + Push
 try:
