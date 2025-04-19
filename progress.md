@@ -35,3 +35,4 @@
 | 2025-04-18 | [Longest Increasing Subsequence](./2025-04-18/longest_increasing_subsequence.md)                           | LeetCode    | Medium     | Array, Binary Search, DSA               |
 | 2025-04-19 | [Russian Doll Envelopes](./2025-04-19/russian_doll_envelopes.md)                                           | LeetCode    | Hard       | Array, Binary Search, Sorting           |
 | 2025-04-19 | [Number of Subsequences That Satisfy the Given Sum Condition](./2025-04-19/number_of_subsequences_that_satisfy_the_given_sum_condition.md) | LeetCode | Medium | Array, Sorting, DSA |
+| 2025-04-19 | [H-Index II](./2025-04-19/h-index_ii.md) | LeetCode | 🟡 Medium | Array, Binary Search, DSA |

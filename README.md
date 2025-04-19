@@ -1,10 +1,16 @@
 # 📘 Data Science Coding Log
 
-Welcome to my coding practice log where I track my daily problem-solving journey across platforms like LeetCode, GeeksforGeeks, and others.
+Welcome to my **coding practice log**, where I track my **daily problem-solving** journey across platforms like **LeetCode**, **GeeksforGeeks**, and others. This log helps me stay **consistent** and **focused** while improving my **data science** and **algorithmic thinking**.
 
 ## ✍️ Goal
 
-To build consistent problem-solving habits and improve my data science and algorithmic thinking skills.
+The goal is to **build consistent problem-solving habits** and **enhance my skills** in **data science** and **algorithms**.
+
+---
+
+## ✨ Inspirational Quote
+
+> "The best way to predict the future is to invent it." — Alan Kay
 
 ---
 
@@ -13,16 +19,20 @@ To build consistent problem-solving habits and improve my data science and algor
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **27**
-- 🗖️ Problems solved this month: **34**
+- ✅ Problems solved this week: **28**
+- 🗖️ Problems solved this month: **35**
 - 📌 Current daily streak: **12 days**
-- 🏷️ Most frequent tags: **DSA** (33), **Array** (26), **Binary Search** (26), **Sorting** (3), **Math** (3)
+- 🏷️ Most frequent tags: **DSA** (34), **Array** (27), **Binary Search** (27), **Sorting** (3), **Math** (3)
 
 <!-- STATS_END -->
 
 ---
 
 ## 📅 Daily Problem Tracker
+
+### 📚 Difficulty Legend
+
+🟢 Easy | 🟡 Medium | 🔴 Hard
 
 <!-- PROBLEM_TABLE_START -->
 # 📘 Data Science Coding Log - Problem Tracker
@@ -62,6 +72,7 @@ To build consistent problem-solving habits and improve my data science and algor
 | 2025-04-18 | [Longest Increasing Subsequence](./2025-04-18/longest_increasing_subsequence.md)                           | LeetCode    | Medium     | Array, Binary Search, DSA               |
 | 2025-04-19 | [Russian Doll Envelopes](./2025-04-19/russian_doll_envelopes.md)                                           | LeetCode    | Hard       | Array, Binary Search, Sorting           |
 | 2025-04-19 | [Number of Subsequences That Satisfy the Given Sum Condition](./2025-04-19/number_of_subsequences_that_satisfy_the_given_sum_condition.md) | LeetCode | Medium | Array, Sorting, DSA |
+| 2025-04-19 | [H-Index II](./2025-04-19/h-index_ii.md) | LeetCode | 🟡 Medium | Array, Binary Search, DSA |
 
 <!-- PROBLEM_TABLE_END -->
 
@@ -77,4 +88,49 @@ To build consistent problem-solving habits and improve my data science and algor
 
 ---
 
+## 📈 Visuals
+
+Here’s a progress bar showing problems solved this week:
+
+![Progress](https://progress-bar.dev/27/?scale=100&title=Problems+Solved+This+Week&width=400&color=3e6fdd&suffix=%)
+
+---
+
+## 🎯 Badges
+
+Add badges for languages, tools, or achievements:
+
+![LeetCode Badge](https://img.shields.io/badge/LeetCode-Active-brightgreen)
+![Python Badge](https://img.shields.io/badge/Python-3.9-blue)
+![GeeksforGeeks Badge](https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen)
+![Machine Learning Badge](https://img.shields.io/badge/Machine%20Learning-Active-blue)
+![Artificial Intelligence Badge](https://img.shields.io/badge/AI-Active-blue)
+![Data Science Badge](https://img.shields.io/badge/Data%20Science-Active-orange)
+![Generative AI Badge](https://img.shields.io/badge/Generative%20AI-Active-red)
+
+---
+
+## 📅 Calendar Heatmap
+
+Here's a simple way to track your **streaks** over time. You can generate one of these with a service like [GitHub Contributions Graph](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap).
+
+![Heatmap](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap/raw/master/images/heatmap.png)
+
+---
+
+## 📚 Check Out My Blogs
+
+I write articles on **data science**, **algorithms**, and **machine learning**. Feel free to explore my writings!
+
+- 📖 **[Read My Medium Blogs](https://medium.com/@dsdineshnitrr)**
+
+---
+
+## 📫 Connect with Me
+
+Stay connected with me on **LeetCode** to check my progress, solutions, and rankings:
+
+- 🖱️ **[My LeetCode Profile](https://leetcode.com/u/dineshnitrr/)**
+
+---
 
