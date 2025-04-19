@@ -1,8 +1,3 @@
-# 📘 Data Science Coding Log
-## 🎯 Badges
-
-Add badges for languages, tools, or achievements:
-
 ![LeetCode Badge](https://img.shields.io/badge/LeetCode-Active-brightgreen)
 ![Python Badge](https://img.shields.io/badge/Python-3.9-blue)
 ![GeeksforGeeks Badge](https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen)
@@ -11,19 +6,12 @@ Add badges for languages, tools, or achievements:
 ![Data Science Badge](https://img.shields.io/badge/Data%20Science-Active-orange)
 ![Generative AI Badge](https://img.shields.io/badge/Generative%20AI-Active-red)
 
----
-
+# 📘 Data Science Coding Log
 Welcome to my **coding practice log**, where I track my **daily problem-solving** journey across platforms like **LeetCode**, **GeeksforGeeks**, and others. This log helps me stay **consistent** and **focused** while improving my **data science** and **algorithmic thinking**.
 
 ## ✍️ Goal
 
 The goal is to **build consistent problem-solving habits** and **enhance my skills** in **data science** and **algorithms**.
-
----
-
-## ✨ Inspirational Quote
-
-> "The best way to predict the future is to invent it." — Alan Kay
 
 ---
 
@@ -103,20 +91,19 @@ Here’s a progress bar showing problems solved this week:
 
 ### 📊 Progress Graph
 
-You can also visualize your progress over time. Here's a sample chart showing the number of problems solved over the past month:
+Here's a bar chart of your actual daily problem-solving stats:
 
-![Progress Chart](https://www.chartjs.org/samples/latest/charts/bar/label-rotation.png)
+![Progress Chart](daily_stats_chart.png)
 
 ---
 
 ### 📅 GitHub Contributions
 
-You can track your GitHub contributions as a way to visualize your daily activity. Here's a sample contribution graph:
+You can track your GitHub contributions as a way to visualize your daily activity:
 
 ![GitHub Contributions](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap/raw/master/images/heatmap.png)
 
 ---
-
 
 
 ## 📅 Calendar Heatmap
@@ -133,6 +120,12 @@ Here's a simple way to track your **streaks** over time. You can generate one of
 - ✅ **Problem Tracker**: All solved problems and their details available for quick reference.
 - 🎯 **Difficulty Tag**: Automatically tracks problem difficulty.
 - 📅 **Calendar Heatmap**: Visualizes your streaks and activity.
+
+---
+
+## ✨ Inspirational Quote
+
+> "The best way to predict the future is to invent it." — Alan Kay
 
 ---
 
