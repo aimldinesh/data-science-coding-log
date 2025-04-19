@@ -14,9 +14,9 @@ To build consistent problem-solving habits and improve my data science and algor
 # 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **26**
-- 🗖️ Problems solved this month: **32**
-- 📌 Current daily streak: **11 days**
-- 🏷️ Most frequent tags: **DSA** (32), **Binary Search** (25), **Array** (24), **Math** (3), **HashSet** (1)
+- 🗖️ Problems solved this month: **33**
+- 📌 Current daily streak: **12 days**
+- 🏷️ Most frequent tags: **DSA** (32), **Binary Search** (26), **Array** (25), **Math** (3), **Sorting** (2)
 
 <!-- STATS_END -->
 
@@ -61,6 +61,7 @@ To build consistent problem-solving habits and improve my data science and algor
 | 2025-04-17 | [Random Pick with Weight](./2025-04-17/random_pick_with_weight.md)                                         | LeetCode    | Medium     | Binary Search, Array, DSA               |
 | 2025-04-18 | [Longest Increasing Subsequence](./2025-04-18/longest_increasing_subsequence.md) | LeetCode | Medium | Array, Binary Search, DSA |
 
+| 2025-04-19 | [Russian Doll Envelopes](./2025-04-19/russian_doll_envelopes.md) | LeetCode | Hard | Array, Binary Search, Sorting |
 
 <!-- PROBLEM_TABLE_END -->
 

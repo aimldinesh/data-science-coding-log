@@ -34,3 +34,4 @@
 | 2025-04-17 | [Random Pick with Weight](./2025-04-17/random_pick_with_weight.md)                                         | LeetCode    | Medium     | Binary Search, Array, DSA               |
 | 2025-04-18 | [Longest Increasing Subsequence](./2025-04-18/longest_increasing_subsequence.md) | LeetCode | Medium | Array, Binary Search, DSA |
 
+| 2025-04-19 | [Russian Doll Envelopes](./2025-04-19/russian_doll_envelopes.md) | LeetCode | Hard | Array, Binary Search, Sorting |
