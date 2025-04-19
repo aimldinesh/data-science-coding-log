@@ -1,4 +1,17 @@
 # 📘 Data Science Coding Log
+## 🎯 Badges
+
+Add badges for languages, tools, or achievements:
+
+![LeetCode Badge](https://img.shields.io/badge/LeetCode-Active-brightgreen)
+![Python Badge](https://img.shields.io/badge/Python-3.9-blue)
+![GeeksforGeeks Badge](https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen)
+![Machine Learning Badge](https://img.shields.io/badge/Machine%20Learning-Active-blue)
+![Artificial Intelligence Badge](https://img.shields.io/badge/AI-Active-blue)
+![Data Science Badge](https://img.shields.io/badge/Data%20Science-Active-orange)
+![Generative AI Badge](https://img.shields.io/badge/Generative%20AI-Active-red)
+
+---
 
 Welcome to my **coding practice log**, where I track my **daily problem-solving** journey across platforms like **LeetCode**, **GeeksforGeeks**, and others. This log helps me stay **consistent** and **focused** while improving my **data science** and **algorithmic thinking**.
 
@@ -79,14 +92,6 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 ---
 
-## 🚀 Features
-
-- 📈 **Stats Section**: Weekly and Monthly solved problems, and most frequent tags automatically updated.
-- ✅ **Problem Tracker**: All solved problems and their details available for quick reference.
-- 🎯 **Difficulty Tag**: Automatically tracks problem difficulty.
-- 📅 **Calendar Heatmap**: Visualizes your streaks and activity.
-
----
 
 ## 📈 Visuals
 
@@ -96,25 +101,38 @@ Here’s a progress bar showing problems solved this week:
 
 ---
 
-## 🎯 Badges
+### 📊 Progress Graph
 
-Add badges for languages, tools, or achievements:
+You can also visualize your progress over time. Here's a sample chart showing the number of problems solved over the past month:
 
-![LeetCode Badge](https://img.shields.io/badge/LeetCode-Active-brightgreen)
-![Python Badge](https://img.shields.io/badge/Python-3.9-blue)
-![GeeksforGeeks Badge](https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen)
-![Machine Learning Badge](https://img.shields.io/badge/Machine%20Learning-Active-blue)
-![Artificial Intelligence Badge](https://img.shields.io/badge/AI-Active-blue)
-![Data Science Badge](https://img.shields.io/badge/Data%20Science-Active-orange)
-![Generative AI Badge](https://img.shields.io/badge/Generative%20AI-Active-red)
+![Progress Chart](https://www.chartjs.org/samples/latest/charts/bar/label-rotation.png)
 
 ---
+
+### 📅 GitHub Contributions
+
+You can track your GitHub contributions as a way to visualize your daily activity. Here's a sample contribution graph:
+
+![GitHub Contributions](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap/raw/master/images/heatmap.png)
+
+---
+
+
 
 ## 📅 Calendar Heatmap
 
 Here's a simple way to track your **streaks** over time. You can generate one of these with a service like [GitHub Contributions Graph](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap).
 
 ![Heatmap](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap/raw/master/images/heatmap.png)
+
+---
+
+## 🚀 Features
+
+- 📈 **Stats Section**: Weekly and Monthly solved problems, and most frequent tags automatically updated.
+- ✅ **Problem Tracker**: All solved problems and their details available for quick reference.
+- 🎯 **Difficulty Tag**: Automatically tracks problem difficulty.
+- 📅 **Calendar Heatmap**: Visualizes your streaks and activity.
 
 ---
 
