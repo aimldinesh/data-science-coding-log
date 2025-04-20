@@ -21,8 +21,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 # 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **29**
-- 🗖️ Problems solved this month: **36**
-- 📌 Current daily streak: **12 days**
+- 🗖️ Problems solved this month: **37**
+- 📌 Current daily streak: **13 days**
 - 🏷️ Most frequent tags: **DSA** (35), **Array** (28), **Binary Search** (27), **Sorting** (3), **Math** (3)
 
 <!-- STATS_END -->
@@ -75,6 +75,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-04-19 | [Number of Subsequences That Satisfy the Given Sum Condition](./2025-04-19/number_of_subsequences_that_satisfy_the_given_sum_condition.md) | LeetCode | Medium | Array, Sorting, DSA |
 | 2025-04-19 | [H-Index II](./2025-04-19/h-index_ii.md) | LeetCode | 🟡 Medium | Array, Binary Search, DSA |
 | 2025-04-19 | [Move Zeroes](./2025-04-19/move_zeroes.md) | LeetCode | 🟢 Easy | Array, DSA |
+| 2025-04-20 | [Find the Difference](./2025-04-20/find_the_difference.md) | LeetCode | 🟢 Easy | String, Bit Manipulation, Hash Table |
 
 <!-- PROBLEM_TABLE_END -->
 

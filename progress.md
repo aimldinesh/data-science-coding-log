@@ -37,3 +37,4 @@
 | 2025-04-19 | [Number of Subsequences That Satisfy the Given Sum Condition](./2025-04-19/number_of_subsequences_that_satisfy_the_given_sum_condition.md) | LeetCode | Medium | Array, Sorting, DSA |
 | 2025-04-19 | [H-Index II](./2025-04-19/h-index_ii.md) | LeetCode | 🟡 Medium | Array, Binary Search, DSA |
 | 2025-04-19 | [Move Zeroes](./2025-04-19/move_zeroes.md) | LeetCode | 🟢 Easy | Array, DSA |
+| 2025-04-20 | [Find the Difference](./2025-04-20/find_the_difference.md) | LeetCode | 🟢 Easy | String, Bit Manipulation, Hash Table |
