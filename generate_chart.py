@@ -7,8 +7,8 @@ df = pd.read_csv("daily_stats.csv")
 df["Date"] = pd.to_datetime(df["Date"])
 df = df.sort_values("Date")
 
-# Ensure 'assets/' directory exists
-os.makedirs("assets", exist_ok=True)
+# Ensure 'docs/' directory exists
+os.makedirs("docs", exist_ok=True)
 
 # ==== 📊 Interactive Bar Chart ====
 fig_bar = px.bar(
@@ -24,14 +24,11 @@ fig_bar = px.bar(
 fig_bar.update_traces(textposition="outside")
 fig_bar.update_layout(xaxis_tickangle=-45)
 
-# Save as HTML (for full interactivity)
-fig_bar.write_html("assets/daily_stats_chart.html")
-print("✅ Interactive bar chart saved as daily_stats_chart.html")
+# Save as HTML in docs/
+fig_bar.write_html("docs/daily_stats_chart.html")
+print("✅ Interactive bar chart saved as docs/daily_stats_chart.html")
 
-# ==== 🗓️ Simulated Calendar Heatmap ====
-
-# Create a "day of year" column to mimic calendar layout
-df["DayOfYear"] = df["Date"].dt.dayofyear
+# ==== 🗓️ Calendar Heatmap ====
 df["Week"] = df["Date"].dt.isocalendar().week
 df["Weekday"] = df["Date"].dt.weekday
 
@@ -52,6 +49,6 @@ fig_heatmap.update_layout(
     )
 )
 
-# Save as HTML
-fig_heatmap.write_html("assets/calendar_heatmap.html")
-print("✅ Interactive calendar heatmap saved as calendar_heatmap.html")
+# Save as HTML in docs/
+fig_heatmap.write_html("docs/calendar_heatmap.html")
+print("✅ Calendar heatmap saved as docs/calendar_heatmap.html")

@@ -90,12 +90,12 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 Here's a bar chart of our actual daily problem-solving stats:
 
-[🔗 View Interactive Bar Chart](assets/daily_stats_chart.html)
+[🔗 View Interactive Bar Chart](docs/daily_stats_chart.html)
 
 ---
 ## 📅 Calendar Heatmap
 
-[🔗 View Calendar Heatmap](assets/calendar_heatmap.html)
+[🔗 View Calendar Heatmap](docs/calendar_heatmap.html)
 ---
 
 ## 🚀 Features
@@ -128,4 +128,5 @@ Stay connected with me on **LeetCode** to check my progress, solutions, and rank
 - 🖱️ **[My LeetCode Profile](https://leetcode.com/u/dineshnitrr/)**
 
 ---
+
 
