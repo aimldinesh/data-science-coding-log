@@ -90,12 +90,12 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 Here's a bar chart of our actual daily problem-solving stats:
 
-[🔗 View Interactive Bar Chart](docs/daily_stats_chart.html)
+[🔗 View Interactive Bar Chart](https://github.com/aimldinesh/data-science-coding-log/tree/main/docs/daily_stats_chart.html)
 
 ---
 ## 📅 Calendar Heatmap
 
-[🔗 View Calendar Heatmap](docs/calendar_heatmap.html)
+[🔗 View Calendar Heatmap](https://github.com/aimldinesh/data-science-coding-log/tree/main/docs/calendar_heatmap.html)
 ---
 
 ## 🚀 Features
