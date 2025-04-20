@@ -84,36 +84,18 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 
 ## 📈 Visuals
-
-Here’s a progress bar showing problems solved this week:
-
-![Progress](https://progress-bar.dev/27/?scale=100&title=Problems+Solved+This+Week&width=400&color=3e6fdd&suffix=%)
-
 ---
 
 ### 📊 Progress Graph
 
-Here's a bar chart of your actual daily problem-solving stats:
+Here's a bar chart of our actual daily problem-solving stats:
 
 ![Progress Chart](daily_stats_chart.png)
 
 ---
-
-### 📅 GitHub Contributions
-
-You can track your GitHub contributions as a way to visualize your daily activity:
-
-![GitHub Contributions](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap/raw/master/images/heatmap.png)
-
----
-
-
 ## 📅 Calendar Heatmap
 
-Here's a simple way to track your **streaks** over time. You can generate one of these with a service like [GitHub Contributions Graph](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap).
-
-![Heatmap](https://github.com/DaRealFreak/Contribution-Calendar-Heatmap/raw/master/images/heatmap.png)
-
+![Heatmap](calendar_heatmap.png)
 ---
 
 ## 🚀 Features

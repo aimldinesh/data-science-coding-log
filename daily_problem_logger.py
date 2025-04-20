@@ -136,7 +136,23 @@ with open("stats.md", "w", encoding="utf-8") as f:
         f.write("None yet.")
     f.write("\n")
 
-# 9. Update README.md with stats and full problem table
+# 9. Update `daily_stats.csv` with today's problem count
+def update_daily_stats(date_str: str, problem_count: int):
+    stats_csv = "daily_stats.csv"
+
+    # Check if the file exists, and if not, create it with the header
+    if not os.path.exists(stats_csv):
+        with open(stats_csv, "w", encoding="utf-8") as f:
+            f.write("date,problems_solved\n")
+
+    # Write or append today's problem count to the CSV
+    with open(stats_csv, "a", encoding="utf-8") as f:
+        f.write(f"{date_str},{problem_count}\n")
+
+# Update with today's problem solved count (always 1 in this case)
+update_daily_stats(today, 1)
+
+# 10. Update README.md with stats and full problem table
 readme_path = "README.md"
 
 def update_readme(file_path, tracker_path):
@@ -178,9 +194,9 @@ def update_readme(file_path, tracker_path):
 
 update_readme(file_path, tracker_path)
 
-# 10. Git Commit + Push
+# 11. Git Commit + Push
 try:
-    subprocess.run(["git", "add", file_path, tracker_path, "stats.md", readme_path], check=True)
+    subprocess.run(["git", "add", file_path, tracker_path, "stats.md", "daily_stats.csv", readme_path], check=True)
     commit_message = f"🧠 Add: {problem_name} [{date_input}]"
     subprocess.run(["git", "commit", "-m", commit_message], check=True)
     subprocess.run(["git", "push"], check=True)
