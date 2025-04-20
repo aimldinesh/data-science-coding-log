@@ -92,7 +92,7 @@ Here's a bar chart of our actual daily problem-solving stats:
 
 ![Daily Stats Chart](assets/daily_stats_chart.png)
 ---
-## 📅 Calendar Heatmap
+### 📅 Calendar Heatmap
 
 ![Calendar Heatmap](assets/calendar_heatmap.png)
 ---
