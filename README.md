@@ -18,7 +18,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 ## 📈 Stats
 
 <!-- STATS_START -->
-# 📊 Coding Practice Stats
+### 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **29**
 - 🗖️ Problems solved this month: **37**
@@ -36,7 +36,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 🟢 Easy | 🟡 Medium | 🔴 Hard
 
 <!-- PROBLEM_TABLE_START -->
-# 📘 Data Science Coding Log - Problem Tracker
+### 📘 Data Science Coding Log - Problem Tracker
 
 | Date       | Problem Name                                                                                               | Platform    | Difficulty | Tags                                     |
 |------------|------------------------------------------------------------------------------------------------------------|-------------|------------|------------------------------------------|
