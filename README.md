@@ -90,12 +90,12 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 Here's a bar chart of our actual daily problem-solving stats:
 
-![Progress Chart](daily_stats_chart.png)
+[🔗 View Interactive Bar Chart](assets/daily_stats_chart.html)
 
 ---
 ## 📅 Calendar Heatmap
 
-![Heatmap](calendar_heatmap.png)
+[🔗 View Calendar Heatmap](assets/calendar_heatmap.html)
 ---
 
 ## 🚀 Features
