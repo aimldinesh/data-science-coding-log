@@ -18,12 +18,12 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 ## 📈 Stats
 
 <!-- STATS_START -->
-### 📊 Coding Practice Stats
+# 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **29**
-- 🗖️ Problems solved this month: **37**
-- 📌 Current daily streak: **13 days**
-- 🏷️ Most frequent tags: **DSA** (35), **Array** (28), **Binary Search** (27), **Sorting** (3), **Math** (3)
+- ✅ Problems solved this week: **26**
+- 🗖️ Problems solved this month: **38**
+- 📌 Current daily streak: **14 days**
+- 🏷️ Most frequent tags: **DSA** (36), **Array** (29), **Binary Search** (27), **Sorting** (3), **Math** (3)
 
 <!-- STATS_END -->
 
@@ -76,6 +76,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-04-19 | [H-Index II](./2025-04-19/h-index_ii.md) | LeetCode | 🟡 Medium | Array, Binary Search, DSA |
 | 2025-04-19 | [Move Zeroes](./2025-04-19/move_zeroes.md) | LeetCode | 🟢 Easy | Array, DSA |
 | 2025-04-20 | [Find the Difference](./2025-04-20/find_the_difference.md) | LeetCode | 🟢 Easy | String, Bit Manipulation, Hash Table |
+| 2025-04-21 | [Remove Element](./2025-04-21/remove_element.md) | LeetCode | 🟢 Easy | Array, Two Pointer, DSA |
 
 <!-- PROBLEM_TABLE_END -->
 
