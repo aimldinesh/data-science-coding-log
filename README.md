@@ -20,10 +20,10 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **26**
-- 🗖️ Problems solved this month: **38**
+- ✅ Problems solved this week: **27**
+- 🗖️ Problems solved this month: **39**
 - 📌 Current daily streak: **14 days**
-- 🏷️ Most frequent tags: **DSA** (36), **Array** (29), **Binary Search** (27), **Sorting** (3), **Math** (3)
+- 🏷️ Most frequent tags: **DSA** (36), **Array** (30), **Binary Search** (27), **Sorting** (4), **Math** (3)
 
 <!-- STATS_END -->
 
@@ -77,6 +77,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-04-19 | [Move Zeroes](./2025-04-19/move_zeroes.md) | LeetCode | 🟢 Easy | Array, DSA |
 | 2025-04-20 | [Find the Difference](./2025-04-20/find_the_difference.md) | LeetCode | 🟢 Easy | String, Bit Manipulation, Hash Table |
 | 2025-04-21 | [Remove Element](./2025-04-21/remove_element.md) | LeetCode | 🟢 Easy | Array, Two Pointer, DSA |
+| 2025-04-21 | [Majority Element](./2025-04-21/majority_element.md) | LeetCode | 🟢 Easy | Array, HashMap, Sorting, Boyer-Moore |
 
 <!-- PROBLEM_TABLE_END -->
 
