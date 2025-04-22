@@ -48,8 +48,8 @@ Total = 1000 + 900 + 90 + 4 = 1994
 ## 🚀 My Approach
 - Create a dictionary that maps each Roman numeral to its integer value.
 - Traverse the string s from left to right:
- - If the current numeral is less than the next one, subtract it (subtractive notation).
- - Otherwise, add it to the result.
+  - If the current numeral is less than the next one, subtract it (subtractive notation).
+  - Otherwise, add it to the result.
 - Return the accumulated result.
 
 ---
