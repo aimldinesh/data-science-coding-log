@@ -16,8 +16,7 @@
 
 ## 🚀 Approach 1 : Brute Force
 ### 💡 Intuition:
-For each element in the array, count how many times it appears.  
-If its count exceeds `n // 2`, it is the majority element.
+- For each element in the array, count how many times it appears. If its count exceeds `n // 2`, it is the majority element.
 
 ---
 
@@ -52,8 +51,7 @@ class Solution:
 
 ## 🚀 Approach 2 : Hash Map (Dictionary)
 ### 💡 Intuition:
-Use a hash map (dictionary) to count the occurrences of each element.  
-Keep track of the element with the maximum count.
+- Use a hash map (dictionary) to count the occurrences of each element.Keep track of the element with the maximum count.
 
 ---
 

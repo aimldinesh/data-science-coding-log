@@ -33,7 +33,6 @@ Some examples of subtractive notation:
 
 ### 🧪 Example:
 
-```python
 Input: s = "MCMXCIV"
 Output: 1994
 
