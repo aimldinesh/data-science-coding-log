@@ -40,3 +40,4 @@
 | 2025-04-20 | [Find the Difference](./2025-04-20/find_the_difference.md) | LeetCode | 🟢 Easy | String, Bit Manipulation, Hash Table |
 | 2025-04-21 | [Remove Element](./2025-04-21/remove_element.md) | LeetCode | 🟢 Easy | Array, Two Pointer, DSA |
 | 2025-04-21 | [Majority Element](./2025-04-21/majority_element.md) | LeetCode | 🟢 Easy | Array, HashMap, Sorting, Boyer-Moore |
+| 2025-04-22 | [Roman to Integer](./2025-04-22/roman_to_integer.md) | LeetCode | 🟢 Easy | Hash Table, Math, String |
