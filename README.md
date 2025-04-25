@@ -81,7 +81,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-04-22 | [Roman to Integer](./2025-04-22/roman_to_integer.md) | LeetCode | 🟢 Easy | Hash Table, Math, String |
 | 2025-04-23 | [Sort an Array](./2025-04-23/sort_an_array.md) | LeetCode | 🟡 Medium | Array, Merge Sort, Quick Sort |
 | 2025-04-24 | [Sort Colors](./2025-04-24/sort_colors.md) | LeetCode | 🟡 Medium | Array, Two Pointer, DSA |
-| 2025-04-25 | [Can Make Arithmetic Progression From Sequence](./2025-04-25/can_make_arithmetic_progression_from_sequence.md) | https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence/description/?envType=study-plan-v2&envId=programming-skills | 🟢 Easy | Array, Sorting, DSA |
+| 2025-04-25 | [Can Make Arithmetic Progression From Sequence](./2025-04-25/can_make_arithmetic_progression_from_sequence.md) |LeetCode | 🟢 Easy | Array, Sorting, DSA |
 
 <!-- PROBLEM_TABLE_END -->
 
