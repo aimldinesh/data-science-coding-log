@@ -21,9 +21,9 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 # 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **12**
-- 🗖️ Problems solved this month: **43**
-- 📌 Current daily streak: **18 days**
-- 🏷️ Most frequent tags: **DSA** (37), **Array** (33), **Binary Search** (27), **Sorting** (6), **Math** (4)
+- 🗖️ Problems solved this month: **44**
+- 📌 Current daily streak: **19 days**
+- 🏷️ Most frequent tags: **DSA** (38), **Array** (34), **Binary Search** (27), **Sorting** (6), **Math** (5)
 
 <!-- STATS_END -->
 
@@ -81,7 +81,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-04-22 | [Roman to Integer](./2025-04-22/roman_to_integer.md) | LeetCode | 🟢 Easy | Hash Table, Math, String |
 | 2025-04-23 | [Sort an Array](./2025-04-23/sort_an_array.md) | LeetCode | 🟡 Medium | Array, Merge Sort, Quick Sort |
 | 2025-04-24 | [Sort Colors](./2025-04-24/sort_colors.md) | LeetCode | 🟡 Medium | Array, Two Pointer, DSA |
-| 2025-04-25 | [Can Make Arithmetic Progression From Sequence](./2025-04-25/can_make_arithmetic_progression_from_sequence.md) |LeetCode | 🟢 Easy | Array, Sorting, DSA |
+| 2025-04-25 | [Can Make Arithmetic Progression From Sequence](./2025-04-25/can_make_arithmetic_progression_from_sequence.md) | LeetCode | 🟢 Easy | Array, Sorting, DSA |
+| 2025-04-26 | [Plus One](./2025-04-26/plus_one.md) | LeetCode | 🟢 Easy | Array, Math, DSA |
 
 <!-- PROBLEM_TABLE_END -->
 
