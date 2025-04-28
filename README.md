@@ -21,8 +21,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 # 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **9**
-- 🗖️ Problems solved this month: **45**
-- 📌 Current daily streak: **20 days**
+- 🗖️ Problems solved this month: **46**
+- 📌 Current daily streak: **21 days**
 - 🏷️ Most frequent tags: **DSA** (39), **Array** (34), **Binary Search** (27), **Sorting** (6), **Math** (6)
 
 <!-- STATS_END -->
@@ -84,6 +84,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-04-25 | [Can Make Arithmetic Progression From Sequence](./2025-04-25/can_make_arithmetic_progression_from_sequence.md) | LeetCode | 🟢 Easy | Array, Sorting, DSA |
 | 2025-04-26 | [Plus One](./2025-04-26/plus_one.md) | LeetCode | 🟢 Easy | Array, Math, DSA |
 | 2025-04-27 | [Repeated Substring Pattern](./2025-04-27/repeated_substring_pattern.md) | LeetCode | 🟢 Easy | String, Math, DSA |
+| 2025-04-28 | [Top K Frequent Elements](./2025-04-28/top_k_frequent_elements.md) | LeetCode | 🟡 Medium | Hash Table, Bucket Sort, Heap (Priority Queue) |
 
 <!-- PROBLEM_TABLE_END -->
 
