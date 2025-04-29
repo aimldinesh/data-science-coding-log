@@ -47,3 +47,4 @@
 | 2025-04-26 | [Plus One](./2025-04-26/plus_one.md) | LeetCode | 🟢 Easy | Array, Math, DSA |
 | 2025-04-27 | [Repeated Substring Pattern](./2025-04-27/repeated_substring_pattern.md) | LeetCode | 🟢 Easy | String, Math, DSA |
 | 2025-04-28 | [Top K Frequent Elements](./2025-04-28/top_k_frequent_elements.md) | LeetCode | 🟡 Medium | Hash Table, Bucket Sort, Heap (Priority Queue) |
+| 2025-04-29 | [Product of Array Except Self](./2025-04-29/product_of_array_except_self.md) | LeetCode | 🟡 Medium | Array, Prefix Sum, DSA |
