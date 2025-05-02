@@ -50,3 +50,4 @@
 | 2025-04-29 | [Product of Array Except Self](./2025-04-29/product_of_array_except_self.md) | LeetCode | 🟡 Medium | Array, Prefix Sum, DSA |
 | 2025-04-30 | [Valid Sudoku](./2025-04-30/valid_sudoku.md) | LeetCode | 🟡 Medium | Array, Hash Table, Matrix |
 | 2025-05-01 | [Baseball Game](./2025-05-01/baseball_game.md) | LeetCode | 🟢 Easy | Stack, Array, Simulation |
+| 2025-05-02 | [Spiral Matrix](./2025-05-02/spiral_matrix.md) | LeetCode | 🟡 Medium | Matrix, Math, DSA |
