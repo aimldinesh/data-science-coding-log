@@ -51,3 +51,4 @@
 | 2025-04-30 | [Valid Sudoku](./2025-04-30/valid_sudoku.md) | LeetCode | 🟡 Medium | Array, Hash Table, Matrix |
 | 2025-05-01 | [Baseball Game](./2025-05-01/baseball_game.md) | LeetCode | 🟢 Easy | Stack, Array, Simulation |
 | 2025-05-02 | [Spiral Matrix](./2025-05-02/spiral_matrix.md) | LeetCode | 🟡 Medium | Matrix, Math, DSA |
+| 2025-05-03 | [Set Matrix Zeroes](./2025-05-03/set_matrix_zeroes.md) | LeetCode | 🟡 Medium | Matrix, Simulation, In-Place |
