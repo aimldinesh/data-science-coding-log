@@ -9,7 +9,7 @@
 ---
 
 ## ✅ Problem Statement
-Given an `m x n` matrix, return all elements of the matrix in **spiral order**.
+- Given an `m x n` matrix, return all elements of the matrix in **spiral order**.
 
 ---
 
@@ -26,25 +26,16 @@ matrix = [
 ---
 
 ## 🚀 My Approach
-Use four pointers to represent the current bounds:
-
-top, bottom for row boundaries
-
-left, right for column boundaries
-
-Traverse:
-
-From left to right along the top row
-
-From top to bottom along the right column
-
-From right to left along the bottom row
-
-From bottom to top along the left column
-
-After each traversal, shrink the boundaries inward.
-
-Repeat until the bounds cro
+- Use four pointers to represent the current bounds:
+   - top, bottom for row boundaries
+   - left, right for column boundaries
+- Traverse:
+   - From left to right along the top row
+   - From top to bottom along the right column
+   - From right to left along the bottom row
+   - From bottom to top along the left column
+- After each traversal, shrink the boundaries inward.
+- Repeat until the bounds cro
 
 ---
 
@@ -91,5 +82,7 @@ class Solution:
 ---
 
 ## 💡 Time and Space Complexity
-- **Time**: O(m * n), Every element is visited once.
-- **Space**: O(1), Result list doesn't count as extra space in complexity analysis.
+- **Time**: O(m * n)
+    - Every element is visited once.
+- **Space**: O(1)
+    - Result list doesn't count as extra space in complexity analysis.
