@@ -52,3 +52,4 @@
 | 2025-05-01 | [Baseball Game](./2025-05-01/baseball_game.md) | LeetCode | 🟢 Easy | Stack, Array, Simulation |
 | 2025-05-02 | [Spiral Matrix](./2025-05-02/spiral_matrix.md) | LeetCode | 🟡 Medium | Matrix, Math, DSA |
 | 2025-05-03 | [Set Matrix Zeroes](./2025-05-03/set_matrix_zeroes.md) | LeetCode | 🟡 Medium | Matrix, Simulation, In-Place |
+| 2025-05-04 | [Subarray Sum Equals K](./2025-05-04/subarray_sum_equals_k.md) | LeetCode | 🟡 Medium | Array, Hash Table, Prefix Sum |
