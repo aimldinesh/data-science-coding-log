@@ -13,7 +13,7 @@
 
 ---
 
-## 🧪 Example
+### 🧪 Example
 
 ```python
 Input:
