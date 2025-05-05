@@ -54,3 +54,4 @@
 | 2025-05-03 | [Set Matrix Zeroes](./2025-05-03/set_matrix_zeroes.md) | LeetCode | 🟡 Medium | Matrix, Simulation, In-Place |
 | 2025-05-04 | [Subarray Sum Equals K](./2025-05-04/subarray_sum_equals_k.md) | LeetCode | 🟡 Medium | Array, Hash Table, Prefix Sum |
 | 2025-05-05 | [Longest Consecutive Sequence](./2025-05-05/longest_consecutive_sequence.md) | LeetCode | 🟡 Medium | Array, Hash Table, Union Find |
+| 2025-05-05 | [Best Time to Buy and Sell Stock II](./2025-05-05/best_time_to_buy_and_sell_stock_ii.md) | LeetCode | 🟡 Medium | Array, Greedy, Dynamic Programming |
