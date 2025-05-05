@@ -21,9 +21,9 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 # 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **8**
-- 🗖️ Problems solved this month: **52**
-- 📌 Current daily streak: **27 days**
-- 🏷️ Most frequent tags: **DSA** (41), **Array** (38), **Binary Search** (27), **Math** (7), **Sorting** (6)
+- 🗖️ Problems solved this month: **53**
+- 📌 Current daily streak: **28 days**
+- 🏷️ Most frequent tags: **DSA** (41), **Array** (39), **Binary Search** (27), **Math** (7), **Sorting** (6)
 
 <!-- STATS_END -->
 
@@ -91,6 +91,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-02 | [Spiral Matrix](./2025-05-02/spiral_matrix.md) | LeetCode | 🟡 Medium | Matrix, Math, DSA |
 | 2025-05-03 | [Set Matrix Zeroes](./2025-05-03/set_matrix_zeroes.md) | LeetCode | 🟡 Medium | Matrix, Simulation, In-Place |
 | 2025-05-04 | [Subarray Sum Equals K](./2025-05-04/subarray_sum_equals_k.md) | LeetCode | 🟡 Medium | Array, Hash Table, Prefix Sum |
+| 2025-05-05 | [Longest Consecutive Sequence](./2025-05-05/longest_consecutive_sequence.md) | LeetCode | 🟡 Medium | Array, Hash Table, Union Find |
 
 <!-- PROBLEM_TABLE_END -->
 

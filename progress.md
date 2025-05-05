@@ -53,3 +53,4 @@
 | 2025-05-02 | [Spiral Matrix](./2025-05-02/spiral_matrix.md) | LeetCode | 🟡 Medium | Matrix, Math, DSA |
 | 2025-05-03 | [Set Matrix Zeroes](./2025-05-03/set_matrix_zeroes.md) | LeetCode | 🟡 Medium | Matrix, Simulation, In-Place |
 | 2025-05-04 | [Subarray Sum Equals K](./2025-05-04/subarray_sum_equals_k.md) | LeetCode | 🟡 Medium | Array, Hash Table, Prefix Sum |
+| 2025-05-05 | [Longest Consecutive Sequence](./2025-05-05/longest_consecutive_sequence.md) | LeetCode | 🟡 Medium | Array, Hash Table, Union Find |
