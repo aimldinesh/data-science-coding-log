@@ -56,3 +56,4 @@
 | 2025-05-05 | [Longest Consecutive Sequence](./2025-05-05/longest_consecutive_sequence.md) | LeetCode | 🟡 Medium | Array, Hash Table, Union Find |
 | 2025-05-05 | [Best Time to Buy and Sell Stock II](./2025-05-05/best_time_to_buy_and_sell_stock_ii.md) | LeetCode | 🟡 Medium | Array, Greedy, Dynamic Programming |
 | 2025-05-06 | [First Missing Positive](./2025-05-06/first_missing_positive.md) | LeetCode | 🟡 Medium | Array, Hash Table, In-Place, Cyclic Sort |
+| 2025-05-07 | [Merge Strings Alternately](./2025-05-07/merge_strings_alternately.md) | LeetCode | 🟢 Easy | String, Two Pointers |
