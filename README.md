@@ -21,9 +21,9 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 # 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **9**
-- 🗖️ Problems solved this month: **56**
-- 📌 Current daily streak: **30 days**
-- 🏷️ Most frequent tags: **DSA** (41), **Array** (41), **Binary Search** (27), **Math** (7), **Hash Table** (7)
+- 🗖️ Problems solved this month: **57**
+- 📌 Current daily streak: **31 days**
+- 🏷️ Most frequent tags: **DSA** (42), **Array** (42), **Binary Search** (27), **Math** (7), **Hash Table** (7)
 
 <!-- STATS_END -->
 
@@ -95,6 +95,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-05 | [Best Time to Buy and Sell Stock II](./2025-05-05/best_time_to_buy_and_sell_stock_ii.md) | LeetCode | 🟡 Medium | Array, Greedy, Dynamic Programming |
 | 2025-05-06 | [First Missing Positive](./2025-05-06/first_missing_positive.md) | LeetCode | 🟡 Medium | Array, Hash Table, In-Place, Cyclic Sort |
 | 2025-05-07 | [Merge Strings Alternately](./2025-05-07/merge_strings_alternately.md) | LeetCode | 🟢 Easy | String, Two Pointers |
+| 2025-05-08 | [Merge Sorted Array](./2025-05-08/merge_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointers , DSA |
 
 <!-- PROBLEM_TABLE_END -->
 
