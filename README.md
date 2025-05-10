@@ -21,9 +21,9 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 # 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **9**
-- 🗖️ Problems solved this month: **55**
-- 📌 Current daily streak: **32 days**
-- 🏷️ Most frequent tags: **DSA** (43), **Array** (43), **Binary Search** (27), **Math** (7), **Hash Table** (7)
+- 🗖️ Problems solved this month: **54**
+- 📌 Current daily streak: **33 days**
+- 🏷️ Most frequent tags: **DSA** (44), **Array** (44), **Binary Search** (27), **Math** (7), **Hash Table** (7)
 
 <!-- STATS_END -->
 
@@ -97,6 +97,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-07 | [Merge Strings Alternately](./2025-05-07/merge_strings_alternately.md) | LeetCode | 🟢 Easy | String, Two Pointers |
 | 2025-05-08 | [Merge Sorted Array](./2025-05-08/merge_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointers , DSA |
 | 2025-05-09 | [Remove Duplicates from Sorted Array](./2025-05-09/remove_duplicates_from_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointer, DSA |
+| 2025-05-10 | [Two Sum II - Input Array Is Sorted](./2025-05-10/two_sum_ii_-_input_array_is_sorted.md) | LeetCode | 🟡 Medium | Array, Two Pointer, DSA |
 
 <!-- PROBLEM_TABLE_END -->
 

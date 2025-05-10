@@ -59,3 +59,4 @@
 | 2025-05-07 | [Merge Strings Alternately](./2025-05-07/merge_strings_alternately.md) | LeetCode | 🟢 Easy | String, Two Pointers |
 | 2025-05-08 | [Merge Sorted Array](./2025-05-08/merge_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointers , DSA |
 | 2025-05-09 | [Remove Duplicates from Sorted Array](./2025-05-09/remove_duplicates_from_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointer, DSA |
+| 2025-05-10 | [Two Sum II - Input Array Is Sorted](./2025-05-10/two_sum_ii_-_input_array_is_sorted.md) | LeetCode | 🟡 Medium | Array, Two Pointer, DSA |
