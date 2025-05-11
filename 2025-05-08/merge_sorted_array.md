@@ -19,7 +19,7 @@ Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
 Output: [1,2,2,3,5,6]
 ```
 ---
-🧠 Intuition
+## 🧠 Intuition
 - Start merging from the end to avoid overwriting elements in nums1.
 - Use two pointers from the back of nums1 and nums2, and a third pointer to place elements from the back.
 ## 🚀 Approach
