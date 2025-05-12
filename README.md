@@ -22,8 +22,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **9**
 - 🗖️ Problems solved this month: **54**
-- 📌 Current daily streak: **34 days**
-- 🏷️ Most frequent tags: **Array** (45), **DSA** (44), **Binary Search** (27), **Sorting** (7), **Math** (7)
+- 📌 Current daily streak: **35 days**
+- 🏷️ Most frequent tags: **Array** (46), **DSA** (44), **Binary Search** (27), **Sorting** (8), **Math** (7)
 
 <!-- STATS_END -->
 
@@ -99,6 +99,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-09 | [Remove Duplicates from Sorted Array](./2025-05-09/remove_duplicates_from_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointer, DSA |
 | 2025-05-10 | [Two Sum II - Input Array Is Sorted](./2025-05-10/two_sum_ii_-_input_array_is_sorted.md) | LeetCode | 🟡 Medium | Array, Two Pointer, DSA |
 | 2025-05-11 | [3Sum](./2025-05-11/3sum.md) | LeetCode | 🟡 Medium | Array, Two Pointer, Sorting |
+| 2025-05-12 | [4Sum](./2025-05-12/4sum.md) | LeetCode | 🟡 Medium | Array, Two Pointer, Sorting |
 
 <!-- PROBLEM_TABLE_END -->
 
