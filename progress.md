@@ -62,3 +62,4 @@
 | 2025-05-10 | [Two Sum II - Input Array Is Sorted](./2025-05-10/two_sum_ii_-_input_array_is_sorted.md) | LeetCode | 🟡 Medium | Array, Two Pointer, DSA |
 | 2025-05-11 | [3Sum](./2025-05-11/3sum.md) | LeetCode | 🟡 Medium | Array, Two Pointer, Sorting |
 | 2025-05-12 | [4Sum](./2025-05-12/4sum.md) | LeetCode | 🟡 Medium | Array, Two Pointer, Sorting |
+| 2025-05-13 | [Rotate Array](./2025-05-13/rotate_array.md) | LeetCode | 🟡 Medium | Array, Two Pointers, In-place, Reversal |
