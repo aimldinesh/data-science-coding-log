@@ -34,12 +34,13 @@ rotate 2 steps -> [3,99,-1,-100]
     - The last k elements come to the front.
     - The rest shift to the right.
     - We can achieve this efficiently using array reversal.
+
 ## 🚀 Approach: Reverse In-Place (O(1) Space)
 🔸 Steps:
-    - Normalize k using modulo to ensure it's within array bounds.
-    - Reverse the entire array.
-    - Reverse the first k elements.
-    - Reverse the remaining n - k elements.
+     - Normalize k using modulo to ensure it's within array bounds.
+     - Reverse the entire array.
+     - Reverse the first k elements.
+     - Reverse the remaining n - k elements.
 
 ---
 
