@@ -28,9 +28,9 @@ min(8, 7) * (8 - 1) = 7 * 7 = 49
 ---
 ## 🚀 Approach 1 : Brute Force (O(n²))
 🔸 Steps:
-      - Use two nested loops to try every pair (i, j).
-      - For each pair, calculate the area.
-      - Track the maximum.
+- Use two nested loops to try every pair (i, j).
+- For each pair, calculate the area.
+- Track the maximum.
 ---
 
 ## 💻 Code (Python)
@@ -59,10 +59,10 @@ class Solution:
 
 ## 🚀 Approach 2 : Two Pointers (Optimized O(n))
 🔸 Steps:
-      - Initialize two pointers — one at the start (left) and one at the end (right).
-      - Calculate the area between them.
-      - Update the maximum area.
-      - Move the pointer pointing to the shorter line inward to possibly find a taller line.
+- Initialize two pointers — one at the start (left) and one at the end (right).
+- Calculate the area between them.
+- Update the maximum area.
+- Move the pointer pointing to the shorter line inward to possibly find a taller line.
 
 ---
 
