@@ -64,3 +64,4 @@
 | 2025-05-12 | [4Sum](./2025-05-12/4sum.md) | LeetCode | 🟡 Medium | Array, Two Pointer, Sorting |
 | 2025-05-13 | [Rotate Array](./2025-05-13/rotate_array.md) | LeetCode | 🟡 Medium | Array, Two Pointers, In-place, Reversal |
 | 2025-05-14 | [Container With Most Water](./2025-05-14/container_with_most_water.md) | LeetCode | 🟡 Medium | Two Pointers, Array, Greedy |
+| 2025-05-15 | [Boats to Save People](./2025-05-15/boats_to_save_people.md) | LeetCode | 🟡 Medium | Two Pointers, Greedy, Sorting |
