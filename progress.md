@@ -67,3 +67,4 @@
 | 2025-05-15 | [Boats to Save People](./2025-05-15/boats_to_save_people.md) | LeetCode | 🟡 Medium | Two Pointers, Greedy, Sorting |
 | 2025-05-15 | [Trapping Rain Water](./2025-05-15/trapping_rain_water.md) | LeetCode | 🔴 Hard | Array, Two Pointers, Dynamic Programming, Stack |
 | 2025-05-16 | [Contains Duplicate II](./2025-05-16/contains_duplicate_ii.md) | LeetCode | 🟢 Easy | Array, Hash Table, Sliding Window |
+| 2025-05-16 | [Best Time to Buy and Sell Stock](./2025-05-16/best_time_to_buy_and_sell_stock.md) | LeetCode | 🟢 Easy | Array, Dynamic Programming, Greedy, Two Pointers |
