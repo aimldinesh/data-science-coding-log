@@ -21,9 +21,9 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 # 📊 Coding Practice Stats
 
 - ✅ Problems solved this week: **9**
-- 🗖️ Problems solved this month: **49**
-- 📌 Current daily streak: **38 days**
-- 🏷️ Most frequent tags: **Array** (49), **DSA** (44), **Binary Search** (27), **Sorting** (9), **Math** (7)
+- 🗖️ Problems solved this month: **48**
+- 📌 Current daily streak: **39 days**
+- 🏷️ Most frequent tags: **Array** (50), **DSA** (44), **Binary Search** (27), **Sorting** (9), **Hash Table** (8)
 
 <!-- STATS_END -->
 
@@ -104,6 +104,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-14 | [Container With Most Water](./2025-05-14/container_with_most_water.md) | LeetCode | 🟡 Medium | Two Pointers, Array, Greedy |
 | 2025-05-15 | [Boats to Save People](./2025-05-15/boats_to_save_people.md) | LeetCode | 🟡 Medium | Two Pointers, Greedy, Sorting |
 | 2025-05-15 | [Trapping Rain Water](./2025-05-15/trapping_rain_water.md) | LeetCode | 🔴 Hard | Array, Two Pointers, Dynamic Programming, Stack |
+| 2025-05-16 | [Contains Duplicate II](./2025-05-16/contains_duplicate_ii.md) | LeetCode | 🟢 Easy | Array, Hash Table, Sliding Window |
 
 <!-- PROBLEM_TABLE_END -->
 

@@ -66,3 +66,4 @@
 | 2025-05-14 | [Container With Most Water](./2025-05-14/container_with_most_water.md) | LeetCode | 🟡 Medium | Two Pointers, Array, Greedy |
 | 2025-05-15 | [Boats to Save People](./2025-05-15/boats_to_save_people.md) | LeetCode | 🟡 Medium | Two Pointers, Greedy, Sorting |
 | 2025-05-15 | [Trapping Rain Water](./2025-05-15/trapping_rain_water.md) | LeetCode | 🔴 Hard | Array, Two Pointers, Dynamic Programming, Stack |
+| 2025-05-16 | [Contains Duplicate II](./2025-05-16/contains_duplicate_ii.md) | LeetCode | 🟢 Easy | Array, Hash Table, Sliding Window |
