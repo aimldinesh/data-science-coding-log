@@ -68,3 +68,4 @@
 | 2025-05-15 | [Trapping Rain Water](./2025-05-15/trapping_rain_water.md) | LeetCode | 🔴 Hard | Array, Two Pointers, Dynamic Programming, Stack |
 | 2025-05-16 | [Contains Duplicate II](./2025-05-16/contains_duplicate_ii.md) | LeetCode | 🟢 Easy | Array, Hash Table, Sliding Window |
 | 2025-05-16 | [Best Time to Buy and Sell Stock](./2025-05-16/best_time_to_buy_and_sell_stock.md) | LeetCode | 🟢 Easy | Array, Dynamic Programming, Greedy, Two Pointers |
+| 2025-05-17 | [Longest Substring Without Repeating Characters](./2025-05-17/longest_substring_without_repeating_characters.md) | LeetCode | 🟡 Medium | Hash Table, String, Sliding Window |
