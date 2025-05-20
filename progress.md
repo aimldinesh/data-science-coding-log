@@ -71,3 +71,4 @@
 | 2025-05-17 | [Longest Substring Without Repeating Characters](./2025-05-17/longest_substring_without_repeating_characters.md) | LeetCode | 🟡 Medium | Hash Table, String, Sliding Window |
 | 2025-05-18 | [Longest Repeating Character Replacement](./2025-05-18/longest_repeating_character_replacement.md) | LeetCode | 🟡 Medium | Hash Table, String, Sliding Window |
 | 2025-05-19 | [Minimum Size Subarray Sum](./2025-05-19/minimum_size_subarray_sum.md) | LeetCode | 🟡 Medium | Array, Sliding Window, Two Pointers, Prefix Sum |
+| 2025-05-20 | [Find K Closest Elements](./2025-05-20/find_k_closest_elements.md) | LeetCode | 🟡 Medium | Array, Binary Search, Two Pointers, Sorting |
