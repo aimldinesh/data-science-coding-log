@@ -89,26 +89,32 @@ class Solution:
 ---
 
 ## 💡 Time and Space Complexity
-- **Time**: O(n + m) 
-    Where:
-       - n = len(s) (length of the input string s)
-       - m = len(t) (length of the string t)
-    Breakdown:
-       - Building countT:
-            - Takes O(m) time (we iterate over t once to build the frequency map).
-       - Sliding window over s:
-            - Each character is visited at most twice (once by the right pointer r, once by the left pointer l).
-            - So total window movement = O(n).
-       - Inside the window:
-            - Operations like window[c] += 1, countT[c], and comparisons are all O(1) due to hash maps.
-   ✅ Total Time = O(n + m)
 
-- **Space**: O(m)
-    Breakdown:
-        - countT dictionary:
-            - Stores the frequency of each character in t, so size = O(m) at most.
-        - window dictionary:
-            - At most stores m unique characters at a time from t, so also O(m).
+- **Time**: `O(n + m)`  
+  Where:  
+  - `n = len(s)` (length of the input string `s`)  
+  - `m = len(t)` (length of the string `t`)  
 
-    ✅ Total Space = O(m)
+  **Breakdown**:
+  - **Building `countT`**:  
+    - Takes `O(m)` time (we iterate over `t` once to build the frequency map).
+  - **Sliding window over `s`**:  
+    - Each character is visited at most **twice** (once by the right pointer `r`, once by the left pointer `l`).
+    - So total window movement = `O(n)`.
+  - **Inside the window**:  
+    - Operations like `window[c] += 1`, `countT[c]`, and comparisons are all `O(1)` due to hash maps.
+
+  ✅ **Total Time = `O(n + m)`**
+
+
+- **Space**: `O(m)`  
+
+  **Breakdown**:
+  - **`countT` dictionary**:  
+    - Stores the frequency of each character in `t`, so size = `O(m)` at most.
+  - **`window` dictionary**:  
+    - At most stores `m` unique characters at a time from `t`, so also `O(m)`.
+
+  ✅ **Total Space = `O(m)`**
+
      
