@@ -22,8 +22,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **10**
 - 🗖️ Problems solved this month: **35**
-- 📌 Current daily streak: **43 days**
-- 🏷️ Most frequent tags: **Array** (53), **DSA** (44), **Binary Search** (28), **Sorting** (10), **Hash Table** (10)
+- 📌 Current daily streak: **44 days**
+- 🏷️ Most frequent tags: **Array** (53), **DSA** (44), **Binary Search** (28), **Hash Table** (11), **Two Pointers** (11)
 
 <!-- STATS_END -->
 
@@ -110,6 +110,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-18 | [Longest Repeating Character Replacement](./2025-05-18/longest_repeating_character_replacement.md) | LeetCode | 🟡 Medium | Hash Table, String, Sliding Window |
 | 2025-05-19 | [Minimum Size Subarray Sum](./2025-05-19/minimum_size_subarray_sum.md) | LeetCode | 🟡 Medium | Array, Sliding Window, Two Pointers, Prefix Sum |
 | 2025-05-20 | [Find K Closest Elements](./2025-05-20/find_k_closest_elements.md) | LeetCode | 🟡 Medium | Array, Binary Search, Two Pointers, Sorting |
+| 2025-05-21 | [Minimum Window Substring](./2025-05-21/minimum_window_substring.md) | LeetCode | 🔴 Hard | Hash Table, String, Sliding Window, Two Pointers |
 
 <!-- PROBLEM_TABLE_END -->
 
