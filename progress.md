@@ -73,3 +73,4 @@
 | 2025-05-19 | [Minimum Size Subarray Sum](./2025-05-19/minimum_size_subarray_sum.md) | LeetCode | 🟡 Medium | Array, Sliding Window, Two Pointers, Prefix Sum |
 | 2025-05-20 | [Find K Closest Elements](./2025-05-20/find_k_closest_elements.md) | LeetCode | 🟡 Medium | Array, Binary Search, Two Pointers, Sorting |
 | 2025-05-21 | [Minimum Window Substring](./2025-05-21/minimum_window_substring.md) | LeetCode | 🔴 Hard | Hash Table, String, Sliding Window, Two Pointers |
+| 2025-05-22 | [Sliding Window Maximum](./2025-05-22/sliding_window_maximum.md) | LeetCode | 🔴 Hard | Array, Heap, Sliding Window, Monotonic Queue, Deque |
