@@ -20,9 +20,9 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **10**
+- ✅ Problems solved this week: **9**
 - 🗖️ Problems solved this month: **34**
-- 📌 Current daily streak: **45 days**
+- 📌 Current daily streak: **46 days**
 - 🏷️ Most frequent tags: **Array** (54), **DSA** (44), **Binary Search** (28), **Hash Table** (11), **Two Pointers** (11)
 
 <!-- STATS_END -->
@@ -112,6 +112,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-20 | [Find K Closest Elements](./2025-05-20/find_k_closest_elements.md) | LeetCode | 🟡 Medium | Array, Binary Search, Two Pointers, Sorting |
 | 2025-05-21 | [Minimum Window Substring](./2025-05-21/minimum_window_substring.md) | LeetCode | 🔴 Hard | Hash Table, String, Sliding Window, Two Pointers |
 | 2025-05-22 | [Sliding Window Maximum](./2025-05-22/sliding_window_maximum.md) | LeetCode | 🔴 Hard | Array, Heap, Sliding Window, Monotonic Queue, Deque |
+| 2025-05-23 | [Baseball Game](./2025-05-23/baseball_game.md) | LeetCode | 🟢 Easy | Stack, Simulation, list |
 
 <!-- PROBLEM_TABLE_END -->
 
