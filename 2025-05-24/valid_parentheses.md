@@ -50,8 +50,8 @@ Final stack is empty ⇒ ✅ Valid
 - Initialize an empty stack.
 - Iterate through each character in s:
      - If it's a closing bracket, check if the stack is not empty and its top matches the corresponding opening bracket.
-           - If it matches, pop it.
-           - If not, return False.
+          - If it matches, pop it.
+          - If not, return False.
      - If it's an opening bracket, push it onto the stack.
 - At the end, return True only if the stack is empty (all brackets matched).
 ---
