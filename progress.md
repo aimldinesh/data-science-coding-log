@@ -75,3 +75,4 @@
 | 2025-05-21 | [Minimum Window Substring](./2025-05-21/minimum_window_substring.md) | LeetCode | 🔴 Hard | Hash Table, String, Sliding Window, Two Pointers |
 | 2025-05-22 | [Sliding Window Maximum](./2025-05-22/sliding_window_maximum.md) | LeetCode | 🔴 Hard | Array, Heap, Sliding Window, Monotonic Queue, Deque |
 | 2025-05-23 | [Baseball Game](./2025-05-23/baseball_game.md) | LeetCode | 🟢 Easy | Stack, Simulation, list |
+| 2025-05-24 | [Valid Parentheses](./2025-05-24/valid_parentheses.md) | LeetCode | 🟢 Easy | Stack, String |
