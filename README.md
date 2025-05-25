@@ -22,7 +22,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **8**
 - 🗖️ Problems solved this month: **34**
-- 📌 Current daily streak: **47 days**
+- 📌 Current daily streak: **48 days**
 - 🏷️ Most frequent tags: **Array** (54), **DSA** (44), **Binary Search** (28), **Hash Table** (11), **Two Pointers** (11)
 
 <!-- STATS_END -->
@@ -114,6 +114,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-22 | [Sliding Window Maximum](./2025-05-22/sliding_window_maximum.md) | LeetCode | 🔴 Hard | Array, Heap, Sliding Window, Monotonic Queue, Deque |
 | 2025-05-23 | [Baseball Game](./2025-05-23/baseball_game.md) | LeetCode | 🟢 Easy | Stack, Simulation, list |
 | 2025-05-24 | [Valid Parentheses](./2025-05-24/valid_parentheses.md) | LeetCode | 🟢 Easy | Stack, String |
+| 2025-05-25 | [Min Stack](./2025-05-25/min_stack.md) | LeetCode | 🟡 Medium | Stack, Design, Data Structure |
 
 <!-- PROBLEM_TABLE_END -->
 

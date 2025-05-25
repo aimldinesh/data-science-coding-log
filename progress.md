@@ -76,3 +76,4 @@
 | 2025-05-22 | [Sliding Window Maximum](./2025-05-22/sliding_window_maximum.md) | LeetCode | 🔴 Hard | Array, Heap, Sliding Window, Monotonic Queue, Deque |
 | 2025-05-23 | [Baseball Game](./2025-05-23/baseball_game.md) | LeetCode | 🟢 Easy | Stack, Simulation, list |
 | 2025-05-24 | [Valid Parentheses](./2025-05-24/valid_parentheses.md) | LeetCode | 🟢 Easy | Stack, String |
+| 2025-05-25 | [Min Stack](./2025-05-25/min_stack.md) | LeetCode | 🟡 Medium | Stack, Design, Data Structure |
