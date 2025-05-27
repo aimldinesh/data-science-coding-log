@@ -78,27 +78,6 @@ class Solution:
 ## 🧠 Time and Space Complexity
 
 ### ⏱ Time Complexity: `O(4ⁿ / √n)`
-
-- The number of valid combinations of parentheses is given by the **n-th Catalan number**:
-  
-  \[
-  C_n = \frac{1}{n + 1} \binom{2n}{n} \approx \frac{4^n}{n^{3/2}}
-  \]
-
-- This means that in the worst case, the backtracking algorithm explores approximately `O(4ⁿ / √n)` valid combinations.
-
-✅ **Total Time Complexity:** `O(4ⁿ / √n)`
-
----
-
-### 🧮 Space Complexity:
-
-- **Stack Space (Recursive Depth):**  
-  - At most `2n` characters are stored on the stack at a time → `O(n)`
-
-- **Result Storage (`res`):**  
-  - Up to `Catalan(n)` valid combinations are generated → `O(4ⁿ / √n)`
-  - Each combination is a string of length `2n` → `O(n)` per combination
-
-✅ **Total Space Complexity:** `O((4ⁿ / √n) × n)`
+### 🧮 Space Complexity: O(n)
+`
 ---
