@@ -79,3 +79,4 @@
 | 2025-05-25 | [Min Stack](./2025-05-25/min_stack.md) | LeetCode | 🟡 Medium | Stack, Design, Data Structure |
 | 2025-05-26 | [Evaluate Reverse Polish Notation](./2025-05-26/evaluate_reverse_polish_notation.md) | LeetCode | 🟡 Medium | Stack, Math, Array, String |
 | 2025-05-27 | [Generate Parentheses](./2025-05-27/generate_parentheses.md) | LeetCode | 🟡 Medium | Backtracking, String, Recursion |
+| 2025-05-28 | [Asteroid Collision](./2025-05-28/asteroid_collision.md) | LeetCode | 🟡 Medium | Array, Stack, Simulation |
