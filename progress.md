@@ -81,3 +81,4 @@
 | 2025-05-27 | [Generate Parentheses](./2025-05-27/generate_parentheses.md) | LeetCode | 🟡 Medium | Backtracking, String, Recursion |
 | 2025-05-28 | [Asteroid Collision](./2025-05-28/asteroid_collision.md) | LeetCode | 🟡 Medium | Array, Stack, Simulation |
 | 2025-05-29 | [Daily Temperatures](./2025-05-29/daily_temperatures.md) | LeetCode | 🟡 Medium | Stack, Monotonic Stack, Array |
+| 2025-05-30 | [Online Stock Span](./2025-05-30/online_stock_span.md) | LeetCode | 🟡 Medium | Stack, Monotonic Stack, Design |

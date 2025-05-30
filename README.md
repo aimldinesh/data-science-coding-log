@@ -22,7 +22,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **8**
 - 🗖️ Problems solved this month: **34**
-- 📌 Current daily streak: **52 days**
+- 📌 Current daily streak: **53 days**
 - 🏷️ Most frequent tags: **Array** (57), **DSA** (44), **Binary Search** (28), **Hash Table** (11), **Two Pointers** (11)
 
 <!-- STATS_END -->
@@ -119,6 +119,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-27 | [Generate Parentheses](./2025-05-27/generate_parentheses.md) | LeetCode | 🟡 Medium | Backtracking, String, Recursion |
 | 2025-05-28 | [Asteroid Collision](./2025-05-28/asteroid_collision.md) | LeetCode | 🟡 Medium | Array, Stack, Simulation |
 | 2025-05-29 | [Daily Temperatures](./2025-05-29/daily_temperatures.md) | LeetCode | 🟡 Medium | Stack, Monotonic Stack, Array |
+| 2025-05-30 | [Online Stock Span](./2025-05-30/online_stock_span.md) | LeetCode | 🟡 Medium | Stack, Monotonic Stack, Design |
 
 <!-- PROBLEM_TABLE_END -->
 
