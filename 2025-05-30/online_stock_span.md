@@ -63,9 +63,8 @@ class StockSpanner:
 ---
 ### 🔁 Step-by-Step Example
 ```python
-Input: calls = [100, 80, 60, 70, 60, 75, 85]
+Input: [100, 80, 60, 70, 60, 75, 85]
 
-Each call to next(price) returns:
 | Price | Span Computation                                                                                    | Span |
 | ----- | --------------------------------------------------------------------------------------------------- | ---- |
 | 100   | No previous prices → span = 1                                                                       | 1    |
