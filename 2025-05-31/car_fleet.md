@@ -7,7 +7,6 @@
 - **Difficulty**: Medium
 
 ---
-
 ## ✅ Problem Statement
 - You are given:
    - An integer target, representing the destination position.
