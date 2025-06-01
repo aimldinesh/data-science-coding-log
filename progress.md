@@ -84,3 +84,4 @@
 | 2025-05-30 | [Online Stock Span](./2025-05-30/online_stock_span.md) | LeetCode | 🟡 Medium | Stack, Monotonic Stack, Design |
 | 2025-05-31 | [Car Fleet](./2025-05-31/car_fleet.md) | LeetCode | 🟡 Medium | Stack, Sorting, Greedy |
 | 2025-05-31 | [Car Fleet](./2025-05-31/car_fleet.md) | LeetCode | 🟡 Medium | Stack, Sorting, Greedy |
+| 2025-06-01 | [Simplify Path](./2025-06-01/simplify_path.md) | LeetCode | 🟡 Medium | Stack, String, Simulation, Path Simplification |
