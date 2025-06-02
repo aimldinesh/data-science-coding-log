@@ -22,8 +22,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **8**
 - 🗖️ Problems solved this month: **34**
-- 📌 Current daily streak: **55 days**
-- 🏷️ Most frequent tags: **Array** (57), **DSA** (44), **Binary Search** (28), **Sorting** (11), **String** (11)
+- 📌 Current daily streak: **56 days**
+- 🏷️ Most frequent tags: **Array** (57), **DSA** (44), **Binary Search** (28), **String** (12), **Stack** (12)
 
 <!-- STATS_END -->
 
@@ -123,6 +123,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-05-31 | [Car Fleet](./2025-05-31/car_fleet.md) | LeetCode | 🟡 Medium | Stack, Sorting, Greedy |
 | 2025-05-31 | [Car Fleet](./2025-05-31/car_fleet.md) | LeetCode | 🟡 Medium | Stack, Sorting, Greedy |
 | 2025-06-01 | [Simplify Path](./2025-06-01/simplify_path.md) | LeetCode | 🟡 Medium | Stack, String, Simulation, Path Simplification |
+| 2025-06-02 | [Decode String](./2025-06-02/decode_string.md) | LeetCode | 🟡 Medium | Stack, String, Recursion |
 
 <!-- PROBLEM_TABLE_END -->
 
