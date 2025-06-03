@@ -85,3 +85,4 @@
 | 2025-05-31 | [Car Fleet](./2025-05-31/car_fleet.md) | LeetCode | 🟡 Medium | Stack, Sorting, Greedy |
 | 2025-06-01 | [Simplify Path](./2025-06-01/simplify_path.md) | LeetCode | 🟡 Medium | Stack, String, Simulation, Path Simplification |
 | 2025-06-02 | [Decode String](./2025-06-02/decode_string.md) | LeetCode | 🟡 Medium | Stack, String, Recursion |
+| 2025-06-03 | [Binary Search](./2025-06-03/binary_search.md) | LeetCode | 🟢 Easy | Binary Search, Array |
