@@ -81,6 +81,7 @@ class Solution:
 
 ```
 ---
+
 ### Step-by-Step Execution of "3[a2[c]]"
 ```python
 Input: s = "3[a2[c]]"
