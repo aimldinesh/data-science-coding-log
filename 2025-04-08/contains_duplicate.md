@@ -63,14 +63,14 @@ class Solution:
     - No extra space is used apart from a few variables.
 ---
 
-## 🚀 My Approach 1: Using Hash Set (Efficient Time)
+## 🚀 Approach 2: Set (Efficient Time)
 💡 Intuition:
 - We need to find whether any number appears more than once in the array.
 - If we can keep track of all the numbers we've seen so far using a set, then:
      - If a number already exists in the set, it's a duplicate.
      - If not, we add it to the set.
 
-🧠 Approach (Using Set):
+🧠 Approach :
 - Initialize an empty set seen.
 - Iterate through each number in nums.
 - If the number is already in seen, return True (duplicate found).
@@ -104,7 +104,7 @@ class Solution:
 
 ---
 
-## 🚀 Approach 3: Using Sorting (Efficient Space)
+## 🚀 Approach 3: Sorting (Efficient Space)
 💡 Intuition:
 If we sort the array, any duplicates will be next to each other.
 So we just need to compare adjacent elements.
