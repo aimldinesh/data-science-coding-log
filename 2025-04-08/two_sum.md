@@ -70,13 +70,14 @@ class Solution:
      - If it is, we’ve found our answer.
 - This works because the dictionary helps us instantly look up if we've already seen the number needed to complete the pair.
 
-🧠 Approach (Optimized - One Pass Hash Map):
+
+🧠 Approach :
 - Create an empty dictionary called indices to store the number and its index.
 - Loop through the array nums using enumerate to get both index and number.
 - For each number n, calculate the complement as target - n.
 - Check if the complement is already in the dictionary:
-      - If yes, return the indices of the complement and current number.
-      - If no, store n with its index in the dictionary.
+     - If yes, return the indices of the complement and current number.
+     - If no, store n with its index in the dictionary.
 
 - If no such pair is found (though problem guarantees one), return an empty list.
 
