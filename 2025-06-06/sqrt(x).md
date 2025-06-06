@@ -22,7 +22,7 @@ Example 2:
 Input: x = 8
 Output: 2
 Explanation: √8 ≈ 2.828... → Truncate to 2
-
+```
 
 ---
 
