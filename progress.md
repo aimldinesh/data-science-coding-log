@@ -88,3 +88,4 @@
 | 2025-06-03 | [Binary Search](./2025-06-03/binary_search.md) | LeetCode | 🟢 Easy | Binary Search, Array |
 | 2025-06-04 | [Search Insert Position](./2025-06-04/search_insert_position.md) | LeetCode | 🟢 Easy | Binary Search, Array |
 | 2025-06-05 | [Guess Number Higher or Lower](./2025-06-05/guess_number_higher_or_lower.md) | LeetCode | 🟢 Easy | Binary Search, Linear Search |
+| 2025-06-06 | [Sqrt(x)](./2025-06-06/sqrt(x).md) | LeetCode | 🟢 Easy | Binary Search, Math |
