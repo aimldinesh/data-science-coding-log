@@ -13,7 +13,7 @@
 - You need to ship all packages within days days. Packages must be shipped in order (i.e., you cannot split or rearrange them), and the ship has a maximum weight capacity per day.
 - Return the minimum ship capacity to ship all the packages within the given number of days.
 ### 🌰 Example
-``python
+```python
 Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5  
 Output: 15
 
@@ -24,6 +24,7 @@ A capacity of 15 can ship the weights in 5 days:
 - Day 3: 8  
 - Day 4: 9  
 - Day 5: 10  
+
 ```
 ---
 
