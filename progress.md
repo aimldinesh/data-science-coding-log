@@ -91,3 +91,4 @@
 | 2025-06-06 | [Sqrt(x)](./2025-06-06/sqrt(x).md) | LeetCode | 🟢 Easy | Binary Search, Math |
 | 2025-06-07 | [Search a 2D Matrix](./2025-06-07/search_a_2d_matrix.md) | LeetCode | 🟡 Medium | Binary Search, Matrix |
 | 2025-06-08 | [Koko Eating Bananas](./2025-06-08/koko_eating_bananas.md) | LeetCode | 🟡 Medium | Binary Search, Greedy, Array |
+| 2025-06-09 | [Capacity To Ship Packages Within D Days](./2025-06-09/capacity_to_ship_packages_within_d_days.md) | LeetCode | 🟡 Medium | Binary Search, Greedy, Array |
