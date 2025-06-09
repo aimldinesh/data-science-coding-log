@@ -39,14 +39,14 @@ A capacity of 15 can ship the weights in 5 days:
     - left = max(weights)
     - right = sum(weights)
 
-Binary Search:
+- Binary Search:
     - Use a helper function isFeasibleCapacity(cap) that checks if a given capacity can ship the packages within the allowed days.
 
-Greedy Simulation in the helper:
+- Greedy Simulation in the helper:
     - Keep loading packages to current ship.
     - If adding a package exceeds the capacity → start a new ship/day.
 
-Adjust binary search range:
+- Adjust binary search range:
     - If current capacity is feasible, try smaller (right = mid - 1)
     - If not feasible, try larger (left = mid + 1)
 ---
