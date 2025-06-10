@@ -22,8 +22,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **8**
 - 🗖️ Problems solved this month: **33**
-- 📌 Current daily streak: **63 days**
-- 🏷️ Most frequent tags: **Array** (61), **DSA** (44), **Binary Search** (35), **String** (12), **Stack** (12)
+- 📌 Current daily streak: **64 days**
+- 🏷️ Most frequent tags: **Array** (62), **DSA** (44), **Binary Search** (36), **String** (12), **Stack** (12)
 
 <!-- STATS_END -->
 
@@ -130,6 +130,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-06-07 | [Search a 2D Matrix](./2025-06-07/search_a_2d_matrix.md) | LeetCode | 🟡 Medium | Binary Search, Matrix |
 | 2025-06-08 | [Koko Eating Bananas](./2025-06-08/koko_eating_bananas.md) | LeetCode | 🟡 Medium | Binary Search, Greedy, Array |
 | 2025-06-09 | [Capacity To Ship Packages Within D Days](./2025-06-09/capacity_to_ship_packages_within_d_days.md) | LeetCode | 🟡 Medium | Binary Search, Greedy, Array |
+| 2025-06-10 | [Find Minimum in Rotated Sorted Array](./2025-06-10/find_minimum_in_rotated_sorted_array.md) | LeetCode | 🟡 Medium | Binary Search, Array |
 
 <!-- PROBLEM_TABLE_END -->
 
