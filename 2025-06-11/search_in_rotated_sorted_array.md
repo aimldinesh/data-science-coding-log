@@ -40,11 +40,11 @@ Output: -1
      - If nums[mid] == target, return mid.
      - Determine which half is sorted:
           - If nums[left] <= nums[mid], left half is sorted.
-                - If target is in the left half → right = mid - 1
-                - Else → left = mid + 1
+               - If target is in the left half → right = mid - 1
+               - Else → left = mid + 1
           - Else, right half is sorted.
-                - If target is in the right half → left = mid + 1
-                - Else → right = mid - 1
+               - If target is in the right half → left = mid + 1
+               - Else → right = mid - 1
 
 - If the loop ends without finding the target, return -1.
 
