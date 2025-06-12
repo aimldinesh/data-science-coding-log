@@ -94,3 +94,4 @@
 | 2025-06-09 | [Capacity To Ship Packages Within D Days](./2025-06-09/capacity_to_ship_packages_within_d_days.md) | LeetCode | 🟡 Medium | Binary Search, Greedy, Array |
 | 2025-06-10 | [Find Minimum in Rotated Sorted Array](./2025-06-10/find_minimum_in_rotated_sorted_array.md) | LeetCode | 🟡 Medium | Binary Search, Array |
 | 2025-06-11 | [Search in Rotated Sorted Array](./2025-06-11/search_in_rotated_sorted_array.md) | LeetCode | 🟡 Medium | Binary Search, Array, Divide and Conquer |
+| 2025-06-12 | [Time Based Key-Value Store](./2025-06-12/time_based_key-value_store.md) | LeetCode | 🟡 Medium | Array, Binary Search |
