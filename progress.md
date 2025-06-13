@@ -95,3 +95,4 @@
 | 2025-06-10 | [Find Minimum in Rotated Sorted Array](./2025-06-10/find_minimum_in_rotated_sorted_array.md) | LeetCode | 🟡 Medium | Binary Search, Array |
 | 2025-06-11 | [Search in Rotated Sorted Array](./2025-06-11/search_in_rotated_sorted_array.md) | LeetCode | 🟡 Medium | Binary Search, Array, Divide and Conquer |
 | 2025-06-12 | [Time Based Key-Value Store](./2025-06-12/time_based_key-value_store.md) | LeetCode | 🟡 Medium | Array, Binary Search |
+| 2025-06-13 | [Split Array Largest Sum](./2025-06-13/split_array_largest_sum.md) | LeetCode | 🔴 Hard | Array, Binary Search, DP |
