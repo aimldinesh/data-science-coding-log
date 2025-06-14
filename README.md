@@ -22,8 +22,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **8**
 - 🗖️ Problems solved this month: **33**
-- 📌 Current daily streak: **67 days**
-- 🏷️ Most frequent tags: **Array** (65), **DSA** (44), **Binary Search** (39), **String** (12), **Stack** (12)
+- 📌 Current daily streak: **68 days**
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (40), **String** (12), **Stack** (12)
 
 <!-- STATS_END -->
 
@@ -134,6 +134,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-06-11 | [Search in Rotated Sorted Array](./2025-06-11/search_in_rotated_sorted_array.md) | LeetCode | 🟡 Medium | Binary Search, Array, Divide and Conquer |
 | 2025-06-12 | [Time Based Key-Value Store](./2025-06-12/time_based_key-value_store.md) | LeetCode | 🟡 Medium | Array, Binary Search |
 | 2025-06-13 | [Split Array Largest Sum](./2025-06-13/split_array_largest_sum.md) | LeetCode | 🔴 Hard | Array, Binary Search, DP |
+| 2025-06-14 | [Median of Two Sorted Arrays](./2025-06-14/median_of_two_sorted_arrays.md) | LeetCode | 🔴 Hard | Array, Brute Force, Binary Search |
 
 <!-- PROBLEM_TABLE_END -->
 
