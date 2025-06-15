@@ -97,3 +97,4 @@
 | 2025-06-12 | [Time Based Key-Value Store](./2025-06-12/time_based_key-value_store.md) | LeetCode | 🟡 Medium | Array, Binary Search |
 | 2025-06-13 | [Split Array Largest Sum](./2025-06-13/split_array_largest_sum.md) | LeetCode | 🔴 Hard | Array, Binary Search, DP |
 | 2025-06-14 | [Median of Two Sorted Arrays](./2025-06-14/median_of_two_sorted_arrays.md) | LeetCode | 🔴 Hard | Array, Brute Force, Binary Search |
+| 2025-06-15 | [Find in Mountain Array](./2025-06-15/find_in_mountain_array.md) | LeetCode | 🔴 Hard | Binary Search, Divide and Conquer, Mountain Array |
