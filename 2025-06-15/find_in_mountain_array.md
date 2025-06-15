@@ -81,7 +81,8 @@ class Solution:
     - Right side is strictly decreasing → modified binary search.
 
 🧠 Approach
-- To solve the problem efficiently, we break it into three parts using binary search:
+- To solve the problem efficiently, we break it into three parts using binary search
+
 ✅ Step 1: Find the Peak Element (Maximum Element)
 - A mountain array first increases then decreases.
 - Use binary search to find the peak index where arr[i-1] < arr[i] > arr[i+1].
@@ -104,7 +105,7 @@ class Solution:
     - If arr[mid] < target: move right = mid - 1.
     - If arr[mid] == target: return mid.
 
-❌ Step 4: Return -1 if Not Found
+- Step 4: Return -1 if Not Found
     - If the target is not found in both left and right parts, return -1.
 ---
 
