@@ -105,7 +105,7 @@ class Solution:
     - If arr[mid] < target: move right = mid - 1.
     - If arr[mid] == target: return mid.
 
-- Step 4: Return -1 if Not Found
+✅ Step 3: Return -1 if Not Found
     - If the target is not found in both left and right parts, return -1.
 ---
 
