@@ -22,8 +22,8 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **8**
 - 🗖️ Problems solved this month: **31**
-- 📌 Current daily streak: **70 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **String** (12), **Stack** (12)
+- 📌 Current daily streak: **71 days**
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **Sorting** (12), **String** (12)
 
 <!-- STATS_END -->
 
@@ -137,6 +137,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-06-14 | [Median of Two Sorted Arrays](./2025-06-14/median_of_two_sorted_arrays.md) | LeetCode | 🔴 Hard | Array, Brute Force, Binary Search |
 | 2025-06-15 | [Find in Mountain Array](./2025-06-15/find_in_mountain_array.md) | LeetCode | 🔴 Hard | Binary Search, Divide and Conquer, Mountain Array |
 | 2025-06-16 | [Reverse Linked List](./2025-06-16/reverse_linked_list.md) | LeetCode | 🟢 Easy | Linked List, Two Pointer, Iteration, Recursion |
+| 2025-06-17 | [Merge Two Sorted Lists](./2025-06-17/merge_two_sorted_lists.md) | LeetCode | 🟢 Easy | Linked List, Sorting, Two Pointer, Merge |
 
 <!-- PROBLEM_TABLE_END -->
 
