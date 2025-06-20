@@ -102,3 +102,4 @@
 | 2025-06-17 | [Merge Two Sorted Lists](./2025-06-17/merge_two_sorted_lists.md) | LeetCode | 🟢 Easy | Linked List, Sorting, Two Pointer, Merge |
 | 2025-06-18 | [Linked List Cycle](./2025-06-18/linked_list_cycle.md) | LeetCode | 🟢 Easy | Linked list, Tortoise , Set |
 | 2025-06-19 | [Binary Tree Inorder Traversal](./2025-06-19/binary_tree_inorder_traversal.md) | LeetCode | 🟢 Easy | Binary Tree, Recursion |
+| 2025-06-20 | [Remove Nth Node From End of List](./2025-06-20/remove_nth_node_from_end_of_list.md) | LeetCode | 🟡 Medium | Linked List, Two Pointer |

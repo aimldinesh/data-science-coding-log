@@ -22,7 +22,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **8**
 - 🗖️ Problems solved this month: **31**
-- 📌 Current daily streak: **73 days**
+- 📌 Current daily streak: **74 days**
 - 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **Sorting** (12), **String** (12)
 
 <!-- STATS_END -->
@@ -140,6 +140,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-06-17 | [Merge Two Sorted Lists](./2025-06-17/merge_two_sorted_lists.md) | LeetCode | 🟢 Easy | Linked List, Sorting, Two Pointer, Merge |
 | 2025-06-18 | [Linked List Cycle](./2025-06-18/linked_list_cycle.md) | LeetCode | 🟢 Easy | Linked list, Tortoise , Set |
 | 2025-06-19 | [Binary Tree Inorder Traversal](./2025-06-19/binary_tree_inorder_traversal.md) | LeetCode | 🟢 Easy | Binary Tree, Recursion |
+| 2025-06-20 | [Remove Nth Node From End of List](./2025-06-20/remove_nth_node_from_end_of_list.md) | LeetCode | 🟡 Medium | Linked List, Two Pointer |
 
 <!-- PROBLEM_TABLE_END -->
 
