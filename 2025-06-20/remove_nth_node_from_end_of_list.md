@@ -79,6 +79,36 @@ class Solution:
 ```
 
 ---
+### 🔍 Step-by-Step Execution
+```python
+Input:
+head = 1 → 2 → 3 → 4 → 5, n = 2
+
+Initialization:
+dummy → 0 → 1 → 2 → 3 → 4 → 5
+
+left = dummy
+
+right = head (1)
+
+Step 1: Move right 2 steps ahead:
+After 1st move: right = 2
+
+After 2nd move: right = 3
+
+Step 2: Move both until right reaches end:
+Move 1: left = 1, right = 4
+
+Move 2: left = 2, right = 5
+
+Move 3: left = 3, right = None
+
+Step 3: Remove node:
+left.next = 4 → change to left.next = 5
+
+List becomes: 1 → 2 → 3 → 5
+
+```
 
 ## 💡 Time and Space Complexity
 - **Time**: O(L)
