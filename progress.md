@@ -104,3 +104,4 @@
 | 2025-06-19 | [Binary Tree Inorder Traversal](./2025-06-19/binary_tree_inorder_traversal.md) | LeetCode | 🟢 Easy | Binary Tree, Recursion |
 | 2025-06-20 | [Remove Nth Node From End of List](./2025-06-20/remove_nth_node_from_end_of_list.md) | LeetCode | 🟡 Medium | Linked List, Two Pointer |
 | 2025-06-21 | [Add Two Numbers](./2025-06-21/add_two_numbers.md) | LeetCode | 🟡 Medium | Linked List, Iteration, Two Pointer |
+| 2025-06-22 | [Reverse Linked List II](./2025-06-22/reverse_linked_list_ii.md) | LeetCode | 🟡 Medium | Linked List |
