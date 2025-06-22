@@ -18,8 +18,7 @@ left = 2, right = 4
 
 Output:
 1 → 4 → 3 → 2 → 5
-
-
+```
 ---
 
 ## 🚀 Approach
