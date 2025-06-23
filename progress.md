@@ -105,3 +105,4 @@
 | 2025-06-20 | [Remove Nth Node From End of List](./2025-06-20/remove_nth_node_from_end_of_list.md) | LeetCode | 🟡 Medium | Linked List, Two Pointer |
 | 2025-06-21 | [Add Two Numbers](./2025-06-21/add_two_numbers.md) | LeetCode | 🟡 Medium | Linked List, Iteration, Two Pointer |
 | 2025-06-22 | [Reverse Linked List II](./2025-06-22/reverse_linked_list_ii.md) | LeetCode | 🟡 Medium | Linked List |
+| 2025-06-23 | [Merge k Sorted Lists](./2025-06-23/merge_k_sorted_lists.md) | LeetCode | 🔴 Hard | Linked List, Merge Sort, Heap |
