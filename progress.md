@@ -106,3 +106,4 @@
 | 2025-06-21 | [Add Two Numbers](./2025-06-21/add_two_numbers.md) | LeetCode | 🟡 Medium | Linked List, Iteration, Two Pointer |
 | 2025-06-22 | [Reverse Linked List II](./2025-06-22/reverse_linked_list_ii.md) | LeetCode | 🟡 Medium | Linked List |
 | 2025-06-23 | [Merge k Sorted Lists](./2025-06-23/merge_k_sorted_lists.md) | LeetCode | 🔴 Hard | Linked List, Merge Sort, Heap |
+| 2025-06-24 | [Binary Tree Preorder Traversal](./2025-06-24/binary_tree_preorder_traversal.md) | LeetCode | 🟢 Easy | Tree, Iterative, Recursion |
