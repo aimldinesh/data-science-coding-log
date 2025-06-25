@@ -107,3 +107,4 @@
 | 2025-06-22 | [Reverse Linked List II](./2025-06-22/reverse_linked_list_ii.md) | LeetCode | 🟡 Medium | Linked List |
 | 2025-06-23 | [Merge k Sorted Lists](./2025-06-23/merge_k_sorted_lists.md) | LeetCode | 🔴 Hard | Linked List, Merge Sort, Heap |
 | 2025-06-24 | [Binary Tree Preorder Traversal](./2025-06-24/binary_tree_preorder_traversal.md) | LeetCode | 🟢 Easy | Tree, Iterative, Recursion |
+| 2025-06-25 | [Binary Tree Postorder Traversal](./2025-06-25/binary_tree_postorder_traversal.md) | LeetCode | 🟢 Easy | Tree, Iterative, Recursive |
