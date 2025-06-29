@@ -111,3 +111,4 @@
 | 2025-06-26 | [Invert Binary Tree](./2025-06-26/invert_binary_tree.md) | LeetCode | 🟢 Easy | Tree, Iterative, Recursive, DFS, BFS |
 | 2025-06-27 | [Maximum Depth of Binary Tree](./2025-06-27/maximum_depth_of_binary_tree.md) | LeetCode | 🟢 Easy | Tree, Queue, BFS |
 | 2025-06-28 | [Diameter of Binary Tree](./2025-06-28/diameter_of_binary_tree.md) | LeetCode | 🟢 Easy | Tree, DFS |
+| 2025-06-29 | [Balanced Binary Tree](./2025-06-29/balanced_binary_tree.md) | LeetCode | 🟢 Easy | Tree, DFS |
