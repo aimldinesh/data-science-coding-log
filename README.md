@@ -22,7 +22,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 
 - ✅ Problems solved this week: **8**
 - 🗖️ Problems solved this month: **31**
-- 📌 Current daily streak: **84 days**
+- 📌 Current daily streak: **85 days**
 - 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **Sorting** (12), **String** (12)
 
 <!-- STATS_END -->
@@ -151,6 +151,7 @@ The goal is to **build consistent problem-solving habits** and **enhance my skil
 | 2025-06-28 | [Diameter of Binary Tree](./2025-06-28/diameter_of_binary_tree.md) | LeetCode | 🟢 Easy | Tree, DFS |
 | 2025-06-29 | [Balanced Binary Tree](./2025-06-29/balanced_binary_tree.md) | LeetCode | 🟢 Easy | Tree, DFS |
 | 2025-06-30 | [Same Tree](./2025-06-30/same_tree.md) | LeetCode | 🟢 Easy | Tree, BFS, DFS, Interative, Recursive |
+| 2025-07-01 | [Subtree of Another Tree](./2025-07-01/subtree_of_another_tree.md) | LeetCode | 🟢 Easy | Tree, Recursion, DFS |
 
 <!-- PROBLEM_TABLE_END -->
 
