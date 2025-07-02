@@ -44,7 +44,7 @@ Output Tree :
    - key > root.val → go right
    - key == root.val → found the node to delete
 
-Deletion logic:
+- Deletion logic:
    - If the node has no left child → return root.right
    - If the node has no right child → return root.left
    - If the node has two children:
