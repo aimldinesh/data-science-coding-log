@@ -96,8 +96,8 @@ graph TD
     E --> E2[Update Weights]
     F --> F1[Accuracy, Precision]
     F --> F2[Recall, F1, ROC-AUC]
-    G --> G1[L1 (Lasso)]
-    G --> G2[L2 (Ridge)]
+    G --> G1[L1 Lasso]
+    G --> G2[L2 Ridge]
     H --> H1[One-vs-Rest]
     H --> H2[Softmax/Multinomial]
 ```
