@@ -115,3 +115,4 @@
 | 2025-06-30 | [Same Tree](./2025-06-30/same_tree.md) | LeetCode | 🟢 Easy | Tree, BFS, DFS, Interative, Recursive |
 | 2025-07-01 | [Subtree of Another Tree](./2025-07-01/subtree_of_another_tree.md) | LeetCode | 🟢 Easy | Tree, Recursion, DFS |
 | 2025-07-02 | [Delete Node in a BST](./2025-07-02/delete_node_in_a_bst.md) | LeetCode | 🟡 Medium | Binary Tree, Recusion, Tree |
+| 2025-07-03 | [Lowest Common Ancestor of a Binary Search Tree](./2025-07-03/lowest_common_ancestor_of_a_binary_search_tree.md) | LeetCode | 🟡 Medium | Tree, Binary Search Tree, DFS |
