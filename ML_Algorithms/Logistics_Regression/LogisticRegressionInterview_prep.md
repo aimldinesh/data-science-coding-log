@@ -1,4 +1,4 @@
-# 🎯 Logistic Regression Interview Prep
+# 🎯 Logistic Regression Interview Prep (Markdown Version)
 
 ---
 
@@ -133,4 +133,26 @@ graph TD
 ### 🧩 Question 7: What are its limitations?
 
 **You:** Assumes linear boundary in log-odds space, not suitable for highly non-linear patterns, sensitive to outliers.
+
+### 🧩 Question 8: What is the role of the threshold in logistic regression?
+
+**You:** The threshold (commonly 0.5) is used to convert predicted probabilities into class labels. Changing it affects precision and recall trade-off.
+
+### 🧩 Question 9: What metrics are best to evaluate a logistic regression model?
+
+**You:** Besides accuracy, use precision, recall, F1-score, and ROC-AUC especially in imbalanced datasets.
+
+### 🧩 Question 10: What are log-odds?
+
+**You:** Log-odds are the logarithm of the odds ratio. In logistic regression, the linear combination $w^T x + b$ represents the log-odds of the positive class.
+
+### 🧩 Question 11: What is multicollinearity and how does it affect logistic regression?
+
+**You:** Multicollinearity occurs when independent variables are highly correlated. It inflates coefficient variance and can make the model unstable.
+
+### 🧩 Question 12: How does regularization help logistic regression?
+
+**You:** It penalizes large coefficients to prevent overfitting. L1 can also perform feature selection by shrinking some weights to zero.
+
+---
 
