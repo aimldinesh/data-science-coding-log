@@ -155,7 +155,7 @@ graph TD
 **You:** It penalizes large coefficients to prevent overfitting. L1 can also perform feature selection by shrinking some weights to zero.
 
 ### 🧩 Question 13: Why we use wT in  z = wTx+b ?
-**You:** The transpose is used for matrix multiplication compatibility.
+- The transpose is used for matrix multiplication compatibility.
     - Suppose:
        - w = weight vector of shape(n,1)
        - x = feature vector of shape(n,1)
