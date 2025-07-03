@@ -156,15 +156,15 @@ graph TD
 
 ### 🧩 Question 13: Why we use wT in  z = wTx+b ?
 **You:** The transpose is used for matrix multiplication compatibility.
-🔍 Suppose:
-     - w = weight vector of shape(n,1)
-     - x = feature vector of shape(n,1)
+    - Suppose:
+       - w = weight vector of shape(n,1)
+       - x = feature vector of shape(n,1)
 
-    Without transpose:
-     - w⋅x=(n,1)⋅(n,1)→ Not allowed(incompatible)
+    - Without transpose:
+       - w⋅x=(n,1)⋅(n,1)→ Not allowed(incompatible)
 
-    With transpose:
-     - wT⋅x=(1,n)⋅(n,1) →Scalar(1,1),which is valid.
+    - With transpose:
+       - wT⋅x=(1,n)⋅(n,1) →Scalar(1,1),which is valid.
 
 - w^T x means: take a weighted sum of all input features.
 - It gives a single number (z) — the logit — which is passed through the sigmoid to get a probability.     
