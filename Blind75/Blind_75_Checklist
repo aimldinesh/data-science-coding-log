@@ -1,0 +1,140 @@
+# 💡 Blind 75 DSA Interview Questions Checklist
+
+> ✅ = Covered in your 2-week plan  
+> ⭐ = Optional bonus (for deeper prep / weak areas)
+
+---
+
+## 📊 Array (8)
+- ✅ Two Sum
+- ✅ Best Time to Buy and Sell Stock
+- ✅ Contains Duplicate
+- ✅ Product of Array Except Self
+- ✅ Maximum Subarray
+- ⭐ Maximum Product Subarray
+- ⭐ Find Minimum in Rotated Sorted Array
+- ✅ Search in Rotated Sorted Array
+
+---
+
+## 🔢 Binary (1)
+- ⭐ Sum of Two Integers
+
+---
+
+## 🔄 Sliding Window (3)
+- ✅ Longest Substring Without Repeating Characters
+- ✅ Permutation in String
+- ✅ Minimum Window Substring
+
+---
+
+## 🧮 Hashmap / Set (4)
+- ✅ Group Anagrams
+- ✅ Valid Anagram
+- ✅ Top K Frequent Elements
+- ⭐ Encode and Decode Strings
+
+---
+
+## 🔍 Binary Search (4)
+- ✅ Binary Search (basic)
+- ✅ Koko Eating Bananas
+- ✅ Median of Two Sorted Arrays
+- ⭐ Search a 2D Matrix
+
+---
+
+## 📚 Linked List (6)
+- ✅ Reverse Linked List
+- ✅ Merge Two Sorted Lists
+- ✅ Reorder List
+- ⭐ Linked List Cycle
+- ⭐ Intersection of Two Linked Lists
+- ⭐ Remove Nth Node From End of List
+
+---
+
+## 📐 Stack / Queue (4)
+- ✅ Valid Parentheses
+- ✅ Daily Temperatures
+- ✅ Largest Rectangle in Histogram
+- ⭐ Evaluate Reverse Polish Notation
+
+---
+
+## 🌲 Trees (6)
+- ✅ Maximum Depth of Binary Tree
+- ✅ Invert Binary Tree
+- ✅ Diameter of Binary Tree
+- ✅ Validate Binary Search Tree
+- ✅ Lowest Common Ancestor of a BST
+- ✅ Kth Smallest Element in BST
+
+---
+
+## 🐍 Heap / Priority Queue (3)
+- ✅ Kth Largest Element in Stream
+- ✅ Merge K Sorted Lists
+- ✅ Task Scheduler
+
+---
+
+## 📚 Trie (2)
+- ✅ Implement Trie
+- ✅ Word Search II
+
+---
+
+## 🧠 Dynamic Programming (8)
+- ⭐ Climbing Stairs
+- ⭐ Coin Change
+- ⭐ Longest Increasing Subsequence
+- ⭐ Longest Common Subsequence
+- ⭐ Word Break
+- ⭐ Combination Sum
+- ✅ Subsets
+- ✅ Palindrome Partitioning
+
+---
+
+## 🔁 Backtracking / Recursion (4)
+- ✅ Subsets
+- ✅ Combination Sum
+- ✅ Palindrome Partitioning
+- ⭐ Letter Combinations of a Phone Number
+
+---
+
+## 🌐 Graphs (5)
+- ✅ Clone Graph
+- ✅ Number of Islands
+- ✅ Course Schedule
+- ⭐ Pacific Atlantic Water Flow
+- ⭐ Graph Valid Tree
+
+---
+
+## 🧪 Matrix (3)
+- ⭐ Set Matrix Zeroes
+- ⭐ Spiral Matrix
+- ⭐ Rotate Image
+
+---
+
+## 📦 15 Bonus (⭐) Problems (Optional for Deeper Prep)
+- ⭐ Longest Palindromic Substring
+- ⭐ Merge Intervals
+- ⭐ Insert Interval
+- ⭐ Word Ladder
+- ⭐ Decode Ways
+- ⭐ Maximum Width of Binary Tree
+- ⭐ RandomizedSet (Design Q)
+- ⭐ Design LRU Cache
+- ⭐ Serialize and Deserialize Binary Tree
+- ⭐ Sliding Window Maximum
+- ⭐ Binary Tree Level Order Traversal
+- ⭐ Time-based Key-Value Store
+- ⭐ Find Peak Element
+- ⭐ Meeting Rooms II
+- ⭐ Count Subarrays with Sum K
