@@ -4,11 +4,11 @@
 
 | Day | Topic             | Problem                           | Status | Time | Error Type     | Notes                        |
 |-----|-------------------|------------------------------------|--------|------|----------------|-------------------------------|
-| 1   | Arrays            | Two Sum                           |        |      |                | Use hashmap for O(n)         |
+| 1   | Arrays            | Two Sum                           | Done   |      |                | Use hashmap for O(n)         |
 |     |                   | Best Time to Buy & Sell Stock     |        |      |                | Track min price              |
 |     |                   | Maximum Subarray                  |        |      |                | Kadane's algo                |
 | 2   | HashMap / Set     | Group Anagrams                    |        |      |                | Use tuple of counts/sorted   |
-|     |                   | Valid Anagram                     |        |      |                | Sorting vs hashmap           |
+|     |                   | Valid Anagram                     | Done   |      |                | Use two dict,count & compare |
 |     |                   | Top K Frequent Elements           |        |      |                | Bucket sort or heap          |
 | 3   | Sliding Window    | Longest Substring w/o Repeating   |        |      |                | Shrink left on repeat char   |
 |     |                   | Permutation in String             |        |      |                | Sliding freq count window    |
