@@ -5,7 +5,7 @@
 | Day | Topic             | Problem                           | Status | Time | Error Type     | Notes                        |
 |-----|-------------------|------------------------------------|--------|------|----------------|-------------------------------|
 | 1   | Arrays            | Two Sum                           | Done   |      |                | Use hashmap for O(n)         |
-|     |                   | Best Time to Buy & Sell Stock     |        |      |                | Track min price              |
+|     |                   | Best Time to Buy & Sell Stock     | Done   |      |                | Track min price              |
 |     |                   | Maximum Subarray                  |        |      |                | Kadane's algo                |
 | 2   | HashMap / Set     | Group Anagrams                    |        |      |                | Use tuple of counts/sorted   |
 |     |                   | Valid Anagram                     | Done   |      |                | Use two dict,count & compare |
