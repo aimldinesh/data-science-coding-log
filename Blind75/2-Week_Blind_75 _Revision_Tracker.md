@@ -9,7 +9,7 @@
 |     |                   | Maximum Subarray                  | Done   |      |                | Use dict and sorting         |
 | 2   | HashMap / Set     | Group Anagrams                    |        |      |                | Use tuple of counts/sorted   |
 |     |                   | Valid Anagram                     | Done   |      |                | Use two dict,count & compare |
-|     |                   | Top K Frequent Elements           |        |      |                | Bucket sort or heap          |
+|     |                   | Top K Frequent Elements           | Done   |      |                | Store in Dict,count freq     |
 | 3   | Sliding Window    | Longest Substring w/o Repeating   |        |      |                | Shrink left on repeat char   |
 |     |                   | Permutation in String             |        |      |                | Sliding freq count window    |
 |     |                   | Minimum Window Substring          |        |      |                | Hard, tricky edge handling   |
