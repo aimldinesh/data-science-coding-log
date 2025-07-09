@@ -19,7 +19,7 @@
 | 5   | Linked List       | Reverse Linked List               |        |      |                | Iterative/pointer reversal   |
 |     |                   | Merge Two Sorted Lists            |        |      |                | Dummy head technique         |
 |     |                   | Reorder List                      |        |      |                | Mid+reverse+merge            |
-| 6   | Stack / Monotonic | Valid Parentheses                 |        |      |                | Stack usage                  |
+| 6   | Stack / Monotonic | Valid Parentheses                 | Done   |      |                | Stack usage                  |
 |     |                   | Daily Temperatures                |        |      |                | Monotonic stack              |
 |     |                   | Largest Rectangle in Histogram    |        |      |                | Classic tricky stack problem |
 | 7   | Review + Mock     | 5 Random from Week 1              |        |      |                | Timed + verbal explain       |
