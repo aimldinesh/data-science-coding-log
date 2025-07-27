@@ -33,7 +33,7 @@ This ensures the triangle inequality holds.
 
 4. Repeat Until All Elements Checked:
 - We iterate this way for all elements from n-1 to 2 as the largest side and count all valid triangles.
-
+```
 
 ---
 
