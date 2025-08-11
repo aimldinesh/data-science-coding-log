@@ -184,16 +184,7 @@ Here's a bar chart of our actual daily problem-solving stats:
 
 ---
 
-## ✨ Inspirational Quote
-
-> "The best way to predict the future is to invent it." — Alan Kay
-
----
-
 ## 📚 Check Out My Blogs
-
-I write articles on **data science**, **algorithms**, and **machine learning**. Feel free to explore my writings!
-
 - 📖 **[Read My Medium Blogs](https://medium.com/@dsdineshnitrr)**
 
 ---
