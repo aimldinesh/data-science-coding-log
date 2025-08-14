@@ -67,3 +67,64 @@ class Solution:
    - Bucket filling and final traversal also take O(n)
 - **Space**: O(n)
    - Space used by count and freq arrays.
+
+---
+
+## 📝 Approach — Sorting by Frequency
+
+1. **Count Frequencies**
+   - Traverse the `nums` list.
+   - Use a dictionary (`freq`) to store each unique number as a key and its frequency as the value.
+   - Example:  
+     ```
+     nums = [1, 1, 1, 2, 2, 3]
+     freq = {1: 3, 2: 2, 3: 1}
+     ```
+
+2. **Sort by Frequency**
+   - Convert the dictionary into a list of `(number, frequency)` tuples using `.items()`.
+   - Sort this list by frequency **in descending order**:
+     ```python
+     sorted_items = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+     ```
+
+3. **Pick Top K Elements**
+   - Take the first `k` elements from the sorted list:  
+     ```python
+     sorted_items[:k]
+     ```
+   - Extract only the numbers (keys) from these tuples using list comprehension:
+     ```python
+     top_k_keys = [key for key, value in sorted_items[:k]]
+     ```
+
+4. **Return Result**
+   - Return the list of `k` most frequent elements.
+
+---
+
+## 💻 Code (Python)
+
+```python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # Create a dictionary to store the frequency of each element
+        freq = {}
+        for ele in nums:
+            freq[ele] = freq.get(ele, 0) + 1
+        
+        # Sort the dictionary items based on the frequency in descending order
+        sorted_items = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+
+        # Extract the top k keys
+        top_k_keys = [key for key, value in sorted_items[:k]]
+        return top_k_keys
+```
+
+### ⏳ Complexity Analysis
+- **Time Complexity**:  
+  - Counting frequencies → **O(n)**  
+  - Sorting by frequency → **O(m log m)** where `m` = number of unique elements.  
+  - **Total**: **O(n + m log m)**
+- **Space Complexity**: **O(m)** for storing frequency counts.
+
