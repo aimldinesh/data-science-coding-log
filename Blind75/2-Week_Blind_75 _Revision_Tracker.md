@@ -4,12 +4,12 @@
 
 | Day | Topic             | Problem                           | Status | Time | Error Type     | Notes                        |
 |-----|-------------------|------------------------------------|--------|------|----------------|-------------------------------|
-| 1   | Arrays            | Two Sum                           |   |      |                | Use hashmap for O(n)         |
-|     |                   | Best Time to Buy & Sell Stock     |    |      |                | Track min price              |
-|     |                   | Maximum Subarray                  |   |      |                | Use dict and sorting         |
-| 2   | HashMap / Set     | Group Anagrams                    |        |      |                | Use tuple of counts/sorted   |
-|     |                   | Valid Anagram                     |    |      |                | Use two dict,count & compare |
-|     |                   | Top K Frequent Elements           |    |      |                | Store in Dict,count freq     |
+| 1   | Arrays            | Two Sum                           | Done   |      |                | Use hashmap for O(n)         |
+|     |                   | Best Time to Buy & Sell Stock     | Done   |      |                | Track min price              |
+|     |                   | Maximum Subarray                  | Done   |      |                | Use dict and sorting         |
+| 2   | HashMap / Set     | Group Anagrams                    | Done   |      |                | Use tuple of counts/sorted   |
+|     |                   | Valid Anagram                     | Done   |      |                | Use two dict,count & compare |
+|     |                   | Top K Frequent Elements           | Done   |      |                | Store in Dict,count freq     |
 | 3   | Sliding Window    | Longest Substring w/o Repeating   |        |      |                | Shrink left on repeat char   |
 |     |                   | Permutation in String             |        |      |                | Sliding freq count window    |
 |     |                   | Minimum Window Substring          |        |      |                | Hard, tricky edge handling   |
