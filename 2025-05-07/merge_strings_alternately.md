@@ -19,7 +19,7 @@ Output: "apbqcr"
 
 Input: word1 = "ab", word2 = "pqrs"
 Output: "apbqrs"
-
+```
 ---
 
 ## 🚀 My Approach
