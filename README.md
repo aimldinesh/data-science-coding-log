@@ -11,7 +11,7 @@ Welcome to my **coding practice log**, where I track my **daily problem-solving*
 
 ## ✍️ Goal
 
-The goal is to **build consistent problem-solving habits** and **enhance my skills** in **data science** and **Data Structure & algorithms**.
+The goal is to **build consistent problem-solving habits** and **enhance my skills** in **Python**, **SQL** and **Data Structure & algorithms**.
 
 ---
 
