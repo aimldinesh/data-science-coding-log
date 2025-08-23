@@ -10,8 +10,11 @@
 Welcome to my **coding practice log**, where I track my **daily problem-solving** journey across platforms like **LeetCode**, **GeeksforGeeks**, and others. This log helps me stay **consistent** and **focused** while improving my **data science** and **algorithmic thinking**.
 
 ## ✍️ Goal
-
-The goal is to **build consistent problem-solving habits** and **enhance my skills** in **Python**, **SQL** and **Data Structure & algorithms**.
+The goal is to build consistent problem-solving habits and enhance my skills in:
+- 🐍 Python programming
+- 🛢 SQL queries & database management
+- 🌲 Data Structures & Algorithms (DSA)
+- 📊 Data Science concepts & problem-solving
 
 ---
 
