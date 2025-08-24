@@ -1,3 +1,5 @@
+<p align="center">
+  
 ![LeetCode Badge](https://img.shields.io/badge/LeetCode-Active-brightgreen)
 ![Python Badge](https://img.shields.io/badge/Python-3.9-blue)
 ![GeeksforGeeks Badge](https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen)
@@ -5,6 +7,8 @@
 ![Artificial Intelligence Badge](https://img.shields.io/badge/AI-Active-blue)
 ![Data Science Badge](https://img.shields.io/badge/Data%20Science-Active-orange)
 ![Generative AI Badge](https://img.shields.io/badge/Generative%20AI-Active-red)
+
+</p>
 
 # 📘 Data Science Coding Log
 Welcome to my **coding practice log**, where I track my **daily problem-solving** journey across platforms like **LeetCode**, **GeeksforGeeks**, and others. This log helps me stay **consistent** and **focused** while improving my **data science** and **algorithmic thinking**.
