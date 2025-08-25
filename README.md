@@ -1,21 +1,24 @@
 <p align="center">
-  
-![LeetCode Badge](https://img.shields.io/badge/LeetCode-Active-brightgreen)
-![Python Badge](https://img.shields.io/badge/Python-3.9-blue)
-![GeeksforGeeks Badge](https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen)
-![Machine Learning Badge](https://img.shields.io/badge/Machine%20Learning-Active-blue)
-![Artificial Intelligence Badge](https://img.shields.io/badge/AI-Active-blue)
-![Data Science Badge](https://img.shields.io/badge/Data%20Science-Active-orange)
-![Generative AI Badge](https://img.shields.io/badge/Generative%20AI-Active-red)
+
+  ![LeetCode Badge](https://img.shields.io/badge/LeetCode-Active-brightgreen)
+  ![Python Badge](https://img.shields.io/badge/Python-3.9-blue)
+  ![GeeksforGeeks Badge](https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen)
+  ![Machine Learning Badge](https://img.shields.io/badge/Machine%20Learning-Active-blue)
+  ![Artificial Intelligence Badge](https://img.shields.io/badge/AI-Active-blue)
+  ![Data Science Badge](https://img.shields.io/badge/Data%20Science-Active-orange)
+  ![Generative AI Badge](https://img.shields.io/badge/Generative%20AI-Active-red)
 
 </p>
+
+<h1 align="center"> 📘 Data Science Coding Log </h1>
 
 <p align="center">
-  
-# 📘 Data Science Coding Log
-Welcome to my **coding practice log**, where I track my **daily problem-solving** journey across platforms like **LeetCode**, **GeeksforGeeks**, and others. This log helps me stay **consistent** and **focused** while improving my **data science** and **algorithmic thinking**.
-
+Welcome to my <b>coding practice log</b>, where I track my <b>daily problem-solving</b> journey across platforms like 
+<b>LeetCode</b>, <b>GeeksforGeeks</b>, and others.  
+This log helps me stay <b>consistent</b> and <b>focused</b> while improving my <b>data science</b> and 
+<b>algorithmic thinking</b>.
 </p>
+
 
 ## ✍️ Goal
 The goal is to build consistent problem-solving habits and enhance my skills in:
