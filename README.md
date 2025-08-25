@@ -1,14 +1,13 @@
 <p align="center">
-
-  ![LeetCode Badge](https://img.shields.io/badge/LeetCode-Active-brightgreen)
-  ![Python Badge](https://img.shields.io/badge/Python-3.9-blue)
-  ![GeeksforGeeks Badge](https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen)
-  ![Machine Learning Badge](https://img.shields.io/badge/Machine%20Learning-Active-blue)
-  ![Artificial Intelligence Badge](https://img.shields.io/badge/AI-Active-blue)
-  ![Data Science Badge](https://img.shields.io/badge/Data%20Science-Active-orange)
-  ![Generative AI Badge](https://img.shields.io/badge/Generative%20AI-Active-red)
-
+  <img src="https://img.shields.io/badge/LeetCode-Active-brightgreen" />
+  <img src="https://img.shields.io/badge/Python-3.9-blue" />
+  <img src="https://img.shields.io/badge/GeeksforGeeks-Active-brightgreen" />
+  <img src="https://img.shields.io/badge/Machine%20Learning-Active-blue" />
+  <img src="https://img.shields.io/badge/AI-Active-blue" />
+  <img src="https://img.shields.io/badge/Data%20Science-Active-orange" />
+  <img src="https://img.shields.io/badge/Generative%20AI-Active-red" />
 </p>
+
 
 <h1 align="center"> 📘 Data Science Coding Log </h1>
 
