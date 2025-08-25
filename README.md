@@ -10,8 +10,12 @@
 
 </p>
 
+<p align="center">
+  
 # 📘 Data Science Coding Log
 Welcome to my **coding practice log**, where I track my **daily problem-solving** journey across platforms like **LeetCode**, **GeeksforGeeks**, and others. This log helps me stay **consistent** and **focused** while improving my **data science** and **algorithmic thinking**.
+
+</p>
 
 ## ✍️ Goal
 The goal is to build consistent problem-solving habits and enhance my skills in:
