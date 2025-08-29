@@ -18,6 +18,15 @@ This log helps me stay <b>consistent</b> and <b>focused</b> while improving my <
 <b>algorithmic thinking</b>.
 </p>
 
+---
+## 🚀 Features
+
+- 📈 **Stats Section**: Weekly and Monthly solved problems, and most frequent tags automatically updated.
+- ✅ **Problem Tracker**: All solved problems and their details available for quick reference.
+- 🎯 **Difficulty Tag**: Automatically tracks problem difficulty.
+- 📅 **Calendar Heatmap**: Visualizes your streaks and activity.
+
+---
 
 ## ✍️ Goal
 The goal is to build consistent problem-solving habits and enhance my skills in:
@@ -186,14 +195,6 @@ Here's a bar chart of our actual daily problem-solving stats:
 ### 📅 Calendar Heatmap
 
 ![Calendar Heatmap](assets/calendar_heatmap.png)
----
-
-## 🚀 Features
-
-- 📈 **Stats Section**: Weekly and Monthly solved problems, and most frequent tags automatically updated.
-- ✅ **Problem Tracker**: All solved problems and their details available for quick reference.
-- 🎯 **Difficulty Tag**: Automatically tracks problem difficulty.
-- 📅 **Calendar Heatmap**: Visualizes your streaks and activity.
 
 ---
 
