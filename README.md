@@ -33,7 +33,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 - 🐍 Python programming
 - 🛢 SQL queries & database management
 - 🌲 Data Structures & Algorithms (DSA)
-- 📊 Data Science concepts & problem-solving
+- 📊 Data Science concepts & problem-solving .
 
 ---
 
