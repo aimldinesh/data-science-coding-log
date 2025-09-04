@@ -13,7 +13,7 @@
 
 <p align="center">
 Welcome to my <b>coding practice log</b>, where I track my <b>daily problem-solving</b> journey across platforms like 
-<b>LeetCode</b>, <b>GeeksforGeeks</b>, and others.  
+<b>LeetCode</b>, <b>GeeksforGeeks</b>, <b>Hackerrank</b>, and others.  
 This log helps me stay <b>consistent</b> and <b>focused</b> while improving my <b>data science</b> and 
 <b>algorithmic thinking</b>.
 </p>
