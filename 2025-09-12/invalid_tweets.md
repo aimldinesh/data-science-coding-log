@@ -37,7 +37,7 @@ Write an SQL query to find the `tweet_id` of invalid tweets.
 SELECT tweet_id
 FROM Tweets
 WHERE LENGTH(content) > 15;
-
+```
 ---
 
 ## 🔍 Explanation
