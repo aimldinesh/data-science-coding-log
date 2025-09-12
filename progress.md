@@ -119,3 +119,4 @@
 | 2025-09-12 | [Recyclable and Low Fat Products](./2025-09-12/recyclable_and_low_fat_products.md) | LeetCode | 🟢 Easy | SQL |
 | 2025-09-12 | [Find Customer Referee](./2025-09-12/find_customer_referee.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-12 | [Big Countries](./2025-09-12/big_countries.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-12 | [Article Views I](./2025-09-12/article_views_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
