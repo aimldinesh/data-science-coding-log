@@ -26,13 +26,13 @@ Return the result table in **any order**.
 
 ---
 
-## 🚀 My Approach
+## 🚀 Approach
 - We need all customers where `referee_id != 2` **or** `referee_id IS NULL` (not referred by anyone).  
 - Use a `WHERE` condition with `<>` for not equal, and handle `NULL` explicitly.  
 
 ---
 
-## 💻 Code (Python)
+## 💻 Query
 
 ```sql
 SELECT name
