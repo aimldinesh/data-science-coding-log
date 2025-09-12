@@ -27,7 +27,7 @@ Return the result table in **any order**.
 
 ---
 
-## 🚀 My Approach
+## 🚀 Approach
 - The table `Products` has information about each product with two binary attributes:  
   - `low_fats` (`'Y'`/`'N'`)  
   - `recyclable` (`'Y'`/`'N'`)  
@@ -36,7 +36,7 @@ Return the result table in **any order**.
 
 ---
 
-## 💻 Code (Python)
+## 💻 Query
 
 ```sql
 SELECT product_id
