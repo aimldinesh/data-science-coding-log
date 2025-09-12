@@ -117,3 +117,4 @@
 | 2025-07-02 | [Delete Node in a BST](./2025-07-02/delete_node_in_a_bst.md) | LeetCode | 🟡 Medium | Binary Tree, Recusion, Tree |
 | 2025-07-03 | [Lowest Common Ancestor of a Binary Search Tree](./2025-07-03/lowest_common_ancestor_of_a_binary_search_tree.md) | LeetCode | 🟡 Medium | Tree, Binary Search Tree, DFS |
 | 2025-09-12 | [Recyclable and Low Fat Products](./2025-09-12/recyclable_and_low_fat_products.md) | LeetCode | 🟢 Easy | SQL |
+| 2025-09-12 | [Find Customer Referee](./2025-09-12/find_customer_referee.md) | LeetCode | 🟢 Easy | MySQL, Database |
