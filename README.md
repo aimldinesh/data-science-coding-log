@@ -42,9 +42,9 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **8**
-- 🗖️ Problems solved this month: **31**
-- 📌 Current daily streak: **87 days**
+- ✅ Problems solved this week: **1**
+- 🗖️ Problems solved this month: **1**
+- 📌 Current daily streak: **1 days**
 - 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **Sorting** (12), **String** (12)
 
 <!-- STATS_END -->
@@ -176,6 +176,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-07-01 | [Subtree of Another Tree](./2025-07-01/subtree_of_another_tree.md) | LeetCode | 🟢 Easy | Tree, Recursion, DFS |
 | 2025-07-02 | [Delete Node in a BST](./2025-07-02/delete_node_in_a_bst.md) | LeetCode | 🟡 Medium | Binary Tree, Recusion, Tree |
 | 2025-07-03 | [Lowest Common Ancestor of a Binary Search Tree](./2025-07-03/lowest_common_ancestor_of_a_binary_search_tree.md) | LeetCode | 🟡 Medium | Tree, Binary Search Tree, DFS |
+| 2025-09-12 | [Recyclable and Low Fat Products](./2025-09-12/recyclable_and_low_fat_products.md) | LeetCode | 🟢 Easy | SQL |
 
 <!-- PROBLEM_TABLE_END -->
 
