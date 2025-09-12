@@ -32,7 +32,7 @@ Write an SQL query to output the `name`, `population`, and `area` of the big cou
 
 ---
 
-## 🚀 My Approach
+## 🚀 Approach
  Apply a filter using `WHERE` with an `OR` condition:  
   - `area >= 3000000`  
   - `population >= 25000000`  
@@ -40,7 +40,7 @@ Write an SQL query to output the `name`, `population`, and `area` of the big cou
 
 ---
 
-## 💻 Code (Python)
+## 💻 Query
 
 ```sql
 SELECT name, population, area
