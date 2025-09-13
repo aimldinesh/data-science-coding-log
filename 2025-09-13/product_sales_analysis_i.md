@@ -53,10 +53,8 @@ JOIN Product p
 ```
 ### 🔍 Explanation
 
-JOIN Product p ON s.product_id = p.product_id → links sales with product names.
-
-SELECT p.product_name, s.year, s.price → fetches required columns.
-
-No filtering needed since all sales are valid.
+- JOIN Product p ON s.product_id = p.product_id → links sales with product names.
+- SELECT p.product_name, s.year, s.price → fetches required columns.
+- No filtering needed since all sales are valid.
 
 ✅ Simple join query combining two tables.
