@@ -121,3 +121,4 @@
 | 2025-09-12 | [Big Countries](./2025-09-12/big_countries.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-12 | [Article Views I](./2025-09-12/article_views_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-12 | [Invalid Tweets](./2025-09-12/invalid_tweets.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-13 | [Replace Employee ID With The Unique Identifier](./2025-09-13/replace_employee_id_with_the_unique_identifier.md) | LeetCode | 🟢 Easy | MySQL, Database |
