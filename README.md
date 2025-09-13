@@ -42,8 +42,8 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **6**
-- 🗖️ Problems solved this month: **6**
+- ✅ Problems solved this week: **7**
+- 🗖️ Problems solved this month: **7**
 - 📌 Current daily streak: **2 days**
 - 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **Sorting** (12), **String** (12)
 
@@ -182,6 +182,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-12 | [Article Views I](./2025-09-12/article_views_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-12 | [Invalid Tweets](./2025-09-12/invalid_tweets.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-13 | [Replace Employee ID With The Unique Identifier](./2025-09-13/replace_employee_id_with_the_unique_identifier.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-13 | [Product Sales Analysis I](./2025-09-13/product_sales_analysis_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
 
 <!-- PROBLEM_TABLE_END -->
 
