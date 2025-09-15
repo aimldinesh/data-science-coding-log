@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **13**
-- 🗖️ Problems solved this month: **13**
+- ✅ Problems solved this week: **14**
+- 🗖️ Problems solved this month: **14**
 - 📌 Current daily streak: **4 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **Sorting** (12), **String** (12)
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **MySQL** (13), **Database** (13)
 
 <!-- STATS_END -->
 
@@ -189,6 +189,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-15 | [Employee Bonus](./2025-09-15/employee_bonus.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-15 | [Students and Examinations](./2025-09-15/students_and_examinations.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-15 | [Managers with at Least 5 Direct Reports](./2025-09-15/managers_with_at_least_5_direct_reports.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-15 | [Confirmation Rate](./2025-09-15/confirmation_rate.md) | LeetCode | 🟢 Easy | MySQL, Database |
 
 <!-- PROBLEM_TABLE_END -->
 
