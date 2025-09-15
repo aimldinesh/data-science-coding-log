@@ -128,3 +128,4 @@
 | 2025-09-14 | [Average Time of Process per Machine](./2025-09-14/average_time_of_process_per_machine.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-15 | [Employee Bonus](./2025-09-15/employee_bonus.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-15 | [Students and Examinations](./2025-09-15/students_and_examinations.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-15 | [Managers with at Least 5 Direct Reports](./2025-09-15/managers_with_at_least_5_direct_reports.md) | LeetCode | 🟢 Easy | MySQL, Database |
