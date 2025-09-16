@@ -130,3 +130,4 @@
 | 2025-09-15 | [Students and Examinations](./2025-09-15/students_and_examinations.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-15 | [Managers with at Least 5 Direct Reports](./2025-09-15/managers_with_at_least_5_direct_reports.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-15 | [Confirmation Rate](./2025-09-15/confirmation_rate.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-16 | [Not Boring Movies](./2025-09-16/not_boring_movies.md) | LeetCode | 🟢 Easy | MySQL, Database |
