@@ -133,3 +133,4 @@
 | 2025-09-16 | [Not Boring Movies](./2025-09-16/not_boring_movies.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-16 | [Average Selling Price](./2025-09-16/average_selling_price.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-17 | [Project Employees I](./2025-09-17/project_employees_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-17 | [Percentage of Users Attended a Contest](./2025-09-17/percentage_of_users_attended_a_contest.md) | LeetCode | 🟢 Easy | MySQL, Database |
