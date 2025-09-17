@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **18**
-- 🗖️ Problems solved this month: **18**
+- ✅ Problems solved this week: **19**
+- 🗖️ Problems solved this month: **19**
 - 📌 Current daily streak: **6 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **MySQL** (17), **Database** (17)
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **MySQL** (18), **Database** (18)
 
 <!-- STATS_END -->
 
@@ -194,6 +194,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-16 | [Average Selling Price](./2025-09-16/average_selling_price.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-17 | [Project Employees I](./2025-09-17/project_employees_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-17 | [Percentage of Users Attended a Contest](./2025-09-17/percentage_of_users_attended_a_contest.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-17 | [Queries Quality and Percentage](./2025-09-17/queries_quality_and_percentage.md) | LeetCode | 🟢 Easy | MySQL, Database |
 
 <!-- PROBLEM_TABLE_END -->
 
