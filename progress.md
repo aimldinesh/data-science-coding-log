@@ -137,3 +137,4 @@
 | 2025-09-17 | [Queries Quality and Percentage](./2025-09-17/queries_quality_and_percentage.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-17 | [Monthly Transactions I](./2025-09-17/monthly_transactions_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-17 | [Immediate Food Delivery II](./2025-09-17/immediate_food_delivery_ii.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-17 | [Game Play Analysis IV](./2025-09-17/game_play_analysis_iv.md) | LeetCode | 🟢 Easy | MySQL, Database |
