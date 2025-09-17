@@ -132,3 +132,4 @@
 | 2025-09-15 | [Confirmation Rate](./2025-09-15/confirmation_rate.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-16 | [Not Boring Movies](./2025-09-16/not_boring_movies.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-16 | [Average Selling Price](./2025-09-16/average_selling_price.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-17 | [Project Employees I](./2025-09-17/project_employees_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
