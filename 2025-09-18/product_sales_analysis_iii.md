@@ -91,12 +91,12 @@ AND s.year = t.first_year;
 ## Query Explanation
 
 - The subquery:finds the earliest year for each product.
-  ```sql
-  SELECT product_id, MIN(year) AS first_year
-  FROM Sales
-  GROUP BY product_id
- ```
----
+```sql
+   SELECT product_id, MIN(year) AS first_year
+   FROM Sales
+   GROUP BY product_id
+```
+
 - The main query:
   - Joins the subquery result with Sales (s) on product_id and matching first_year.
   - Ensures we only return sales rows from the first year of that product.
