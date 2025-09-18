@@ -96,6 +96,7 @@ AND s.year = t.first_year;
   FROM Sales
   GROUP BY product_id
  ```
+---
 - The main query:
   - Joins the subquery result with Sales (s) on product_id and matching first_year.
   - Ensures we only return sales rows from the first year of that product.
