@@ -139,3 +139,4 @@
 | 2025-09-17 | [Immediate Food Delivery II](./2025-09-17/immediate_food_delivery_ii.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-17 | [Game Play Analysis IV](./2025-09-17/game_play_analysis_iv.md) | LeetCode | 🟢 Easy | MySQL, Database |
 | 2025-09-18 | [Number of Unique Subjects Taught by Each Teacher](./2025-09-18/number_of_unique_subjects_taught_by_each_teacher.md) | LeetCode | 🟢 Easy | MySQL, Database |
+| 2025-09-18 | [User Activity for the Past 30 Days I](./2025-09-18/user_activity_for_the_past_30_days_i.md) | LeetCode | 🟢 Easy | MySQL, Database |
