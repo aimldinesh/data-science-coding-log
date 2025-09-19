@@ -143,3 +143,4 @@
 | 2025-09-18 | [Product Sales Analysis III](./2025-09-18/product_sales_analysis_iii.md) | LeetCode | 🟡 Medium | MySQL, Database, Sorting, Grouping |
 | 2025-09-18 | [Classes With at Least 5 Students](./2025-09-18/classes_with_at_least_5_students.md) | LeetCode | 🟢 Easy | MySQL,Sorting, Grouping |
 | 2025-09-18 | [Find Followers Count](./2025-09-18/find_followers_count.md) | LeetCode | 🟢 Easy | MySQL, Database, Sorting, Grouping |
+| 2025-09-19 | [Biggest Single Number](./2025-09-19/biggest_single_number.md) | LeetCode | 🟢 Easy | MySQL, Database, Sorting, Grouping |
