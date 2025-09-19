@@ -144,3 +144,4 @@
 | 2025-09-18 | [Classes With at Least 5 Students](./2025-09-18/classes_with_at_least_5_students.md) | LeetCode | 🟢 Easy | MySQL,Sorting, Grouping |
 | 2025-09-18 | [Find Followers Count](./2025-09-18/find_followers_count.md) | LeetCode | 🟢 Easy | MySQL, Database, Sorting, Grouping |
 | 2025-09-19 | [Biggest Single Number](./2025-09-19/biggest_single_number.md) | LeetCode | 🟢 Easy | MySQL, Database, Sorting, Grouping |
+| 2025-09-19 | [Customers Who Bought All Products](./2025-09-19/customers_who_bought_all_products.md) | LeetCode | 🟡 Medium | MySQL, Database, Sorting, Grouping |
