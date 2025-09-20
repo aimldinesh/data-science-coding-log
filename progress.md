@@ -145,3 +145,4 @@
 | 2025-09-18 | [Find Followers Count](./2025-09-18/find_followers_count.md) | LeetCode | 🟢 Easy | MySQL, Database, Sorting, Grouping |
 | 2025-09-19 | [Biggest Single Number](./2025-09-19/biggest_single_number.md) | LeetCode | 🟢 Easy | MySQL, Database, Sorting, Grouping |
 | 2025-09-19 | [Customers Who Bought All Products](./2025-09-19/customers_who_bought_all_products.md) | LeetCode | 🟡 Medium | MySQL, Database, Sorting, Grouping |
+| 2025-09-20 | [The Number of Employees Which Report to Each Employee](./2025-09-20/the_number_of_employees_which_report_to_each_employee.md) | LeetCode | 🟢 Easy | MySQL, Database, select, joins |
