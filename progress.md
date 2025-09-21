@@ -150,3 +150,4 @@
 | 2025-09-20 | [Triangle Judgement](./2025-09-20/triangle_judgement.md) | LeetCode | 🟢 Easy | MySQL, Database, triangle, Math |
 | 2025-09-21 | [Consecutive Numbers](./2025-09-21/consecutive_numbers.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |
 | 2025-09-21 | [Product Price at a Given Date](./2025-09-21/product_price_at_a_given_date.md) | LeetCode | 🟡 Medium | MySQL, Database,Select, Joins |
+| 2025-09-21 | [Last Person to Fit in the Bus](./2025-09-21/last_person_to_fit_in_the_bus.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |

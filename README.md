@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **26**
-- 🗖️ Problems solved this month: **34**
+- ✅ Problems solved this week: **27**
+- 🗖️ Problems solved this month: **35**
 - 📌 Current daily streak: **10 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **MySQL** (33), **Database** (33)
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **MySQL** (34), **Database** (34)
 
 <!-- STATS_END -->
 
@@ -210,6 +210,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-20 | [Triangle Judgement](./2025-09-20/triangle_judgement.md) | LeetCode | 🟢 Easy | MySQL, Database, triangle, Math |
 | 2025-09-21 | [Consecutive Numbers](./2025-09-21/consecutive_numbers.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |
 | 2025-09-21 | [Product Price at a Given Date](./2025-09-21/product_price_at_a_given_date.md) | LeetCode | 🟡 Medium | MySQL, Database,Select, Joins |
+| 2025-09-21 | [Last Person to Fit in the Bus](./2025-09-21/last_person_to_fit_in_the_bus.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |
 
 <!-- PROBLEM_TABLE_END -->
 
