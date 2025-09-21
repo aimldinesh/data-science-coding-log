@@ -148,3 +148,4 @@
 | 2025-09-20 | [The Number of Employees Which Report to Each Employee](./2025-09-20/the_number_of_employees_which_report_to_each_employee.md) | LeetCode | 🟢 Easy | MySQL, Database, select, joins |
 | 2025-09-20 | [Primary Department for Each Employee](./2025-09-20/primary_department_for_each_employee.md) | LeetCode | 🟢 Easy | MySQL, Database, Select, Joins |
 | 2025-09-20 | [Triangle Judgement](./2025-09-20/triangle_judgement.md) | LeetCode | 🟢 Easy | MySQL, Database, triangle, Math |
+| 2025-09-21 | [Consecutive Numbers](./2025-09-21/consecutive_numbers.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |

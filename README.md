@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **27**
-- 🗖️ Problems solved this month: **32**
-- 📌 Current daily streak: **9 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **MySQL** (31), **Database** (31)
+- ✅ Problems solved this week: **25**
+- 🗖️ Problems solved this month: **33**
+- 📌 Current daily streak: **10 days**
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **MySQL** (32), **Database** (32)
 
 <!-- STATS_END -->
 
@@ -208,6 +208,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-20 | [The Number of Employees Which Report to Each Employee](./2025-09-20/the_number_of_employees_which_report_to_each_employee.md) | LeetCode | 🟢 Easy | MySQL, Database, select, joins |
 | 2025-09-20 | [Primary Department for Each Employee](./2025-09-20/primary_department_for_each_employee.md) | LeetCode | 🟢 Easy | MySQL, Database, Select, Joins |
 | 2025-09-20 | [Triangle Judgement](./2025-09-20/triangle_judgement.md) | LeetCode | 🟢 Easy | MySQL, Database, triangle, Math |
+| 2025-09-21 | [Consecutive Numbers](./2025-09-21/consecutive_numbers.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |
 
 <!-- PROBLEM_TABLE_END -->
 
