@@ -153,3 +153,4 @@
 | 2025-09-21 | [Last Person to Fit in the Bus](./2025-09-21/last_person_to_fit_in_the_bus.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |
 | 2025-09-21 | [Count Salary Categories](./2025-09-21/count_salary_categories.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |
 | 2025-09-23 | [Employees Whose Manager Left the Company](./2025-09-23/employees_whose_manager_left_the_company.md) | LeetCode | 🟢 Easy | MySQL, Database, Subquries |
+| 2025-09-23 | [Exchange Seats](./2025-09-23/exchange_seats.md) | LeetCode | 🟡 Medium | MySQL, Database, Subquries |
