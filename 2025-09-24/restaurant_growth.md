@@ -67,6 +67,7 @@ GROUP BY visited_on
 ```sql
 ON b.visited_on BETWEEN DATE_SUB(a.visited_on, INTERVAL 6 DAY) AND a.visited_on
 ```
+
 3.SUM(b.amount) → total spending in the 7-day window.
 4.ROUND(SUM(b.amount)/7,2) → average spending in the 7-day window.
 5.HAVING COUNT(b.visited_on) = 7 ensures we only include complete 7-day windows.
