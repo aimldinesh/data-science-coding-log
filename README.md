@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **29**
-- 🗖️ Problems solved this month: **45**
+- ✅ Problems solved this week: **30**
+- 🗖️ Problems solved this month: **46**
 - 📌 Current daily streak: **2 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **MySQL** (44), **Database** (44), **Binary Search** (41)
+- 🏷️ Most frequent tags: **Array** (66), **MySQL** (45), **Database** (45), **DSA** (44), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -221,6 +221,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-24 | [Fix Names in a Table](./2025-09-24/fix_names_in_a_table.md) | LeetCode | 🟢 Easy | MySQL, Database, String, Regex |
 | 2025-09-24 | [Patients With a Condition](./2025-09-24/patients_with_a_condition.md) | LeetCode | 🟢 Easy | MySQL, Database, String, Clause |
 | 2025-09-24 | [Delete Duplicate Emails](./2025-09-24/delete_duplicate_emails.md) | LeetCode | 🟢 Easy | MySQL, Database, self-join |
+| 2025-09-24 | [Second Highest Salary](./2025-09-24/second_highest_salary.md) | LeetCode | 🟡 Medium | MySQL, Database, Findow Function, Subqueries |
 
 <!-- PROBLEM_TABLE_END -->
 

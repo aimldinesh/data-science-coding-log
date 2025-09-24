@@ -161,3 +161,4 @@
 | 2025-09-24 | [Fix Names in a Table](./2025-09-24/fix_names_in_a_table.md) | LeetCode | 🟢 Easy | MySQL, Database, String, Regex |
 | 2025-09-24 | [Patients With a Condition](./2025-09-24/patients_with_a_condition.md) | LeetCode | 🟢 Easy | MySQL, Database, String, Clause |
 | 2025-09-24 | [Delete Duplicate Emails](./2025-09-24/delete_duplicate_emails.md) | LeetCode | 🟢 Easy | MySQL, Database, self-join |
+| 2025-09-24 | [Second Highest Salary](./2025-09-24/second_highest_salary.md) | LeetCode | 🟡 Medium | MySQL, Database, Findow Function, Subqueries |
