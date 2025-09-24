@@ -154,3 +154,4 @@
 | 2025-09-21 | [Count Salary Categories](./2025-09-21/count_salary_categories.md) | LeetCode | 🟡 Medium | MySQL, Database, Select, Joins |
 | 2025-09-23 | [Employees Whose Manager Left the Company](./2025-09-23/employees_whose_manager_left_the_company.md) | LeetCode | 🟢 Easy | MySQL, Database, Subquries |
 | 2025-09-23 | [Exchange Seats](./2025-09-23/exchange_seats.md) | LeetCode | 🟡 Medium | MySQL, Database, Subquries |
+| 2025-09-24 | [Movie Rating](./2025-09-24/movie_rating.md) | LeetCode | 🟡 Medium | MySQL, Database |
