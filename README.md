@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **26**
-- 🗖️ Problems solved this month: **42**
+- ✅ Problems solved this week: **27**
+- 🗖️ Problems solved this month: **43**
 - 📌 Current daily streak: **2 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **Binary Search** (41), **MySQL** (41), **Database** (41)
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (44), **MySQL** (42), **Database** (42), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -218,6 +218,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-24 | [Restaurant Growth](./2025-09-24/restaurant_growth.md) | LeetCode | 🟡 Medium | MySQL, Database, self-joins, window function, cte |
 | 2025-09-24 | [Friend Requests II Who Has the Most Friendso](./2025-09-24/friend_requests_ii_who_has_the_most_friendso.md) | LeetCode | 🟡 Medium | MySQL, Database, CTE, Subquries |
 | 2025-09-24 | [Investments in 2016](./2025-09-24/investments_in_2016.md) | LeetCode | 🟡 Medium | MySQL, Database, Subquries |
+| 2025-09-24 | [Fix Names in a Table](./2025-09-24/fix_names_in_a_table.md) | LeetCode | 🟢 Easy | MySQL, Database, String, Regex |
 
 <!-- PROBLEM_TABLE_END -->
 
