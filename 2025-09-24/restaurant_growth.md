@@ -56,22 +56,21 @@ ORDER BY a.visited_on;
 ---
 
 ## Query Explanation
-
-1.Daily CTE: Summarizes all spending per day.
+- Daily CTE: Summarizes all spending per day.
 ```sql
 SELECT visited_on, SUM(amount) AS amount
 FROM Customer
 GROUP BY visited_on
 ```
-2.Self-Join: For each date a.visited_on, join with all rows b within the last 7 days.
+- Self-Join: For each date a.visited_on, join with all rows b within the last 7 days.
 ```sql
 ON b.visited_on BETWEEN DATE_SUB(a.visited_on, INTERVAL 6 DAY) AND a.visited_on
 ```
 
-3.SUM(b.amount) → total spending in the 7-day window.
-4.ROUND(SUM(b.amount)/7,2) → average spending in the 7-day window.
-5.HAVING COUNT(b.visited_on) = 7 ensures we only include complete 7-day windows.
-6.ORDER BY a.visited_on gives ascending chronological order.
+- SUM(b.amount) → total spending in the 7-day window.
+- ROUND(SUM(b.amount)/7,2) → average spending in the 7-day window.
+- HAVING COUNT(b.visited_on) = 7 ensures we only include complete 7-day windows.
+- ORDER BY a.visited_on gives ascending chronological order.
 
 ---
 ## Approach2(using window function)
