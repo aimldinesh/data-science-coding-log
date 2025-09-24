@@ -20,7 +20,7 @@ We need to query the **second highest distinct salary** from the `Employee` tabl
 | id          | int  |
 | salary      | int  |
 +-------------+------+
-
+```
 - id is the primary key (column with unique values).
 - Each row of this table contains information about the salary of an employee.
 
