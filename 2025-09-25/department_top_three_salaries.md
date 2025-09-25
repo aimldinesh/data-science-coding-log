@@ -8,8 +8,6 @@
 
 ---
 
-# 185. Department Top Three Salaries
-
 ## 📌 Problem  
 We are given two tables:
 
@@ -70,6 +68,7 @@ Find the employees who are **high earners** in each department.
 | 6  | Randy | 85000  | 1            |
 | 7  | Will  | 70000  | 1            |
 +----+-------+--------+--------------+
+
 **Department table:**
 +----+-------+
 | id | name  |
@@ -77,6 +76,7 @@ Find the employees who are **high earners** in each department.
 | 1  | IT    |
 | 2  | Sales |
 +----+-------+
+
 **Output:**
 +------------+----------+--------+
 | Department | Employee | Salary |
@@ -88,6 +88,7 @@ Find the employees who are **high earners** in each department.
 | Sales      | Henry    | 80000  |
 | Sales      | Sam      | 60000  |
 +------------+----------+--------+
+
 **Explanation:** 
 - In the IT department:
   - Max earns the highest unique salary
