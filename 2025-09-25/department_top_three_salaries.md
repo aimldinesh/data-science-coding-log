@@ -63,7 +63,7 @@ Find the employees who are **high earners** in each department.
 ```
 
 **Department table:**
-``text
+```text
 +----+-------+
 | id | name  |
 +----+-------+
