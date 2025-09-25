@@ -163,3 +163,4 @@
 | 2025-09-24 | [Delete Duplicate Emails](./2025-09-24/delete_duplicate_emails.md) | LeetCode | 🟢 Easy | MySQL, Database, self-join |
 | 2025-09-24 | [Second Highest Salary](./2025-09-24/second_highest_salary.md) | LeetCode | 🟡 Medium | MySQL, Database, Findow Function, Subqueries |
 | 2025-09-25 | [Group Sold Products By The Date](./2025-09-25/group_sold_products_by_the_date.md) | LeetCode | 🟢 Easy | MySQL, Database, String |
+| 2025-09-25 | [List the Products Ordered in a Period](./2025-09-25/list_the_products_ordered_in_a_period.md) | LeetCode | 🟢 Easy | MySQL, Database, Joins |
