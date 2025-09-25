@@ -162,3 +162,4 @@
 | 2025-09-24 | [Patients With a Condition](./2025-09-24/patients_with_a_condition.md) | LeetCode | 🟢 Easy | MySQL, Database, String, Clause |
 | 2025-09-24 | [Delete Duplicate Emails](./2025-09-24/delete_duplicate_emails.md) | LeetCode | 🟢 Easy | MySQL, Database, self-join |
 | 2025-09-24 | [Second Highest Salary](./2025-09-24/second_highest_salary.md) | LeetCode | 🟡 Medium | MySQL, Database, Findow Function, Subqueries |
+| 2025-09-25 | [Group Sold Products By The Date](./2025-09-25/group_sold_products_by_the_date.md) | LeetCode | 🟢 Easy | MySQL, Database, String |
