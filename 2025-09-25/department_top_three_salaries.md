@@ -44,19 +44,11 @@ Find the employees who are **high earners** in each department.
 
 ---
 
-## 🧠 Approach  
-
-1. **Join Employee with Department** → so we can return department names.  
-2. Use `DENSE_RANK()` (not `ROW_NUMBER()`) over `(departmentId ORDER BY salary DESC)` to assign a salary rank **within each department**.  
-   - `DENSE_RANK()` ensures that if multiple employees share the same salary, they get the same rank.  
-   - Example: if two employees earn the same highest salary, both get rank 1, and the next salary gets rank 2.  
-3. Filter results where the salary rank ≤ 3 (top 3 salaries only).  
-
----
 ## Example 1:
 
 **Input:** 
 **Employee table:**
+```text
 +----+-------+--------+--------------+
 | id | name  | salary | departmentId |
 +----+-------+--------+--------------+
@@ -68,16 +60,20 @@ Find the employees who are **high earners** in each department.
 | 6  | Randy | 85000  | 1            |
 | 7  | Will  | 70000  | 1            |
 +----+-------+--------+--------------+
+```
 
 **Department table:**
+``text
 +----+-------+
 | id | name  |
 +----+-------+
 | 1  | IT    |
 | 2  | Sales |
 +----+-------+
+```
 
 **Output:**
+```text
 +------------+----------+--------+
 | Department | Employee | Salary |
 +------------+----------+--------+
@@ -88,6 +84,7 @@ Find the employees who are **high earners** in each department.
 | Sales      | Henry    | 80000  |
 | Sales      | Sam      | 60000  |
 +------------+----------+--------+
+```
 
 **Explanation:** 
 - In the IT department:
@@ -99,6 +96,16 @@ Find the employees who are **high earners** in each department.
   - Henry earns the highest salary
   - Sam earns the second-highest salary
   - There is no third-highest salary as there are only two employees
+
+## 🧠 Approach  
+
+1. **Join Employee with Department** → so we can return department names.  
+2. Use `DENSE_RANK()` (not `ROW_NUMBER()`) over `(departmentId ORDER BY salary DESC)` to assign a salary rank **within each department**.  
+   - `DENSE_RANK()` ensures that if multiple employees share the same salary, they get the same rank.  
+   - Example: if two employees earn the same highest salary, both get rank 1, and the next salary gets rank 2.  
+3. Filter results where the salary rank ≤ 3 (top 3 salaries only).  
+
+
 ---
 
 ## ✅ SQL Query  
