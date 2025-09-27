@@ -78,7 +78,7 @@ SELECT (
 
 --- 
 
-### Explanation:
+### Query Explanation:
 
 - DISTINCT salary → removes duplicates.
 - ORDER BY salary DESC → sorts salaries from highest to lowest.
@@ -98,7 +98,7 @@ WHERE rnk = 2;
 ```
 ---
 
-### Explanation:
+### Query Explanation:
 
 - DENSE_RANK() assigns ranks starting from highest salary.
 - Rank 1 = highest salary, Rank 2 = second highest.
@@ -119,7 +119,7 @@ WHERE salary < (
 
 ---
 
-### Explanation:
+### Query Explanation:
 
 - First find the highest salary.
 - Then select the maximum salary that is less than the highest salary.
