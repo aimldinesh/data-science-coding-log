@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **28**
-- 🗖️ Problems solved this month: **50**
-- 📌 Current daily streak: **3 days**
-- 🏷️ Most frequent tags: **Array** (66), **MySQL** (49), **Database** (49), **DSA** (44), **Binary Search** (41)
+- ✅ Problems solved this week: **22**
+- 🗖️ Problems solved this month: **51**
+- 📌 Current daily streak: **1 days**
+- 🏷️ Most frequent tags: **Array** (66), **MySQL** (49), **Database** (49), **DSA** (45), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -226,6 +226,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-25 | [List the Products Ordered in a Period](./2025-09-25/list_the_products_ordered_in_a_period.md) | LeetCode | 🟢 Easy | MySQL, Database, Joins |
 | 2025-09-25 | [Find Users With Valid E-Mails](./2025-09-25/find_users_with_valid_e-mails.md) | LeetCode | 🟢 Easy | MySQL, Database, Regex, String |
 | 2025-09-25 | [Department Top Three Salaries](./2025-09-25/department_top_three_salaries.md) | LeetCode | 🔴 Hard | MySQL, Database, Window Function, Joins |
+| 2025-09-27 | [Transpose Matrix](./2025-09-27/transpose_matrix.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 
 <!-- PROBLEM_TABLE_END -->
 
