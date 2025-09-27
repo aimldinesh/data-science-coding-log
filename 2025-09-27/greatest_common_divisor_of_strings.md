@@ -96,3 +96,39 @@ str2 = "ABC"
 - **Space**: O(n + m)
     - For temporary string constructions during prefix checks.
 
+---
+
+## 💡 Optimized Approach (Using Math GCD)
+1. Check if `str1 + str2 == str2 + str1`:
+   - If not equal, no common divisor exists → return `""`.
+   - This ensures both strings are made of the same repeating pattern.
+2. Compute `g = gcd(len(str1), len(str2))`.
+   - The GCD string must have length `g`.
+3. Return the prefix `str1[:g]`.
+
+---
+
+## 🐍 Python Code
+
+```python
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        # Step 1: Check if both strings share the same repeated pattern
+        if str1 + str2 != str2 + str1:
+            return ""
+
+        # Step 2: Find GCD of lengths
+        g = gcd(len(str1), len(str2))
+
+        # Step 3: Return prefix of length g
+        return str1[:g]
+```
+---
+
+## 💡 Time and Space Complexity
+- **Time**: O(n + m)
+    - Concatenation check str1 + str2 == str2 + str1 takes O(n + m).
+    - GCD calculation is O(log(min(n, m))), negligible.
+
+- **Space**: O(1)
+    - Only storing variables, no extra structures.
