@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **23**
-- 🗖️ Problems solved this month: **55**
+- ✅ Problems solved this week: **24**
+- 🗖️ Problems solved this month: **56**
 - 📌 Current daily streak: **2 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (49), **MySQL** (49), **Database** (49), **Binary Search** (41)
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (50), **MySQL** (49), **Database** (49), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -231,6 +231,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-27 | [Greatest Common Divisor of Strings](./2025-09-27/greatest_common_divisor_of_strings.md) | LeetCode | 🟢 Easy | DSA, Math, String |
 | 2025-09-28 | [Matrix Diagonal Sum](./2025-09-28/matrix_diagonal_sum.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-28 | [Power of Four](./2025-09-28/power_of_four.md) | LeetCode | 🟢 Easy | DSA, Math |
+| 2025-09-28 | [Largest Odd Number in String](./2025-09-28/largest_odd_number_in_string.md) | LeetCode | 🟢 Easy | DSA, Math |
 
 <!-- PROBLEM_TABLE_END -->
 

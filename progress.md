@@ -171,3 +171,4 @@
 | 2025-09-27 | [Greatest Common Divisor of Strings](./2025-09-27/greatest_common_divisor_of_strings.md) | LeetCode | 🟢 Easy | DSA, Math, String |
 | 2025-09-28 | [Matrix Diagonal Sum](./2025-09-28/matrix_diagonal_sum.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-28 | [Power of Four](./2025-09-28/power_of_four.md) | LeetCode | 🟢 Easy | DSA, Math |
+| 2025-09-28 | [Largest Odd Number in String](./2025-09-28/largest_odd_number_in_string.md) | LeetCode | 🟢 Easy | DSA, Math |
