@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **27**
-- 🗖️ Problems solved this month: **59**
+- ✅ Problems solved this week: **28**
+- 🗖️ Problems solved this month: **60**
 - 📌 Current daily streak: **2 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (53), **MySQL** (49), **Database** (49), **Binary Search** (41)
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (54), **MySQL** (49), **Database** (49), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -235,6 +235,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-28 | [Largest Local Values in a Matrix](./2025-09-28/largest_local_values_in_a_matrix.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-28 | [Convert 1D Array Into 2D Array](./2025-09-28/convert_1d_array_into_2d_array.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-28 | [Ugly Number](./2025-09-28/ugly_number.md) | LeetCode | 🟢 Easy | DSA, Math |
+| 2025-09-28 | [Sum of Square Numbers](./2025-09-28/sum_of_square_numbers.md) | LeetCode | 🟡 Medium | DSA, Math |
 
 <!-- PROBLEM_TABLE_END -->
 
