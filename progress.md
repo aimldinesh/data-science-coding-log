@@ -169,3 +169,4 @@
 | 2025-09-27 | [Transpose Matrix](./2025-09-27/transpose_matrix.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-27 | [Excel Sheet Column Title](./2025-09-27/excel_sheet_column_title.md) | LeetCode | 🟢 Easy | DSA, Math, String |
 | 2025-09-27 | [Greatest Common Divisor of Strings](./2025-09-27/greatest_common_divisor_of_strings.md) | LeetCode | 🟢 Easy | DSA, Math, String |
+| 2025-09-28 | [Matrix Diagonal Sum](./2025-09-28/matrix_diagonal_sum.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
