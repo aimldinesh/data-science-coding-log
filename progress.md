@@ -176,3 +176,4 @@
 | 2025-09-28 | [Convert 1D Array Into 2D Array](./2025-09-28/convert_1d_array_into_2d_array.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-28 | [Ugly Number](./2025-09-28/ugly_number.md) | LeetCode | 🟢 Easy | DSA, Math |
 | 2025-09-28 | [Sum of Square Numbers](./2025-09-28/sum_of_square_numbers.md) | LeetCode | 🟡 Medium | DSA, Math |
+| 2025-09-28 | [Spiral Matrix II](./2025-09-28/spiral_matrix_ii.md) | LeetCode | 🟡 Medium | DSA, Math, Matrix, Two Pointer |
