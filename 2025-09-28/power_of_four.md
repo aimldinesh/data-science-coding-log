@@ -103,3 +103,27 @@ class Solution:
 ## 💡 Time and Space Complexity
 - **Time**: O(log4​^n)
 - **Space**: O(1)
+
+---
+
+3️⃣ Math / Logarithm Approach
+
+- Check positivity
+  - If n <= 0, return False.
+
+- Logarithm Check
+  - Take logarithm of n base 4.
+  - If the result is an integer, n is a power of 4.
+
+---
+
+## Code:
+```python
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n > 0 and log(n, 4) % 1 == 0
+```
+---
+## 💡 Time and Space Complexity
+- **Time**: O(1)
+- **Space**: O(1)
