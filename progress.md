@@ -180,3 +180,4 @@
 | 2025-09-28 | [Spiral Matrix III](./2025-09-28/spiral_matrix_iii.md) | LeetCode | 🟡 Medium | DSA, Math, Matrix |
 | 2025-09-29 | [Count of Matches in Tournament](./2025-09-29/count_of_matches_in_tournament.md) | LeetCode | 🟢 Easy | DSA, Math |
 | 2025-09-29 | [Lucky Numbers in a Matrix](./2025-09-29/lucky_numbers_in_a_matrix.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
+| 2025-09-29 | [Check if Number is a Sum of Powers of Three](./2025-09-29/check_if_number_is_a_sum_of_powers_of_three.md) | LeetCode | 🟡 Medium | DSA, Math |
