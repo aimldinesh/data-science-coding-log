@@ -178,3 +178,4 @@
 | 2025-09-28 | [Sum of Square Numbers](./2025-09-28/sum_of_square_numbers.md) | LeetCode | 🟡 Medium | DSA, Math |
 | 2025-09-28 | [Spiral Matrix II](./2025-09-28/spiral_matrix_ii.md) | LeetCode | 🟡 Medium | DSA, Math, Matrix, Two Pointer |
 | 2025-09-28 | [Spiral Matrix III](./2025-09-28/spiral_matrix_iii.md) | LeetCode | 🟡 Medium | DSA, Math, Matrix |
+| 2025-09-29 | [Count of Matches in Tournament](./2025-09-29/count_of_matches_in_tournament.md) | LeetCode | 🟢 Easy | DSA, Math |
