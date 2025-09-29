@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **27**
-- 🗖️ Problems solved this month: **63**
+- ✅ Problems solved this week: **28**
+- 🗖️ Problems solved this month: **64**
 - 📌 Current daily streak: **3 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (57), **MySQL** (49), **Database** (49), **Binary Search** (41)
+- 🏷️ Most frequent tags: **Array** (66), **DSA** (58), **MySQL** (49), **Database** (49), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -239,6 +239,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-28 | [Spiral Matrix II](./2025-09-28/spiral_matrix_ii.md) | LeetCode | 🟡 Medium | DSA, Math, Matrix, Two Pointer |
 | 2025-09-28 | [Spiral Matrix III](./2025-09-28/spiral_matrix_iii.md) | LeetCode | 🟡 Medium | DSA, Math, Matrix |
 | 2025-09-29 | [Count of Matches in Tournament](./2025-09-29/count_of_matches_in_tournament.md) | LeetCode | 🟢 Easy | DSA, Math |
+| 2025-09-29 | [Lucky Numbers in a Matrix](./2025-09-29/lucky_numbers_in_a_matrix.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 
 <!-- PROBLEM_TABLE_END -->
 
