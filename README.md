@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **33**
-- 🗖️ Problems solved this month: **69**
+- ✅ Problems solved this week: **34**
+- 🗖️ Problems solved this month: **70**
 - 📌 Current daily streak: **4 days**
-- 🏷️ Most frequent tags: **Array** (66), **DSA** (63), **MySQL** (49), **Database** (49), **Binary Search** (41)
+- 🏷️ Most frequent tags: **Array** (67), **DSA** (64), **MySQL** (49), **Database** (49), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -245,6 +245,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-30 | [Score of a String](./2025-09-30/score_of_a_string.md) | LeetCode | 🟢 Easy | DSA, String |
 | 2025-09-30 | [Append Characters to String to Make Subsequence](./2025-09-30/append_characters_to_string_to_make_subsequence.md) | LeetCode | 🟡 Medium | DSA, String, Two Pointer |
 | 2025-09-30 | [Number of Senior Citizens](./2025-09-30/number_of_senior_citizens.md) | LeetCode | 🟢 Easy | DSA, String |
+| 2025-09-30 | [Max Consecutive Ones](./2025-09-30/max_consecutive_ones.md) | LeetCode | 🟢 Easy | DSA, Array, Math, Two Pointer |
 
 <!-- PROBLEM_TABLE_END -->
 
