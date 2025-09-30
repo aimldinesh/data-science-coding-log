@@ -183,3 +183,4 @@
 | 2025-09-29 | [Check if Number is a Sum of Powers of Three](./2025-09-29/check_if_number_is_a_sum_of_powers_of_three.md) | LeetCode | 🟡 Medium | DSA, Math |
 | 2025-09-29 | [Tuple with Same Product](./2025-09-29/tuple_with_same_product.md) | LeetCode | 🟡 Medium | DSA, Math |
 | 2025-09-30 | [Score of a String](./2025-09-30/score_of_a_string.md) | LeetCode | 🟢 Easy | DSA, String |
+| 2025-09-30 | [Append Characters to String to Make Subsequence](./2025-09-30/append_characters_to_string_to_make_subsequence.md) | LeetCode | 🟡 Medium | DSA, String, Two Pointer |
