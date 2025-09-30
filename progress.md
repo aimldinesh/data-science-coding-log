@@ -184,3 +184,4 @@
 | 2025-09-29 | [Tuple with Same Product](./2025-09-29/tuple_with_same_product.md) | LeetCode | 🟡 Medium | DSA, Math |
 | 2025-09-30 | [Score of a String](./2025-09-30/score_of_a_string.md) | LeetCode | 🟢 Easy | DSA, String |
 | 2025-09-30 | [Append Characters to String to Make Subsequence](./2025-09-30/append_characters_to_string_to_make_subsequence.md) | LeetCode | 🟡 Medium | DSA, String, Two Pointer |
+| 2025-09-30 | [Number of Senior Citizens](./2025-09-30/number_of_senior_citizens.md) | LeetCode | 🟢 Easy | DSA, String |
