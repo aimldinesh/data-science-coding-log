@@ -95,12 +95,14 @@ Input: nums = [4,5,6,7,0,1,2], target = 0
 - left = 0, right = 6, mid = 3 → nums[mid] = 7
 - Left half is sorted (nums[left]=4 <= nums[mid]=7)
 - Is target (0) in range [4..7]? ❌ No
+
 - → Move to right half: left = mid + 1 = 4
 
 🔁 Iteration 2:
 - left = 4, right = 6, mid = 5 → nums[mid] = 1
 - Right half is sorted (nums[mid]=1 <= nums[right]=2)
 - Is target (0) in range [1..2]? ❌ No
+
 - → Move to left half: right = mid - 1 = 4
 
 🔁 Iteration 3:
