@@ -18,10 +18,16 @@
 Example 1:
 Input: nums = [7,2,5,10,8], k = 2  
 Output: 18
+Explanation:
+We can split the array into two subarrays in multiple ways:
 
-Explanation:  
-Split the array into [7,2,5] and [10,8].  
-The largest sum among the subarrays is max(7+2+5, 10+8) = 18, which is the minimum possible.
+[7,2,5] and [10,8] → max sum = 18 ✅
+
+[7,2] and [5,10,8] → max sum = 23
+
+[7] and [2,5,10,8] → max sum = 25
+
+Minimum possible largest subarray sum = 18
 
 Example 2:
 Input: nums = [1,2,3,4,5], k = 2
