@@ -28,23 +28,43 @@
 ```python
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        # Initialize an empty dictionary to store sorted words as keys
+        # Initialize an empty dictionary to group anagrams
+        # Key → sorted version of the word (signature)
+        # Value → list of all words matching that signature
         dic = {}
 
-        # Iterate over each word in the input list
-        for words in strs:
-            # Sort the letters in the word to get the 'signature' of the anagram
-            sorted_words = "".join(sorted(words))
+        # Iterate through each word in the input list
+        for word in strs:
+            # Sort the letters in the word to form a signature
+            # Example: "eat" → "aet", "tea" → "aet"
+            sorted_word = "".join(sorted(word))
 
-            # If the sorted word (signature) is not in the dictionary, add it with the original word as a value
-            if sorted_words not in dic:
-                dic[sorted_words] = [words]
+            # If the signature doesn't exist, create a new entry
+            if sorted_word not in dic:
+                dic[sorted_word] = [word]
             else:
-                # If the signature already exists, append the current word to the list of anagrams
-                dic[sorted_words].append(words)
+                # If signature exists, append current word to the list
+                dic[sorted_word].append(word)
 
-        # Return all values (grouped anagrams)
+        # Return the grouped anagrams as a list of lists
         return list(dic.values())
+
+```
+---
+### 🧠 Step-by-Step Example
+```python
+Input: ["eat","tea","tan","ate","nat","bat"]
+
+Process:
+| Word  | Sorted | Dictionary State                                 |
+| ----- | ------ | ------------------------------------------------ |
+| "eat" | "aet"  | { "aet": ["eat"] }                               |
+| "tea" | "aet"  | { "aet": ["eat", "tea"] }                        |
+| "tan" | "ant"  | { "aet": [...], "ant": ["tan"] }                 |
+| "ate" | "aet"  | { "aet": ["eat", "tea", "ate"], "ant": ["tan"] } |
+| "nat" | "ant"  | { "aet": [...], "ant": ["tan","nat"] }           |
+| "bat" | "abt"  | { "aet": [...], "ant": [...], "abt": ["bat"] }   |
+
 ```
 
 ---
