@@ -72,3 +72,48 @@ Process:
 ## 💡 Time and Space Complexity
 - **Time**: O(n * klogk), Where n = number of strings, and k = max length of a string. Sorting each word takes O(k log k).
 - **Space**: O(nk), For storing the grouped anagrams in the dictionary.
+
+---
+
+## ⚙️ Approach 2: Character Count (Optimized)
+- Instead of sorting, we can use the frequency count of each letter (a-z) as a key.
+- This avoids the sorting overhead.
+
+Example:
+
+- "eat" → [1,0,0,0,1,0,...,1]
+- "tea" → [1,0,0,0,1,0,...,1]
+- → Same frequency tuple → same group.
+
+---
+
+### code 
+```python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        anagram_map = defaultdict(list)
+        
+        for word in strs:
+            # Initialize a 26-length list for character counts
+            count = [0] * 26
+            for c in word:
+                count[ord(c) - ord('a')] += 1
+            
+            # Use the tuple as a hashable key
+            anagram_map[tuple(count)].append(word)
+        
+        return list(anagram_map.values())
+```
+---
+## 💡 Time and Space Complexity
+- **Time**: O(N·M)
+- **Space**: O(N·M)
+
+---
+
+## 🧩 Comparison
+| Approach     | Technique           | Time        | Space  | Notes                 |
+| ------------ | ------------------- | ----------- | ------ | --------------------- |
+| 1️⃣ Sorting  | Sort word letters   | O(N·M·logM) | O(N·M) | Easier to understand  |
+| 2️⃣ Counting | Character frequency | O(N·M)      | O(N·M) | Faster for long words |
+
