@@ -120,6 +120,24 @@ class Solution:
         top_k_keys = [key for key, value in sorted_items[:k]]
         return top_k_keys
 ```
+---
+## 🧠 Example Walkthrough
+```python
+Input:
+nums = [1,1,2,2,2,3], k = 2
+
+Step 1 → Frequency Dictionary:
+freq = {1: 2, 2: 3, 3: 1}
+
+Step 2 → Sorted by frequency:
+sorted_items = [(2,3), (1,2), (3,1)]
+
+Step 3 → Take top k=2:
+top_k_keys = [2, 1]
+
+✅ Output: [2, 1]
+```
+---
 
 ### ⏳ Complexity Analysis
 - **Time Complexity**:  
