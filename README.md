@@ -117,7 +117,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-05-05 | [Best Time to Buy and Sell Stock II](./2025-05-05/best_time_to_buy_and_sell_stock_ii.md) | LeetCode | 🟡 Medium | Array, Greedy, Dynamic Programming |
 | 2025-05-06 | [First Missing Positive](./2025-05-06/first_missing_positive.md) | LeetCode | 🟡 Medium | Array, Hash Table, In-Place, Cyclic Sort |
 | 2025-05-07 | [Merge Strings Alternately](./2025-05-07/merge_strings_alternately.md) | LeetCode | 🟢 Easy | String, Two Pointers |
-| 2025-05-08 | [Merge Sorted Array](./2025-05-08/merge_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointers , DSA |
+| 2025-05-08 | [Merge Sorted Array](./2025-05-08/merge_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointers , DSA, LeetCode75 |
 | 2025-05-09 | [Remove Duplicates from Sorted Array](./2025-05-09/remove_duplicates_from_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointer, DSA |
 | 2025-05-10 | [Two Sum II - Input Array Is Sorted](./2025-05-10/two_sum_ii_-_input_array_is_sorted.md) | LeetCode | 🟡 Medium | Array, Two Pointer, DSA |
 | 2025-05-11 | [3Sum](./2025-05-11/3sum.md) | LeetCode | 🟡 Medium | Array, Two Pointer, Sorting |
