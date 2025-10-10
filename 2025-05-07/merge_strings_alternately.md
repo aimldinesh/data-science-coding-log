@@ -56,3 +56,126 @@ class Solution:
 - **Time**: O(n + m)
     - where n and m are lengths of word1 and word2.
 - **Space**: O(1)
+
+---
+## 🥉 Approach 2: Brute Force (Using Index Checks)
+- 🔹 Idea
+- We will:
+  - Use two pointers i and j for word1 and word2.
+  - Pick characters alternately using conditions.
+  - Stop when both strings are completely used.
+
+- 🧠 Step-by-Step Logic
+  - Initialize i = 0, j = 0, and res = ""
+  - Loop while either i < len(word1) or j < len(word2)
+  - Add one character from word1 (if available)
+  - Add one character from word2 (if available)
+  - Increment i and j accordingly
+  - Return the merged result
+
+---
+## Code(Python)
+```python
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        # Initialize pointers and result string
+        i, j = 0, 0
+        res = ""
+        
+        # Loop until both strings are exhausted
+        while i < len(word1) or j < len(word2):
+            # If word1 still has characters, take one
+            if i < len(word1):
+                res += word1[i]
+                i += 1
+            
+            # If word2 still has characters, take one
+            if j < len(word2):
+                res += word2[j]
+                j += 1
+        
+        # Return the merged string
+        return res
+```
+## step by step with example
+```python
+Input:
+word1 = "abc"
+word2 = "pqr"
+
+Steps:
+res = ""
+→ add 'a' + 'p' → "ap"
+→ add 'b' + 'q' → "apbq"
+→ add 'c' + 'r' → "apbqcr"
+Output = "apbqcr"
+
+✅ Output: "apbqcr"
+```
+---
+
+## 💡 Time and Space Complexity
+- **Time**: O(n + m)
+    - where n and m are lengths of word1 and word2.
+- **Space**: O(n + m)
+
+---
+
+## 🥈 Approach 2: Efficient (Using List + Join)
+- Instead of concatenating strings repeatedly (which is slow because strings are immutable in Python),
+- we’ll use a list to collect characters and then "".join() at the end.
+- Also, we can directly use slicing for leftover parts.
+
+- 💡 Logic
+  - Create an empty list merged = []
+  - Use a loop for the common part (min_len = min(len(word1), len(word2)))
+  - Append one character from word1 and one from word2
+  - After the loop, append the remaining characters (if any)
+  - Return "".join(merged)
+---
+## Code(Python)
+```python
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        # Create an empty list to store merged characters
+        merged = []
+
+        # Find minimum length between both strings
+        min_len = min(len(word1), len(word2))
+
+        # Merge alternately up to the shortest string
+        for i in range(min_len):
+            merged.append(word1[i])
+            merged.append(word2[i])
+        
+        # Append leftover characters from longer string
+        merged.append(word1[min_len:])
+        merged.append(word2[min_len:])
+
+        # Join list into final merged string
+        return "".join(merged)
+
+```
+---
+## step by step with example
+```python
+input:
+word1 = "ab"
+word2 = "pqrs"
+
+Steps:
+min_len = 2
+merged = ['a','p','b','q']
+leftover from word2 = "rs"
+merged = ['a','p','b','q','r','s']
+
+Output = "apbqrs"
+```
+---
+## 💡 Time and Space Complexity
+- **Time**: O(n + m)
+    - where n and m are lengths of word1 and word2.
+- **Space**: O(n + m)
+- More efficient than the brute-force because of list usage (no repeated string concatenation).
+
+
