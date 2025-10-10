@@ -22,7 +22,7 @@ Output: "apbqrs"
 ```
 ---
 
-## 🚀 Approach 1
+## 🚀 Approach 1 : Brute Force (Simple String Concatenation)
 ### 🧠 Intuition
   - Use a pointer to alternate between characters of both strings.
   - Once the shorter string is exhausted, append the remaining part of the longer string.
