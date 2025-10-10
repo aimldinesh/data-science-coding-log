@@ -121,7 +121,7 @@ Output = "apbqcr"
 
 ---
 
-## 🥈 Approach 2: Efficient (Using List + Join)
+## 🥈 Approach 3: Efficient (Using List + Join)
 - Instead of concatenating strings repeatedly (which is slow because strings are immutable in Python),
 - we’ll use a list to collect characters and then "".join() at the end.
 - Also, we can directly use slicing for leftover parts.
@@ -178,4 +178,63 @@ Output = "apbqrs"
 - **Space**: O(n + m)
 - More efficient than the brute-force because of list usage (no repeated string concatenation).
 
+---
+## 🥇 Approach 4: Pythonic (Using zip_longest)
+- 🔹 Idea
+- We can use:
+```python
+from itertools import zip_longest
+```
+- to pair characters from both strings, even when they’re of unequal length.Then, we join all characters alternately using a generator expression.
+
+- 🧠 Step-by-Step Logic
+   - Import zip_longest
+   - Use zip_longest(word1, word2, fillvalue="") to handle uneven string lengths
+   - For each pair (a, b), combine them as a + b
+   - Finally, "".join() everything into a single string
+
+---
+## Code(Python)
+```python
+from itertools import zip_longest
+
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        # zip_longest pairs characters from both strings
+        # fillvalue="" ensures that extra characters from the longer string are kept
+        return ''.join(a + b for a, b in zip_longest(word1, word2, fillvalue=''))
+
+```
+---
+## step by step with example
+```python
+input:
+word1 = "abcd"
+word2 = "pq"
+
+| Step | a   | b   | Result   |
+| ---- | --- | --- | -------- |
+| 1    | 'a' | 'p' | "ap"     |
+| 2    | 'b' | 'q' | "apbq"   |
+| 3    | 'c' | ''  | "apbqc"  |
+| 4    | 'd' | ''  | "apbqcd" |
+
+✅ Output: "apbqcd"
+```
+---
+
+## 💡 Time and Space Complexity
+- **Time**: O(n + m)
+    - where n and m are lengths of word1 and word2.
+- **Space**: O(n + m)
+- ✅ Simplest and most Pythonic way to merge alternately.
+
+---
+
+## 🏁 Summary of All Approaches
+| Approach | Method                     | Time     | Space    | Notes                                               |
+| -------- | -------------------------- | -------- | -------- | --------------------------------------------------- |
+| 1        | Brute Force (manual loops) | O(n + m) | O(n + m) | Simple logic but slower due to string concatenation |
+| 2        | Efficient (list + join)    | O(n + m) | O(n + m) | Faster, good balance                                |
+| 3        | Pythonic (`zip_longest`)   | O(n + m) | O(n + m) | Clean, concise, interview-friendly ✅                |
 
