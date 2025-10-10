@@ -22,7 +22,7 @@ Output: "apbqrs"
 ```
 ---
 
-## 🚀 My Approach
+## 🚀 Approach 1
 ### 🧠 Intuition
   - Use a pointer to alternate between characters of both strings.
   - Once the shorter string is exhausted, append the remaining part of the longer string.
