@@ -228,7 +228,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-25 | [Department Top Three Salaries](./2025-09-25/department_top_three_salaries.md) | LeetCode | 🔴 Hard | MySQL, Database, Window Function, Joins |
 | 2025-09-27 | [Transpose Matrix](./2025-09-27/transpose_matrix.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-27 | [Excel Sheet Column Title](./2025-09-27/excel_sheet_column_title.md) | LeetCode | 🟢 Easy | DSA, Math, String |
-| 2025-09-27 | [Greatest Common Divisor of Strings](./2025-09-27/greatest_common_divisor_of_strings.md) | LeetCode | 🟢 Easy | DSA, Math, String |
+| 2025-09-27 | [Greatest Common Divisor of Strings](./2025-09-27/greatest_common_divisor_of_strings.md) | LeetCode | 🟢 Easy | DSA, Math, String, Leet75 |
 | 2025-09-28 | [Matrix Diagonal Sum](./2025-09-28/matrix_diagonal_sum.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-28 | [Power of Four](./2025-09-28/power_of_four.md) | LeetCode | 🟢 Easy | DSA, Math |
 | 2025-09-28 | [Largest Odd Number in String](./2025-09-28/largest_odd_number_in_string.md) | LeetCode | 🟢 Easy | DSA, Math |
