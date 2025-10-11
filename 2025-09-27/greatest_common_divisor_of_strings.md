@@ -178,11 +178,11 @@ str1 = "ABCABC", str2 = "ABC"
 
 Check concatenation:
 
-str1 + str2 = "ABCABCABC", str2 + str1 = "ABCABCABC" → equal.
+    str1 + str2 = "ABCABCABC", str2 + str1 = "ABCABCABC" → equal.
 
-g = gcd(6,3) = 3.
+    g = gcd(6,3) = 3.
 
-Return str1[:3] = "ABC".
+    Return str1[:3] = "ABC".
 
 ------
 
@@ -190,18 +190,18 @@ Example B again
 
 str1 = "ABABAB", str2 = "ABAB"
 
-str1 + str2 = "ABABABABAB", str2 + str1 = "ABABABABAB" → equal.
+   str1 + str2 = "ABABABABAB", str2 + str1 = "ABABABABAB" → equal.
 
-g = gcd(6,4) = 2.
+   g = gcd(6,4) = 2.
 
-Return str1[:2] = "AB".
+   Return str1[:2] = "AB".
 
 ---
 Example C (negative)
 
 str1 = "LEET", str2 = "CODE"
 
-str1 + str2 = "LEETCODE", str2 + str1 = "CODELEET" → not equal → return "".
+       str1 + str2 = "LEETCODE", str2 + str1 = "CODELEET" → not equal → return "".
 ---
 
 Complexity (efficient method):
