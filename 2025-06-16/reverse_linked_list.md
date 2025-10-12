@@ -61,6 +61,9 @@ class Solution:
 - We track 3 pointers: curr, prev, next_node
 ✅ Initial State:
 ```python
+
+Input: 1 → 2 → 3  → None
+Output: 3 → 2 → 1 → None
 curr = Node(1)
 prev = None
 ```
