@@ -9,7 +9,7 @@
 ---
 
 ## ✅ Problem Statement
-- You are given two sorted linked lists. Your task is to merge them into one sorted linked list and return its head.
+- You are given two sorted linked lists list1 and list2. Your task is to merge them into one sorted linked list and return its head.
 ### 📌 Examples:
 ```python
 Example 1:
