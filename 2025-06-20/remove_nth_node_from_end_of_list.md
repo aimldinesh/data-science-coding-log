@@ -79,7 +79,7 @@ class Solution:
 ```
 
 ---
-### 🔍 Step-by-Step Execution
+### 🔍 Step-by-Step Execution with Example
 ```python
 Input:
 head = 1 → 2 → 3 → 4 → 5, n = 2
