@@ -82,7 +82,7 @@ class Solution:
 
 ---
 
-### 🔍 Step-by-Step Execution
+### 🔍 Step-by-Step Execution with Example
 ```python
 Let:
 
