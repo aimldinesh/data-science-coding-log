@@ -74,7 +74,7 @@ class Solution:
 ```
 
 ---
-## 🧩 step-by-step with example
+## 🧩 Step-by-step with example
 ```python
 Input list:  1 → 2 → 3 → 4 → 5
 left = 2, right = 4
