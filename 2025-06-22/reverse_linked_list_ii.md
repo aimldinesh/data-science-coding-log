@@ -74,6 +74,119 @@ class Solution:
 ```
 
 ---
+## step-by-step with example
+```python
+Input list:  1 → 2 → 3 → 4 → 5
+left = 2, right = 4
+```
+We’ll visualize how pointers (leftPrev, cur, prev, tmpNext) move and how links change.
+
+#### Step 0 — Setup dummy node
+We create a dummy node pointing to the head.
+```python
+dummy → 1 → 2 → 3 → 4 → 5
+```
+Initialize:
+```python
+leftPrev = dummy
+cur = head (node 1)
+```
+### Step 1 — Move leftPrev to the node before left
+
+Move (left - 1) = 1 step:
+```python
+leftPrev = 1
+cur = 2
+```
+Pointers:
+```python
+dummy → 1 → 2 → 3 → 4 → 5
+          ↑     ↑
+       leftPrev cur
+```
+### Step 2 — Reverse nodes between left and right (2 to 4)
+
+We’ll reverse 3 nodes: 2, 3, 4
+
+Iteration 1
+```python
+prev = None
+cur = 2
+tmpNext = 3
+```
+Reverse link:
+```python
+2.next = prev → None
+```
+Now:
+```python
+1 → 2    3 → 4 → 5
+    ↑
+   prev
+cur → 3
+```
+Iteration 2
+```python
+prev = 2
+cur = 3
+tmpNext = 4
+```
+Reverse link:
+```python
+3.next = 2
+```
+Now:
+```python
+1 → 2 ← 3    4 → 5
+         ↑
+        prev
+cur → 4
+```
+Iteration 3
+```python
+prev = 3
+cur = 4
+tmpNext = 5
+```
+Reverse link:
+```python
+4.next = 3
+```
+Now:
+```python
+1 → 2 ← 3 ← 4    5
+             ↑
+            prev
+cur → 5
+```
+At this point:
+ - prev = 4 → 3 → 2
+ - cur = 
+
+ ### Step 3 — Reconnect reversed sublist
+ 
+ We had:
+ ```python
+leftPrev = 1
+leftPrev.next = 2  (original left node)
+```
+Now connect:
+```python
+leftPrev.next.next = cur   # 2 → 5
+leftPrev.next = prev       # 1 → 4
+```
+Connections become:
+```python
+dummy → 1 → 4 → 3 → 2 → 5
+```
+### Step 4 — Return final list
+
+Return dummy.next, which is the real head of the new list:
+```python
+1 → 4 → 3 → 2 → 5
+```
+
+--- 
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
