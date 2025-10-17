@@ -32,6 +32,7 @@ Example 2:
 
 Input: lists = []
 Output: []
+
 Example 3:
 
 Input: lists = [[]]
