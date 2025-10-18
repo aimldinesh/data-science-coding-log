@@ -82,8 +82,20 @@ class Solution:
          
 ```
 ---
-### Step by step Execution
+### Step by step Execution with example
 ```
+Input:
+    1
+     \
+      2
+     /
+    3
+
+Output:
+[1, 2, 3]
+---------------------------------------------
+Steps:
+
 Initial:
   cur = 1
   stack = []
