@@ -82,6 +82,7 @@ class Solution:
          
 ```
 ---
+
 ### Step by step Execution with example
 ```
 Input:
@@ -93,7 +94,9 @@ Input:
 
 Output:
 [1, 2, 3]
+
 ---------------------------------------------
+
 Steps:
 
 Initial:
