@@ -101,7 +101,7 @@ class Solution:
 
 ```
 ---
-### 🔍 Step-by-step Execution
+### 🔍 Step-by-step Execution with example
 ```python
 Input:
     1
