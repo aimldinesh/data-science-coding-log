@@ -161,7 +161,7 @@ class Solution:
         return root
 ```
 ---
-### 🔍 Step-by-step Execution
+### 🔍 Step-by-step Execution example
 ```python
 Input Tree:
     1
