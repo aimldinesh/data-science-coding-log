@@ -77,7 +77,7 @@ class Solution:
         return root
 ```
 ---
-### 🔍 Step-by-step Execution
+### 🔍 Step-by-step Execution with example
 ```python
      1
     / \
