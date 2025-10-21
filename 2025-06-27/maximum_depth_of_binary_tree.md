@@ -86,7 +86,7 @@ class Solution:
 ```
 
 ---
-### 🔍 Step-by-step Execution
+### 🔍 Step-by-step Execution with Example
 ```python
 Input:
     1
