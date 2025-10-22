@@ -23,6 +23,7 @@ Input Tree:
   4   5    
 
 Output: 3
+
 Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
 ```
 ---
