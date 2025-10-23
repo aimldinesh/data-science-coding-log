@@ -86,7 +86,7 @@ class Solution:
                        
 ```
 ---
-### 🔍 Step-by-step Execution (Example Tree)
+### 🔍 Step-by-step Execution with example
 ```python
 Input Tree:
         1
