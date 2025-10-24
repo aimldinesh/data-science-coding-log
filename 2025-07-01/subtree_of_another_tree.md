@@ -25,6 +25,7 @@ Tree root:            Tree subRoot:
  1   2
 
 Output: True
+
 Because the subtree rooted at the left child of 3 matches subRoot.
 ```
 ---
