@@ -3,7 +3,7 @@
 - **Platform**: [LeetCode](https://leetcode.com/problems/delete-node-in-a-bst/description/)
 - **Submission**: [https://leetcode.com/problems/delete-node-in-a-bst/submissions/1683952246/](https://leetcode.com/problems/delete-node-in-a-bst/submissions/1683952246/)
 - **Date Solved**: 2025-07-02
-- **Tags**: Binary Tree, Recusion, Tree
+- **Tags**: DSA, Binary Tree, Recusion, Tree
 - **Difficulty**: Medium
 
 ---
