@@ -3,7 +3,7 @@
 - **Platform**: [LeetCode](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/)
 - **Submission**: [https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/submissions/1685107135/](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/submissions/1685107135/)
 - **Date Solved**: 2025-07-03
-- **Tags**: Tree, Binary Search Tree, DFS
+- **Tags**: Tree, Binary Search Tree, DFS, LCA
 - **Difficulty**: Medium
 
 ---
