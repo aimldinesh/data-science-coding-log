@@ -78,7 +78,7 @@ class Solution:
 
 ```
 ---
-## 🧮 Example Dry Run
+## 🧮 Step by step execution with example
 ```text
 Example A — positive
 
@@ -170,7 +170,7 @@ class Solution:
         return str1[:g]
 ```
 ---
-## Step by step with example
+## Step by step execution with example
 ```python
 Example A again (efficient)
 
