@@ -81,6 +81,7 @@ mat = [
 Goal: Find the sum of both diagonals.
 ```
 Step-by-Step Execution:
+
 1. Initialization:
 ```python
 res, n = 0, len(mat)
@@ -93,7 +94,7 @@ for r in range(n):
 
 → Iterates from r = 0 to 2.
 ```
----
+
 ```python
 ➤ r = 1
 
