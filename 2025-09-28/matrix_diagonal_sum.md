@@ -69,6 +69,68 @@ class Solution:
 
 ```
 ---
+### Step by step execution with example
+```
+Example:
+mat = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+
+Goal: Find the sum of both diagonals.
+```
+Step-by-Step Execution:
+1. Initialization:
+```python
+res, n = 0, len(mat)
+# res = 0 (to store the sum)
+# n = 3 (size of the matrix)
+```
+2.Loop through each row:
+```python
+for r in range(n):
+
+→ Iterates from r = 0 to 2.
+```
+---
+```python
+➤ r = 1
+
+Primary diagonal: mat[1][1] = 5
+
+Secondary diagonal: mat[1][n-1-1] = mat[1][1] = 5
+
+Both diagonals overlap (center element).
+
+Add both: res += 5 + 5 = 10
+(so far res = 4 + 10 = 14)
+
+
+➤ r = 2
+
+Primary diagonal: mat[2][2] = 9
+
+Secondary diagonal: mat[2][0] = 7
+
+Add both: res += 9 + 7 = 16
+(total res = 14 + 16 = 30)
+
+```
+
+3. Avoid double counting center element
+   + The center element mat[1][1] = 5 was counted twice (once in each diagonal).
+   + Since n is odd (3), subtract it once:
+```python
+res - mat[n // 2][n // 2]
+= 30 - mat[1][1]
+= 30 - 5
+= 25
+
+```
+✅ Final Answer: 25
+
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n) → we iterate once through all rows.
