@@ -190,16 +190,14 @@ class Solution:
 ### step by step execution with example
 
 Input: n = 64
-
-→ log₄(64) = log(64) / log(4) = 3
-→ 3 % 1 == 0 ✅
-→ Return True
+ - log₄(64) = log(64) / log(4) = 3
+ - 3 % 1 == 0 ✅
+ - Return True
 
 Input: n = 12
-
-→ log₄(12) ≈ 1.792
-→ 1.792 % 1 ≠ 0 ❌
-→ Return False
+ - log₄(12) ≈ 1.792
+ - 1.792 % 1 ≠ 0 ❌
+ - Return False
 
 --- 
 
