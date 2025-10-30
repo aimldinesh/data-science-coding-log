@@ -84,8 +84,8 @@ Step 3:
  + n = 1
  + Base case → return True
 
-- All recursive calls return True ✅
-- Final Output → True
+All recursive calls return True ✅
+Final Output → True
 ---
 Example 2: n = 8
 
@@ -139,6 +139,28 @@ class Solution:
         return n == 1
 ```
 ---
+
+### Step by step execution with example
+Example 1: n = 16
+| Step | n  | n % 4 | Action                |
+| ---- | -- | ----- | --------------------- |
+| 1    | 16 | 0     | Divide → n = 4        |
+| 2    | 4  | 0     | Divide → n = 1        |
+| 3    | 1  | —     | End loop → `n == 1` ✅ |
+
+✅ Output → True (16 = 4²)
+---
+Example 2: n = 8
+
+| Step | n | n % 4 | Action                         |
+| ---- | - | ----- | ------------------------------ |
+| 1    | 8 | 0     | Divide → n = 2                 |
+| 2    | 2 | 2     | Not divisible → return False ❌ |
+
+❌ Output → False (8 is not a power of 4)
+
+---
+
 ## 💡 Time and Space Complexity
 - **Time**: O(log4​^n)
 - **Space**: O(1)
