@@ -64,6 +64,7 @@ class Solution:
         return self.isPowerOfFour(n // 4)
 ```
 ---
+
 ### Step by step Execution with example
 
 Example 1: n = 16
