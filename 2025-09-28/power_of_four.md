@@ -149,7 +149,7 @@ Example 1: n = 16
 | 3    | 1  | —     | End loop → `n == 1` ✅ |
 
 - ✅ Output → True (16 = 4²)
-- 
+ 
 ---
 
 Example 2: n = 8
