@@ -148,8 +148,10 @@ Example 1: n = 16
 | 2    | 4  | 0     | Divide → n = 1        |
 | 3    | 1  | —     | End loop → `n == 1` ✅ |
 
-✅ Output → True (16 = 4²)
+- ✅ Output → True (16 = 4²)
+- 
 ---
+
 Example 2: n = 8
 
 | Step | n | n % 4 | Action                         |
@@ -157,7 +159,7 @@ Example 2: n = 8
 | 1    | 8 | 0     | Divide → n = 2                 |
 | 2    | 2 | 2     | Not divisible → return False ❌ |
 
-❌ Output → False (8 is not a power of 4)
+- ❌ Output → False (8 is not a power of 4)
 
 ---
 
