@@ -187,6 +187,22 @@ class Solution:
         return n > 0 and log(n, 4) % 1 == 0
 ```
 ---
+### step by step execution with example
+
+Input: n = 64
+
+→ log₄(64) = log(64) / log(4) = 3
+→ 3 % 1 == 0 ✅
+→ Return True
+
+Input: n = 12
+
+→ log₄(12) ≈ 1.792
+→ 1.792 % 1 ≠ 0 ❌
+→ Return False
+
+--- 
+
 ## 💡 Time and Space Complexity
 - **Time**: O(1)
 - **Space**: O(1)
