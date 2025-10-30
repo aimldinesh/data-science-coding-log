@@ -64,6 +64,44 @@ class Solution:
         return self.isPowerOfFour(n // 4)
 ```
 ---
+### Step by step Execution with example
+
+Example 1: n = 16
+
+Step 1:
+ + n = 16
+ + n > 0 ✅
+ + n % 4 == 0 ✅
+ → recursive call with n = 16 // 4 = 4
+
+Step 2:
+ + n = 4
+ + n % 4 == 0 ✅
+ → recursive call with n = 4 // 4 = 1
+
+Step 3:
+ + n = 1
+ + Base case → return True
+
+- All recursive calls return True ✅
+- Final Output → True
+---
+Example 2: n = 8
+
+Step 1:
+ + n = 8
+ + n % 4 == 0 ✅
+ → recursive call with n = 8 // 4 = 2
+
+Step 2:
+ + n = 2
+ + n % 4 != 0 ❌ → return False
+- Final Output → False
+---
+Example 3: n = -4
+- n <= 0 ❌ → return False immediately
+
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(log4​^n)
