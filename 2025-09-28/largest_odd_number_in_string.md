@@ -36,41 +36,115 @@ Explanation: `"35427"` is already an odd number.
 
 ---
 
-## 🔹 Approach
-
-1. **Observation:**  
-   - The largest odd-valued substring is always obtained by **trimming the rightmost even digits** from the number until the last digit is odd.  
-
-2. **Steps:**  
-   - Start from the end of the string.  
-   - Remove digits from the end while the last digit is even.  
-   - Return the resulting string.  
-   - If all digits are even, return an empty string `""`.
-
-3. **Why it works:**  
-   - Any prefix of the string that ends with an odd digit forms a contiguous odd substring.  
-   - To get the **largest value**, we keep as many digits from the start as possible.
 
 ---
 
-## 🔹 Code (Python)
+## 🧠 Approach 1: Brute Force (Check All Substrings)
+
+### 🔹 Idea:
+Generate **all possible substrings**, check which are **odd numbers**, and return the **largest one**.
+
+### 🔹 Steps:
+1. Iterate through all possible substring start (`i`) and end (`j`) indices.
+2. Convert each substring to an integer.
+3. Check if the number is **odd** → last digit in `1, 3, 5, 7, 9`.
+4. Keep track of the **largest odd number** found.
+5. Return it as a string. If none found, return `""`.
+
+---
+
+### 🧾 Code (Brute Force Approach)
+```python
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        max_odd = ""  # Store the largest odd substring
+
+        # Generate all possible substrings
+        for i in range(len(num)):
+            for j in range(i + 1, len(num) + 1):
+                sub = num[i:j]
+
+                # Check if substring ends with an odd digit
+                if int(sub[-1]) % 2 == 1:
+                    # Update if this is a larger odd number
+                    if max_odd == "" or int(sub) > int(max_odd):
+                        max_odd = sub
+
+        return max_odd
+```
+
+---
+
+## 💡 Time and Space Complexity
+- **Time**: O(n²)
+    - Checking every substring
+- **Space**: O(1) 
+    - Only storing a few variables
+
+---
+
+## ⚡ Approach 2: Efficient Approach (Rightmost Odd Digit)
+
+### Key Insight:
+👉 The **largest odd number substring** always starts from the **beginning of the string**  
+and ends at the **last odd digit** in `num`.
+
+### Steps:
+1. Traverse the string **from the end**.
+2. Find the **first odd digit** (1, 3, 5, 7, or 9).
+3. Return the substring from `0` to that index (inclusive).
+4. If no odd digit is found, return an empty string `""`.
+
+---
+
+## ✅ Code Implementation (Efficient Approach)
 
 ```python
 class Solution:
     def largestOddNumber(self, num: str) -> str:
-        # Start from the end and trim even digits
-        i = len(num) - 1
-        while i >= 0 and int(num[i]) % 2 == 0:
-            i -= 1
-        # If no odd digit found, return empty string
-        return num[:i+1]
+        # Traverse from the end of the string
+        for i in range(len(num) - 1, -1, -1):
+            # Check if current digit is odd
+            if int(num[i]) % 2 == 1:
+                # Return substring up to this index
+                return num[:i + 1]
+        # No odd number found
+        return ""
+```
+---
+### step by step execution with example
+```python
+Example: num = "35427"
 
+Start from right:
+  '7' → odd ✅
+Return substring num[:5] → "35427"
+Output: "35427"
+
+---------------------
+
+Example: num = "4206"
+
+Check digits from end:
+  '6' even
+  '0' even
+  '2' even
+  '4' even
+No odd found → return ""
 ```
 
 ---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
-    - We may need to check each digit from the end once.
+    - Single pass through the string
 - **Space**: O(1) 
-    - No extra space is used aside from pointers and slicing.
+    - Constant extra space
+---
+
+## 🧩 Summary
+| Approach    | Description                        | Time  | Space |
+| ----------- | ---------------------------------- | ----- | ----- |
+| Brute Force | Check all substrings               | O(n²) | O(1)  |
+| Efficient   | Scan from right for last odd digit | O(n)  | O(1)  |
+
