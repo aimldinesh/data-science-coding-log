@@ -105,6 +105,7 @@ res = [
 We will iterate i = 0..1, j = 0..1. For each (i,j) we inspect the 3×3 window with top-left at (i,j).
 
 #### Trace — detailed iteration
+
 1) i = 0, j = 0
    - 3×3 window covers rows 0..2 and cols 0..2:
 ```python
