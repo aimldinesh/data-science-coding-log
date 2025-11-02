@@ -36,8 +36,8 @@ Input: original = [1,2], m = 1, n = 1
 Output: []
 Explanation: There are 2 elements in original.
 It is impossible to fit 2 elements in a 1x1 2D array, so return an empty 2D array.
-
-
+```
+---
 
 ## 🚀 My Approach
 - Check feasibility
