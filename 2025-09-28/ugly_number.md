@@ -22,16 +22,19 @@ Given an integer `n`, return `True` if `n` is an **ugly number**, otherwise retu
 **Example 1:**  
 Input: `n = 6`  
 Output: `true`  
+
 Explanation: 6 = 2 × 3  
 
 **Example 2:**  
 Input: `n = 1`  
 Output: `true`  
+
 Explanation: 1 is considered an ugly number by convention.  
 
 **Example 3:**  
 Input: `n = 14`  
 Output: `false`  
+
 Explanation: 14 = 2 × 7 (7 is not allowed).  
 
 ---
