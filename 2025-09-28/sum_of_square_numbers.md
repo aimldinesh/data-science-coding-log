@@ -73,6 +73,53 @@ class Solution:
         return False
 ```
 ---
+## Step by step code execution with example
+Example: c = 5
+
+We want to check if there exist integers a, b such that
+a² + b² = 5
+
+Initialization:
+```python
+left = 0
+right = int(sqrt(5)) = 2
+```
+Iteration 1:
+```python
+left = 0, right = 2
+total = 0² + 2² = 0 + 4 = 4
+```
+Compare:
+  + total (4) < c (5)
+  + ➡️ Increase left → left = 1
+
+Iteration 2:
+```python
+left = 1, right = 2
+total = 1² + 2² = 1 + 4 = 5
+```
+Compare:
+ + total (5) == c (5)
+ + ✅ Condition satisfied → return True
+
+✅ Output: True
+Because 5 = 1² + 2²
+
+---
+Example 2: c = 3
+```python
+left = 0, right = 1
+```
+| left | right | total               | Action             |
+| ---- | ----- | ------------------- | ------------------ |
+| 0    | 1     | 1                   | total < c → left++ |
+| 1    | 1     | 2                   | total < c → left++ |
+| 2    | 1     | left > right → stop |                    |
+
+- No match found → return False
+- ✅ Output: False (no two squares sum to 3)
+
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: 
