@@ -30,8 +30,54 @@ Output: `false`
 Explanation: No integers `a` and `b` exist such that a² + b² = 3.  
 
 ---
+---
+🧠 Approach 1: Brute Force (O(√c²) = O(c))
 
-## 🔹 Approach
+🔹 Intuition
+    - We can try every possible value of a and b, and check if any pair satisfies a² + b² = c.
+
+## Code(Python)
+```python
+import math
+
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        # Try all possible values for a
+        for a in range(int(math.sqrt(c)) + 1):
+            for b in range(int(math.sqrt(c)) + 1):
+                if a * a + b * b == c:
+                    return True
+        return False
+
+````
+---
+
+## Step by Step code execution with example
+Example: c = 5
+
+| a | b | a² + b² | Matches?        |
+| - | - | ------- | --------------- |
+| 0 | 0 | 0       | ❌               |
+| 0 | 1 | 1       | ❌               |
+| 0 | 2 | 4       | ❌               |
+| 1 | 0 | 1       | ❌               |
+| 1 | 1 | 2       | ❌               |
+| 1 | 2 | 5       | ✅ → return True |
+
+- ✅ Output: True (since 1² + 2² = 5)
+
+---
+Time Complexity
+ + Outer loop: √c iterations
+ + Inner loop: √c iterations
+ + Total: O(c)
+ + Very slow for large c (e.g., c = 10⁹)
+
+Space Complexity: O(1)
+
+---
+
+## 🔹 Approach2 : Two-Pointer (Efficient O(√c))
 
 We use the **two-pointer technique**:
 
@@ -123,7 +169,9 @@ left = 0, right = 1
 
 ## 💡 Time and Space Complexity
 - **Time**: 
-    - At most, left and right move across 0 → sqrt(c).
+    - O(√c) (each pointer moves at most √c times)
     - Complexity = O(√c).
 - **Space**: O(1)
     - Only constant extra space is used.
+
+---
