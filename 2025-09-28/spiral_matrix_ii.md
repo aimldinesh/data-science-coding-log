@@ -95,7 +95,7 @@ class Solution:
 ```
 
 ---
-## Step-by-Step Dry Run (n = 3)
+### Step-by-Step Dry Run (n = 3)
 
 | Step | Direction    | Matrix After Step                 | top | bottom | left | right |
 | ---- | ------------ | --------------------------------- | --- | ------ | ---- | ----- |
