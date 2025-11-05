@@ -95,6 +95,23 @@ class Solution:
 ```
 
 ---
+## Step-by-Step Dry Run (n = 3)
+
+| Step | Direction    | Matrix After Step                 | top | bottom | left | right |
+| ---- | ------------ | --------------------------------- | --- | ------ | ---- | ----- |
+| 1    | Left → Right | 1️⃣ 2️⃣ 3️⃣ <br> 0 0 0 <br> 0 0 0 | 1   | 2      | 0    | 2     |
+| 2    | Top → Bottom | 1 2 3 <br> 0 0 4️⃣ <br> 0 0 5️⃣   | 1   | 2      | 0    | 1     |
+| 3    | Right → Left | 1 2 3 <br> 0 0 4 <br> 7️⃣ 6️⃣ 5   | 1   | 1      | 0    | 1     |
+| 4    | Bottom → Top | 1 2 3 <br> 8️⃣ 0 4 <br> 7 6 5     | 1   | 1      | 1    | 1     |
+| 5    | Fill Center  | 1 2 3 <br> 8 9️⃣ 4 <br> 7 6 5     | -   | -      | -    | -     |
+
+✅ Final Matrix:
+[
+ [1, 2, 3],
+ [8, 9, 4],
+ [7, 6, 5]
+]
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n2)
