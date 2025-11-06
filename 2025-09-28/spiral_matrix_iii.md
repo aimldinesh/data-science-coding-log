@@ -3,7 +3,7 @@
 - **Platform**: [LeetCode](https://leetcode.com/problems/spiral-matrix-iii/description/)
 - **Submission**: [https://leetcode.com/problems/spiral-matrix-iii/submissions/1785394363/](https://leetcode.com/problems/spiral-matrix-iii/submissions/1785394363/)
 - **Date Solved**: 2025-09-28
-- **Tags**: DSA, Math, Matrix
+- **Tags**: DSA, Math, Spiral Matrix
 - **Difficulty**: Medium
 
 ---
