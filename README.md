@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **35**
-- 🗖️ Problems solved this month: **71**
-- 📌 Current daily streak: **4 days**
-- 🏷️ Most frequent tags: **Array** (68), **DSA** (65), **MySQL** (49), **Database** (49), **Binary Search** (41)
+- ✅ Problems solved this week: **1**
+- 🗖️ Problems solved this month: **1**
+- 📌 Current daily streak: **1 days**
+- 🏷️ Most frequent tags: **Array** (69), **DSA** (67), **MySQL** (49), **Database** (49), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -117,7 +117,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-05-05 | [Best Time to Buy and Sell Stock II](./2025-05-05/best_time_to_buy_and_sell_stock_ii.md) | LeetCode | 🟡 Medium | Array, Greedy, Dynamic Programming |
 | 2025-05-06 | [First Missing Positive](./2025-05-06/first_missing_positive.md) | LeetCode | 🟡 Medium | Array, Hash Table, In-Place, Cyclic Sort |
 | 2025-05-07 | [Merge Strings Alternately](./2025-05-07/merge_strings_alternately.md) | LeetCode | 🟢 Easy | String, Two Pointers |
-| 2025-05-08 | [Merge Sorted Array](./2025-05-08/merge_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointers , DSA, Leet75 |
+| 2025-05-08 | [Merge Sorted Array](./2025-05-08/merge_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointers , DSA |
 | 2025-05-09 | [Remove Duplicates from Sorted Array](./2025-05-09/remove_duplicates_from_sorted_array.md) | LeetCode | 🟢 Easy | Array, Two Pointer, DSA |
 | 2025-05-10 | [Two Sum II - Input Array Is Sorted](./2025-05-10/two_sum_ii_-_input_array_is_sorted.md) | LeetCode | 🟡 Medium | Array, Two Pointer, DSA |
 | 2025-05-11 | [3Sum](./2025-05-11/3sum.md) | LeetCode | 🟡 Medium | Array, Two Pointer, Sorting |
@@ -228,7 +228,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-25 | [Department Top Three Salaries](./2025-09-25/department_top_three_salaries.md) | LeetCode | 🔴 Hard | MySQL, Database, Window Function, Joins |
 | 2025-09-27 | [Transpose Matrix](./2025-09-27/transpose_matrix.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-27 | [Excel Sheet Column Title](./2025-09-27/excel_sheet_column_title.md) | LeetCode | 🟢 Easy | DSA, Math, String |
-| 2025-09-27 | [Greatest Common Divisor of Strings](./2025-09-27/greatest_common_divisor_of_strings.md) | LeetCode | 🟢 Easy | DSA, Math, String, Leet75 |
+| 2025-09-27 | [Greatest Common Divisor of Strings](./2025-09-27/greatest_common_divisor_of_strings.md) | LeetCode | 🟢 Easy | DSA, Math, String |
 | 2025-09-28 | [Matrix Diagonal Sum](./2025-09-28/matrix_diagonal_sum.md) | LeetCode | 🟢 Easy | DSA, Math, Matrix |
 | 2025-09-28 | [Power of Four](./2025-09-28/power_of_four.md) | LeetCode | 🟢 Easy | DSA, Math |
 | 2025-09-28 | [Largest Odd Number in String](./2025-09-28/largest_odd_number_in_string.md) | LeetCode | 🟢 Easy | DSA, Math |
@@ -247,6 +247,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-30 | [Number of Senior Citizens](./2025-09-30/number_of_senior_citizens.md) | LeetCode | 🟢 Easy | DSA, String |
 | 2025-09-30 | [Max Consecutive Ones](./2025-09-30/max_consecutive_ones.md) | LeetCode | 🟢 Easy | DSA, Array, Math, Two Pointer |
 | 2025-09-30 | [String Matching in an Array](./2025-09-30/string_matching_in_an_array.md) | LeetCode | 🟢 Easy | DSA, Array, String, Sorting |
+| 2025-11-07 | [Can Place Flowers](./2025-11-07/can_place_flowers.md) | LeetCode | 🟢 Easy | DSA, Array, LeetCode75 |
 
 <!-- PROBLEM_TABLE_END -->
 

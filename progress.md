@@ -187,3 +187,4 @@
 | 2025-09-30 | [Number of Senior Citizens](./2025-09-30/number_of_senior_citizens.md) | LeetCode | 🟢 Easy | DSA, String |
 | 2025-09-30 | [Max Consecutive Ones](./2025-09-30/max_consecutive_ones.md) | LeetCode | 🟢 Easy | DSA, Array, Math, Two Pointer |
 | 2025-09-30 | [String Matching in an Array](./2025-09-30/string_matching_in_an_array.md) | LeetCode | 🟢 Easy | DSA, Array, String, Sorting |
+| 2025-11-07 | [Can Place Flowers](./2025-11-07/can_place_flowers.md) | LeetCode | 🟢 Easy | DSA, Array, LeetCode75 |
