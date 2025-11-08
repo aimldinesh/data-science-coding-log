@@ -42,10 +42,10 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 <!-- STATS_START -->
 # 📊 Coding Practice Stats
 
-- ✅ Problems solved this week: **1**
-- 🗖️ Problems solved this month: **1**
-- 📌 Current daily streak: **1 days**
-- 🏷️ Most frequent tags: **Array** (69), **DSA** (67), **MySQL** (49), **Database** (49), **Binary Search** (41)
+- ✅ Problems solved this week: **2**
+- 🗖️ Problems solved this month: **2**
+- 📌 Current daily streak: **2 days**
+- 🏷️ Most frequent tags: **Array** (70), **DSA** (68), **MySQL** (49), **Database** (49), **Binary Search** (41)
 
 <!-- STATS_END -->
 
@@ -248,6 +248,7 @@ The goal is to build consistent problem-solving habits and enhance my skills in:
 | 2025-09-30 | [Max Consecutive Ones](./2025-09-30/max_consecutive_ones.md) | LeetCode | 🟢 Easy | DSA, Array, Math, Two Pointer |
 | 2025-09-30 | [String Matching in an Array](./2025-09-30/string_matching_in_an_array.md) | LeetCode | 🟢 Easy | DSA, Array, String, Sorting |
 | 2025-11-07 | [Can Place Flowers](./2025-11-07/can_place_flowers.md) | LeetCode | 🟢 Easy | DSA, Array, LeetCode75 |
+| 2025-11-08 | [Reverse Vowels of a String](./2025-11-08/reverse_vowels_of_a_string.md) | LeetCode | 🟢 Easy | DSA, Array, LeetCode75, Two Pointer |
 
 <!-- PROBLEM_TABLE_END -->
 
