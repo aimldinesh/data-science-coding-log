@@ -23,6 +23,7 @@ Return the minimum number of characters to append.
 **Example 1:**  
 Input: `s = "coaching"`, `t = "coding"`  
 Output: `1`  
+
 Explanation: The longest prefix of `t` in `s` as a subsequence is `"coing"`.  
 Remaining part of `t` = `"d"`.  
 So, we need to append **1** character.  
@@ -32,13 +33,15 @@ So, we need to append **1** character.
 **Example 2:**  
 Input: `s = "abc"`, `t = "abc"`  
 Output: `0`  
+
 Explanation: `t` is already a subsequence of `s`. Nothing needs to be appended.  
 
 ---
 
 **Example 3:**  
 Input: `s = "z"`, `t = "abcde"`  
-Output: `5`  
+Output: `5` 
+
 Explanation: No characters of `t` match in `s`.  
 We must append all of `t` (5 characters).  
 
