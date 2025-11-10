@@ -24,7 +24,8 @@ Tuples are ordered — i.e., `(a,b,c,d)` is different from `(c,d,a,b)` and order
 ```text
 Input: `nums = [2, 3, 4, 6]`  
 
-All index pairs with product 12 are: `(0,3)` (2×6) and `(1,2)` (3×4).  
+All index pairs with product 12 are: `(0,3)` (2×6) and `(1,2)` (3×4).
+
 From these two pairs we can form 8 ordered tuples:
 
 (0,3,1,2), (3,0,1,2), (0,3,2,1), (3,0,2,1),
