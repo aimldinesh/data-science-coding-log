@@ -35,6 +35,7 @@ Step-by-step:
 
 "7868190130M7522" → age = 75 → senior ✅
 "5303914400F9211" → age = 92 → senior ✅
+
 "9273338290F4010" → age = 40 → not senior ❌
 
 Output: 2
