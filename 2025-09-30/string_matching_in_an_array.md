@@ -28,7 +28,6 @@ Output:
 ["as","hero"]
 
 Explanation:
-
 - "as" is a substring of "mass".
 - "hero" is a substring of "superhero".
 ```
