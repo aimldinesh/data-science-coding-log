@@ -49,6 +49,7 @@ class Solution:
                 # If a duplicate is found, return True
                 if nums[i] == nums[j]:
                     return True
+
         # If no duplicates are found after checking all pairs, return False
         return False
 
