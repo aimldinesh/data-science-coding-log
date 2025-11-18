@@ -41,5 +41,6 @@ class Solution:
 ---
 
 ## 💡 Time and Space Complexity
+
 - **Time**: O(n), Looping through the array once.
 - **Space**: O(n), Creating a new array of size 2n.
