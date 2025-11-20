@@ -12,6 +12,19 @@
 
 
 ---
+## Examples
+```python
+Example 1:
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+Example 2:
+Input: strs = ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+
+````
+---
 
 ## 🚀 My Approach
 - I loop through each character index of the **first string** in the list.
