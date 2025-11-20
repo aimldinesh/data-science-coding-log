@@ -117,6 +117,26 @@ i = 2
 
 Final returned value: "fl"
 
+
+---
+
+Example 2 — ["dog","racecar","car"]
+
+Initial:
+
+- strs = ["dog","racecar","car"]
+- res = ""
+- first string = "dog" → i = 0..2
+
+i = 0
+
+- strs[0][0] = 'd'
+- Check:
+  - "dog"[0] = 'd' → match
+  - "racecar"[0] = 'r' → mismatch ('r' != 'd')
+- Mismatch → immediate return res (res is currently "")
+- Final returned value: ""
+
 ---
 
 ## 💡 Time and Space Complexity
