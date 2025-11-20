@@ -26,14 +26,27 @@ Explanation: There is no common prefix among the input strings.
 ````
 ---
 
-## 🚀 My Approach
-- I loop through each character index of the **first string** in the list.
-- For each index, I compare the character in the same position across **all other strings**.
-- If any string:
-  - Does not have a character at that index (index out of range), or
-  - Has a different character at that position  
-  Then I **return the prefix found so far**.
-- If all characters match, I add that character to the result.
+# 🧠 Approach: Vertical Scanning (Character by Character)
+
+### 🔹 Idea:
+- Take the **first string** as the reference.
+- Compare each character index `i` with all other strings.
+- If:
+  - any string ends OR  
+  - characters mismatch → stop and return prefix so far.
+- Otherwise, append the character to the prefix.
+
+This is called **vertical scanning**.
+
+---
+
+### 🔹 Steps:
+1. Initialize `res = ""`
+2. For each character index `i` of the first string:
+   - Compare that character across all strings.
+3. If mismatch or out of bounds → return `res`
+4. Else append the character to result
+5. Return `res`
 
 ---
 
@@ -58,6 +71,51 @@ class Solution:
         return res  # Return the complete common prefix
 
 ```
+
+---
+## Step-by-step code execution
+
+Example 1 — ["flower", "flow", "flight"]
+
+Initial values:
+
+-  strs = ["flower","flow","flight"]
+-  res = ""
+-  first string = "flower", so range(len(strs[0])) → i = 0..5 (indices of "flower")
+
+We go index by index (vertical scanning):
+
+i = 0
+
+- strs[0][0] = 'f'
+- Loop through all strings s:
+  - s = "flower" → i == len(s)? No. s[0] == 'f' equals strs[0][0]? Yes.
+  - s = "flow" → i == len(s)? No. s[0] == 'f' equals 'f'? Yes.
+  - s = "flight" → i == len(s)? No. s[0] == 'f' equals 'f'? Yes.
+- All match → append 'f' to res.
+- res = "f"
+
+i = 1
+
+- strs[0][1] = 'l'
+- Check each string:
+  - "flower"[1] = 'l' → match
+  - "flow"[1] = 'l' → match
+  - "flight"[1] = 'l' → match
+- All match → append 'l'.
+- res = "fl"
+
+i = 2
+
+- strs[0][2] = 'o'
+- Check each string:
+  - "flower"[2] = 'o' → match
+  - "flow"[2] = 'o' → match
+  - "flight"[2] = 'i' → mismatch ('i' != 'o')
+- On mismatch the inner loop hits if s[i] != strs[0][i]: return res
+- Function returns "fl" immediately.
+
+Final returned value: "fl"
 
 ---
 
