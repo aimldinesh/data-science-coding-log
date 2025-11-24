@@ -33,11 +33,16 @@ Explanation: There are no characters in letters that is lexicographically greate
 ---
 
 ## 🚀 My Approach
-- **Binary Search**: Since the list is sorted, we can use binary search to efficiently find the next greatest letter.
-- The `left` pointer moves towards the right if the middle letter is less than or equal to the target.
-- The `right` pointer moves to the left if the middle letter is greater than the target.
-- After the search loop, `left` will point to the smallest letter greater than the target.
-- If `left` exceeds the array length, we return the first letter (circular).
+### 🔹 Key Insight
+We need to find the **first element > target**.  
+Because the array is sorted, binary search is the best approach:
+
+- If `letters[mid] <= target` → search **right half**
+- If `letters[mid] > target` → search **left half**
+
+After binary search ends:
+- `left` will point to the **first letter greater than target**
+- If `left` goes out of bounds → return the **first letter** (wrap-around)
 ---
 
 ## 💻 Code (Python)
@@ -69,6 +74,32 @@ class Solution:
 ```
 
 ---
+## ▶️ Step-by-Step Execution with Example
+```python
+Example:
+
+letters = ["c","f","j"]
+target = "c"
+
+Initial:
+left = 0, right = 2
+
+Step1:
+mid = 1 → letters[1] = 'f'
+'f' > 'c' → move right = mid - 1 = 0
+
+Step2:
+mid = 0 → letters[0] = 'c'
+'c' <= 'c' → move left = mid + 1 = 1
+
+Loop ends because left > right.
+
+✔ Final left = 1
+✔ Return letters[1] → 'f'
+
+```
+---
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn),  where n is the length of letters. Binary search reduces the problem size by half at each step.
