@@ -100,6 +100,21 @@ Loop ends because left > right.
 ```
 ---
 
+```python
+Example (wrap-around case):
+letters = ["x","x","y","y"]
+target = "y"
+
+Process:
+ All elements 'x','x','y','y' are <= target ('y')
+ Binary search pushes left = len(letters)
+ left = 4 → out of range
+ Return letters[0] → 'x'
+
+✔ Correct due to wrap-around rule.
+
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn),  where n is the length of letters. Binary search reduces the problem size by half at each step.
