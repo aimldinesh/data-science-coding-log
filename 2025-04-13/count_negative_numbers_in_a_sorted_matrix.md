@@ -12,6 +12,18 @@
 
 
 ---
+## Examples
+```python
+Example 1:
+Input: grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
+Output: 8
+Explanation: There are 8 negatives number in the matrix.
+
+Example 2:
+Input: grid = [[3,2],[1,0]]
+Output: 0
+```
+---
 
 ## 🚀 My Approach
 - Since each row is sorted in **non-increasing** order, we can use **binary search** to find the **first negative number** in each row.
