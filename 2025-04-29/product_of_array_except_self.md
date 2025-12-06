@@ -24,6 +24,60 @@ Given an integer array `nums`, return an array `answer` such that `answer[i]` is
 - Output: `[0,0,9,0,0]`
 
 ---
+##  Approach 1 : Brute Force
+🧠 Intuition
+
+- The most direct way to solve the problem is to follow the definition:
+- For each index i in the array:
+  - Compute the product of all elements except nums[i].
+
+- This means:
+  - For every element, we perform a full traversal of the array.
+  - We skip the element at the current index.
+  - Multiply all the others.
+
+- Although this approach is simple and easy to understand, it is inefficient, because for every index we re-scan the whole array —resulting in O(n²) time.
+
+🛠 Algorithm
+
+1. Let n be the length of nums.
+2. Create a result array res of size n.
+3. For each index i from 0 to n - 1:
+   - Set a running product prod = 1.
+   - Loop through all indices j from 0 to n - 1:
+     - If i != j, multiply prod by nums[j].
+   - Store prod into res[i].
+4. Return the result array res.
+----
+## Code(Python)
+```python
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        res = [0] * n  # output array to store product for each index
+
+        # For each element in the array
+        for i in range(n):
+            prod = 1  # running product for this index
+
+            # Multiply all elements except nums[i]
+            for j in range(n):
+                if i == j:
+                    continue  # skip the current index element
+                prod *= nums[j]
+
+            res[i] = prod  # store computed product
+        
+        return res
+```
+---
+## 💡 Time and Space Complexity
+- **Time**: O(n²)
+    -  For each index, we traverse the entire array.
+- **Space**: O(1)
+    - extra space (ignoring output array).
+ 
+---
 
 ## 🚀 Approach
 1. **Prefix pass**:
