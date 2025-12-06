@@ -79,17 +79,46 @@ class Solution:
  
 ---
 
-## 🚀 Approach
-1. **Prefix pass**:
-   - Traverse from left to right, maintaining a running product of all elements before the current index.
-   - Store this in the result array.
+## 🚀 Approach 2 : Prefix & Suffix
+🧠 Intuition
+We don’t need to compute the product of all elements separately for each index, nor do we need additional prefix/suffix arrays.
 
-2. **Postfix pass**:
-   - Traverse from right to left, maintaining a running product of all elements after the current index.
-   - Multiply this with the values already stored in the result array from the prefix pass.
+Instead, we can build the solution in two efficient passes using only:
+ - A prefix running product, and
+ - A postfix running product
 
-3. The final result array contains the product of all elements except the current one, without using division and in O(n) time.
+How it works:
 
+1. First Pass (Prefix)
+   - For each index i, store the product of all elements to the left of i in res[i].
+   - Maintain a running prefix value and update it as we move forward.
+
+2. Second Pass (Postfix)
+   - For each index i, multiply res[i] by the product of all elements to the right of i.
+   - Maintain a running postfix and update it as we move backward.
+
+This approach effectively computes:
+```python
+res[i] = (product of all left elements) * (product of all right elements)
+```
+And because we reuse the res array and only keep two integers (prefix, postfix), the extra space used is O(1).
+
+🛠 Algorithm
+
+1. Initialize the result array res with all values set to 1.
+2. Set prefix = 1.
+3. First pass (Left → Right):
+   - For every index i:
+     - Set res[i] = prefix.
+     - Update prefix *= nums[i].
+
+4. Set postfix = 1.
+5. Second pass (Right → Left):
+   - For every index i:
+     - Multiply res[i] by postfix.
+     - Update postfix *= nums[i].
+
+6. Return res.
 
 ---
 
@@ -98,30 +127,31 @@ class Solution:
 ```python
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        # Step 1: Initialize the result list (res) with 1's. 
-        # This list will hold the final products.
-        res = [1] * (len(nums))
-        
-        # Step 2: Calculate the prefix products (product of all elements to the left of each element).
-        prefix = 1
-        for i in range(len(nums)):
-            res[i] = prefix          # Store current prefix in result
-            prefix *= nums[i]        # Update prefix
+        n = len(nums)
+        res = [1] * n  # Step 1: initialize result with 1s
 
-        # Step 3: Calculate the postfix products (product of all elements to the right of each element).
+        # Step 2: prefix pass (compute product of all left-side elements)
+        prefix = 1
+        for i in range(n):
+            res[i] = prefix      # store product of all elements to the left
+            prefix *= nums[i]    # update prefix by multiplying current element
+
+        # Step 3: postfix pass (compute product of all right-side elements)
         postfix = 1
-        for i in range(len(nums) - 1, -1, -1):
-            res[i] *= postfix        # Multiply with current postfix
-            postfix *= nums[i]       # Update postfix
-        
-        # Step 4: Return the final result
+        for i in range(n - 1, -1, -1):
+            res[i] *= postfix     # multiply with right-side product
+            postfix *= nums[i]    # update postfix
+
         return res
+
 ```
 
 ---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n
-    - One pass for prefix, one pass for postfix
+  - One left-to-right pass
+  - One right-to-left pass
 - **Space**: O(1)
-    - Result array is not counted as extra space (as per problem statement)
+    - Output array is not considered extra space per LeetCode rules
+    - Only two variables: prefix and postfix
