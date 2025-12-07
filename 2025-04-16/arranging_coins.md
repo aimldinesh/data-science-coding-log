@@ -11,6 +11,21 @@
 - Given `n` coins, you need to arrange them in a staircase shape such that each row has one more coin than the previous row. You need to determine the maximum number of complete rows that can be formed with the `n` coins.
 
 ---
+## Examples
+```python
+Example1:
+Input: n = 5
+Output: 2
+Explanation: Because the 3rd row is incomplete, we return 2.
+
+Example2:
+Input: n = 8
+Output: 3
+Explanation: Because the 4th row is incomplete, we return 3.
+```
+
+---
+
 
 ## 🚀 My Approach
 We use **binary search** to find the maximum number of complete rows that can be formed:
