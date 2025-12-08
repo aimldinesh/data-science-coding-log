@@ -27,7 +27,7 @@ Explanation: The missing positive integers are [5,6,7,...]. The 2nd missing posi
 ---
 
 ## 🚀 Approach : Binary Search Approach (Optimal)
-Intuition
+#### Intuition:
 
 We need the k-th missing positive number from a sorted array arr of positive integers.
 A direct scan works, but binary search makes it O(log n).
