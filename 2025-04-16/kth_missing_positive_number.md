@@ -41,6 +41,7 @@ For each middle element `arr[mid]`, we calculate the number of missing positive 
 
 ```python
 missing = arr[mid] - mid - 1
+```
 - This formula works because the number of missing numbers before arr[mid] is essentially the difference between the value of arr[mid] and its index, minus one (since arrays are zero-indexed).
 
 3. Adjust the Range:
@@ -49,7 +50,7 @@ missing = arr[mid] - mid - 1
  - If missing >= k, we move the right pointer to mid - 1, because we need to find fewer missing numbers.
 
 Once the binary search loop terminates, the result is calculated as right + k + 1. This formula gives the k-th missing number because after narrowing down the search space, right gives the last valid position, and adding k + 1 gives the exact number we're looking for.
-```
+
 ---
 
 ## 💻 Code (Python)
