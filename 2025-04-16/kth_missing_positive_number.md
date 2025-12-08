@@ -77,6 +77,133 @@ class Solution:
 ```
 
 ---
+### Setp by Step Code execution with Example
+🔍 Initial Values
+    - arr = [2, 3, 4, 7, 11]
+    - k = 5
+    - left = 0
+    - right = len(arr) - 1 = 4
+
+- We now enter the while left <= right loop.
+
+▶️ Iteration 1
+```python
+mid = (left + right) // 2 = (0 + 4) // 2 = 2
+arr[mid] = arr[2] = 4
+missing = arr[mid] - mid - 1 = 4 - 2 - 1 = 1
+```
+So:
+  - Missing numbers up to 4 are: [1]
+  - missing = 1
+
+Now compare:
+```python
+if missing < k:   # 1 < 5 → True
+    left = mid + 1 = 2 + 1 = 3
+```
+So:
+
+  - left = 3
+  - right = 4
+
+We move left rightward because we still need more missing numbers (we only have 1 so far, but need 5).
+
+▶️ Iteration 2
+
+Now:
+  - left = 3
+  - right = 4
+```python
+mid = (left + right) // 2 = (3 + 4) // 2 = 3
+arr[mid] = arr[3] = 7
+missing = arr[mid] - mid - 1 = 7 - 3 - 1 = 3
+```
+So:
+
+  - Missing numbers up to 7 are: [1, 5, 6]
+  - missing = 3
+
+Compare:
+```python
+if missing < k:   # 3 < 5 → True
+    left = mid + 1 = 3 + 1 = 4
+```
+Update:
+
+   - left = 4
+   - right = 4
+
+Still not enough: we have 3 missing, need 5.
+
+▶️ Iteration 3
+
+Now:
+  - left = 4
+  - right = 4
+```python
+mid = (left + right) // 2 = (4 + 4) // 2 = 4
+arr[mid] = arr[4] = 11
+missing = arr[mid] - mid - 1 = 11 - 4 - 1 = 6
+```
+So:
+
+  - Missing numbers up to 11 are: [1, 5, 6, 8, 9, 10]
+  - missing = 6
+
+Compare:
+```python
+if missing < k:   # 6 < 5 → False
+else:
+    right = mid - 1 = 4 - 1 = 3
+```
+Update:
+
+   - left = 4
+   - right = 3
+
+Now left > right, so the loop stops.
+
+🧩 What do left and right mean now?
+
+At the end:
+
+  - right = 3 → at index 3, value 7, missing = 3
+  - At index 4, value 11, missing = 6
+
+We are looking for the point where missing values cross k = 5.
+
+  - At index 3 (value 7): 3 missing
+  - At index 4 (value 11): 6 missing
+
+So the 5th missing lies between 7 and 11.
+
+The loop ends with:
+
+   - right at the last index where missing < k
+   - left at the first index where missing ≥ k
+
+Here:
+
+   - right = 3 (missing = 3 < 5)
+   - left = 4 (missing = 6 ≥ 5)
+
+🧮 Final Formula: right + k + 1
+
+Return
+```python
+return right + k + 1
+```
+
+Plug in Values
+```python
+right = 3
+k = 5
+
+answer = 3 + 5 + 1 = 9
+```
+✅ Output: 9
+
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(log n)
