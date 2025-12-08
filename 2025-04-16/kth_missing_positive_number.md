@@ -26,31 +26,52 @@ Explanation: The missing positive integers are [5,6,7,...]. The 2nd missing posi
 ```
 ---
 
-## 🚀 My Approach
-We can efficiently solve this problem using a **Binary Search** technique. Here's a step-by-step breakdown of the approach:
+## 🚀 Approach : Binary Search Approach (Optimal)
+Intuition
 
-### 1. Initialize Two Pointers:
-We begin by initializing two pointers: 
-- `left` at the start (`0`) 
-- `right` at the end (`len(arr) - 1`) of the array.
+We need the k-th missing positive number from a sorted array arr of positive integers.
+A direct scan works, but binary search makes it O(log n).
 
-### 2. Binary Search:
-We apply binary search to find the correct position in the array where the number of missing positive integers is just less than `k`.
+Key observation:
 
-For each middle element `arr[mid]`, we calculate the number of missing positive integers up to that point. The formula used is:
-
+For any index i in arr:
 ```python
-missing = arr[mid] - mid - 1
+missing_count = arr[i] - (i + 1)
 ```
-- This formula works because the number of missing numbers before arr[mid] is essentially the difference between the value of arr[mid] and its index, minus one (since arrays are zero-indexed).
+This tells us how many positive numbers are missing before arr[i].
 
-3. Adjust the Range:
- - If missing < k, we move the left pointer to mid + 1, because we need to find more missing numbers.
+Example:
+arr = [2,3,4,7,11]
 
- - If missing >= k, we move the right pointer to mid - 1, because we need to find fewer missing numbers.
+At index 3 (value = 7):
+```python
+missing = 7 - (3 + 1) = 3
+```
+So missing numbers before 7 are: 1, 5, 6.
 
-Once the binary search loop terminates, the result is calculated as right + k + 1. This formula gives the k-th missing number because after narrowing down the search space, right gives the last valid position, and adding k + 1 gives the exact number we're looking for.
+Goal:
 
+Find the first index where missing >= k.
+This means the k-th missing number lies before or at this index.
+
+🛠 Algorithm
+
+1. Set left = 0, right = n-1.
+2. While left <= right:
+   - Compute mid.
+   - Compute missing numbers up to mid.
+
+3. If missing < k, move right (increase left pointer).
+
+4. Else move left (decrease right pointer).
+
+5. After the loop:
+   - The position is at index right
+   - The k-th missing = right + k + 1
+
+Why? Because:
+   - At index right, missing numbers < k
+   - We need exactly k, so we shift forward.
 ---
 
 ## 💻 Code (Python)
