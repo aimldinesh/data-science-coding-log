@@ -23,6 +23,7 @@ We fix one side of the triangle (say `nums[i]`) starting from the end of the arr
 
 ```python
 nums[left] + nums[right] > nums[i]
+```
 
 This ensures the triangle inequality holds.
 
