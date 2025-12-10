@@ -36,13 +36,39 @@ Output: [["a"]]
  ```
 ---
 
-## 🚀 My Approach
-- I used a **dictionary** to group words by their **sorted character signature**.
-- For each word:
-  - I sorted the characters of the word (e.g., "eat" → "aet").
-  - I used the sorted word as a key in the dictionary.
-  - Words with the same sorted characters were grouped together.
-- Finally, I returned all the dictionary values as the result.
+## 🚀 Approach : Sort-As-Key (Anagram Signature Method)
+Intuition
+
+Two words are anagrams if and only if they contain the exact same characters in any order.
+A simple and reliable way to check this is:
+
+- ✔ Sort the characters
+- ✔ Use the sorted string as a unique signature
+
+Examples:
+
+- "eat" → "aet"
+- "tea" → "aet"
+- "ate" → "aet"
+
+So all these words share the same sorted key, meaning they belong to the same anagram group.
+
+We maintain a dictionary:
+```python
+key = sorted(word)
+value = list of all words having this key
+```
+At the end, we return all grouped lists.
+
+🛠 Algorithm
+
+1. Create an empty dictionary dic.
+2. Loop through each word in strs:
+3. Sort the word to get its "signature"
+   - If signature not in dic, create a new list
+   - Else append the word to the existing list
+
+5. Return dic.values() as the final list of anagram groups.
 
 ---
 
