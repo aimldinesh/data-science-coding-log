@@ -124,34 +124,58 @@ Process:
 
 ---
 
-## ⚙️ Approach 2: Character Count (Optimized)
-- Instead of sorting, we can use the frequency count of each letter (a-z) as a key.
-- This avoids the sorting overhead.
+## ⚙️ Approach 2: Character Count Signature (Optimal O(n·k))
+Intuition
 
-Example:
+Instead of sorting each word (which costs O(k log k)), we can uniquely identify an anagram by counting how many times each character appears.
 
-- "eat" → [1,0,0,0,1,0,...,1]
-- "tea" → [1,0,0,0,1,0,...,1]
-- → Same frequency tuple → same group.
+Since we have only 26 lowercase English letters, each word can be represented by a 26-length frequency array, such as:
 
+- "eat" → [1,0,0,0,1,0,...]
+
+- "tea" → [1,0,0,0,1,0,...]
+
+- "tan" → [1,0,0,0,...,1,...]
+
+Two words are anagrams if and only if their frequency arrays are identical.
+
+We convert this list into a tuple (because lists are not hashable) and use it as a dictionary key.
+
+This avoids sorting entirely and improves performance.
+
+🛠 Algorithm
+
+1. Create a defaultdict(list) to store grouped anagrams.
+2. For each word in strs:
+   - Initialize a 26-length array of zeros.
+   - For each character, increment its frequency position.
+   - Convert the frequency list into a tuple (hashable).
+   - Append the word to anagram_map[tuple].
+
+3. Return the grouped values.
 ---
 
 ### code 
 ```python
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        anagram_map = defaultdict(list)
+        anagram_map = defaultdict(list)  # maps frequency tuple → list of anagrams
         
         for word in strs:
-            # Initialize a 26-length list for character counts
+            # Step 1: Frequency array for this word
             count = [0] * 26
             for c in word:
                 count[ord(c) - ord('a')] += 1
+                
+            # Step 2: Convert list to tuple (so it becomes hashable)
+            key = tuple(count)
             
-            # Use the tuple as a hashable key
-            anagram_map[tuple(count)].append(word)
+            # Step 3: Group words with the same signature
+            anagram_map[key].append(word)
         
+        # Step 4: Return grouped anagrams
         return list(anagram_map.values())
+
 ```
 ---
 ## 💡 Time and Space Complexity
