@@ -130,3 +130,72 @@ Step-by-step:
 - **Space**: O(n)
     - Extra space used to store up to n elements in the dictionary.
 
+---
+## 🚀  Approach 3 : Hash Map (Two-Pass)
+Intuition
+
+The goal is to find two distinct indices whose values add up to the target.
+Using a hash map (dictionary), we can store each number’s index and then check if the complement exists.
+
+This version is a two-pass hash map approach:
+
+Pass 1:
+
+Build a dictionary indices where:
+```python
+value → index
+```
+Pass 2:
+
+For each number nums[i]:
+  - Compute diff = target - nums[i]
+  - Check if diff exists in the dictionary AND its index is not the same as i
+
+If yes → we found the pair.
+
+🛠 Algorithm
+
+1. Create an empty dictionary indices.
+2. First pass through the array:
+   - Store each number’s index in the dictionary.
+
+3. Second pass through the array:
+   - Compute the difference: diff = target - nums[i]
+   - If diff is in the dictionary and it’s a different index, return the pair.
+
+4. If no valid pair found, return an empty list.
+
+---
+
+## 💻 Code (Python)
+
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        indices = {}  # maps value → index
+
+        # First pass: store each number with its index
+        for i, n in enumerate(nums):
+            indices[n] = i
+
+        # Second pass: find complement
+        for i, n in enumerate(nums):
+            diff = target - n  # value needed to reach target
+
+            # Check if complement exists and is not the same index
+            if diff in indices and indices[diff] != i:
+                return [i, indices[diff]]
+
+        return []  # no solution found (though problem guarantees one)
+
+
+```
+
+---
+
+## 💡 Time and Space Complexity
+- **Time**: O(n)
+    - Two passes through the list → O(n) + O(n)
+- **Space**: O(n)
+    - Dictionary stores up to n key-value pairs.
+
