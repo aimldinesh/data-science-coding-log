@@ -178,9 +178,233 @@ class Solution:
 
 ```
 ---
+### Step-by-Step Execution
+Initial State
+```python
+anagram_map = {}  # actually defaultdict(list), but currently empty
+strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+```
+🔹 1st word: "eat"
+   - word = "eat"
+   - Initialize count = [0, 0, 0, ..., 0] (26 zeros)
+
+Now iterate through characters in "eat":
+
+1. c = 'e'
+
+   - Index = ord('e') - ord('a') = 4
+   - count[4] += 1 → count[4] = 1
+
+2. c = 'a'
+
+   - Index = ord('a') - ord('a') = 0
+   - count[0] += 1 → count[0] = 1
+
+3. c = 't'
+
+   - Index = ord('t') - ord('a') = 19
+   - count[19] += 1 → count[19] = 1
+
+So count now looks like (showing only non-zero indices):
+```python
+count = [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+# indexes:   0           4                          19
+# letters:   a           e                           t
+````
+Convert to tuple:
+```python
+key = tuple(count)
+```
+anagram_map[key].append("eat")
+
+Since key doesn’t exist yet, defaultdict(list) creates a new list:
+```python
+anagram_map = {
+  (1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0): ["eat"]
+}
+```
+---
+🔹 2nd word: "tea"
+
+   - word = "tea"
+   - Reset count = [0] * 26
+
+Process each char:
+
+1. c = 't'
+
+   - idx = 19
+   - count[19] = 1
+
+2. c = 'e'
+
+   - idx = 4
+   - count[4] = 1
+
+3. c = 'a'
+
+   - idx = 0
+   - count[0] = 1
+
+count becomes exactly the same as for "eat":
+```python
+count = [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]
+```
+So
+```python
+key = tuple(count)
+anagram_map[key].append("tea")
+```
+Now map is:
+```python
+{
+  (1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0): ["eat", "tea"]
+}
+```
+---
+🔹 3rd word: "tan"
+
+   - word = "tan"
+   - count = [0] * 26
+
+Process:
+
+1. c = 't' → idx 19 → count[19] = 1
+
+2. c = 'a' → idx 0 → count[0] = 1
+
+3. c = 'n' → idx 13 → count[13] = 1
+
+count now:
+```python
+count = [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0]
+# letters:   a           n                 t
+```
+key = tuple(count)
+
+This is a new pattern, so:
+```python
+anagram_map[key].append("tan")
+```
+Map Becomes
+```python
+{
+  (1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0): ["eat", "tea"],
+  (1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0): ["tan"]
+}
+```
+---
+🔹 4th word: "ate"
+
+   - word = "ate"
+   - count = [0] * 26
+
+Process:
+
+1. c = 'a' → idx 0 → count[0] = 1
+2. c = 't' → idx 19 → count[19] = 1
+3. c = 'e' → idx 4 → count[4] = 1
+
+count:
+```python
+count = [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]
+```
+This key matches the first group ("eat" and "tea"):
+```python
+key = tuple(count)
+anagram_map[key].append("ate")
+```
+Now:
+```python
+{
+  (1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0): ["eat", "tea", "ate"],
+  (1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0): ["tan"]
+}
+```
+---
+🔹 5th word: "nat"
+
+   - word = "nat"
+   - count = [0] * 26
+
+Process:
+
+1. c = 'n' → idx 13 → count[13] = 1
+2. c = 'a' → idx 0 → count[0] = 1
+3. c = 't' → idx 19 → count[19] = 1
+
+count:
+```python
+count = [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0]
+```
+Same as "tan":
+```python
+key = tuple(count)
+anagram_map[key].append("nat")
+```
+Map:
+```python
+{
+  (1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0): ["eat", "tea", "ate"],
+  (1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0): ["tan", "nat"]
+}
+```
+---
+🔹 6th word: "bat"
+
+   - word = "bat"
+   - count = [0] * 26
+
+Process:
+
+1. c = 'b' → idx 1 → count[1] = 1
+
+2. c = 'a' → idx 0 → count[0] = 1
+
+3. c = 't' → idx 19 → count[19] = 1
+
+count:
+```python
+count = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]
+# letters:   a,b,t
+```
+New pattern, so:
+```python
+key = tuple(count)
+anagram_map[key].append("bat")
+```
+Final anagram_map:
+```python
+{
+  (1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0): ["eat", "tea", "ate"],
+  (1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0): ["tan", "nat"],
+  (1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0): ["bat"]
+}
+```
+Final Return
+```python
+return list(anagram_map.values())
+```
+This becomes (order may vary because dictionaries are logically unordered):
+```python
+[
+  ["eat", "tea", "ate"],
+  ["tan", "nat"],
+  ["bat"]
+]
+```
+---
+
 ## 💡 Time and Space Complexity
 - **Time**: O(N·M)
+   - n = number of words
+   - k = average word length
+   - Counting characters takes O(k) per word.
 - **Space**: O(N·M)
+  - Each word is stored
+  - Each key stores a 26-length tuple
+
+Still the same space class as sorting method, but faster.
 
 ---
 
