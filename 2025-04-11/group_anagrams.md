@@ -396,11 +396,11 @@ This becomes (order may vary because dictionaries are logically unordered):
 ---
 
 ## 💡 Time and Space Complexity
-- **Time**: O(N·M)
+- **Time**: O(n.k)
    - n = number of words
    - k = average word length
    - Counting characters takes O(k) per word.
-- **Space**: O(N·M)
+- **Space**: O(n.k)
   - Each word is stored
   - Each key stores a 26-length tuple
 
