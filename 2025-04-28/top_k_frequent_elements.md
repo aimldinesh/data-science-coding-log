@@ -22,7 +22,7 @@ You may return the answer in **any order**.
 
 ---
 
-## 🚀 Approach
+## 🚀 Approach 1: Using Bucket Sort
  - Use a **hashmap** (`count`) to store the frequency of each element.
 - Use a **bucket sort** idea:
   - Create a list of empty lists `freq`, where `freq[i]` holds numbers that appear exactly `i` times.
@@ -70,7 +70,7 @@ class Solution:
 
 ---
 
-## 📝 Approach — Sorting by Frequency
+## 📝 Approach 2 — Sorting by Frequency
 
 1. **Count Frequencies**
    - Traverse the `nums` list.
@@ -146,3 +146,104 @@ top_k_keys = [2, 1]
   - **Total**: **O(n + m log m)**
 - **Space Complexity**: **O(m)** for storing frequency counts.
 
+---
+
+## 📝 Approach 3 : 
+## Python(Code)
+```python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
+        # Step 1: Count the frequency of each number
+        # Example: nums = [1,1,1,2,2,3] → count = {1:3, 2:2, 3:1}
+        count = {}
+        for num in nums:
+            # If num not in dictionary, count.get(num,0) returns 0
+            count[num] = 1 + count.get(num, 0)
+
+        # Step 2: Convert dictionary into a list of [frequency, number]
+        # Example: count = {1:3, 2:2, 3:1}
+        # arr = [[3,1],[2,2],[1,3]]
+        arr = []
+        for num, cnt in count.items():
+            arr.append([cnt, num])
+
+        # Step 3: Sort by frequency (ascending order)
+        # After sort: [[1,3], [2,2], [3,1]]
+        arr.sort()
+
+        # Step 4: Extract top k frequent elements
+        # We pop from the end because highest frequency is at the end
+        res = []
+        while len(res) < k:
+            # arr.pop() → returns last element like [3,1]
+            # We take only the number part → [3,1][1] = 1
+            res.append(arr.pop()[1])
+
+        return res
+```
+---
+### Step by Step code execution with example
+🧠 Step 1: Build Frequency Dictionary
+
+We loop through each number and count frequency.
+
+Iteration through nums:
+
+| num | count dictionary   |
+| --- | ------------------ |
+| 1   | {1: 1}             |
+| 1   | {1: 2}             |
+| 1   | {1: 3}             |
+| 2   | {1: 3, 2: 1}       |
+| 2   | {1: 3, 2: 2}       |
+| 3   | {1: 3, 2: 2, 3: 1} |
+
+Final
+```python
+count = {1: 3, 2: 2, 3: 1}
+```
+🧠 Step 2: Convert dictionary → list of [frequency, number]
+
+We loop through count.items():
+| num | cnt | appended pair |
+| --- | --- | ------------- |
+| 1   | 3   | [3, 1]        |
+| 2   | 2   | [2, 2]        |
+| 3   | 1   | [1, 3]        |
+
+arr becomes
+```python
+arr = [[3,1], [2,2], [1,3]]
+```
+🧠 Step 3: Sort arr
+
+Sorting is based on first element (frequency):
+
+Before sort:
+```python
+[[3,1], [2,2], [1,3]]
+```
+After Sort
+```python
+[[1,3], [2,2], [3,1]]
+```
+🧠 Step 4: Pop k most frequent elements
+
+We pop from the end (largest frequency first).
+
+k = 2
+1st pop:
+```python
+arr.pop() → [3,1]
+res = [1]
+```
+2nd pop:
+```python
+arr.pop() → [2,2]
+res = [1, 2]
+```
+Final Output
+```python
+[1, 2]
+```
