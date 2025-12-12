@@ -5,7 +5,6 @@
 - **Date Solved**: 2025-04-17
 - **Tags**: Binary Search, Array, DSA
 - **Difficulty**: Medium
-- **Code Review**: [https://leetcode.com/problems/peak-index-in-a-mountain-array/submissions/1484279758/?envType=study-plan-v2&envId=binary-search](https://leetcode.com/problems/peak-index-in-a-mountain-array/submissions/1484279758/?envType=study-plan-v2&envId=binary-search)
 ---
 
 ## ✅ Problem Statement
