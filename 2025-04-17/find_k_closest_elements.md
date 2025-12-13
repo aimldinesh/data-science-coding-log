@@ -17,6 +17,17 @@ Given a **sorted array** `arr`, an integer `k`, and a target integer `x`, return
   - `|a - x| == |b - x|` and `a < b`.
 
 ---
+## Examples
+```python
+Example 1:
+Input: arr = [1,2,3,4,5], k = 4, x = 3
+Output: [1,2,3,4]
+
+Example 2:
+Input: arr = [1,1,2,3,4,5], k = 4, x = -1
+Output: [1,1,2,3]
+```
+---
 
 ## 🚀 My Approach 1 : Sorting Based on Distance
 We can solve this using a **custom sort** based on absolute distance from `x`.
