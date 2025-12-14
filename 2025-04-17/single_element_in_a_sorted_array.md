@@ -11,6 +11,17 @@
 - You're given a **sorted** array where every element appears exactly **twice**, except for one element which appears **only once**.Find that single element in `O(log n)` time and `O(1)` space.
 
 ---
+## Examples
+```python
+Example 1:
+Input: nums = [1,1,2,3,3,4,4,8,8]
+Output: 2
+
+Example 2:
+Input: nums = [3,3,7,7,10,11,11]
+Output: 10
+```
+---
 
 ## 🚀 My Approach: Binary Search
 We use Binary Search to efficiently locate the unique element:
