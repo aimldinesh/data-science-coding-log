@@ -27,18 +27,44 @@
 ```python
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
-        # Pointer for the position of the next non-zero element
+        # This pointer indicates the index where the next non-zero element should be placed
         non_zero_index = 0
 
-        # Traverse the array
+        # Traverse the array using index i
         for i in range(len(nums)):
+            
+            # If the current element is non-zero
             if nums[i] != 0:
-                # Swap the non-zero element with the element at non_zero_index
+                
+                # Swap the current non-zero element with the element
+                # at non_zero_index
                 nums[i], nums[non_zero_index] = nums[non_zero_index], nums[i]
-                # Move the non_zero_index forward
+                
+                # Move non_zero_index forward,
+                # since we have placed a non-zero correctly
                 non_zero_index += 1
+
 ```
 
+---
+## Step by Step code execution with example
+Input:
+```python
+nums = [0, 1, 0, 3, 12]
+```
+Execution:
+| i | nums[i] | Action            | nums         | non_zero_index |
+| - | ------- | ----------------- | ------------ | -------------- |
+| 0 | 0       | skip              | [0,1,0,3,12] | 0              |
+| 1 | 1       | swap with index 0 | [1,0,0,3,12] | 1              |
+| 2 | 0       | skip              | [1,0,0,3,12] | 1              |
+| 3 | 3       | swap with index 1 | [1,3,0,0,12] | 2              |
+| 4 | 12      | swap with index 2 | [1,3,12,0,0] | 3              |
+
+Output
+```python
+[1, 3, 12, 0, 0]
+```
 ---
 
 ## 💡 Time and Space Complexity
