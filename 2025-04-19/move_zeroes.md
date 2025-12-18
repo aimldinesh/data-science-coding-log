@@ -12,8 +12,19 @@
 - Given an integer array `nums`, move all zeroes to the end of the array without changing the relative order of the non-zero elements.You must do this in **place** by modifying the array.
 
 ---
+## Examples
+```python
+Example 1:
+Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
 
-## 🚀 My Approach : Two-pointer technique
+Example 2:
+Input: nums = [0]
+Output: [0]
+```
+---
+
+## 🚀 Approach : Two-pointer technique
 
 ### 💡 Key Insight:
 - The idea is to maintain a pointer (`non_zero_index`) which will track the position where the next non-zero element should be placed.
