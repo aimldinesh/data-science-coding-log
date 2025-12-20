@@ -16,11 +16,26 @@
 
 ---
 
-## 🚀 Approach 1 : Brute Force
-- Create a temporary list (`temp`) to store elements not equal to `val`.
-- Copy elements from `temp` back to `nums`.
-- Return the length of the filtered list.
+## 🚀 Approach: Brute Force (Using Extra Array)
+🔹 Intuition
 
+The simplest way to remove all occurrences of a given value val from the array is to:
+
++ Create a new temporary list
++ Copy only those elements that are not equal to val
++ Overwrite the original array with these filtered elements
+
+This approach is straightforward and easy to understand, though it uses extra space.
+
+🧩 Algorithm
+
+1. Initialize an empty list temp.
+2. Traverse the array nums:
+   + If the current element is equal to val, skip it.
+   + Otherwise, append it to temp.
+     
+3. Copy elements from temp back into nums (in-place update).
+4. Return the length of temp (number of elements not equal to val).
 ---
 
 ## 💻 Code (Python)
@@ -28,18 +43,24 @@
 ```python
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        # Brute Force
+        # Step 1: Create a temporary list to store elements != val
         temp = []
+
+        # Step 2: Traverse original array
         for num in nums:
+            # Skip elements equal to val
             if num == val:
                 continue
+            # Keep valid elements
             temp.append(num)
 
-        # Copy back the filtered elements to original list
+        # Step 3: Copy filtered elements back to nums
         for i in range(len(temp)):
             nums[i] = temp[i]
 
+        # Step 4: Return new length of the array
         return len(temp)
+
 ```
 
 ---
