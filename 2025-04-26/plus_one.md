@@ -39,11 +39,21 @@ Thus, the result should be [1,0].
 ---
 
 ## 🚀 Approach
-- Start from the last digit and move backward.
-- If the current digit is less than 9, simply add 1 and return the list immediately (no carry needed).
-- If the digit is 9, set it to 0 and continue to the previous digit (carry the 1).
-- If you finish processing all digits (meaning all were 9s), prepend a 1 at the beginning (e.g., [9,9,9] → [1,0,0,0]).
+🧠 Intuition
 
+We simulate how addition works manually:
+
++ Start from the last digit
++ If the digit is less than 9, simply add 1 and return
++ If the digit is 9, it becomes 0 and we carry over to the next digit
++ If all digits are 9, we add 1 at the front
+
+🧩 Algorithm
+
+1. Traverse the array from right to left
+2. If the current digit is < 9, increment it and return the array
+3. Otherwise, set it to 0 and continue
+4. If all digits were 9, return [1] + digits
 ---
 
 ## 💻 Code (Python)
