@@ -79,6 +79,78 @@ class Solution:
 ```
 
 ---
+## 🔍 Example 1 (With Carry Propagation)
+
+Input
+```
+digits = [1, 2, 9, 9]
+```
+✅ Step-by-Step Execution
+
+Initial state:
+```
+digits = [1, 2, 9, 9]
+n = 4
+```
+
+🔁 Loop Iteration (Right to Left)
+
+Iteration 1
+
++ i = 3
++ digits[3] = 9
++ Since 9 == 9, set it to 0
+```
+digits → [1, 2, 9, 0]
+```
+Iteration 2
+
++ i = 2
++ digits[2] = 9
++ Again, set it to 0
+```
+digits → [1, 2, 0, 0]
+```
+Iteration 3
+
++ i = 1
++ digits[1] = 2 (< 9)
++ Add 1 → digits[1] = 3
+
+Return result immediately
+```
+Final Output → [1, 3, 0, 0]
+```
+✅ Output
+```
+[1, 3, 0, 0]
+```
+---
+🔍 Example 2 (All digits are 9)
+
+Input
+```
+digits = [9, 9, 9]
+```
+🔁 Execution
+| Index | Value | Action   |
+| ----- | ----- | -------- |
+| 2     | 9     | set to 0 |
+| 1     | 9     | set to 0 |
+| 0     | 9     | set to 0 |
+
+After loop:
+```
+digits = [0, 0, 0]
+```
+
+Since all digits were 9, we add 1 at the beginning.
+
+✅ Output
+```
+[1, 0, 0, 0]
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n), where n is the number of digits (because we may touch each digit once).
