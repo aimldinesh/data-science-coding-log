@@ -126,7 +126,7 @@ Final Output → [1, 3, 0, 0]
 [1, 3, 0, 0]
 ```
 ---
-🔍 Example 2 (All digits are 9)
+## 🔍 Example 2 (All digits are 9)
 
 Input
 ```
