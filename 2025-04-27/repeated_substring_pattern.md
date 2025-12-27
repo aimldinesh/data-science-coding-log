@@ -34,12 +34,18 @@ Explanation: It is the substring "abc" four times or the substring "abcabc" twic
 ```
 ---
 
-## 🚀 My Approach
- - Step 1: Concatenate the string with itself: doubled = s + s.
- - Step 2: Remove the first and last characters from the doubled string: modified = doubled[1:-1].
- - Step 3: Check if the original string s is a substring of modified.
- - If yes, s can be constructed by repeating a substring.
- - Otherwise, it cannot.
+## 🧠 Approach: String Doubling Trick
+
+🔹 Intuition:
+
++ If a string s is made by repeating a substring, then:
+  + s will appear inside (s + s)[1:-1]
+
+Why?
+
++ Concatenating s + s creates overlapping patterns.
++ Removing the first and last character prevents matching the original string directly.
++ If s still exists inside this trimmed string → it is repeating.
 
 ---
 
