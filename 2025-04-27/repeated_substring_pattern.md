@@ -66,6 +66,74 @@ class Solution:
 ```
 
 ---
+## ▶️ Step-by-Step Execution (Example 1)
+
+Input:
+```
+s = "abab"
+```
+
+Step 1: Double the string
+```
+doubled = "abab" + "abab"
+doubled = "abababab"
+```
+Step 2: Remove first and last characters
+```
+modified = "abababab"[1:-1]
+modified = "bababa"
+```
+Step 3: Check if s exists in modified
+```
+"abab" in "bababa"  → True
+```
+✅ Result: True
+---
+▶️ Step-by-Step Execution (Example 2)
+
+Input:
+```
+s = "aba"
+```
+Step 1: Double the string
+```
+doubled = "abaaba"
+```
+Step 2: Remove first and last characters
+```
+modified = "baab"
+```
+Step 3: Check substring
+```
+"aba" in "baab" → False
+```
+
+❌ Result: False
+
+---
+▶️ Step-by-Step Execution (Example 3)
+
+Input:
+```
+s = "aaaa"
+```
+Step 1:
+```
+doubled = "aaaaaaaa"
+```
+
+Step 2:
+```
+modified = "aaaaaa"
+```
+Step 3:
+```
+"aaaa" in "aaaaaa" → True
+```
+
+✅ Result: True
+
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n), where n is the length of the string s.
