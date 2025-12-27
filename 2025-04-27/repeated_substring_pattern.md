@@ -87,7 +87,9 @@ Step 3: Check if s exists in modified
 ```
 "abab" in "bababa"  → True
 ```
+
 ✅ Result: True
+
 ---
 ▶️ Step-by-Step Execution (Example 2)
 
