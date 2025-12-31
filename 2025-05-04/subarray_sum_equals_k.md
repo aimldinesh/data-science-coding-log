@@ -23,14 +23,136 @@ Explanation:
 ```
 ---
 
-## 🚀 My Approach
-We use a prefix sum + hashmap technique to solve this in one pass.
-Idea:
-  - Maintain a running sum curSum as we traverse the array.
-  - For each index, we check if there exists a prefix sum such that curSum - k has occurred before.
-  - If yes, that means the subarray from that previous index to the current one sums to k.
-  - We track the count of each prefix sum using a hashmap.
+## 🚀 Approach : 
 
+🧠 Intuition
+
+A brute-force approach would check all possible subarrays, but that takes O(n²) time.
+
+To optimize, we use the Prefix Sum technique:
+
+💡 Key Idea:
+
+If:
+```
+current_sum - previous_sum = k
+```
+
+Then:
+```
+previous_sum = current_sum - k
+```
+
+This means:
+
++ If we have seen current_sum - k before,
++ Then a subarray ending at the current index sums to k.
+
+We use a hash map to store how many times each prefix sum has appeared.
+
+🧩 Algorithm
+
+1. Initialize:
+
+ + res = 0 → count of valid subarrays
+ + curSum = 0 → running cumulative sum
+ + prefixSum = {0: 1} → handles subarrays starting from index 0
+
+2. Traverse through the array:
+
+ + Add current number to curSum
+ + Compute diff = curSum - k
+ + If diff exists in prefixSum, add its frequency to res
+ + Update prefixSum[curSum]
+
+3. Return res
+
+---
+
+## 🧩 Step-by-Step Code Execution
+
+Given:
+```
+nums = [1, 2, 3]
+k = 3
+```
+
+Output:
+```
+2
+```
+Explanation:
+
+Subarrays with sum = 3 are:
+
++ [1, 2]
+
++ [3]
+---
+
+Initial Setup
+```
+res = 0                 # count of valid subarrays
+curSum = 0              # running prefix sum
+prefixSum = {0: 1}      # prefix sum frequency map
+```
+🔹 Iteration 1
+```
+n = 1
+curSum = 0 + 1 = 1
+diff = curSum - k = 1 - 3 = -2
+```
+
++ -2 not in prefixSum → no subarray found
+
++ Update prefixSum:
+```
+prefixSum = {0: 1, 1: 1}
+```
+🔹 Iteration 2
+
+```
+n = 2
+curSum = 1 + 2 = 3
+diff = 3 - 3 = 0
+```
+
++ 0 exists in prefixSum → count = 1
++ Add to result:
+```
+res = 1
+```
+
++ Update prefixSum:
+```
+prefixSum = {0: 1, 1: 1, 3: 1}
+```
+✅ Found subarray: [1, 2]
+
+🔹 Iteration 3
+```
+n = 3
+curSum = 3 + 3 = 6
+diff = 6 - 3 = 3
+```
+
++ 3 exists in prefixSum → count = 1
++ Add to result:
+```
+res = 2
+```
+
++ Update prefixSum:
+```
+prefixSum = {0: 1, 1: 1, 3: 1, 6: 1}
+```
+
+✅ Found subarray: [3]
+
+✅ Final Output
+```
+return res  # 2
+```
 ---
 
 ## 💻 Code (Python)
