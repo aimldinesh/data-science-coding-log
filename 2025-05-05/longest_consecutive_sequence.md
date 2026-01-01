@@ -21,6 +21,7 @@ nums = [100, 4, 200, 1, 3, 2]
 
 Output:4
 Explanation:The longest consecutive sequence is [1, 2, 3, 4], which has length 4.
+
 ```
 
 ---
@@ -64,7 +65,6 @@ class Solution:
         return max_length  # Return the longest consecutive sequence length
 
 ```
-
 ---
 
 ## 💡 Time and Space Complexity
