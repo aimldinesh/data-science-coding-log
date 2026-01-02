@@ -27,6 +27,7 @@ Water trapped at positions:
 
 Example 2:
 Input:height = [4,2,0,3,2,5]
+
 Output: 9
 ```
 ---
