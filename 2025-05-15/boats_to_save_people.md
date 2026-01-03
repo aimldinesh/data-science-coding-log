@@ -41,6 +41,7 @@ Output: 4
 - Use two pointers:
     - l for the lightest person (start)
     - r for the heaviest person (end)
+   
 - If the lightest + heaviest ≤ limit → use one boat for both.
 - If not, the heaviest goes alone.
 - Repeat until all people are placed.
