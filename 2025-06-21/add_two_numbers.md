@@ -21,6 +21,7 @@ l2 = 5 → 6 → 4   (represents 465)
 
 Output:
 7 → 0 → 8        (represents 807)
+
 ```
 ---
 
