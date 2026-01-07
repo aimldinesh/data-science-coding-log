@@ -35,10 +35,10 @@ Explanation: The answer is "wke", with length 3.
 
 ## 🚀 Approach : Sliding Window with HashSet
 🔸 Steps:
-- Use two pointers (l and r) to maintain a window of non-repeating characters.
-- Use a set charSet to store characters in the current window.
-- If a repeating character is found at r, shrink the window from the left until the character is removed.
-- Update the maximum length (res) during each iteration.
+ - Use two pointers (l and r) to maintain a window of non-repeating characters.
+ - Use a set charSet to store characters in the current window.
+ - If a repeating character is found at r, shrink the window from the left until the character is removed.
+ - Update the maximum length (res) during each iteration.
 
 ---
 
