@@ -25,6 +25,7 @@
 
 ---
 ##  Approach 1 : Brute Force
+
 🧠 Intuition
 
 - The most direct way to solve the problem is to follow the definition:
