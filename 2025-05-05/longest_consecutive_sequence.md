@@ -41,7 +41,20 @@ For every starting number:
 
 ⚠️ Note: This approach works correctly but is not optimal, because it may repeatedly recompute the same sequences.
 
+🛠 Algorithm
 
+1. Convert the list nums into a set store for fast lookup.
+2. Initialize res = 0 to track the longest streak.
+3. For each number num in nums:
+
+   + Initialize streak = 0 and curr = num
+   + While curr exists in store:
+     + Increment streak
+     + Move to next number: curr += 1
+
+   + Update res = max(res, streak)
+
+4. Return res.
 
 
 ---
