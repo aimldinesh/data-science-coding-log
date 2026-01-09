@@ -23,6 +23,26 @@ Output:4
 Explanation:The longest consecutive sequence is [1, 2, 3, 4], which has length 4.
 
 ```
+---
+## 🧠 Approach: Set + Brute Force Expansion
+
+🧠 Intuition
+
+The goal is to find the longest sequence of consecutive integers in the array.
+
+To allow O(1) lookups, we store all numbers in a set.
+Then for each number, we try to expand forward (num, num+1, num+2, ...) as long as the next number exists in the set.
+
+For every starting number:
+
+ +  Keep increasing the current value
+ + Count how long the consecutive streak lasts
+ + Update the maximum result
+
+⚠️ Note: This approach works correctly but is not optimal, because it may repeatedly recompute the same sequences.
+
+
+
 
 ---
 
