@@ -41,7 +41,7 @@ For every starting number:
 
 ⚠️ Note: This approach works correctly but is not optimal, because it may repeatedly recompute the same sequences.
 
-🛠 Algorithm
+#### 🛠 Algorithm:
 
 1. Convert the list nums into a set store for fast lookup.
 2. Initialize res = 0 to track the longest streak.
@@ -58,6 +58,156 @@ For every starting number:
 
 
 ---
+## 💻 Code (Python)
+
+```python
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        res = 0                     # Stores the longest consecutive sequence length
+        store = set(nums)           # Convert list to set for O(1) lookup
+
+        # Try to build consecutive sequence starting from each number
+        for num in nums:
+            streak = 0
+            curr = num
+
+            # Keep moving forward while consecutive numbers exist
+            while curr in store:
+                streak += 1
+                curr += 1
+
+            # Update result with maximum streak found so far
+            res = max(res, streak)
+
+        return res
+````
+---
+#### step-by-step code execution with example
+
+🔢 Input Example
+````
+nums = [100, 4, 200, 1, 3, 2]
+````
+
+🧠 Initial Setup
+
+Convert list to set
+```
+store = {1, 2, 3, 4, 100, 200}
+```
+Initialize result
+```
+res = 0
+```
+🔁 Loop Execution (One Number at a Time)
+
+▶️ Iteration 1: num = 100
+```
+streak = 0
+curr = 100
+```
+while loop:
++ 100 in store → ✅
+ streak = 1, curr = 101
+
++ 101 in store → ❌ → stop
+```
+res = max(0, 1) = 1
+```
+---
+▶️ Iteration 2: num = 4
+```
+streak = 0
+curr = 4
+```
+while loop:
+
++ 4 in store → ✅
+  streak = 1, curr = 5
+
++ 5 in store → ❌ → stop
+```
+res = max(1, 1) = 1
+```
+---
+▶️ Iteration 3: num = 200
+```
+streak = 0
+curr = 200
+```
+while loop:
+
++ 200 in store → ✅
+  streak = 1, curr = 201
+
++ 201 in store → ❌ → stop
+```
+res = max(1, 1) = 1
+```
+---
+▶️ Iteration 4: num = 1
+```
+streak = 0
+curr = 1
+```
+while loop:
+
++ 1 in store → ✅ → streak = 1, curr = 2
+
++ 2 in store → ✅ → streak = 2, curr = 3
+
++ 3 in store → ✅ → streak = 3, curr = 4
+
++ 4 in store → ✅ → streak = 4, curr = 5
+
++ 5 in store → ❌ → stop
+```
+res = max(1, 4) = 4
+```
+---
+▶️ Iteration 5: num = 3
+```
+streak = 0
+curr = 3
+```
+while loop:
+
++ 3 in store → ✅ → streak = 1, curr = 4
+
++ 4 in store → ✅ → streak = 2, curr = 5
+
++ 5 in store → ❌ → stop
+```
+res = max(4, 2) = 4
+```
+⚠️ Note: The sequence 3 → 4 is recomputed, which causes inefficiency.
+---
+▶️ Iteration 6: num = 2
+```
+streak = 0
+curr = 2
+```
+while loop:
+
++ 2 in store → ✅ → streak = 1, curr = 3
+
++ 3 in store → ✅ → streak = 2, curr = 4
+
++ 4 in store → ✅ → streak = 3, curr = 5
+
++ 5 in store → ❌ → stop
+```
+res = max(4, 3) = 4
+```
+✅ Final Result
+```
+return res  # 4
+```
+The longest consecutive sequence is:
+```
+[1, 2, 3, 4]
+```
+----
 
 ## 🚀 Approach
 - We use a set for O(1) lookups and a greedy strategy to only start a sequence when we find the beginning of one.
