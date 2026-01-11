@@ -16,7 +16,6 @@ You are given a flowerbed representing plots:
 A new flower cannot be planted in **adjacent** plots.
   + flowerbed: List[int]
   + n: int (number of flowers you want to plant)
-
 - Return **True** if you can plant all `n` flowers without violating rules.  
 - Return **False** otherwise.
 
