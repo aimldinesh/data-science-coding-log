@@ -21,7 +21,8 @@ Return all strings in `words` that are a **substring of another word** in the ar
 ## 🔹 Example  
 
 ```python
-Input: 
+Input:
+
 words = ["mass","as","hero","superhero"]
 
 Output:
