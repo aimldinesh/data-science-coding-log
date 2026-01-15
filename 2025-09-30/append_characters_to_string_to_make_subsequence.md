@@ -23,7 +23,6 @@ Return the minimum number of characters to append.
 **Example 1:**  
 Input: `s = "coaching"`, `t = "coding"`  
 Output: `1`  
-
 Explanation: The longest prefix of `t` in `s` as a subsequence is `"coing"`.  
 Remaining part of `t` = `"d"`.  
 So, we need to append **1** character.  
