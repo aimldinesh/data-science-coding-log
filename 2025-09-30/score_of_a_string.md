@@ -25,7 +25,6 @@ Return the score of the string.
 
 **Example 1:**  
 Input: `s = "hello"`  
-
 Step-by-step:  
 - |h - e| = |104 - 101| = 3  
 - |e - l| = |101 - 108| = 7  
