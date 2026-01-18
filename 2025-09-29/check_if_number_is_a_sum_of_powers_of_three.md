@@ -16,7 +16,6 @@ Otherwise, return `False`.
 ---
 
 ## 🔹 Examples
-
 **Example 1:**  
 Input: `n = 12`  
 Output: `true`  
