@@ -21,7 +21,8 @@ A **lucky number** is an element of the matrix that is:
 
 **Example 1:** 
 ```text 
-Input:  
+Input:
+
 matrix = [[3,7,8],
           [9,11,13],
           [15,16,17]]
