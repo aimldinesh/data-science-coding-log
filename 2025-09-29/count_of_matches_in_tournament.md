@@ -23,6 +23,7 @@ Return the **total number of matches played** until there is exactly one winner.
 **Example 1:**  
 Input: `n = 7`  
 Output: `6`  
+
 Explanation:  
 - Round 1: 3 matches + 1 team advances → 4 teams remain  
 - Round 2: 2 matches → 2 teams remain  
