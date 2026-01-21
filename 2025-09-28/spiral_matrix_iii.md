@@ -19,7 +19,6 @@ Return the sequence of coordinates visited in **spiral order** starting from `(r
 **Example 1:** 
 ```text 
 Input: `rows = 1, cols = 4, rStart = 0, cStart = 0`  
-
 Output: `[[0,0],[0,1],[0,2],[0,3]]`
 ```
 ---
