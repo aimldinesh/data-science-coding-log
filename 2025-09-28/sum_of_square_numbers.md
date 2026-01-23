@@ -19,14 +19,18 @@ a^2 + b^2 = c
 
 ## 🔹 Examples
 
-**Example 1:**  
+**Example 1:** 
+
 Input: `c = 5`  
 Output: `true`  
+
 Explanation: 1² + 2² = 5  
 
 **Example 2:**  
+
 Input: `c = 3`  
-Output: `false`  
+Output: `false` 
+
 Explanation: No integers `a` and `b` exist such that a² + b² = 3.  
 
 ---
