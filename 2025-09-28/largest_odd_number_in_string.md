@@ -22,6 +22,7 @@ Return an empty string `""` if no odd integer exists.
 **Example 1:**  
 Input: `num = "52"`  
 Output: `"5"`  
+
 Explanation: The non-empty substrings are `"5"`, `"2"`, and `"52"`. `"5"` is the only odd number.
 
 **Example 2:**  
