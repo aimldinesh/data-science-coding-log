@@ -25,6 +25,7 @@ n = 4^x
 **Example 1:**  
 Input: `n = 16`  
 Output: `true`  
+
 (Explanation: \( 4^2 = 16 \))  
 
 **Example 2:**  
