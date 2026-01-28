@@ -9,8 +9,7 @@
 ---
 
 ## ✅ Problem Statement
-You are given a **square matrix** `mat` of size `n x n`.  
-Return the sum of the matrix's **primary diagonal** and **secondary diagonal**.  
+You are given a **square matrix** `mat` of size `n x n`. Return the sum of the matrix's **primary diagonal** and **secondary diagonal**.  
 
 If `n` is odd, subtract the value at the center of the matrix (to avoid counting it twice).  
 
