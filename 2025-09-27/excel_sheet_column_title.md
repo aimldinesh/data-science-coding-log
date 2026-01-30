@@ -23,15 +23,14 @@ Given a positive integer `columnNumber`, return its corresponding Excel column t
 ---
 ```text
 Example 1:
-
 Input: columnNumber = 1
 Output: "A"
-Example 2:
 
+Example 2:
 Input: columnNumber = 28
 Output: "AB"
-Example 3:
 
+Example 3:
 Input: columnNumber = 701
 Output: "ZY"
 
