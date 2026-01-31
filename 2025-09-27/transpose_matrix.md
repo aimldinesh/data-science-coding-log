@@ -30,6 +30,7 @@ matrix = [
            [3, 6]]
 
 Example 2:
+
 Input: matrix = [[1,2,3],
                  [4,5,6],
                  [7,8,9]]
