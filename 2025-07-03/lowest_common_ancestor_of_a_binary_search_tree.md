@@ -25,6 +25,7 @@ BST:
 
 Input:
 p = 2, q = 8
+
 Output: 6
 Because 6 is the lowest node that has both 2 and 8 in its subtree.
 ```
