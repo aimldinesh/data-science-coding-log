@@ -16,7 +16,6 @@
 ### 📌 Example
 ```python
 Input:
-
 Tree root:            Tree subRoot:
      3                      4
     / \                    / \
