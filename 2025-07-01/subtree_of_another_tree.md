@@ -31,20 +31,20 @@ Because the subtree rooted at the left child of 3 matches subRoot.
 
 ## 🚀 Approach
 🔍 Intuition
-- We are given two binary trees:
-   - A main tree root
-   - A second tree subRoot
+    - We are given two binary trees:
+      - A main tree root
+      - A second tree subRoot
 
-- We need to determine if subRoot is an exact subtree of root.
-- This means that there should be a node in root where the structure and values of its subtree exactly match the entire structure and values of subRoot.
+   - We need to determine if subRoot is an exact subtree of root.
+   - This means that there should be a node in root where the structure and values of its subtree exactly match the entire structure and values of subRoot.
 
-- Think of it like scanning the main tree at every node, and checking:"Does the subtree starting at this node look exactly like subRoot?"
+   - Think of it like scanning the main tree at every node, and checking:"Does the subtree starting at this node look exactly like subRoot?"
 
 ## 🧠 Approach
 
 ### 🔹 Base Cases:
-- If `subRoot` is `None`, it’s always a subtree — an empty tree is considered a subtree of any tree.
-- If `root` is `None` but `subRoot` is not, return `False` — we've reached the end of `root` without finding `subRoot`.
+     - If `subRoot` is `None`, it’s always a subtree — an empty tree is considered a subtree of any tree.
+     - If `root` is `None` but `subRoot` is not, return `False` — we've reached the end of `root` without finding `subRoot`.
 
 
 ### 🔹 Recursive Check:
@@ -52,15 +52,15 @@ Because the subtree rooted at the left child of 3 matches subRoot.
 
 
 ### 🔹 `sameTree` Function Logic:
-This function checks whether two trees are **exactly identical** in both structure and node values.
+     - This function checks whether two trees are **exactly identical** in both structure and node values.
 
-It returns `True` if:
-- Both nodes are `None` (i.e., both subtrees are empty at that position), **or**
-- Both nodes exist, their values match, and their left and right children match recursively.
+     - It returns `True` if:
+       - Both nodes are `None` (i.e., both subtrees are empty at that position), **or**
+       - Both nodes exist, their values match, and their left and right children match recursively.
 
 
 ### 🔹 Explore Entire Main Tree:
-- If the current node does **not** match `subRoot`, recursively check the **left** and **right** subtrees of `root`.
+     - If the current node does **not** match `subRoot`, recursively check the **left** and **right** subtrees of `root`.
 
 
 ---
