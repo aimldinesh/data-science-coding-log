@@ -21,7 +21,6 @@ Tree p:           Tree q:
 
 Output: True
 
-
 Input: 
 
 Tree p:           Tree q:
