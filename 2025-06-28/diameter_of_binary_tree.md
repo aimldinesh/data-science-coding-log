@@ -15,6 +15,7 @@
 
 ### 📌 Examples
 ```python
+
 Input Tree:
       1
      / \
