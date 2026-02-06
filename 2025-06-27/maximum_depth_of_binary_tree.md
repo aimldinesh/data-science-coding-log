@@ -14,6 +14,7 @@
 
 ### 📌 Example
 ```python
+
 Input:
     3
    / \
