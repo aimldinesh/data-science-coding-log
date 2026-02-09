@@ -14,6 +14,7 @@
      - Node → Left → Right
 
 ### 📌 Example
+
 ```python
 Input:
     1
