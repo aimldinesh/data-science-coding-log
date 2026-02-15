@@ -44,7 +44,6 @@ Output:
 
 - After loop ends, if any carry remains, add it as a final node.
 - Return dummy.next.
-
 ---
 
 ## 💻 Code (Python)
