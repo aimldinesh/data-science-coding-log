@@ -14,6 +14,7 @@
 - Return the minimum ship capacity to ship all the packages within the given number of days.
 ### 🌰 Example
 ```python
+
 Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5  
 Output: 15
 
