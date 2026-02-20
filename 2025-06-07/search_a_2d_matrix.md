@@ -34,7 +34,6 @@ target = 2
 
 Output: False
 ```
-
 ---
 
 ## 🚀 Approach : 2-Level Binary Search
