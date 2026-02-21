@@ -16,12 +16,14 @@
 Example 1:
 
 Input: x = 4
+
 Output: 2
 Explanation: √4 = 2
 
 Example 2:
 
 Input: x = 8
+
 Output: 2
 Explanation: √8 ≈ 2.828... → Truncate to 2
 ```
