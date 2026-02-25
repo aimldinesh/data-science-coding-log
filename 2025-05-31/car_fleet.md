@@ -125,3 +125,55 @@ stack = [1.0, 7.0, 12.0]  # car at 0 is slowest, forms own fleet
     - A single pass through the list to compute time and form fleets: O(n)
 - **Space**: O(n)
     - Stack to store time values for at most n cars
+ 
+---
+## Approach 2: Same Logic but without Stack
+## 💻 Code (Python)
+
+```python
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        """
+        Returns the number of car fleets that will arrive at the destination.
+        
+        A fleet is formed when a faster car catches up to a slower car ahead.
+        Cars cannot overtake — they move together at the slower car's speed.
+        """
+
+        # Step 1: Combine position and speed together
+        # zip(position, speed) creates pairs like (position[i], speed[i])
+        # sorted(..., reverse=True) sorts by position in descending order
+        # We process cars from closest to target to farthest
+        pair = sorted(zip(position, speed), reverse=True)
+
+        # This will store the number of fleets
+        fleets = 0
+
+        # This keeps track of the arrival time of the last fleet formed
+        # It represents the slowest fleet time seen so far
+        prev_time = 0
+
+        # Step 2: Traverse each car (from nearest to farthest)
+        for p, s in pair:
+            
+            # Calculate time required for current car to reach the target
+            # Formula: distance / speed
+            time = (target - p) / s
+
+            # If this car takes MORE time than the fleet ahead,
+            # it means it cannot catch up → forms a new fleet
+            if time > prev_time:
+                fleets += 1          # Increase fleet count
+                prev_time = time     # Update the slowest fleet time
+
+            # Else:
+            # If time <= prev_time,
+            # it means this car reaches earlier or same time,
+            # so it will catch up and merge into the existing fleet.
+            # No new fleet is formed.
+
+        # Step 3: Return total fleets formed
+        return fleets
+```
+----
+    
