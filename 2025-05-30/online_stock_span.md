@@ -63,6 +63,7 @@ class StockSpanner:
 ---
 ### 🔁 Step-by-Step Example
 ```python
+
 Input: [100, 80, 60, 70, 60, 75, 85]
 
 | Price | Span Computation                                                                                    | Span |
