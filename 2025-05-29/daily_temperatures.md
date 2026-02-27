@@ -126,7 +126,9 @@ class Solution:
 - Initial Setup:
   - res = [0, 0, 0, 0, 0, 0, 0, 0]
   - stack = []
+
 - We'll iterate through temperatures using enumerate, which gives both index i and temperature t.
+
 | Day (i) | Temp (t) | Action                                                   | Stack                        | Result                   |
 | ------- | -------- | -------------------------------------------------------- | ---------------------------- | -------------------------|
 | 0       | 73       | Push                                                     | [(73, 0)]                    | [0, 0, 0, 0, 0, 0, 0, 0] |
