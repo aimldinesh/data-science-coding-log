@@ -22,7 +22,7 @@
 ```python
 Input: asteroids = [5, 10, -5]
 Output: [5, 10]
-# -5 collides with 10 → 10 survives
+Explanation: -5 collides with 10 → 10 survives
 
 Input: asteroids = [8, -8]
 Output: []
