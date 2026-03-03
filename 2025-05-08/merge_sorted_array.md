@@ -28,6 +28,23 @@ Output: [1,2,2,3,5,6]
 - After one array is exhausted, copy any remaining elements from nums2 (since nums1’s remaining elements are already in place).
 
 ---
+### Key Insight: Fill from the Back
+  - If we fill from the front, we'd overwrite values in nums1 we haven't used yet.
+  - Filling from the back is safe — the empty zeros are at the end!
+```python
+nums1 = [1, 2, 3, | 0, 0, 0]
+                    ↑ safe to overwrite
+```
+Three Pointers
+```python
+nums1 = [1, 2, 3, 0, 0, 0]
+                          ↑ last  (m+n-1 = 5)
+              ↑ m pointer (m-1 = 2)
+
+nums2 = [2, 5, 6]
+                ↑ n pointer (n-1 = 2)
+```
+---
 
 ## 💻 Code (Python)
 
@@ -56,6 +73,44 @@ class Solution:
 ```
 
 ---
+Step-by-Step Walkthrough
+Initial state:
+```python
+nums1 = [1, 2, 3, 0, 0, 0]   m=3
+nums2 = [2, 5, 6]             n=3, last=5
+```
+----
+```
+Step  Compare                         Winner          nums1            m     n      last
+1     nums1[2]=3 vs nums2[2]=6        6 wins          [1,2,3,0,0,6]     3     2       4
+2     nums1[2]=3 vs nums2[1]=5        5 wins          [1,2,3,0,5,6]     3     1       3
+3     nums1[2]=3 vs nums2[0]=2        3 wins          [1,2,3,3,5,6]     2     1       2
+4     nums1[1]=2 vs nums2[0]=2        2 wins (nums2)  [1,2,2,3,5,6]     2     0       1
+```
+n=0 → main while loop ends ✅
+No leftover n elements, so second while skips.
+```
+Final: [1, 2, 2, 3, 5, 6] ✅
+```
+---
+
+Why the Second While Loop?
+Handles leftover nums2 elements if nums1 runs out first.
+```
+nums1 = [4, 0, 0],  m=1
+nums2 = [1, 2],     n=2
+
+Step 1: 4 vs 2 → place 4 → [4,0,4]  m=0, n=2
+# main loop ends (m=0)
+
+Second loop kicks in:
+
+→ place nums2[1]=2 → [4,2,4]
+→ place nums2[0]=1 → [1,2,4]  ✅
+```
+Note: We never need a second loop for nums1 leftovers — they're already in place!
+
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(m + n)
@@ -66,3 +121,45 @@ class Solution:
    - The merging is done in-place, i.e., within the given nums1 array.
    - No extra arrays or data structures are used.
    - Thus, the algorithm uses constant additional space.
+
+---
+## Sorting
+```python
+nums1[m:] = nums2[:n]   # Step 1: Replace zeros with nums2 values
+nums1.sort()             # Step 2: Sort the whole array
+```
+
+---
+
+### Step-by-Step Example
+```
+nums1 = [1, 2, 3, 0, 0, 0],  m = 3
+nums2 = [2, 5, 6],            n = 3
+```
+
+**Step 1: `nums1[m:] = nums2[:n]`**
+```
+nums1[3:] = nums2[:3]
+
+Before: [1, 2, 3, | 0, 0, 0]
+                     ↑ slice replaced
+After:  [1, 2, 3, | 2, 5, 6]
+```
+
+**Step 2: `nums1.sort()`**
+```
+Before: [1, 2, 3, 2, 5, 6]
+After:  [1, 2, 2, 3, 5, 6] ✅
+```
+
+---
+
+### Complexity
+
+### Time: O((m+n) log(m+n))
+```
+nums1[m:] = nums2[:n]  → O(n)         slice assignment
+nums1.sort()           → O((m+n) log(m+n))  Timsort on full array
+                                  ↑
+                            dominates overall
+### Space: O(1) or O(m+n)
