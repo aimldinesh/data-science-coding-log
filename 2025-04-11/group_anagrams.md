@@ -208,8 +208,8 @@ Now iterate through characters in "eat":
 So count now looks like (showing only non-zero indices):
 ```python
 count = [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
-# indexes:   0           4                          19
-# letters:   a           e                           t
+indexes: 0           4                          19
+letters: a           e                           t
 ````
 Convert to tuple:
 ```python
@@ -278,7 +278,7 @@ Process:
 count now:
 ```python
 count = [1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0]
-# letters:   a           n                 t
+letters: a                         n           t
 ```
 key = tuple(count)
 
