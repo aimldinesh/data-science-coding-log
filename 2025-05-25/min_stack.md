@@ -50,6 +50,22 @@ Output:
 
 ---
 
+## Key Insight: Track Minimum at Every Level
+
+At each position in the stack, remember "what's the minimum from here down?"
+```python
+Push: 5 → 3 → 7 → 2
+
+Main Stack    Min Stack
+    2             2     ← min of entire stack
+    7             3     ← min if top 2 elements removed
+    3             3     ← min if top 3 elements removed
+    5             5     ← min if only this element exists
+```
+minStack[-1] always gives the current minimum instantly!
+
+---
+
 ## 💻 Code (Python)
 
 ```python
@@ -85,6 +101,77 @@ class MinStack:
         return self.minStack[-1]
 ```
 
+---
+## Step-by-Step Walkthrough
+```python
+Operations: push(5), push(3), push(7), push(2), pop(), getMin()
+```
+push(5)
+```python
+val=5, minStack empty → minVal = 5
+
+stack    = [5]
+minStack = [5]
+            ↑ 5 is the only element, so min=5
+```
+push(3)
+```python
+val=3, min(3, 5) = 3 → minVal = 3
+
+stack    = [5, 3]
+minStack = [5, 3]
+               ↑ new min is 3
+```
+push(7)
+```python
+val=7, min(7, 3) = 3 → minVal = 3
+
+stack    = [5, 3, 7]
+minStack = [5, 3, 3]
+               ↑ min stays 3, even though 7 was pushed
+```
+push(2)
+```python
+val=2, min(2, 3) = 2 → minVal = 2
+
+stack    = [5, 3, 7, 2]
+minStack = [5, 3, 3, 2]
+                     ↑ new min is 2
+```
+
+pop()
+```python
+Remove top from BOTH stacks (keep in sync!)
+
+stack    = [5, 3, 7]
+minStack = [5, 3, 3]
+                  ↑ min restored to 3 automatically!
+```
+getMin()
+```python
+return minStack[-1] = 3 ✅
+
+Why Pop From Both Stacks?
+```python
+If we only popped main stack:
+
+stack    = [5, 3, 7]     ← 2 removed
+minStack = [5, 3, 3, 2]  ← 2 still here (WRONG!)
+                      ↑ getMin() would return 2 (stale!)
+
+Popping both keeps them perfectly in sync:
+Each index i represents the same "state" of the stack
+```
+Visual: What Each minStack Entry Means
+```python
+stack    = [5,  3,  7,  2]
+minStack = [5,  3,  3,  2]
+            ↑   ↑   ↑   ↑
+            |   |   |   └─ min of [5,3,7,2] = 2
+            |   |   └───── min of [5,3,7]   = 3
+            |   └───────── min of [5,3]     = 3
+            └───────────── min of [5]       = 5
+```
 ---
 
 ## 💡 Time and Space Complexity
