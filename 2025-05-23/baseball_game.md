@@ -19,7 +19,6 @@
 ```python
 Input: ["5", "-2", "4", "C", "D", "9", "+", "+"]
 Output: 27
-
 Explanation:
 ["5", "-2", "4", "C", "D", "9", "+", "+"]
 Step-by-step:
