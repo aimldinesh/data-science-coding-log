@@ -10,7 +10,6 @@
 
 ## ✅ Problem Statement
 You are given an integer array `nums`, and an integer `k`.
-
 Return the **maximum value in each sliding window of size `k`** as it moves from left to right across the array.
 
 ---
@@ -31,7 +30,6 @@ Window positions:
  1  3 -1 -3  5 [3 6 7] → max = 7  
 
 ```
-
 ---
 
 ## 🚀 Approach : Monotonic Queue (Deque)
