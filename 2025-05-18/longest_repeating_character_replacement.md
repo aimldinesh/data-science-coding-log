@@ -21,12 +21,14 @@ Example 1:
 
 Input: s = "ABAB", k = 2
 Output: 4
+
 Explanation: Replace the two 'A's or two 'B's to get "BBBB" or "AAAA".
 
 Example 2:
 
 Input: s = "AABABBA", k = 1
 Output: 4
+
 Explanation: Replace the third 'A' to get "AABBBBA", the longest is "ABBB".
 
 ```
