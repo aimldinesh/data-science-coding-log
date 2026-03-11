@@ -15,16 +15,21 @@
 ### 🔍 Examples
 ```python
 Example 1
+
 Input:nums = [1, 2, 3, 1], k = 3
 Output: True
+
 Explanation: nums[0] == nums[3] and abs(0 - 3) = 3 <= 3
 
 Example 2
+
 Input:nums = [1, 0, 1, 1], k = 1
 Output: True
+
 Explanation: nums[2] == nums[3] and abs(2 - 3) = 1
 
 Example 3
+
 Input:nums = [1, 2, 3, 1, 2, 3], k = 2
 Output: False
 ```
