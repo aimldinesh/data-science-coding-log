@@ -13,6 +13,21 @@ Given an array nums of n integers, return all unique quadruplets [a, b, c, d] su
   - a + b + c + d == target
   - No duplicate quadruplets in the result.
 ---
+## Examples
+```python
+Example 1:
+
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+
+Example 2:
+
+Input: nums = [2,2,2,2,2], target = 8
+Output: [[2,2,2,2]]
+```
+
+---
+
 ## 🧠 Intuition
 - We need to find all unique combinations of 4 numbers that sum up to a given target.
 - Sorting helps simplify duplicate handling and efficient pointer-based techniques.
