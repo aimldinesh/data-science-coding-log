@@ -79,7 +79,7 @@ We use a two-pointer (sliding window) technique:
    - Always increment r
 3. Return maxProfit
 
-The window expands when we find profit, and resets when we find a cheaper price to buy at.
+- The window expands when we find profit, and resets when we find a cheaper price to buy at.
 ---
 
 ## 💻 Code (Python)
