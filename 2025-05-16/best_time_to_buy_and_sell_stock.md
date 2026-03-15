@@ -63,11 +63,22 @@ class Solution:
 ---
 
 ## 🚀 Approach 2 : Two Pointers (Single Pass)
-🔸 Idea
-- Use two pointers (l = buy day, r = sell day).
-- Track the minimum price so far to maximize the profit.
-- Move r forward and update the profit when a higher selling price is found.
+🧠 Intuition
+We want to buy low and sell high, but the buy must happen before the sell.
+A brute-force approach would check every pair of days — but that's O(n²). The key insight is: if we're at a day with a lower price than our current buy day, there's no reason to keep the old buy day. We can never do better by buying at a higher price. So we greedily shift our buy pointer to the cheaper day and keep scanning forward.
+This means we only ever need one pass through the array.
 
+📌 Approach
+We use a two-pointer (sliding window) technique:
+
+1. Start l = 0 (buy) and r = 1 (sell)
+2. While r is within bounds:
+   - If prices[r] > prices[l] → we have a profitable transaction, compute and update maxProfit
+   - If prices[r] <= prices[l] → prices[r] is a cheaper buy day, move l = r
+   - Always increment r
+3. Return maxProfit
+
+The window expands when we find profit, and resets when we find a cheaper price to buy at.
 ---
 
 ## 💻 Code (Python)
@@ -106,6 +117,6 @@ class Solution:
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
-    - Only one pass through the list.
+    - We traverse the prices array exactly once with the r pointer
 - **Space**: O(1)
-    - No extra space used.
+    - Only a fixed number of variables are used (l, r, maxProfit, profit) — no extra data structures
