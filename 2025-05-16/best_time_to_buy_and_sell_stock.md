@@ -63,12 +63,13 @@ class Solution:
 ---
 
 ## 🚀 Approach 2 : Two Pointers (Single Pass)
-🧠 Intuition
+### 🧠 Intuition
+
 We want to buy low and sell high, but the buy must happen before the sell.
 A brute-force approach would check every pair of days — but that's O(n²). The key insight is: if we're at a day with a lower price than our current buy day, there's no reason to keep the old buy day. We can never do better by buying at a higher price. So we greedily shift our buy pointer to the cheaper day and keep scanning forward.
 This means we only ever need one pass through the array.
 
-📌 Approach
+### 📌 Approach
 We use a two-pointer (sliding window) technique:
 
 1. Start l = 0 (buy) and r = 1 (sell)
