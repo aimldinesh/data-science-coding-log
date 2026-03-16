@@ -100,6 +100,7 @@ class Solution:
 ## step by step with example
 ```python
 Input:
+
 word1 = "abc"
 word2 = "pqr"
 
