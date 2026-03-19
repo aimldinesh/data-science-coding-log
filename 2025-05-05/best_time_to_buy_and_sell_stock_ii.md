@@ -25,7 +25,6 @@ Return the **maximum profit** you can achieve.
 ```python
 Input:
 prices = [7,1,5,3,6,4]
-
 Output: 7
 Explanation:
 Buy on day 2 (price = 1), sell on day 3 (price = 5),
