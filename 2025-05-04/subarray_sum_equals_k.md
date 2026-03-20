@@ -16,7 +16,6 @@
 ```python
 Input:
 nums = [1, 2, 3], k = 3
-
 Output: 2
 Explanation:
   - Subarrays: [1, 2], [3]
