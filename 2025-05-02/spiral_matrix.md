@@ -162,19 +162,6 @@ Step     Direction         Index      Value         res
 9        →                 [1][1]      5            [1,2,3,6,9,8,7,4,5]
 ```
 ---
-🗺️ Visual Path on Matrix
-```python
-→  →  →  ↓
-↑  →  ↓  ↓
-↑  ←  ←  ←
-
-1  →  2  →  3
-↑         ↓
-4    5  ←  6
-↑              
-7  →  8  →  9  (← traversed right to left)
-```
----
 
 ## 💡 Time and Space Complexity
 - **Time**: O(m * n)
