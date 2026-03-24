@@ -24,6 +24,7 @@ Return the **sum of all valid scores**.
 
 **Input**: `["5","2","C","D","+"]`  
 **Output**: `30`  
+
 **Explanation**:
 - "5" → record 5 → `[5]`
 - "2" → record 2 → `[5, 2]`
