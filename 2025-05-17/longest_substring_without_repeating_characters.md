@@ -40,11 +40,15 @@ Explanation: The answer is "wke", with length 3.
 ---
 
 ## 🚀 Approach : Sliding Window with HashSet
-🔸 Steps:
- - Use two pointers (l and r) to maintain a window of non-repeating characters.
- - Use a set charSet to store characters in the current window.
- - If a repeating character is found at r, shrink the window from the left until the character is removed.
- - Update the maximum length (res) during each iteration.
+🧠 Intuition
+Imagine a sliding window moving across the string. We expand it to the right greedily — but the moment we hit a duplicate character, we shrink from the left until the duplicate is gone. A set tracks what's currently inside the window, giving us O(1) duplicate checks.
+
+📌 Approach
+
+1. Use two pointers l and r to define a window
+2. Expand r each iteration
+3. If s[r] is already in charSet → shrink from left until it's removed
+4. Add s[r] to set, update res = max(res, r - l + 1)
 
 ---
 
@@ -72,6 +76,98 @@ class Solution:
         return res  # Return the length of the longest valid substring
 ```
 
+---
+🔍 Step-by-Step Execution
+
+Input: s = "abcabcbb"
+
+Initial State:
+```python
+charSet = {}
+l = 0, res = 0
+```
+r=0 → s[r]='a'
+```python
+'a' not in set → add it
+charSet = {'a'}
+window = s[0:1] = "a"
+res = max(0, 0-0+1) = 1
+```
+r=1 → s[r]='b'
+```python
+'b' not in set → add it
+charSet = {'a','b'}
+window = s[0:2] = "ab"
+res = max(1, 1-0+1) = 2
+```
+r=2 → s[r]='c'
+```python
+'c' not in set → add it
+charSet = {'a','b','c'}
+window = s[0:3] = "abc"
+res = max(2, 2-0+1) = 3
+```
+r=3 → s[r]='a'
+```python
+'a' IN set → shrink from left:
+  remove s[0]='a', l=1
+  charSet = {'b','c'}
+'a' not in set now → add it
+charSet = {'b','c','a'}
+window = s[1:4] = "bca"
+res = max(3, 3-1+1) = 3
+```
+r=4 → s[r]='b'
+```python
+'b' IN set → shrink from left:
+  remove s[1]='b', l=2
+  charSet = {'c','a'}
+'b' not in set now → add it
+charSet = {'c','a','b'}
+window = s[2:5] = "cab"
+res = max(3, 4-2+1) = 3
+```
+r=5 → s[r]='c'
+```python
+'c' IN set → shrink from left:
+  remove s[2]='c', l=3
+  charSet = {'a','b'}
+'c' not in set now → add it
+charSet = {'a','b','c'}
+window = s[3:6] = "abc"
+res = max(3, 5-3+1) = 3
+```
+r=6 → s[r]='b'
+```python
+'b' IN set → shrink from left:
+  remove s[3]='a', l=4
+  charSet = {'b','c'}  ← 'b' still in set!
+'b' IN set → shrink again:
+  remove s[4]='b', l=5
+  charSet = {'c'}
+'b' not in set now → add it
+charSet = {'c','b'}
+window = s[5:7] = "cb"
+res = max(3, 6-5+1) = 3
+```
+r=7 → s[r]='b'
+```pyython
+'b' IN set → shrink from left:
+  remove s[5]='c', l=6
+  charSet = {'b'}  ← 'b' still in set!
+'b' IN set → shrink again:
+  remove s[6]='b', l=7
+  charSet = {}
+'b' not in set now → add it
+charSet = {'b'}
+window = s[7:8] = "b"
+res = max(3, 7-7+1) = 3
+```
+---
+✅ Final Answer
+```python
+return res = 3   →   "abc"
+```
 ---
 
 ## 💡 Time and Space Complexity
