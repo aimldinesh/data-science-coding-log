@@ -23,6 +23,7 @@ Return the **sum of all valid scores**.
 ## 🧪 Example
 
 **Input**: `["5","2","C","D","+"]`  
+
 **Output**: `30`  
 
 **Explanation**:
