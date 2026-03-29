@@ -19,8 +19,10 @@ For example:
 ## Examples
 ```
 Example 1:
+
 Input: s = "abab"
 Output: true
+
 Explanation: It is the substring "ab" twice.
 
 Example 2:
