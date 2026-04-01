@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 — Reading & Writing Data</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0f13;
+  --surface: #17171f;
+  --card: #1e1e28;
+  --border: #2e2e3e;
+  --teal: #2dd4a0;
+  --teal-dim: #1a4a3a;
+  --purple: #a78bfa;
+  --purple-dim: #2e1f5e;
+  --amber: #fbbf24;
+  --amber-dim: #3d2f0a;
+  --coral: #f87171;
+  --coral-dim: #3a1515;
+  --blue: #60a5fa;
+  --blue-dim: #1e2f4a;
+  --text: #e8e8f0;
+  --muted: #8888a8;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; }
+
+.header { padding: 2rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
+.header-top { display: flex; align-items: center; gap: .75rem; margin-bottom: 4px; }
+.day-badge { background: var(--teal-dim); color: var(--teal); font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: .05em; }
+.recap-badge { background: var(--purple-dim); color: var(--purple); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px; }
+.header h1 { font-size: 18px; font-weight: 600; }
+.header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.progress-bar { display: flex; gap: 4px; padding: 1rem 2rem; border-bottom: 1px solid var(--border); align-items: center; }
+.pstep { height: 3px; flex: 1; border-radius: 2px; background: var(--border); cursor: pointer; transition: background .2s; }
+.pstep.done { background: var(--teal); }
+.pstep.active { background: var(--purple); }
+.pcount { font-size: 12px; color: var(--muted); margin-left: .75rem; white-space: nowrap; }
+
+.main { max-width: 780px; margin: 0 auto; padding: 2rem; }
+.screen { display: none; }
+.screen.on { display: block; }
+
+.tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; letter-spacing: .04em; }
+.tag-concept { background: var(--teal-dim); color: var(--teal); }
+.tag-quiz { background: var(--purple-dim); color: var(--purple); }
+.tag-practice { background: var(--amber-dim); color: var(--amber); }
+.tag-perf { background: var(--blue-dim); color: var(--blue); }
+
+h2 { font-size: 20px; font-weight: 600; margin-bottom: .5rem; }
+.subtitle { font-size: 14px; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
+p.body { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: .75rem; }
+
+pre, code { font-family: var(--mono); }
+pre { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; font-size: 12.5px; line-height: 1.8; overflow-x: auto; margin: .75rem 0 1.25rem; }
+.hl-green { color: var(--teal); }
+.hl-purple { color: var(--purple); }
+.hl-amber { color: var(--amber); }
+.hl-blue { color: var(--blue); }
+.hl-muted { color: var(--muted); }
+.hl-coral { color: var(--coral); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .75rem; margin-bottom: 1.25rem; }
+@media(max-width:560px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.125rem; margin-bottom: .875rem; }
+.card h3 { font-size: 13px; font-weight: 600; margin-bottom: .5rem; }
+.card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.card ul { padding-left: 1rem; }
+.card li { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+.param-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: .75rem 0 1.25rem; }
+.param-table th { text-align: left; padding: 7px 12px; border-bottom: 1px solid var(--border); color: var(--muted); font-weight: 500; font-size: 11px; letter-spacing: .04em; }
+.param-table td { padding: 7px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.param-table td:first-child { font-family: var(--mono); font-size: 12px; color: var(--teal); white-space: nowrap; }
+.param-table td:nth-child(2) { font-family: var(--mono); font-size: 11.5px; color: var(--amber); }
+.param-table td:nth-child(3) { color: var(--muted); }
+.param-table tr:last-child td { border-bottom: none; }
+
+.tip-box { border-left: 3px solid var(--amber); background: var(--amber-dim); border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--amber); line-height: 1.6; }
+.danger-box { border-left: 3px solid var(--coral); background: var(--coral-dim); border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--coral); line-height: 1.6; }
+.info-box { border-left: 3px solid var(--blue); background: var(--blue-dim); border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--blue); line-height: 1.6; }
+
+.format-pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin: 3px; font-family: var(--mono); }
+.fp-csv { background: #1a3a1a; color: #4ade80; }
+.fp-excel { background: #1a2e1a; color: #86efac; }
+.fp-json { background: var(--blue-dim); color: var(--blue); }
+.fp-parquet { background: var(--purple-dim); color: var(--purple); }
+.fp-sql { background: var(--amber-dim); color: var(--amber); }
+
+.quiz-option { display: block; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: .75rem 1rem; margin-bottom: .5rem; cursor: pointer; font-size: 13px; color: var(--text); font-family: var(--sans); transition: border-color .15s; }
+.quiz-option:hover { border-color: var(--purple); }
+.quiz-option.correct { border-color: var(--teal); background: var(--teal-dim); color: var(--teal); }
+.quiz-option.wrong { border-color: var(--coral); background: var(--coral-dim); color: var(--coral); }
+.quiz-feedback { font-size: 13px; margin-top: .75rem; padding: .75rem 1rem; border-radius: 8px; display: none; line-height: 1.6; }
+.quiz-feedback.show { display: block; }
+.fb-correct { background: var(--teal-dim); color: var(--teal); }
+.fb-wrong { background: var(--coral-dim); color: var(--coral); }
+
+.chunk-vis { display: flex; flex-direction: column; gap: 6px; margin: 1rem 0; }
+.chunk-row { display: flex; gap: 6px; align-items: center; }
+.chunk-block { height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: var(--mono); font-weight: 500; flex: 1; }
+.chunk-arrow { color: var(--muted); font-size: 16px; }
+.cb1 { background: #1a3050; color: var(--blue); border: 1px solid #2a4060; }
+.cb2 { background: var(--purple-dim); color: var(--purple); border: 1px solid #3e2e6e; }
+.cb3 { background: var(--teal-dim); color: var(--teal); border: 1px solid #1a5a40; }
+.cb4 { background: var(--amber-dim); color: var(--amber); border: 1px solid #4a3a10; }
+.chunk-label { font-size: 11px; color: var(--muted); min-width: 80px; }
+
+.exercise-task { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 1rem; }
+.exercise-task h4 { font-size: 13px; font-weight: 600; color: var(--amber); margin-bottom: .5rem; }
+.exercise-task p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+.nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.nav-btn { background: transparent; border: 1px solid var(--border); border-radius: 8px; padding: 8px 20px; font-size: 13px; cursor: pointer; color: var(--text); font-family: var(--sans); transition: all .15s; }
+.nav-btn:hover { border-color: var(--muted); }
+.nav-btn.primary { background: var(--teal); color: #0f0f13; border-color: var(--teal); font-weight: 600; }
+.nav-btn.primary:hover { background: #25c090; }
+.nav-btn:disabled { opacity: .3; cursor: default; }
+
+.complete-banner { text-align: center; padding: 2rem 1rem; }
+.complete-banner .big { font-size: 48px; margin-bottom: .5rem; }
+.complete-banner h2 { font-size: 22px; margin-bottom: .5rem; color: var(--teal); }
+.complete-banner p { font-size: 14px; color: var(--muted); margin-bottom: 1rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="day-badge">Day 2 of 21</span>
+    <span class="recap-badge">Builds on Day 1</span>
+  </div>
+  <h1>Reading & Writing Data</h1>
+  <p>CSV, Excel, JSON, SQL, Parquet — plus chunking large files</p>
+</div>
+
+<div class="progress-bar">
+  <div class="pstep active" id="ps0"></div>
+  <div class="pstep" id="ps1"></div>
+  <div class="pstep" id="ps2"></div>
+  <div class="pstep" id="ps3"></div>
+  <div class="pstep" id="ps4"></div>
+  <div class="pstep" id="ps5"></div>
+  <span class="pcount" id="pcount">1 / 6</span>
+</div>
+
+<div class="main">
+
+<!-- SCREEN 0: File formats overview -->
+<div class="screen on" id="s0">
+  <span class="tag tag-concept">concept</span>
+  <h2>File formats — know when to use each</h2>
+  <p class="subtitle">Interviews often ask "how would you load this data?" — the right answer depends on the format and size.</p>
+
+  <div class="three-col">
+    <div class="card">
+      <h3 style="color:#4ade80">CSV</h3>
+      <p>Most common. Human readable. Slow for large files. No type info — everything loads as string by default.</p>
+      <p style="margin-top:.5rem;font-family:var(--mono);font-size:11px;color:var(--teal)">read_csv / to_csv</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--blue)">Excel (.xlsx)</h3>
+      <p>Multiple sheets. Preserves formatting. Slower than CSV. Use when receiving files from non-technical stakeholders.</p>
+      <p style="margin-top:.5rem;font-family:var(--mono);font-size:11px;color:var(--teal)">read_excel / to_excel</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--amber)">JSON</h3>
+      <p>Common from APIs. Can be nested. Use json_normalize for nested structures. Larger file size than CSV.</p>
+      <p style="margin-top:.5rem;font-family:var(--mono);font-size:11px;color:var(--teal)">read_json / to_json</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--purple)">Parquet</h3>
+      <p>Columnar format. Compressed. Fast. Preserves dtypes. Best for large ML datasets. Industry standard in data engineering.</p>
+      <p style="margin-top:.5rem;font-family:var(--mono);font-size:11px;color:var(--teal)">read_parquet / to_parquet</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--coral)">SQL</h3>
+      <p>Read directly from databases. Requires SQLAlchemy connection. Returns a DataFrame just like read_csv.</p>
+      <p style="margin-top:.5rem;font-family:var(--mono);font-size:11px;color:var(--teal)">read_sql / to_sql</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--muted)">Others</h3>
+      <p>read_html (scrape tables), read_clipboard, read_feather, read_hdf — exist but rarely tested in interviews.</p>
+    </div>
+  </div>
+
+  <div class="tip-box">Interview tip: if asked "what format would you use to store a 10GB ML dataset?", say Parquet — it's columnar, compressed, fast to read partial columns, and preserves dtypes. CSV loads 5-10x slower for large files.</div>
+
+  <div class="nav">
+    <button class="nav-btn" disabled>← Back</button>
+    <button class="nav-btn primary" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 1: read_csv deep dive -->
+<div class="screen" id="s1">
+  <span class="tag tag-concept">concept</span>
+  <h2>read_csv — the most important parameters</h2>
+  <p class="subtitle">read_csv has 50+ parameters. These are the ones that come up in interviews and real work.</p>
+
+  <table class="param-table">
+    <tr><th>Parameter</th><th>Example value</th><th>What it does</th></tr>
+    <tr><td>sep</td><td>'\t' or ';'</td><td>Delimiter (default comma). Use '\t' for TSV files.</td></tr>
+    <tr><td>header</td><td>0 or None</td><td>Row number for column names. None = no header row.</td></tr>
+    <tr><td>index_col</td><td>'id' or 0</td><td>Column to use as the row index.</td></tr>
+    <tr><td>usecols</td><td>['a','b','c']</td><td>Load only these columns — saves memory on large files.</td></tr>
+    <tr><td>dtype</td><td>{'id':'str'}</td><td>Force column types on load — prevents wrong inference.</td></tr>
+    <tr><td>parse_dates</td><td>['date'] or True</td><td>Parse these columns as datetime automatically.</td></tr>
+    <tr><td>na_values</td><td>['N/A','unknown']</td><td>Extra strings to treat as NaN beyond the defaults.</td></tr>
+    <tr><td>nrows</td><td>1000</td><td>Load only first N rows — great for exploring big files.</td></tr>
+    <tr><td>chunksize</td><td>10000</td><td>Return an iterator of chunks instead of loading all at once.</td></tr>
+    <tr><td>encoding</td><td>'utf-8' or 'latin1'</td><td>File encoding. Use 'latin1' when utf-8 fails on older files.</td></tr>
+    <tr><td>skiprows</td><td>2 or [0,2]</td><td>Skip N rows from top, or skip specific row numbers.</td></tr>
+  </table>
+
+  <pre><span class="hl-muted"># Minimal — just load it</span>
+df = pd.read_csv(<span class="hl-amber">'data.csv'</span>)
+
+<span class="hl-muted"># Production-grade — explicit and safe</span>
+df = pd.read_csv(
+    <span class="hl-amber">'data.csv'</span>,
+    usecols   = [<span class="hl-amber">'id'</span>, <span class="hl-amber">'date'</span>, <span class="hl-amber">'amount'</span>],     <span class="hl-muted"># load only needed columns</span>
+    dtype     = {<span class="hl-amber">'id'</span>: <span class="hl-amber">'str'</span>},                <span class="hl-muted"># don't auto-infer id as int</span>
+    parse_dates = [<span class="hl-amber">'date'</span>],                   <span class="hl-muted"># parse as datetime</span>
+    na_values = [<span class="hl-amber">'N/A'</span>, <span class="hl-amber">'unknown'</span>, <span class="hl-amber">'-'</span>]        <span class="hl-muted"># extra null markers</span>
+)</pre>
+
+  <div class="danger-box"><strong>Classic bug:</strong> loading a ZIP code like "07030" without dtype={'zip':'str'} — pandas infers it as int64 and silently drops the leading zero. Always force string types for IDs, zip codes, phone numbers.</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(0)">← Back</button>
+    <button class="nav-btn primary" onclick="go(2)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 2: Other readers + writing -->
+<div class="screen" id="s2">
+  <span class="tag tag-concept">concept</span>
+  <h2>Excel, JSON, Parquet & SQL</h2>
+  <p class="subtitle">Each format has its own quirks. Here's what you need to know for each.</p>
+
+  <pre><span class="hl-muted"># Excel — multiple sheets</span>
+df   = pd.read_excel(<span class="hl-amber">'report.xlsx'</span>)                    <span class="hl-muted"># first sheet</span>
+df   = pd.read_excel(<span class="hl-amber">'report.xlsx'</span>, sheet_name=<span class="hl-amber">'Sales'</span>) <span class="hl-muted"># by name</span>
+all_sheets = pd.read_excel(<span class="hl-amber">'report.xlsx'</span>, sheet_name=<span class="hl-green">None</span>) <span class="hl-muted"># dict of dfs</span></pre>
+
+  <pre><span class="hl-muted"># JSON — flat and nested</span>
+df = pd.read_json(<span class="hl-amber">'data.json'</span>)
+
+<span class="hl-muted"># Nested JSON from an API — use json_normalize</span>
+import json
+with open(<span class="hl-amber">'api_response.json'</span>) as f:
+    data = json.load(f)
+df = pd.json_normalize(data[<span class="hl-amber">'results'</span>], sep=<span class="hl-amber">'_'</span>)  <span class="hl-muted"># flattens nested keys</span></pre>
+
+  <pre><span class="hl-muted"># Parquet — fast, typed, compressed</span>
+df.to_parquet(<span class="hl-amber">'data.parquet'</span>)
+df = pd.read_parquet(<span class="hl-amber">'data.parquet'</span>)
+df = pd.read_parquet(<span class="hl-amber">'data.parquet'</span>, columns=[<span class="hl-amber">'id'</span>,<span class="hl-amber">'amount'</span>])  <span class="hl-muted"># columnar — only read what you need</span></pre>
+
+  <pre><span class="hl-muted"># SQL — requires SQLAlchemy</span>
+from sqlalchemy import create_engine
+engine = create_engine(<span class="hl-amber">'postgresql://user:pass@host/dbname'</span>)
+
+df = pd.read_sql(<span class="hl-amber">'SELECT * FROM orders WHERE status = \'paid\''</span>, engine)
+df = pd.read_sql_table(<span class="hl-amber">'orders'</span>, engine)
+df.to_sql(<span class="hl-amber">'orders_clean'</span>, engine, if_exists=<span class="hl-amber">'replace'</span>, index=<span class="hl-green">False</span>)</pre>
+
+  <div class="two-col">
+    <div class="card">
+      <h3 style="color:var(--teal)">Writing — key options</h3>
+      <pre style="font-size:11.5px">df.to_csv('out.csv', index=False)
+df.to_excel('out.xlsx',
+    sheet_name='Results',
+    index=False)
+df.to_parquet('out.parquet',
+    compression='snappy')</pre>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--amber)">Common mistake</h3>
+      <p>Forgetting <code style="color:var(--teal)">index=False</code> when writing CSV — adds a useless numbered index column that then confuses the next person who loads the file.</p>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(1)">← Back</button>
+    <button class="nav-btn primary" onclick="go(3)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 3: Chunking -->
+<div class="screen" id="s3">
+  <span class="tag tag-perf">performance</span>
+  <h2>Chunking large files</h2>
+  <p class="subtitle">What do you do when the file is 10GB and your RAM is 16GB? You don't load it all at once — you chunk it.</p>
+
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:.875rem">How chunking works — file is processed in pieces:</p>
+    <div class="chunk-vis">
+      <div class="chunk-row">
+        <span class="chunk-label" style="font-size:11px;color:var(--muted)">File on disk</span>
+        <div class="chunk-block cb1">rows 0–9999</div>
+        <div class="chunk-block cb2">rows 10k–19999</div>
+        <div class="chunk-block cb3">rows 20k–29999</div>
+        <div class="chunk-block cb4">rows 30k–39999</div>
+      </div>
+      <div class="chunk-row" style="justify-content:center;padding:4px 0">
+        <span style="color:var(--muted);font-size:20px">↓</span>
+      </div>
+      <div class="chunk-row">
+        <span class="chunk-label" style="font-size:11px;color:var(--muted)">In memory</span>
+        <div class="chunk-block cb1" style="flex:1">process chunk → aggregate → discard</div>
+      </div>
+    </div>
+  </div>
+
+  <pre><span class="hl-muted"># chunksize returns a TextFileReader iterator</span>
+chunks = pd.read_csv(<span class="hl-amber">'big_file.csv'</span>, chunksize=<span class="hl-blue">10000</span>)
+
+<span class="hl-muted"># Pattern 1 — filter and collect matching rows</span>
+result = []
+for chunk in chunks:
+    filtered = chunk[chunk[<span class="hl-amber">'status'</span>] == <span class="hl-amber">'paid'</span>]
+    result.append(filtered)
+df = pd.concat(result, ignore_index=<span class="hl-green">True</span>)
+
+<span class="hl-muted"># Pattern 2 — aggregate (e.g. sum revenue per category)</span>
+totals = {}
+for chunk in pd.read_csv(<span class="hl-amber">'big_file.csv'</span>, chunksize=<span class="hl-blue">10000</span>):
+    grouped = chunk.groupby(<span class="hl-amber">'category'</span>)[<span class="hl-amber">'revenue'</span>].sum()
+    for cat, val in grouped.items():
+        totals[cat] = totals.get(cat, <span class="hl-blue">0</span>) + val
+
+<span class="hl-muted"># Pattern 3 — quick exploration without loading all</span>
+df_sample = pd.read_csv(<span class="hl-amber">'big_file.csv'</span>, nrows=<span class="hl-blue">1000</span>)  <span class="hl-muted"># inspect first 1000 rows</span></pre>
+
+  <div class="tip-box"><strong>Interview answer:</strong> when asked "how do you handle a file that doesn't fit in memory?" — say chunking with <code>chunksize</code>, or read only needed columns with <code>usecols</code>, or use Parquet with columnar reads. Bonus: mention Dask or PySpark for truly large-scale work.</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(2)">← Back</button>
+    <button class="nav-btn primary" onclick="go(4)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 4: Quiz -->
+<div class="screen" id="s4">
+  <span class="tag tag-quiz">knowledge check</span>
+  <h2>Quick quiz — 3 questions</h2>
+  <p class="subtitle">No peeking. Answer from memory.</p>
+
+  <div class="card" style="margin-bottom:1rem" id="q1">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q1. You load a CSV with a column "user_id" containing values like "00123". After loading, all values become 123 (no leading zero). What caused this and how do you fix it?</h3>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">Use parse_dates=['user_id']</button>
+    <button class="quiz-option" onclick="ans(this,'q1',true)">Use dtype={'user_id': 'str'}</button>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">Use na_values=['00123']</button>
+    <div class="quiz-feedback fb-correct" id="q1-fb-c">Correct! Pandas auto-infers numeric types and drops leading zeros. Force the column to string with dtype={'user_id': 'str'} at load time.</div>
+    <div class="quiz-feedback fb-wrong" id="q1-fb-w">The issue is type inference — pandas reads it as an integer and drops the leading zero. Fix: dtype={'user_id': 'str'} forces it to stay as a string.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q2">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q2. Why is Parquet preferred over CSV for large ML datasets?</h3>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">It's easier to open in Excel</button>
+    <button class="quiz-option" onclick="ans(this,'q2',true)">Columnar storage, compressed, preserves dtypes, faster reads</button>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">It supports more than 1 million rows</button>
+    <div class="quiz-feedback fb-correct" id="q2-fb-c">Correct! Parquet is columnar (read only the columns you need), compressed (smaller file), preserves dtypes (no re-casting on load), and significantly faster than CSV at scale.</div>
+    <div class="quiz-feedback fb-wrong" id="q2-fb-w">Parquet's advantages: columnar storage (read only the columns you need), compressed by default, preserves dtypes (no type inference), and much faster I/O than CSV for large files.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q3">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q3. What does pd.read_csv('file.csv', chunksize=5000) return?</h3>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">A DataFrame with only the first 5000 rows</button>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">A list of DataFrames</button>
+    <button class="quiz-option" onclick="ans(this,'q3',true)">A TextFileReader iterator you loop over</button>
+    <div class="quiz-feedback fb-correct" id="q3-fb-c">Correct! chunksize returns an iterator — each iteration gives you a DataFrame of up to chunksize rows. Nothing is fully loaded into memory until you iterate.</div>
+    <div class="quiz-feedback fb-wrong" id="q3-fb-w">chunksize returns a TextFileReader iterator, not a list or a single DataFrame. You loop over it — each loop gives you one chunk (up to 5000 rows) without loading the whole file.</div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(3)">← Back</button>
+    <button class="nav-btn primary" onclick="go(5)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 5: Exercises -->
+<div class="screen" id="s5">
+  <span class="tag tag-practice">hands-on exercise</span>
+  <h2>Now you code it</h2>
+  <p class="subtitle">Use the Titanic dataset for all tasks today. Load it from the URL below or download it from Kaggle.</p>
+
+  <pre><span class="hl-muted"># Load Titanic directly from URL</span>
+import pandas as pd
+url = <span class="hl-amber">'https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv'</span>
+df = pd.read_csv(url)
+df.head()</pre>
+
+  <div class="exercise-task">
+    <h4>Task 1 — Explore the file</h4>
+    <p>Load the Titanic dataset. Then print: shape, column names, dtypes, memory usage (use <code>df.info(memory_usage='deep')</code>), and the describe() summary. Which columns have missing values? How many?</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 2 — Smart loading</h4>
+    <p>Reload the dataset using only the columns you'd need for an ML model: PassengerId, Survived, Pclass, Sex, Age, Fare. Also force PassengerId to string dtype and parse no date columns. Check memory usage before and after.</p>
+    <pre><span class="hl-muted"># Your code here</span>
+df_lean = pd.read_csv(url,
+    usecols = [...],
+    dtype   = {...}
+)</pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 3 — Write and re-read</h4>
+    <p>Save your lean DataFrame to both CSV and Parquet. Reload both. Compare: file sizes on disk (use <code>import os; os.path.getsize()</code>), dtypes after reload (notice the difference!), and load time (use <code>%%timeit</code> in Jupyter).</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 4 — Chunking practice</h4>
+    <p>Read the Titanic CSV in chunks of 100 rows. For each chunk, count how many passengers survived (Survived == 1). Sum across all chunks to get the total survivors — without ever loading the full file at once.</p>
+    <pre><span class="hl-muted"># starter</span>
+total_survivors = <span class="hl-blue">0</span>
+for chunk in pd.read_csv(url, chunksize=<span class="hl-blue">100</span>):
+    total_survivors += <span class="hl-muted"># ...</span>
+print(total_survivors)</pre>
+  </div>
+
+  <div class="complete-banner" style="margin-top:1.5rem">
+    <div class="big">📂</div>
+    <h2>Day 2 complete!</h2>
+    <p>You now know how to read and write every major data format, use the most important read_csv parameters, handle large files with chunking, and explain why Parquet beats CSV at scale.</p>
+    <p>Tomorrow: <strong style="color:var(--teal)">Day 3 — Missing values deep dive</strong>. The most tested cleaning topic in DS interviews.</p>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(4)">← Back</button>
+    <button class="nav-btn" style="opacity:.4;cursor:default" disabled>Day 3 tomorrow</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+var cur = 0, total = 6, answered = {};
+function go(n) {
+  document.getElementById('s'+cur).classList.remove('on');
+  document.getElementById('ps'+cur).classList.remove('active');
+  document.getElementById('ps'+cur).classList.add('done');
+  cur = n;
+  document.getElementById('s'+cur).classList.add('on');
+  document.getElementById('ps'+cur).classList.add('active');
+  document.getElementById('ps'+cur).classList.remove('done');
+  document.getElementById('pcount').textContent = (cur+1)+' / '+total;
+  window.scrollTo(0,0);
+}
+function ans(btn, qid, correct) {
+  if (answered[qid]) return;
+  answered[qid] = true;
+  btn.parentElement.querySelectorAll('.quiz-option').forEach(function(o){ o.style.pointerEvents='none'; });
+  btn.classList.add(correct ? 'correct' : 'wrong');
+  document.getElementById(qid+(correct?'-fb-c':'-fb-w')).classList.add('show');
+}
+</script>
+</body>
+</html>

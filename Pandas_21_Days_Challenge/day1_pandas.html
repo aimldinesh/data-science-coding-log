@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 — Series & DataFrame Internals</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0f13;
+  --surface: #17171f;
+  --card: #1e1e28;
+  --border: #2e2e3e;
+  --teal: #2dd4a0;
+  --teal-dim: #1a4a3a;
+  --purple: #a78bfa;
+  --purple-dim: #2e1f5e;
+  --amber: #fbbf24;
+  --amber-dim: #3d2f0a;
+  --coral: #f87171;
+  --text: #e8e8f0;
+  --muted: #8888a8;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; }
+
+.header { padding: 2rem 2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
+.day-badge { background: var(--teal-dim); color: var(--teal); font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: .05em; }
+.header h1 { font-size: 18px; font-weight: 600; }
+.header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.progress-bar { display: flex; gap: 4px; padding: 1rem 2rem; border-bottom: 1px solid var(--border); align-items: center; }
+.pstep { height: 3px; flex: 1; border-radius: 2px; background: var(--border); cursor: pointer; transition: background .2s; }
+.pstep.done { background: var(--teal); }
+.pstep.active { background: var(--purple); }
+.pcount { font-size: 12px; color: var(--muted); margin-left: .75rem; white-space: nowrap; }
+
+.main { max-width: 780px; margin: 0 auto; padding: 2rem; }
+
+.screen { display: none; }
+.screen.on { display: block; }
+
+.tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; letter-spacing: .04em; }
+.tag-concept { background: var(--teal-dim); color: var(--teal); }
+.tag-quiz { background: var(--purple-dim); color: var(--purple); }
+.tag-practice { background: var(--amber-dim); color: var(--amber); }
+
+h2 { font-size: 20px; font-weight: 600; margin-bottom: .5rem; }
+.subtitle { font-size: 14px; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
+
+pre, code { font-family: var(--mono); }
+pre { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; font-size: 12.5px; line-height: 1.8; overflow-x: auto; margin: .75rem 0 1.25rem; }
+.hl-green { color: var(--teal); }
+.hl-purple { color: var(--purple); }
+.hl-amber { color: var(--amber); }
+.hl-muted { color: var(--muted); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+@media(max-width:560px) { .two-col { grid-template-columns: 1fr; } }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.125rem; }
+.card h3 { font-size: 13px; font-weight: 600; margin-bottom: .5rem; color: var(--teal); }
+.card p, .card li { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.card ul { padding-left: 1rem; }
+
+.visual-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem; overflow-x: auto; }
+
+.series-vis { display: inline-flex; flex-direction: column; min-width: 160px; }
+.series-header { font-size: 11px; color: var(--muted); display: grid; grid-template-columns: 60px 1fr; gap: 0; margin-bottom: 4px; padding: 0 4px; }
+.series-row { display: grid; grid-template-columns: 60px 1fr; border-top: 1px solid var(--border); }
+.series-row:last-child { border-bottom: 1px solid var(--border); }
+.idx { background: var(--purple-dim); color: var(--purple); font-size: 12px; font-family: var(--mono); padding: 5px 8px; }
+.val { background: var(--card); color: var(--teal); font-size: 12px; font-family: var(--mono); padding: 5px 8px; }
+
+.df-vis { display: inline-block; }
+.df-vis table { border-collapse: collapse; font-family: var(--mono); font-size: 12px; }
+.df-vis th { background: var(--purple-dim); color: var(--purple); padding: 6px 14px; border: 1px solid var(--border); font-weight: 500; }
+.df-vis td { background: var(--card); color: var(--text); padding: 5px 14px; border: 1px solid var(--border); }
+.df-vis .idx-col { background: var(--teal-dim); color: var(--teal); }
+
+.tip-box { border-left: 3px solid var(--amber); background: var(--amber-dim); border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--amber); line-height: 1.6; }
+.danger-box { border-left: 3px solid var(--coral); background: #3a1515; border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--coral); line-height: 1.6; }
+
+.quiz-option { display: block; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: .75rem 1rem; margin-bottom: .5rem; cursor: pointer; font-size: 13px; color: var(--text); font-family: var(--sans); transition: border-color .15s; }
+.quiz-option:hover { border-color: var(--purple); }
+.quiz-option.correct { border-color: var(--teal); background: var(--teal-dim); color: var(--teal); }
+.quiz-option.wrong { border-color: var(--coral); background: #3a1515; color: var(--coral); }
+.quiz-feedback { font-size: 13px; margin-top: .75rem; padding: .75rem 1rem; border-radius: 8px; display: none; line-height: 1.6; }
+.quiz-feedback.show { display: block; }
+.fb-correct { background: var(--teal-dim); color: var(--teal); }
+.fb-wrong { background: #3a1515; color: var(--coral); }
+
+.nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.nav-btn { background: transparent; border: 1px solid var(--border); border-radius: 8px; padding: 8px 20px; font-size: 13px; cursor: pointer; color: var(--text); font-family: var(--sans); transition: all .15s; }
+.nav-btn:hover { border-color: var(--muted); }
+.nav-btn.primary { background: var(--teal); color: #0f0f13; border-color: var(--teal); font-weight: 600; }
+.nav-btn.primary:hover { background: #25c090; }
+.nav-btn:disabled { opacity: .3; cursor: default; }
+
+.exercise-task { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 1rem; }
+.exercise-task h4 { font-size: 13px; font-weight: 600; color: var(--amber); margin-bottom: .5rem; }
+.exercise-task p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.exercise-task pre { margin-top: .75rem; }
+
+.complete-banner { text-align: center; padding: 2rem 1rem; }
+.complete-banner .big { font-size: 48px; margin-bottom: .5rem; }
+.complete-banner h2 { font-size: 22px; margin-bottom: .5rem; color: var(--teal); }
+.complete-banner p { font-size: 14px; color: var(--muted); margin-bottom: 1.5rem; }
+.next-btn { background: var(--teal); color: #0f0f13; border: none; border-radius: 8px; padding: 10px 28px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--sans); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:4px">
+      <span class="day-badge">Day 1 of 21</span>
+    </div>
+    <h1>Series & DataFrame Internals</h1>
+    <p>The foundation everything else is built on</p>
+  </div>
+</div>
+
+<div class="progress-bar">
+  <div class="pstep active" id="ps0"></div>
+  <div class="pstep" id="ps1"></div>
+  <div class="pstep" id="ps2"></div>
+  <div class="pstep" id="ps3"></div>
+  <div class="pstep" id="ps4"></div>
+  <div class="pstep" id="ps5"></div>
+  <span class="pcount" id="pcount">1 / 6</span>
+</div>
+
+<div class="main">
+
+<!-- SCREEN 0: Series -->
+<div class="screen on" id="s0">
+  <span class="tag tag-concept">concept</span>
+  <h2>What is a Series?</h2>
+  <p class="subtitle">A Series is a 1-dimensional labeled array — think of it as a single column with an index attached to every value.</p>
+
+  <div class="visual-box">
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start">
+      <div>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:.5rem">s = pd.Series([85000, 92000, 78000], index=['Alice','Bob','Carol'])</p>
+        <div class="series-vis">
+          <div class="series-header"><span>index</span><span>value</span></div>
+          <div class="series-row"><div class="idx">Alice</div><div class="val">85000</div></div>
+          <div class="series-row"><div class="idx">Bob</div><div class="val">92000</div></div>
+          <div class="series-row"><div class="idx">Carol</div><div class="val">78000</div></div>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:.5rem">dtype: int64 &nbsp;|&nbsp; name: None</p>
+      </div>
+      <div style="font-size:13px;color:var(--muted);max-width:260px;line-height:1.8">
+        <p style="color:var(--purple);font-weight:500;margin-bottom:.4rem">Key attributes:</p>
+        <p><code style="color:var(--teal)">.index</code> — the labels (here: names)</p>
+        <p><code style="color:var(--teal)">.values</code> — the underlying numpy array</p>
+        <p><code style="color:var(--teal)">.dtype</code> — data type of values</p>
+        <p><code style="color:var(--teal)">.name</code> — column name when inside a df</p>
+      </div>
+    </div>
+  </div>
+
+  <pre><span class="hl-muted"># Three ways to create a Series</span>
+s1 = pd.Series([10, 20, 30])                        <span class="hl-muted"># default 0,1,2 index</span>
+s2 = pd.Series([10, 20, 30], index=['a','b','c'])   <span class="hl-muted"># custom index</span>
+s3 = pd.Series({'alice': 85000, 'bob': 92000})      <span class="hl-muted"># from dict — keys become index</span>
+
+<span class="hl-muted"># Accessing values</span>
+s2[<span class="hl-amber">'a'</span>]       <span class="hl-muted"># → 10  (label-based)</span>
+s2[<span class="hl-amber">0</span>]        <span class="hl-muted"># → 10  (position-based, works but avoid)</span>
+s2.loc[<span class="hl-amber">'a'</span>]  <span class="hl-muted"># → 10  (explicit label — preferred)</span>
+s2.iloc[<span class="hl-amber">0</span>]  <span class="hl-muted"># → 10  (explicit position — preferred)</span></pre>
+
+  <div class="tip-box">Interview tip: interviewers often ask "what's the difference between a Series and a numpy array?" — the key answer is the <strong>labeled index</strong>. Operations align on index labels, not position.</div>
+
+  <div class="nav">
+    <button class="nav-btn" disabled>Back</button>
+    <button class="nav-btn primary" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 1: DataFrame -->
+<div class="screen" id="s1">
+  <span class="tag tag-concept">concept</span>
+  <h2>What is a DataFrame?</h2>
+  <p class="subtitle">A DataFrame is a 2-dimensional labeled table — a dict of Series sharing the same index. Every column is a Series.</p>
+
+  <div class="visual-box">
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start">
+      <div class="df-vis">
+        <p style="font-size:11px;color:var(--muted);margin-bottom:.5rem">df = pd.DataFrame({'name':['Alice','Bob','Carol'], 'salary':[85000,92000,78000], 'dept':['Eng','Eng','HR']})</p>
+        <table>
+          <tr><th></th><th>name</th><th>salary</th><th>dept</th></tr>
+          <tr><td class="idx-col">0</td><td>Alice</td><td>85000</td><td>Eng</td></tr>
+          <tr><td class="idx-col">1</td><td>Bob</td><td>92000</td><td>Eng</td></tr>
+          <tr><td class="idx-col">2</td><td>Carol</td><td>78000</td><td>HR</td></tr>
+        </table>
+      </div>
+      <div style="font-size:13px;color:var(--muted);max-width:260px;line-height:1.8">
+        <p style="color:var(--purple);font-weight:500;margin-bottom:.4rem">Key attributes:</p>
+        <p><code style="color:var(--teal)">.shape</code> — (rows, cols) tuple</p>
+        <p><code style="color:var(--teal)">.columns</code> — column labels</p>
+        <p><code style="color:var(--teal)">.index</code> — row labels</p>
+        <p><code style="color:var(--teal)">.dtypes</code> — dtype per column</p>
+        <p><code style="color:var(--teal)">.info()</code> — full summary</p>
+        <p><code style="color:var(--teal)">.describe()</code> — stats summary</p>
+      </div>
+    </div>
+  </div>
+
+  <pre><span class="hl-muted"># Creating DataFrames</span>
+df = pd.DataFrame({<span class="hl-amber">'name'</span>: [<span class="hl-amber">'Alice'</span>,<span class="hl-amber">'Bob'</span>],
+                    <span class="hl-amber">'salary'</span>: [85000, 92000]})
+
+<span class="hl-muted"># From a list of dicts — very common in real code</span>
+records = [{<span class="hl-amber">'name'</span>:<span class="hl-amber">'Alice'</span>, <span class="hl-amber">'salary'</span>:85000},
+           {<span class="hl-amber">'name'</span>:<span class="hl-amber">'Bob'</span>,   <span class="hl-amber">'salary'</span>:92000}]
+df = pd.DataFrame(records)
+
+<span class="hl-muted"># Quick inspection</span>
+df.shape        <span class="hl-muted"># → (2, 2)</span>
+df.columns      <span class="hl-muted"># → Index(['name','salary'])</span>
+df.dtypes       <span class="hl-muted"># → name: object, salary: int64</span>
+df.info()       <span class="hl-muted"># memory usage, non-null counts, dtypes</span>
+df.describe()   <span class="hl-muted"># mean, std, min, max for numeric cols</span></pre>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(0)">← Back</button>
+    <button class="nav-btn primary" onclick="go(2)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 2: loc vs iloc -->
+<div class="screen" id="s2">
+  <span class="tag tag-concept">concept</span>
+  <h2>loc vs iloc — the most tested topic</h2>
+  <p class="subtitle">This single distinction trips up more candidates than anything else. Know it cold.</p>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>.loc — label-based</h3>
+      <p>Selects by <strong style="color:var(--teal)">index label</strong> and <strong style="color:var(--teal)">column name</strong>. Both ends of a slice are <em>inclusive</em>.</p>
+      <pre style="margin-top:.75rem"><span class="hl-muted"># rows by label</span>
+df.loc[<span class="hl-amber">0</span>]
+df.loc[<span class="hl-amber">0</span>:<span class="hl-amber">2</span>]   <span class="hl-muted"># includes row 2!</span>
+df.loc[[<span class="hl-amber">0</span>,<span class="hl-amber">2</span>]]
+
+<span class="hl-muted"># row + column</span>
+df.loc[<span class="hl-amber">0</span>, <span class="hl-amber">'name'</span>]
+df.loc[:, <span class="hl-amber">'salary'</span>]
+df.loc[<span class="hl-amber">0</span>:<span class="hl-amber">2</span>, [<span class="hl-amber">'name'</span>,<span class="hl-amber">'dept'</span>]]</pre>
+    </div>
+    <div class="card">
+      <h3>.iloc — position-based</h3>
+      <p>Selects by <strong style="color:var(--purple)">integer position</strong>. End of slice is <em>exclusive</em> (like Python lists).</p>
+      <pre style="margin-top:.75rem"><span class="hl-muted"># rows by position</span>
+df.iloc[<span class="hl-amber">0</span>]
+df.iloc[<span class="hl-amber">0</span>:<span class="hl-amber">2</span>]  <span class="hl-muted"># excludes row 2</span>
+df.iloc[[<span class="hl-amber">0</span>,<span class="hl-amber">2</span>]]
+
+<span class="hl-muted"># row + column</span>
+df.iloc[<span class="hl-amber">0</span>, <span class="hl-amber">1</span>]
+df.iloc[:, <span class="hl-amber">1</span>]
+df.iloc[<span class="hl-amber">0</span>:<span class="hl-amber">2</span>, <span class="hl-amber">0</span>:<span class="hl-amber">2</span>]</pre>
+    </div>
+  </div>
+
+  <div class="danger-box">
+    <strong>Common trap:</strong> when the index has integer labels (0, 1, 2...) loc and iloc look the same — until you reset or reindex. Use <code>.loc</code> for labels, <code>.iloc</code> for positions, <em>always</em>. Never rely on bare <code>df[0]</code> for rows.
+  </div>
+
+  <pre><span class="hl-muted"># Boolean masking — the most common real-world pattern</span>
+df[df[<span class="hl-amber">'salary'</span>] > 80000]
+df[(df[<span class="hl-amber">'dept'</span>] == <span class="hl-amber">'Eng'</span>) & (df[<span class="hl-amber">'salary'</span>] > 80000)]
+
+<span class="hl-muted"># .loc with boolean mask (preferred for assignments)</span>
+df.loc[df[<span class="hl-amber">'salary'</span>] > 80000, <span class="hl-amber">'level'</span>] = <span class="hl-amber">'senior'</span>
+
+<span class="hl-muted"># .at and .iat — single cell, fastest</span>
+df.at[<span class="hl-amber">0</span>, <span class="hl-amber">'name'</span>]   <span class="hl-muted"># label-based single value</span>
+df.iat[<span class="hl-amber">0</span>, <span class="hl-amber">1</span>]       <span class="hl-muted"># position-based single value</span></pre>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(1)">← Back</button>
+    <button class="nav-btn primary" onclick="go(3)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 3: Quiz -->
+<div class="screen" id="s3">
+  <span class="tag tag-quiz">knowledge check</span>
+  <h2>Quick quiz — 3 questions</h2>
+  <p class="subtitle">Answer from memory before looking at the code. This is exactly how interviews work.</p>
+
+  <div class="card" style="margin-bottom:1rem" id="q1">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q1. You have a DataFrame with a non-default string index. Which selects the row labelled "alice"?</h3>
+    <button class="quiz-option" onclick="ans(this,'q1',true)">df.loc['alice']</button>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">df.iloc['alice']</button>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">df['alice']</button>
+    <div class="quiz-feedback fb-correct" id="q1-fb-c">Correct! .loc uses label-based indexing. .iloc only accepts integers. df['alice'] selects a column named 'alice', not a row.</div>
+    <div class="quiz-feedback fb-wrong" id="q1-fb-w">Not quite. .loc is for labels, .iloc only accepts integer positions. df['col'] selects a column, not a row.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q2">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q2. df.loc[0:3] on a default-indexed DataFrame returns how many rows?</h3>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">3 rows (0, 1, 2)</button>
+    <button class="quiz-option" onclick="ans(this,'q2',true)">4 rows (0, 1, 2, 3)</button>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">Depends on the DataFrame</button>
+    <div class="quiz-feedback fb-correct" id="q2-fb-c">Correct! .loc slices are inclusive on both ends — rows 0, 1, 2, and 3 are all returned. This is unlike Python list slicing which excludes the end.</div>
+    <div class="quiz-feedback fb-wrong" id="q2-fb-w">.loc slices are inclusive on both ends. So 0:3 returns rows 0, 1, 2, AND 3 — 4 rows total. This catches many people.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q3">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q3. What does df['salary'] return?</h3>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">A DataFrame with one column</button>
+    <button class="quiz-option" onclick="ans(this,'q3',true)">A Series</button>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">A numpy array</button>
+    <div class="quiz-feedback fb-correct" id="q3-fb-c">Correct! df['col'] returns a Series — a 1D labeled array. To keep it as a DataFrame use df[['col']] (double brackets).</div>
+    <div class="quiz-feedback fb-wrong" id="q3-fb-w">df['col'] returns a Series. To get a single-column DataFrame use double brackets: df[['col']].</div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(2)">← Back</button>
+    <button class="nav-btn primary" onclick="go(4)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 4: Chained indexing warning -->
+<div class="screen" id="s4">
+  <span class="tag tag-concept">concept</span>
+  <h2>The SettingWithCopyWarning trap</h2>
+  <p class="subtitle">One of the most common bugs in pandas — and a very popular interview question.</p>
+
+  <pre><span class="hl-muted"># BAD — chained indexing. May silently NOT modify df.</span>
+df[df[<span class="hl-amber">'dept'</span>] == <span class="hl-amber">'Eng'</span>][<span class="hl-amber">'salary'</span>] = 100000   <span class="hl-muted"># ⚠ SettingWithCopyWarning</span>
+
+<span class="hl-muted"># Why? Two separate __getitem__ calls create a copy on the first step.
+# The assignment goes to the copy, not the original df.</span></pre>
+
+  <div class="danger-box">The first bracket creates a temporary copy. The second bracket writes to that copy — and your original DataFrame is unchanged. Pandas may or may not warn you.</div>
+
+  <pre><span class="hl-muted"># GOOD — always use .loc for any assignment</span>
+df.loc[df[<span class="hl-amber">'dept'</span>] == <span class="hl-amber">'Eng'</span>, <span class="hl-amber">'salary'</span>] = 100000   <span class="hl-muted"># ✓ correct</span>
+
+<span class="hl-muted"># GOOD — if you intentionally want a copy to work on</span>
+subset = df[df[<span class="hl-amber">'dept'</span>] == <span class="hl-amber">'Eng'</span>].copy()
+subset[<span class="hl-amber">'salary'</span>] = 100000   <span class="hl-muted"># ✓ fine — explicit copy</span></pre>
+
+  <div class="tip-box">Rule of thumb: if you're reading data, chaining is fine. If you're writing/assigning, always use <code>.loc</code>.</div>
+
+  <div class="two-col" style="margin-top:1.25rem">
+    <div class="card">
+      <h3>Reading — fine to chain</h3>
+      <pre style="font-size:11px">df[df['dept']=='Eng']['name']
+df.query("salary > 80000")['dept']</pre>
+    </div>
+    <div class="card">
+      <h3>Writing — use .loc</h3>
+      <pre style="font-size:11px">df.loc[df['dept']=='Eng', 'bonus'] = 5000
+df.loc[0, 'name'] = 'Alice Smith'</pre>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(3)">← Back</button>
+    <button class="nav-btn primary" onclick="go(5)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 5: Exercise -->
+<div class="screen" id="s5">
+  <span class="tag tag-practice">hands-on exercise</span>
+  <h2>Now you code it</h2>
+  <p class="subtitle">Open your Jupyter notebook or Python environment and complete these tasks. Try each one without looking at the answer first.</p>
+
+  <div class="exercise-task">
+    <h4>Task 1 — Build the DataFrame</h4>
+    <p>Create a DataFrame with 5 employees: name, age, department, salary. Use a dict of lists. Then print its shape, dtypes, and a describe() summary.</p>
+    <pre><span class="hl-muted"># starter</span>
+import pandas as pd
+data = {
+    <span class="hl-amber">'name'</span>: [...],
+    <span class="hl-amber">'age'</span>: [...],
+    <span class="hl-amber">'dept'</span>: [...],
+    <span class="hl-amber">'salary'</span>: [...]
+}
+df = pd.DataFrame(data)
+<span class="hl-muted"># print shape, dtypes, describe</span></pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 2 — Slice it 5 ways</h4>
+    <p>Using the df you built, write code to: (1) select the first 3 rows with iloc, (2) select rows where salary > 70000 using boolean masking, (3) select only the name and salary columns using loc, (4) get the value in row 0 col 'name' using .at, (5) select the last 2 rows using iloc negative indexing.</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 3 — Fix the bug</h4>
+    <p>The code below has a SettingWithCopyWarning bug. Rewrite it correctly.</p>
+    <pre><span class="hl-muted"># Buggy code — fix it</span>
+df[df[<span class="hl-amber">'dept'</span>] == <span class="hl-amber">'Engineering'</span>][<span class="hl-amber">'salary'</span>] = df[<span class="hl-amber">'salary'</span>] * 1.1</pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 4 — Index experiment</h4>
+    <p>Set the 'name' column as the index using set_index(). Then select a row using .loc with a name. Notice what happens to .iloc — does it still work with integers?</p>
+    <pre>df2 = df.set_index(<span class="hl-amber">'name'</span>)
+df2.loc[<span class="hl-amber">'Alice'</span>]   <span class="hl-muted"># select by name</span>
+df2.iloc[<span class="hl-amber">0</span>]      <span class="hl-muted"># what does this return?</span></pre>
+  </div>
+
+  <div class="complete-banner" style="margin-top:1.5rem">
+    <div class="big">🎯</div>
+    <h2>Day 1 complete!</h2>
+    <p>You covered Series, DataFrame internals, loc vs iloc, boolean masking, and the SettingWithCopyWarning. These will come up in almost every interview.</p>
+    <p style="margin-bottom:1.5rem">Come back tomorrow for <strong style="color:var(--teal)">Day 2 — Reading & writing data</strong>.</p>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(4)">← Back</button>
+    <button class="nav-btn" style="opacity:.4;cursor:default" disabled>Day 2 tomorrow</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+var cur = 0;
+var total = 6;
+var answered = {};
+
+function go(n) {
+  document.getElementById('s' + cur).classList.remove('on');
+  document.getElementById('ps' + cur).classList.remove('active');
+  document.getElementById('ps' + cur).classList.add('done');
+  cur = n;
+  document.getElementById('s' + cur).classList.add('on');
+  document.getElementById('ps' + cur).classList.add('active');
+  document.getElementById('ps' + cur).classList.remove('done');
+  document.getElementById('pcount').textContent = (cur + 1) + ' / ' + total;
+  window.scrollTo(0, 0);
+}
+
+function ans(btn, qid, correct) {
+  if (answered[qid]) return;
+  answered[qid] = true;
+  var opts = btn.parentElement.querySelectorAll('.quiz-option');
+  opts.forEach(function(o) { o.style.pointerEvents = 'none'; });
+  if (correct) {
+    btn.classList.add('correct');
+    document.getElementById(qid + '-fb-c').classList.add('show');
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById(qid + '-fb-w').classList.add('show');
+  }
+}
+</script>
+</body>
+</html>
