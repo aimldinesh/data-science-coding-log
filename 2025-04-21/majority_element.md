@@ -148,18 +148,19 @@ n          count         count[n] > maxCount?            res        maxCount
 return res = 2
 ```
 ### 💡 Key Detail — count.get(n, 0)
-
+```
 count[n] = 1 + count.get(n, 0)
 #                        ↑
 #               returns 0 if key doesn't exist
 #               avoids KeyError on first occurrence
+```
 
 ---
 
 
 ## 💡 Time and Space Complexity
-- **Time**: O(n)
-- **Space**: O(n)
+- **Time**: O(n) - Single pass through the array
+- **Space**: O(n) - HashMap stores count for each unique element
 
 ---
 
