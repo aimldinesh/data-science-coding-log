@@ -61,8 +61,17 @@ class Solution:
 ---
 
 ## 🚀 Approach 2 : Hash Map (Dictionary)
-### 💡 Intuition:
-- Use a hash map (dictionary) to count the occurrences of each element.Keep track of the element with the maximum count.
+🧠 Intuition
++ Use a HashMap to count every element's frequency in one pass. While counting, track the running maximum — so by the time the loop ends, res already holds the majority element. No second pass needed.
+
+📌 Approach
+
+1. Initialize count = {}, res = 0, maxCount = 0
+2. For each number n in nums:
+   + Increment count[n]
+   + If count[n] > maxCount → update res = n and maxCount = count[n]
+   + 
+3. Return res
 
 ---
 
@@ -90,6 +99,63 @@ class Solution:
 ```
 
 ---
+
+### 🔍 Step-by-Step Execution
+
+Input: nums = [2, 2, 1, 1, 2] → threshold = 5 // 2 = 2
+
+n=2
+```
+count = {2: 1}
+count[2]=1 > maxCount=0 ✅
+res=2, maxCount=1
+```
+n=2
+```
+count = {2: 2}
+count[2]=2 > maxCount=1 ✅
+res=2, maxCount=2
+```
+n=1
+```
+count = {2:2, 1:1}
+count[1]=1 > maxCount=2 ❌
+res=2, maxCount=2
+```
+n=1
+```
+count = {2:2, 1:2}
+count[1]=2 > maxCount=2 ❌
+res=2, maxCount=2
+```
+n=2
+```
+count = {2:3, 1:2}
+count[2]=3 > maxCount=2 ✅
+res=2, maxCount=3
+```
+📊 Trace Table
+```
+n          count         count[n] > maxCount?            res        maxCount 
+2          {2:1}         ✅ 1 > 0                        2           1 
+2          {2:2}         ✅ 2 > 1                        2           2 
+1          {2:2, 1:1}    ❌ 1 > 2                        2           2 
+1          {2:2, 1:2}    ❌ 2 > 2                        2           2 
+2          {2:3, 1:2}    ✅ 3 > 2                        2           3
+```
+✅ Final Answer
+```
+return res = 2
+```
+### 💡 Key Detail — count.get(n, 0)
+
+count[n] = 1 + count.get(n, 0)
+#                        ↑
+#               returns 0 if key doesn't exist
+#               avoids KeyError on first occurrence
+
+---
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
