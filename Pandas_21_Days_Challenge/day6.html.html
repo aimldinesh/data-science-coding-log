@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 6 — Practice Problems</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0f13;
+  --surface: #17171f;
+  --card: #1e1e28;
+  --border: #2e2e3e;
+  --teal: #2dd4a0;
+  --teal-dim: #1a4a3a;
+  --purple: #a78bfa;
+  --purple-dim: #2e1f5e;
+  --amber: #fbbf24;
+  --amber-dim: #3d2f0a;
+  --coral: #f87171;
+  --coral-dim: #3a1515;
+  --blue: #60a5fa;
+  --blue-dim: #1e2f4a;
+  --green: #4ade80;
+  --green-dim: #1a3a1a;
+  --text: #e8e8f0;
+  --muted: #8888a8;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+
+.header{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border)}
+.header-top{display:flex;align-items:center;gap:.75rem;margin-bottom:4px;flex-wrap:wrap}
+.day-badge{background:var(--teal-dim);color:var(--teal);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:.05em}
+.mode-badge{background:var(--coral-dim);color:var(--coral);font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px}
+.header h1{font-size:18px;font-weight:600}
+.header p{font-size:13px;color:var(--muted);margin-top:2px}
+
+.main{max-width:780px;margin:0 auto;padding:2rem}
+.screen{display:none}.screen.on{display:block}
+
+h2{font-size:20px;font-weight:600;margin-bottom:.5rem}
+.subtitle{font-size:14px;color:var(--muted);margin-bottom:1.5rem;line-height:1.7}
+
+pre{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;font-size:12.5px;line-height:1.8;overflow-x:auto;margin:.75rem 0 1.25rem;font-family:var(--mono)}
+code{font-family:var(--mono);font-size:12px;color:var(--teal)}
+.hl-teal{color:var(--teal)}.hl-purple{color:var(--purple)}.hl-amber{color:var(--amber)}
+.hl-blue{color:var(--blue)}.hl-muted{color:var(--muted)}.hl-coral{color:var(--coral)}
+.hl-green{color:var(--green)}.hl-pink{color:#f472b6}
+
+.tip-box{border-left:3px solid var(--amber);background:var(--amber-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--amber);line-height:1.6}
+.good-box{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--teal);line-height:1.6}
+.info-box{border-left:3px solid var(--blue);background:var(--blue-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--blue);line-height:1.6}
+
+/* Timer */
+.timer-ring{display:flex;flex-direction:column;align-items:center;margin-bottom:2rem}
+.timer-display{font-size:52px;font-weight:600;font-family:var(--mono);letter-spacing:.05em;color:var(--text);transition:color .3s}
+.timer-display.warn{color:var(--amber)}
+.timer-display.danger{color:var(--coral)}
+.timer-label{font-size:12px;color:var(--muted);margin-top:4px}
+.timer-controls{display:flex;gap:10px;margin-top:1rem}
+.t-btn{padding:8px 20px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text);font-size:13px;cursor:pointer;font-family:var(--sans);transition:all .15s}
+.t-btn:hover{border-color:var(--muted)}
+.t-btn.start{background:var(--teal);color:#0f0f13;border-color:var(--teal);font-weight:600}
+.t-btn.start:hover{background:#25c090}
+
+/* Problem cards */
+.prob-nav{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap}
+.p-tab{width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .15s;display:flex;align-items:center;justify-content:center}
+.p-tab:hover{border-color:var(--purple);color:var(--text)}
+.p-tab.active{background:var(--purple-dim);border-color:var(--purple);color:var(--purple)}
+.p-tab.solved{background:var(--teal-dim);border-color:var(--teal);color:var(--teal)}
+
+.prob-panel{display:none}.prob-panel.on{display:block}
+
+.prob-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:1.25rem}
+.prob-num{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0}
+.prob-title{font-size:16px;font-weight:600;flex:1}
+.diff-pill{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.easy{background:var(--green-dim);color:var(--green)}
+.medium{background:var(--amber-dim);color:var(--amber)}
+.hard{background:var(--coral-dim);color:var(--coral)}
+
+.prob-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:1.25rem}
+.prob-schema{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.125rem;margin-bottom:1.25rem}
+.prob-schema h4{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.05em;margin-bottom:.625rem}
+
+.df-mini{display:inline-block;margin-right:1.5rem;vertical-align:top;margin-bottom:.5rem}
+.df-mini table{border-collapse:collapse;font-family:var(--mono);font-size:11px}
+.df-mini th{background:var(--purple-dim);color:var(--purple);padding:4px 10px;border:1px solid var(--border);font-weight:500}
+.df-mini td{background:var(--card);color:var(--text);padding:4px 10px;border:1px solid var(--border)}
+.df-mini .idx{background:var(--teal-dim);color:var(--teal)}
+.df-mini .out{background:var(--green-dim);color:var(--green)}
+
+.hint-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:5px 14px;font-size:12px;cursor:pointer;color:var(--muted);font-family:var(--sans);margin-right:8px;transition:all .15s}
+.hint-btn:hover{border-color:var(--amber);color:var(--amber)}
+.sol-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:5px 14px;font-size:12px;cursor:pointer;color:var(--muted);font-family:var(--sans);transition:all .15s}
+.sol-btn:hover{border-color:var(--teal);color:var(--teal)}
+.mark-btn{background:var(--teal);border:none;border-radius:8px;padding:6px 16px;font-size:12px;cursor:pointer;color:#0f0f13;font-family:var(--sans);font-weight:600;margin-left:auto;transition:all .15s}
+.mark-btn:hover{background:#25c090}
+.mark-btn.done-btn{background:var(--teal-dim);color:var(--teal);border:1px solid var(--teal)}
+
+.hint-box{display:none;margin-top:.875rem;padding:.875rem 1rem;background:var(--amber-dim);border:1px solid rgba(251,191,36,.2);border-radius:8px;font-size:13px;color:var(--amber);line-height:1.65}
+.hint-box.show{display:block}
+.sol-box{display:none;margin-top:.875rem}
+.sol-box.show{display:block}
+.sol-label{font-size:11px;font-weight:600;color:var(--teal);letter-spacing:.05em;margin-bottom:.25rem}
+
+.actions-row{display:flex;align-items:center;gap:8px;margin-top:1rem;flex-wrap:wrap}
+
+/* Score screen */
+.score-screen{text-align:center;padding:1rem 0}
+.score-big{font-size:64px;font-weight:600;color:var(--teal);font-family:var(--mono)}
+.score-label{font-size:14px;color:var(--muted);margin-top:.25rem;margin-bottom:2rem}
+.score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:2rem}
+.score-cell{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.875rem .5rem;text-align:center}
+.score-cell .p-n{font-size:13px;font-weight:600;margin-bottom:4px}
+.score-cell .p-s{font-size:11px;color:var(--muted)}
+.score-cell.s-done{border-color:var(--teal);background:var(--teal-dim)}
+.score-cell.s-done .p-n{color:var(--teal)}
+.score-cell.s-done .p-s{color:var(--teal)}
+.time-taken{font-size:13px;color:var(--muted);margin-bottom:1.5rem}
+.time-taken span{color:var(--text);font-weight:600;font-family:var(--mono)}
+
+.review-note{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;text-align:left;margin-bottom:1rem}
+.review-note h4{font-size:13px;font-weight:600;color:var(--purple);margin-bottom:.5rem}
+.review-note p{font-size:13px;color:var(--muted);line-height:1.7}
+
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px 20px;font-size:13px;cursor:pointer;color:var(--text);font-family:var(--sans);transition:all .15s}
+.nav-btn:hover{border-color:var(--muted)}
+.nav-btn.primary{background:var(--teal);color:#0f0f13;border-color:var(--teal);font-weight:600}
+.nav-btn.primary:hover{background:#25c090}
+.nav-btn:disabled{opacity:.3;cursor:default}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="day-badge">Day 6 of 21</span>
+    <span class="mode-badge">Interview simulation</span>
+  </div>
+  <h1>Practice Problems</h1>
+  <p>5 real DS interview problems — solve them cold, against the clock</p>
+</div>
+
+<div class="main">
+
+<!-- SCREEN 0: Intro -->
+<div class="screen on" id="s0">
+  <h2>The rules today</h2>
+  <p class="subtitle">Day 6 is not a lesson — it's a simulation. You're tested on everything from Days 1–5 under time pressure, just like a real interview.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.125rem">
+      <div style="font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.05em;margin-bottom:.5rem">FORMAT</div>
+      <div style="font-size:13px;color:var(--text);line-height:1.8">
+        5 problems<br>
+        45 minutes total<br>
+        No hints until you try<br>
+        No solutions until you attempt
+      </div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.125rem">
+      <div style="font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.05em;margin-bottom:.5rem">TOPICS COVERED</div>
+      <div style="font-size:13px;color:var(--text);line-height:1.8">
+        loc / iloc indexing<br>
+        Missing value handling<br>
+        String cleaning<br>
+        dtype casting<br>
+        Vectorised operations
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:1.5rem">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.875rem;text-align:center">
+      <div style="font-size:22px;font-weight:600;color:var(--green)">2</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Easy</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.875rem;text-align:center">
+      <div style="font-size:22px;font-weight:600;color:var(--amber)">2</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Medium</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.875rem;text-align:center">
+      <div style="font-size:22px;font-weight:600;color:var(--coral)">1</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Hard</div>
+    </div>
+  </div>
+
+  <div class="tip-box"><strong>How to use this:</strong> open Jupyter notebook alongside this. Read the problem, write your solution without looking at hints. Only peek at the hint if stuck for more than 5 minutes. Mark each problem done when you're confident in your solution.</div>
+
+  <div style="margin-top:1.5rem;display:flex;justify-content:flex-end">
+    <button class="nav-btn primary" onclick="startSession()">Start the clock →</button>
+  </div>
+</div>
+
+<!-- SCREEN 1: Problem session -->
+<div class="screen" id="s1">
+
+  <!-- Timer -->
+  <div class="timer-ring">
+    <div class="timer-display" id="timer-display">45:00</div>
+    <div class="timer-label">remaining</div>
+    <div class="timer-controls">
+      <button class="t-btn" onclick="pauseTimer()" id="pause-btn">Pause</button>
+      <button class="t-btn" onclick="resetTimer()">Reset</button>
+      <button class="t-btn start" onclick="showScore()">Finish →</button>
+    </div>
+  </div>
+
+  <!-- Problem tabs -->
+  <div class="prob-nav">
+    <button class="p-tab active" id="tab-1" onclick="showProb(1)">1</button>
+    <button class="p-tab" id="tab-2" onclick="showProb(2)">2</button>
+    <button class="p-tab" id="tab-3" onclick="showProb(3)">3</button>
+    <button class="p-tab" id="tab-4" onclick="showProb(4)">4</button>
+    <button class="p-tab" id="tab-5" onclick="showProb(5)">5</button>
+    <span style="margin-left:auto;font-size:12px;color:var(--muted);align-self:center" id="solved-count">0 / 5 solved</span>
+  </div>
+
+  <!-- Problem 1 -->
+  <div class="prob-panel on" id="prob-1">
+    <div class="prob-header">
+      <div class="prob-num" style="background:var(--green-dim);color:var(--green)">1</div>
+      <div class="prob-title">Fix the revenue column</div>
+      <span class="diff-pill easy">Easy</span>
+    </div>
+    <p class="prob-desc">You receive a sales DataFrame where the <code>revenue</code> column loaded as <code>object</code> dtype because values contain currency symbols and commas (e.g. "$1,200.50"). Some rows also contain the string "N/A".<br><br>Write code to: (1) convert revenue to a proper float64 column, turning invalid entries into NaN, (2) fill NaN values with the median, (3) verify the dtype is now float64.</p>
+
+    <div class="prob-schema">
+      <h4>INPUT DATA</h4>
+      <div class="df-mini">
+        <table>
+          <tr><th></th><th>order_id</th><th>revenue</th><th>region</th></tr>
+          <tr><td class="idx">0</td><td>1001</td><td>$1,200.50</td><td>North</td></tr>
+          <tr><td class="idx">1</td><td>1002</td><td>$850.00</td><td>South</td></tr>
+          <tr><td class="idx">2</td><td>1003</td><td>N/A</td><td>East</td></tr>
+          <tr><td class="idx">3</td><td>1004</td><td>$3,400.75</td><td>North</td></tr>
+          <tr><td class="idx">4</td><td>1005</td><td>$920.00</td><td>West</td></tr>
+        </table>
+      </div>
+      <div class="df-mini">
+        <table>
+          <tr><th></th><th>revenue (after)</th></tr>
+          <tr><td class="idx">0</td><td class="out">1200.50</td></tr>
+          <tr><td class="idx">1</td><td class="out">850.00</td></tr>
+          <tr><td class="idx">2</td><td class="out">1060.25</td></tr>
+          <tr><td class="idx">3</td><td class="out">3400.75</td></tr>
+          <tr><td class="idx">4</td><td class="out">920.00</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="actions-row">
+      <button class="hint-btn" onclick="toggleHint('h1')">Show hint</button>
+      <button class="sol-btn" onclick="toggleSol('sol1')">Show solution</button>
+      <button class="mark-btn" id="mark-1" onclick="markSolved(1)">Mark solved</button>
+    </div>
+    <div class="hint-box" id="h1">Strip <code>$</code> and <code>,</code> using <code>str.replace</code> with regex, then use <code>pd.to_numeric(errors='coerce')</code> to handle the "N/A". Remember: median fill after conversion, not before.</div>
+    <div class="sol-box" id="sol1">
+      <div class="sol-label">SOLUTION</div>
+      <pre><span class="hl-muted"># Step 1 — strip currency characters</span>
+df[<span class="hl-amber">'revenue'</span>] = df[<span class="hl-amber">'revenue'</span>].str.replace(<span class="hl-amber">r'[$,]'</span>, <span class="hl-amber">''</span>, regex=<span class="hl-purple">True</span>)
+
+<span class="hl-muted"># Step 2 — convert to numeric, N/A → NaN</span>
+df[<span class="hl-amber">'revenue'</span>] = pd.to_numeric(df[<span class="hl-amber">'revenue'</span>], errors=<span class="hl-amber">'coerce'</span>)
+
+<span class="hl-muted"># Step 3 — fill NaN with median</span>
+df[<span class="hl-amber">'revenue'</span>] = df[<span class="hl-amber">'revenue'</span>].fillna(df[<span class="hl-amber">'revenue'</span>].median())
+
+<span class="hl-muted"># Verify</span>
+print(df[<span class="hl-amber">'revenue'</span>].dtype)   <span class="hl-muted"># float64</span>
+print(df[<span class="hl-amber">'revenue'</span>].isnull().sum())  <span class="hl-muted"># 0</span></pre>
+    </div>
+  </div>
+
+  <!-- Problem 2 -->
+  <div class="prob-panel" id="prob-2">
+    <div class="prob-header">
+      <div class="prob-num" style="background:var(--green-dim);color:var(--green)">2</div>
+      <div class="prob-title">Select and assign safely</div>
+      <span class="diff-pill easy">Easy</span>
+    </div>
+    <p class="prob-desc">Given the employee DataFrame below, complete three tasks without triggering a SettingWithCopyWarning:<br><br>(1) Select all Engineering employees earning over 80,000 — return a DataFrame.<br>(2) Add a <code>bonus</code> column to the <em>original</em> df: 10% of salary for Eng employees, 5% for everyone else.<br>(3) Select the name and salary of the last 3 rows using iloc.</p>
+
+    <div class="prob-schema">
+      <h4>INPUT DATA</h4>
+      <div class="df-mini">
+        <table>
+          <tr><th></th><th>name</th><th>dept</th><th>salary</th></tr>
+          <tr><td class="idx">0</td><td>Alice</td><td>Eng</td><td>95000</td></tr>
+          <tr><td class="idx">1</td><td>Bob</td><td>HR</td><td>62000</td></tr>
+          <tr><td class="idx">2</td><td>Carol</td><td>Eng</td><td>78000</td></tr>
+          <tr><td class="idx">3</td><td>Dave</td><td>Sales</td><td>71000</td></tr>
+          <tr><td class="idx">4</td><td>Eve</td><td>Eng</td><td>110000</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="actions-row">
+      <button class="hint-btn" onclick="toggleHint('h2')">Show hint</button>
+      <button class="sol-btn" onclick="toggleSol('sol2')">Show solution</button>
+      <button class="mark-btn" id="mark-2" onclick="markSolved(2)">Mark solved</button>
+    </div>
+    <div class="hint-box" id="h2">For task 2, use <code>np.where</code> for the conditional bonus — avoid apply. For the assignment, use <code>.loc</code> to prevent the SettingWithCopyWarning. For task 3, negative iloc indexing: <code>iloc[-3:]</code>.</div>
+    <div class="sol-box" id="sol2">
+      <div class="sol-label">SOLUTION</div>
+      <pre><span class="hl-muted"># Task 1 — filter (reading only, chaining fine)</span>
+eng_high = df[(df[<span class="hl-amber">'dept'</span>] == <span class="hl-amber">'Eng'</span>) & (df[<span class="hl-amber">'salary'</span>] > <span class="hl-blue">80000</span>)]
+
+<span class="hl-muted"># Task 2 — vectorised bonus, assign via loc</span>
+df[<span class="hl-amber">'bonus'</span>] = np.where(
+    df[<span class="hl-amber">'dept'</span>] == <span class="hl-amber">'Eng'</span>,
+    df[<span class="hl-amber">'salary'</span>] * <span class="hl-blue">0.10</span>,
+    df[<span class="hl-amber">'salary'</span>] * <span class="hl-blue">0.05</span>
+)
+
+<span class="hl-muted"># Task 3 — last 3 rows, name + salary columns</span>
+df.iloc[<span class="hl-blue">-3</span>:, df.columns.get_indexer([<span class="hl-amber">'name'</span>, <span class="hl-amber">'salary'</span>])]
+<span class="hl-muted"># or cleaner:</span>
+df.loc[df.index[<span class="hl-blue">-3</span>:], [<span class="hl-amber">'name'</span>, <span class="hl-amber">'salary'</span>]]</pre>
+    </div>
+  </div>
+
+  <!-- Problem 3 -->
+  <div class="prob-panel" id="prob-3">
+    <div class="prob-header">
+      <div class="prob-num" style="background:var(--amber-dim);color:var(--amber)">3</div>
+      <div class="prob-title">Clean and deduplicate a user table</div>
+      <span class="diff-pill medium">Medium</span>
+    </div>
+    <p class="prob-desc">A user table has multiple issues: inconsistent name casing, extra whitespace, a duplicate user (same email, different timestamp), and an <code>age</code> column that loaded as object because one row contains "unknown".<br><br>Write a clean pipeline that: (1) standardises names to title case with no extra spaces, (2) fixes the age column to int64 (drop rows where age is unparseable), (3) deduplicates by email keeping the most recent record, (4) resets the index after deduplication.</p>
+
+    <div class="prob-schema">
+      <h4>INPUT DATA</h4>
+      <div class="df-mini">
+        <table>
+          <tr><th></th><th>name</th><th>email</th><th>age</th><th>signup_ts</th></tr>
+          <tr><td class="idx">0</td><td>alice smith</td><td>alice@x.com</td><td>28</td><td>2023-01-10</td></tr>
+          <tr><td class="idx">1</td><td>  BOB JONES  </td><td>bob@x.com</td><td>unknown</td><td>2023-03-05</td></tr>
+          <tr><td class="idx">2</td><td>Carol White</td><td>carol@x.com</td><td>34</td><td>2023-07-20</td></tr>
+          <tr><td class="idx">3</td><td>bob jones</td><td>bob@x.com</td><td>35</td><td>2023-11-01</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="actions-row">
+      <button class="hint-btn" onclick="toggleHint('h3')">Show hint</button>
+      <button class="sol-btn" onclick="toggleSol('sol3')">Show solution</button>
+      <button class="mark-btn" id="mark-3" onclick="markSolved(3)">Mark solved</button>
+    </div>
+    <div class="hint-box" id="h3">Order matters: (1) clean strings first, (2) fix age with <code>pd.to_numeric(errors='coerce')</code> then <code>dropna</code> then <code>astype(int)</code>, (3) sort by <code>signup_ts</code> before deduplicating with <code>keep='last'</code>.</div>
+    <div class="sol-box" id="sol3">
+      <div class="sol-label">SOLUTION</div>
+      <pre><span class="hl-muted"># Step 1 — clean names</span>
+df[<span class="hl-amber">'name'</span>] = df[<span class="hl-amber">'name'</span>].str.strip().str.title()
+
+<span class="hl-muted"># Step 2 — fix age: coerce → drop NaN → cast</span>
+df[<span class="hl-amber">'age'</span>] = pd.to_numeric(df[<span class="hl-amber">'age'</span>], errors=<span class="hl-amber">'coerce'</span>)
+df = df.dropna(subset=[<span class="hl-amber">'age'</span>])
+df[<span class="hl-amber">'age'</span>] = df[<span class="hl-amber">'age'</span>].astype(<span class="hl-amber">'int64'</span>)
+
+<span class="hl-muted"># Step 3 — sort by timestamp, keep latest per email</span>
+df[<span class="hl-amber">'signup_ts'</span>] = pd.to_datetime(df[<span class="hl-amber">'signup_ts'</span>])
+df = df.sort_values(<span class="hl-amber">'signup_ts'</span>)
+df = df.drop_duplicates(subset=[<span class="hl-amber">'email'</span>], keep=<span class="hl-amber">'last'</span>)
+
+<span class="hl-muted"># Step 4 — reset index</span>
+df = df.reset_index(drop=<span class="hl-purple">True</span>)
+print(df)</pre>
+    </div>
+  </div>
+
+  <!-- Problem 4 -->
+  <div class="prob-panel" id="prob-4">
+    <div class="prob-header">
+      <div class="prob-num" style="background:var(--amber-dim);color:var(--amber)">4</div>
+      <div class="prob-title">Missing value audit and fill strategy</div>
+      <span class="diff-pill medium">Medium</span>
+    </div>
+    <p class="prob-desc">You are given a patient dataset. Write a complete missing value pipeline:<br><br>(1) Print a missing value audit: column, null count, null %, dtype — sorted by null % descending.<br>(2) Create a binary feature <code>bmi_missing</code> before filling bmi.<br>(3) Fill <code>bmi</code> using group-wise median by <code>gender</code> and <code>smoker</code> combined.<br>(4) Fill <code>charges</code> with the global median.<br>(5) Drop the <code>region</code> column (60%+ missing — not recoverable).<br><br>Do all fills leakage-safe: split into train/test first, compute statistics on train only.</p>
+
+    <div class="prob-schema">
+      <h4>INPUT SCHEMA</h4>
+      <pre style="font-size:11.5px;margin:0">age      int64      — no nulls
+gender   object     — no nulls  (male / female)
+bmi      float64    — 18% null
+smoker   object     — no nulls  (yes / no)
+region   object     — 62% null
+charges  float64    — 5% null</pre>
+    </div>
+
+    <div class="actions-row">
+      <button class="hint-btn" onclick="toggleHint('h4')">Show hint</button>
+      <button class="sol-btn" onclick="toggleSol('sol4')">Show solution</button>
+      <button class="mark-btn" id="mark-4" onclick="markSolved(4)">Mark solved</button>
+    </div>
+    <div class="hint-box" id="h4">Split with <code>df.sample(frac=0.8)</code> first. Then for the group-wise bmi fill: compute group medians on train using <code>groupby().transform()</code>. For test, you'll need to <code>merge</code> the group medians back in. Creating <code>bmi_missing</code> before any fill is critical — do it on the full df before splitting.</div>
+    <div class="sol-box" id="sol4">
+      <div class="sol-label">SOLUTION</div>
+      <pre><span class="hl-muted"># Step 1 — audit</span>
+audit = pd.DataFrame({
+    <span class="hl-amber">'nulls'</span>  : df.isnull().sum(),
+    <span class="hl-amber">'pct'</span>    : (df.isnull().mean()*<span class="hl-blue">100</span>).round(<span class="hl-blue">1</span>),
+    <span class="hl-amber">'dtype'</span>  : df.dtypes
+}).sort_values(<span class="hl-amber">'pct'</span>, ascending=<span class="hl-purple">False</span>)
+print(audit[audit[<span class="hl-amber">'nulls'</span>]><span class="hl-blue">0</span>])
+
+<span class="hl-muted"># Step 2 — binary indicator (before any fill, on full df)</span>
+df[<span class="hl-amber">'bmi_missing'</span>] = df[<span class="hl-amber">'bmi'</span>].isnull().astype(<span class="hl-blue">int</span>)
+
+<span class="hl-muted"># Step 3 — drop high-missing column</span>
+df = df.drop(columns=[<span class="hl-amber">'region'</span>])
+
+<span class="hl-muted"># Step 4 — train/test split</span>
+train = df.sample(frac=<span class="hl-blue">0.8</span>, random_state=<span class="hl-blue">42</span>)
+test  = df.drop(train.index)
+
+<span class="hl-muted"># Step 5 — group-wise bmi fill (train stats only)</span>
+bmi_medians = train.groupby([<span class="hl-amber">'gender'</span>,<span class="hl-amber">'smoker'</span>])[<span class="hl-amber">'bmi'</span>].median()
+
+<span class="hl-purple">def</span> fill_bmi(df_, medians):
+    <span class="hl-purple">def</span> filler(row):
+        <span class="hl-purple">if</span> pd.isnull(row[<span class="hl-amber">'bmi'</span>]):
+            <span class="hl-purple">return</span> medians.get((row[<span class="hl-amber">'gender'</span>], row[<span class="hl-amber">'smoker'</span>]),
+                                df_[<span class="hl-amber">'bmi'</span>].median())
+        <span class="hl-purple">return</span> row[<span class="hl-amber">'bmi'</span>]
+    df_[<span class="hl-amber">'bmi'</span>] = df_.apply(filler, axis=<span class="hl-blue">1</span>)
+    <span class="hl-purple">return</span> df_
+
+train = fill_bmi(train.copy(), bmi_medians)
+test  = fill_bmi(test.copy(),  bmi_medians)
+
+<span class="hl-muted"># Step 6 — charges fill (train median only)</span>
+charges_med = train[<span class="hl-amber">'charges'</span>].median()
+train[<span class="hl-amber">'charges'</span>] = train[<span class="hl-amber">'charges'</span>].fillna(charges_med)
+test[<span class="hl-amber">'charges'</span>]  = test[<span class="hl-amber">'charges'</span>].fillna(charges_med)</pre>
+    </div>
+  </div>
+
+  <!-- Problem 5 -->
+  <div class="prob-panel" id="prob-5">
+    <div class="prob-header">
+      <div class="prob-num" style="background:var(--coral-dim);color:var(--coral)">5</div>
+      <div class="prob-title">Rewrite the slow pipeline</div>
+      <span class="diff-pill hard">Hard</span>
+    </div>
+    <p class="prob-desc">The code below works correctly but is painfully slow on large DataFrames. It uses Python loops and apply where vectorised operations would be 10–100x faster.<br><br>Rewrite the entire pipeline using only vectorised operations (<code>np.where</code>, <code>np.select</code>, <code>.str</code> accessor, direct arithmetic). No loops, no <code>apply</code>. Verify your output matches the original.</p>
+
+    <div class="prob-schema">
+      <h4>SLOW CODE TO REWRITE</h4>
+      <pre style="font-size:11.5px;margin:0"><span class="hl-muted"># This works but is very slow — rewrite it</span>
+results = []
+for idx, row in df.iterrows():
+    name  = row[<span class="hl-amber">'name'</span>].strip().lower()
+    sal   = row[<span class="hl-amber">'salary'</span>]
+
+    <span class="hl-muted"># tax rate</span>
+    <span class="hl-purple">if</span>   sal < <span class="hl-blue">30000</span>: tax = sal * <span class="hl-blue">0.05</span>
+    <span class="hl-purple">elif</span> sal < <span class="hl-blue">80000</span>: tax = sal * <span class="hl-blue">0.15</span>
+    <span class="hl-purple">else</span>:             tax = sal * <span class="hl-blue">0.30</span>
+
+    <span class="hl-muted"># seniority flag</span>
+    senior = <span class="hl-blue">1</span> <span class="hl-purple">if</span> sal > <span class="hl-blue">80000</span> <span class="hl-purple">else</span> <span class="hl-blue">0</span>
+
+    <span class="hl-muted"># net pay</span>
+    net = sal - tax
+
+    results.append({
+        <span class="hl-amber">'name_clean'</span>: name,
+        <span class="hl-amber">'tax'</span>       : tax,
+        <span class="hl-amber">'senior'</span>    : senior,
+        <span class="hl-amber">'net_pay'</span>   : net
+    })
+
+result_df = pd.DataFrame(results)</pre>
+    </div>
+
+    <div class="actions-row">
+      <button class="hint-btn" onclick="toggleHint('h5')">Show hint</button>
+      <button class="sol-btn" onclick="toggleSol('sol5')">Show solution</button>
+      <button class="mark-btn" id="mark-5" onclick="markSolved(5)">Mark solved</button>
+    </div>
+    <div class="hint-box" id="h5">Four operations: (1) <code>.str.strip().str.lower()</code> for name, (2) <code>np.select</code> with conditions list for the three-band tax, (3) <code>(df['salary'] > 80000).astype(int)</code> for the binary flag, (4) direct subtraction for net_pay. Build the result as a new DataFrame using <code>pd.DataFrame({...})</code>.</div>
+    <div class="sol-box" id="sol5">
+      <div class="sol-label">SOLUTION</div>
+      <pre><span class="hl-muted"># All vectorised — no loops, no apply</span>
+
+<span class="hl-muted"># 1. Clean names</span>
+name_clean = df[<span class="hl-amber">'name'</span>].str.strip().str.lower()
+
+<span class="hl-muted"># 2. Tax with np.select (3 bands)</span>
+conditions = [
+    df[<span class="hl-amber">'salary'</span>] < <span class="hl-blue">30000</span>,
+    df[<span class="hl-amber">'salary'</span>] < <span class="hl-blue">80000</span>
+]
+rates = [<span class="hl-blue">0.05</span>, <span class="hl-blue">0.15</span>]
+tax_rate = np.select(conditions, rates, default=<span class="hl-blue">0.30</span>)
+tax = df[<span class="hl-amber">'salary'</span>] * tax_rate
+
+<span class="hl-muted"># 3. Senior flag — vectorised boolean cast</span>
+senior = (df[<span class="hl-amber">'salary'</span>] > <span class="hl-blue">80000</span>).astype(<span class="hl-blue">int</span>)
+
+<span class="hl-muted"># 4. Net pay</span>
+net_pay = df[<span class="hl-amber">'salary'</span>] - tax
+
+<span class="hl-muted"># 5. Assemble result</span>
+result_df = pd.DataFrame({
+    <span class="hl-amber">'name_clean'</span>: name_clean,
+    <span class="hl-amber">'tax'</span>       : tax,
+    <span class="hl-amber">'senior'</span>    : senior,
+    <span class="hl-amber">'net_pay'</span>   : net_pay
+})
+
+<span class="hl-muted"># Benchmark — should be 50-200x faster than the loop version</span>
+<span class="hl-muted">%%timeit  # run original vs vectorised on 500k rows</span></pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- SCREEN 2: Score -->
+<div class="screen" id="s2">
+  <div class="score-screen">
+    <div class="score-big" id="final-score">0/5</div>
+    <div class="score-label">problems solved</div>
+    <div class="score-grid" id="score-grid"></div>
+    <div class="time-taken">Time taken: <span id="time-taken-display">—</span></div>
+
+    <div class="review-note">
+      <h4>What to do with your results</h4>
+      <p>For every problem you needed a hint or solution: go back, close the solution, and re-solve it from scratch. The goal is to solve it cold — no hints — in under 8 minutes per problem. If you can do that, you're ready for Week 2.</p>
+    </div>
+
+    <div class="review-note">
+      <h4>Tomorrow — Day 7: Review day</h4>
+      <p>Write your own cheat sheet from memory covering Days 1–5. Then explain these concepts out loud without notes: loc vs iloc, fillna strategies and when to use each, SettingWithCopyWarning fix, vectorisation vs apply. Hearing yourself explain is the fastest way to find gaps.</p>
+    </div>
+
+    <div style="margin-top:1.5rem">
+      <button class="nav-btn" onclick="goBack()" style="margin-right:8px">← Retry problems</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+var timerInterval = null;
+var secondsLeft = 45 * 60;
+var timerRunning = false;
+var startTime = null;
+var endTime = null;
+var solvedProbs = new Set();
+var currentProb = 1;
+var hintShown = {};
+var solShown = {};
+
+function startSession() {
+  document.getElementById('s0').classList.remove('on');
+  document.getElementById('s1').classList.add('on');
+  startTimer();
+}
+
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  startTime = startTime || Date.now();
+  timerInterval = setInterval(function() {
+    secondsLeft--;
+    updateTimerDisplay();
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      showScore();
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  if (timerRunning) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    document.getElementById('pause-btn').textContent = 'Resume';
+  } else {
+    startTimer();
+    document.getElementById('pause-btn').textContent = 'Pause';
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  secondsLeft = 45 * 60;
+  startTime = null;
+  document.getElementById('pause-btn').textContent = 'Pause';
+  updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+  var m = Math.floor(secondsLeft / 60);
+  var s = secondsLeft % 60;
+  var display = document.getElementById('timer-display');
+  display.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  display.className = 'timer-display';
+  if (secondsLeft <= 300) display.classList.add('danger');
+  else if (secondsLeft <= 600) display.classList.add('warn');
+}
+
+function showProb(n) {
+  document.querySelectorAll('.prob-panel').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('.p-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('prob-' + n).classList.add('on');
+  document.getElementById('tab-' + n).classList.add('active');
+  currentProb = n;
+}
+
+function toggleHint(id) {
+  var box = document.getElementById(id);
+  box.classList.toggle('show');
+  hintShown[id] = true;
+}
+
+function toggleSol(id) {
+  var box = document.getElementById(id);
+  box.classList.toggle('show');
+  solShown[id] = true;
+}
+
+function markSolved(n) {
+  solvedProbs.add(n);
+  var btn = document.getElementById('mark-' + n);
+  btn.textContent = '✓ Solved';
+  btn.classList.add('done-btn');
+  var tab = document.getElementById('tab-' + n);
+  tab.classList.remove('active');
+  tab.classList.add('solved');
+  document.getElementById('solved-count').textContent = solvedProbs.size + ' / 5 solved';
+}
+
+function showScore() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  endTime = Date.now();
+
+  document.getElementById('s1').classList.remove('on');
+  document.getElementById('s2').classList.add('on');
+
+  document.getElementById('final-score').textContent = solvedProbs.size + '/5';
+
+  var elapsed = startTime ? Math.floor((endTime - startTime) / 1000) : (45 * 60 - secondsLeft);
+  var em = Math.floor(elapsed / 60), es = elapsed % 60;
+  document.getElementById('time-taken-display').textContent =
+    (em < 10 ? '0' : '') + em + ':' + (es < 10 ? '0' : '') + es;
+
+  var grid = document.getElementById('score-grid');
+  grid.innerHTML = '';
+  var labels = ['Fix Revenue', 'Safe Assign', 'Dedup Users', 'NaN Audit', 'Vectorise'];
+  var diffs  = ['Easy', 'Easy', 'Medium', 'Medium', 'Hard'];
+  for (var i = 1; i <= 5; i++) {
+    var done = solvedProbs.has(i);
+    var cell = document.createElement('div');
+    cell.className = 'score-cell' + (done ? ' s-done' : '');
+    cell.innerHTML = '<div class="p-n">P' + i + (done ? ' ✓' : '') + '</div><div class="p-s">' + diffs[i-1] + '</div>';
+    grid.appendChild(cell);
+  }
+}
+
+function goBack() {
+  document.getElementById('s2').classList.remove('on');
+  document.getElementById('s1').classList.add('on');
+  secondsLeft = 45 * 60;
+  startTime = null;
+  updateTimerDisplay();
+  startTimer();
+}
+</script>
+</body>
+</html>

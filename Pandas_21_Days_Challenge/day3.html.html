@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 3 — Missing Values Deep Dive</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0f13;
+  --surface: #17171f;
+  --card: #1e1e28;
+  --border: #2e2e3e;
+  --teal: #2dd4a0;
+  --teal-dim: #1a4a3a;
+  --purple: #a78bfa;
+  --purple-dim: #2e1f5e;
+  --amber: #fbbf24;
+  --amber-dim: #3d2f0a;
+  --coral: #f87171;
+  --coral-dim: #3a1515;
+  --blue: #60a5fa;
+  --blue-dim: #1e2f4a;
+  --pink: #f472b6;
+  --pink-dim: #3a1530;
+  --text: #e8e8f0;
+  --muted: #8888a8;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; }
+
+.header { padding: 2rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
+.header-top { display: flex; align-items: center; gap: .75rem; margin-bottom: 4px; flex-wrap: wrap; }
+.day-badge { background: var(--teal-dim); color: var(--teal); font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: .05em; }
+.hot-badge { background: var(--coral-dim); color: var(--coral); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px; }
+.header h1 { font-size: 18px; font-weight: 600; }
+.header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.progress-bar { display: flex; gap: 4px; padding: 1rem 2rem; border-bottom: 1px solid var(--border); align-items: center; }
+.pstep { height: 3px; flex: 1; border-radius: 2px; background: var(--border); transition: background .2s; }
+.pstep.done { background: var(--teal); }
+.pstep.active { background: var(--purple); }
+.pcount { font-size: 12px; color: var(--muted); margin-left: .75rem; white-space: nowrap; }
+
+.main { max-width: 780px; margin: 0 auto; padding: 2rem; }
+.screen { display: none; }
+.screen.on { display: block; }
+
+.tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; letter-spacing: .04em; }
+.tag-concept { background: var(--teal-dim); color: var(--teal); }
+.tag-quiz    { background: var(--purple-dim); color: var(--purple); }
+.tag-practice{ background: var(--amber-dim); color: var(--amber); }
+.tag-ml      { background: var(--pink-dim); color: var(--pink); }
+
+h2 { font-size: 20px; font-weight: 600; margin-bottom: .5rem; }
+.subtitle { font-size: 14px; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
+
+pre { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; font-size: 12.5px; line-height: 1.8; overflow-x: auto; margin: .75rem 0 1.25rem; font-family: var(--mono); }
+code { font-family: var(--mono); font-size: 12px; }
+.hl-teal   { color: var(--teal); }
+.hl-purple { color: var(--purple); }
+.hl-amber  { color: var(--amber); }
+.hl-blue   { color: var(--blue); }
+.hl-muted  { color: var(--muted); }
+.hl-coral  { color: var(--coral); }
+.hl-pink   { color: var(--pink); }
+
+.two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .75rem; margin-bottom: 1.25rem; }
+@media(max-width:560px){ .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.125rem; margin-bottom: .875rem; }
+.card h3 { font-size: 13px; font-weight: 600; margin-bottom: .5rem; }
+.card p  { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.card ul { padding-left: 1rem; }
+.card li { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+.tip-box    { border-left: 3px solid var(--amber); background: var(--amber-dim); border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--amber); line-height: 1.6; }
+.danger-box { border-left: 3px solid var(--coral); background: var(--coral-dim); border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--coral); line-height: 1.6; }
+.ml-box     { border-left: 3px solid var(--pink); background: var(--pink-dim); border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--pink); line-height: 1.6; }
+.info-box   { border-left: 3px solid var(--blue); background: var(--blue-dim); border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin: 1rem 0; font-size: 13px; color: var(--blue); line-height: 1.6; }
+
+/* NaN visualisation */
+.df-vis { display: inline-block; overflow-x: auto; }
+.df-vis table { border-collapse: collapse; font-family: var(--mono); font-size: 12px; }
+.df-vis th { background: var(--purple-dim); color: var(--purple); padding: 6px 14px; border: 1px solid var(--border); font-weight: 500; }
+.df-vis td { background: var(--card); color: var(--text); padding: 5px 14px; border: 1px solid var(--border); }
+.df-vis .idx  { background: var(--teal-dim); color: var(--teal); }
+.df-vis .nan  { background: #3a1515; color: var(--coral); font-weight: 600; }
+.df-vis .fill { background: #1a3a20; color: #4ade80; }
+
+/* strategy cards */
+.strat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.125rem; margin-bottom: .75rem; }
+.strat-header { display: flex; align-items: center; gap: 10px; margin-bottom: .625rem; }
+.strat-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.strat-title { font-size: 14px; font-weight: 600; }
+.strat-when  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.strat pre   { margin: .625rem 0 0; font-size: 11.5px; }
+
+.quiz-option { display: block; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: .75rem 1rem; margin-bottom: .5rem; cursor: pointer; font-size: 13px; color: var(--text); font-family: var(--sans); transition: border-color .15s; }
+.quiz-option:hover { border-color: var(--purple); }
+.quiz-option.correct { border-color: var(--teal); background: var(--teal-dim); color: var(--teal); }
+.quiz-option.wrong   { border-color: var(--coral); background: var(--coral-dim); color: var(--coral); }
+.quiz-feedback { font-size: 13px; margin-top: .75rem; padding: .75rem 1rem; border-radius: 8px; display: none; line-height: 1.6; }
+.quiz-feedback.show { display: block; }
+.fb-correct { background: var(--teal-dim); color: var(--teal); }
+.fb-wrong   { background: var(--coral-dim); color: var(--coral); }
+
+.exercise-task { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.125rem; margin-bottom: 1rem; }
+.exercise-task h4 { font-size: 13px; font-weight: 600; color: var(--amber); margin-bottom: .5rem; }
+.exercise-task p  { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.exercise-task pre { margin-top: .75rem; font-size: 11.5px; }
+
+.nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.nav-btn { background: transparent; border: 1px solid var(--border); border-radius: 8px; padding: 8px 20px; font-size: 13px; cursor: pointer; color: var(--text); font-family: var(--sans); transition: all .15s; }
+.nav-btn:hover { border-color: var(--muted); }
+.nav-btn.primary { background: var(--teal); color: #0f0f13; border-color: var(--teal); font-weight: 600; }
+.nav-btn.primary:hover { background: #25c090; }
+.nav-btn:disabled { opacity: .3; cursor: default; }
+
+.complete-banner { text-align: center; padding: 2rem 1rem; }
+.complete-banner .big { font-size: 48px; margin-bottom: .5rem; }
+.complete-banner h2  { font-size: 22px; margin-bottom: .5rem; color: var(--teal); }
+.complete-banner p   { font-size: 14px; color: var(--muted); margin-bottom: 1rem; line-height: 1.7; }
+
+/* missing % bar */
+.miss-bar-wrap { margin-bottom: .5rem; }
+.miss-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+.miss-label span:first-child { color: var(--muted); font-family: var(--mono); }
+.miss-label span:last-child  { color: var(--coral); font-weight: 600; font-family: var(--mono); }
+.miss-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.miss-fill  { height: 100%; border-radius: 3px; background: var(--coral); }
+.miss-fill.warn { background: var(--amber); }
+.miss-fill.ok   { background: var(--teal); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="day-badge">Day 3 of 21</span>
+    <span class="hot-badge">Most tested cleaning topic</span>
+  </div>
+  <h1>Missing Values — Deep Dive</h1>
+  <p>Detect, understand, and fill NaNs the right way — and explain why it matters for ML</p>
+</div>
+
+<div class="progress-bar">
+  <div class="pstep active" id="ps0"></div>
+  <div class="pstep" id="ps1"></div>
+  <div class="pstep" id="ps2"></div>
+  <div class="pstep" id="ps3"></div>
+  <div class="pstep" id="ps4"></div>
+  <div class="pstep" id="ps5"></div>
+  <span class="pcount" id="pcount">1 / 6</span>
+</div>
+
+<div class="main">
+
+<!-- SCREEN 0: Detection -->
+<div class="screen on" id="s0">
+  <span class="tag tag-concept">concept</span>
+  <h2>Detecting missing values</h2>
+  <p class="subtitle">Before fixing nulls you need to understand them — how many, which columns, what pattern. Interviewers want to see you analyse before you act.</p>
+
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:1rem">Titanic dataset — missing value profile:</p>
+    <div class="miss-bar-wrap">
+      <div class="miss-label"><span>Age</span><span>19.9%</span></div>
+      <div class="miss-track"><div class="miss-fill warn" style="width:19.9%"></div></div>
+    </div>
+    <div class="miss-bar-wrap" style="margin-top:.5rem">
+      <div class="miss-label"><span>Cabin</span><span>77.1%</span></div>
+      <div class="miss-track"><div class="miss-fill" style="width:77.1%"></div></div>
+    </div>
+    <div class="miss-bar-wrap" style="margin-top:.5rem">
+      <div class="miss-label"><span>Embarked</span><span>0.2%</span></div>
+      <div class="miss-track"><div class="miss-fill ok" style="width:0.2%"></div></div>
+    </div>
+    <div class="miss-bar-wrap" style="margin-top:.5rem">
+      <div class="miss-label"><span>Survived, Pclass, Name...</span><span>0.0%</span></div>
+      <div class="miss-track"><div class="miss-fill ok" style="width:0%"></div></div>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:.75rem">Red = drop column candidate &nbsp;|&nbsp; Amber = needs strategy &nbsp;|&nbsp; Green = complete</p>
+  </div>
+
+  <pre><span class="hl-muted"># Step 1 — count NaN per column</span>
+df.isnull().sum()
+
+<span class="hl-muted"># Step 2 — percentage missing (more useful)</span>
+df.isnull().mean() * <span class="hl-blue">100</span>
+
+<span class="hl-muted"># Step 3 — only show columns that have nulls</span>
+missing = df.isnull().mean() * <span class="hl-blue">100</span>
+missing[missing > <span class="hl-blue">0</span>].sort_values(ascending=<span class="hl-purple">False</span>)
+
+<span class="hl-muted"># Step 4 — filter rows where a specific column is null</span>
+df[df[<span class="hl-amber">'Age'</span>].isnull()]
+
+<span class="hl-muted"># Step 5 — check if any null exists anywhere</span>
+df.isnull().any().any()   <span class="hl-muted"># True / False</span>
+
+<span class="hl-muted"># Step 6 — total null count in whole DataFrame</span>
+df.isnull().sum().sum()</pre>
+
+  <div class="tip-box"><strong>Interview pattern:</strong> always start with <code>df.isnull().mean()*100</code> sorted descending. Then say — "columns above 50% I'd consider dropping, 5–50% need a strategy, below 5% I might drop rows or use mode/mean."</div>
+
+  <div class="nav">
+    <button class="nav-btn" disabled>← Back</button>
+    <button class="nav-btn primary" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 1: Types of missingness -->
+<div class="screen" id="s1">
+  <span class="tag tag-ml">ML context</span>
+  <h2>Why are values missing? — MCAR, MAR, MNAR</h2>
+  <p class="subtitle">This is where candidates separate themselves. Understanding <em>why</em> data is missing determines the right fix. Interviewers love this question.</p>
+
+  <div class="three-col">
+    <div class="card">
+      <h3 style="color:var(--teal)">MCAR</h3>
+      <p style="font-weight:500;color:var(--muted);font-size:12px;margin-bottom:.4rem">Missing Completely At Random</p>
+      <p>Missingness has no relationship with any variable — like a random sensor dropout. Safe to drop rows or use simple imputation.</p>
+      <p style="margin-top:.5rem;font-size:12px;color:var(--teal)">Example: survey respondent accidentally skipped a page</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--amber)">MAR</h3>
+      <p style="font-weight:500;color:var(--muted);font-size:12px;margin-bottom:.4rem">Missing At Random</p>
+      <p>Missingness depends on other observed variables — not on the missing value itself. Use model-based imputation.</p>
+      <p style="margin-top:.5rem;font-size:12px;color:var(--amber)">Example: women less likely to report income (depends on gender)</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--coral)">MNAR</h3>
+      <p style="font-weight:500;color:var(--muted);font-size:12px;margin-bottom:.4rem">Missing Not At Random</p>
+      <p>Missingness depends on the missing value itself — hardest case. Dropping rows introduces bias.</p>
+      <p style="margin-top:.5rem;font-size:12px;color:var(--coral)">Example: sicker patients more likely to skip health surveys</p>
+    </div>
+  </div>
+
+  <div class="ml-box"><strong>Titanic example:</strong> Cabin is 77% missing — likely MNAR, because higher-class passengers were more likely to have recorded cabins. Dropping these rows would bias your model toward lower classes. Better to encode "has_cabin" as a binary feature.</div>
+
+  <pre><span class="hl-muted"># Check if missingness is related to another variable (MAR test)</span>
+df[<span class="hl-amber">'age_missing'</span>] = df[<span class="hl-amber">'Age'</span>].isnull().astype(<span class="hl-amber">'int'</span>)
+
+<span class="hl-muted"># Is missingness correlated with survival?</span>
+df.groupby(<span class="hl-amber">'age_missing'</span>)[<span class="hl-amber">'Survived'</span>].mean()
+<span class="hl-muted"># If the means differ significantly → MAR or MNAR, not MCAR</span>
+
+<span class="hl-muted"># Create a missingness indicator feature (preserve info)</span>
+df[<span class="hl-amber">'has_cabin'</span>] = df[<span class="hl-amber">'Cabin'</span>].notnull().astype(<span class="hl-amber">'int'</span>)</pre>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(0)">← Back</button>
+    <button class="nav-btn primary" onclick="go(2)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 2: Fill strategies -->
+<div class="screen" id="s2">
+  <span class="tag tag-concept">concept</span>
+  <h2>Fill strategies — and when to use each</h2>
+  <p class="subtitle">The strategy depends on the column type, distribution, and why it's missing. Never default to mean without thinking.</p>
+
+  <div class="strat">
+    <div class="strat-header">
+      <div class="strat-icon" style="background:var(--teal-dim);color:var(--teal)">→</div>
+      <div><div class="strat-title" style="color:var(--teal)">Drop rows</div><div class="strat-when">When: &lt;5% missing, MCAR, missing not predictable</div></div>
+    </div>
+    <pre>df.dropna(subset=[<span class="hl-amber">'Age'</span>])               <span class="hl-muted"># drop rows where Age is null</span>
+df.dropna(thresh=<span class="hl-blue">5</span>)                   <span class="hl-muted"># keep rows with at least 5 non-null values</span></pre>
+  </div>
+
+  <div class="strat">
+    <div class="strat-header">
+      <div class="strat-icon" style="background:var(--blue-dim);color:var(--blue)">μ</div>
+      <div><div class="strat-title" style="color:var(--blue)">Mean fill</div><div class="strat-when">When: numeric, roughly symmetric distribution, MCAR</div></div>
+    </div>
+    <pre>df[<span class="hl-amber">'Age'</span>].fillna(df[<span class="hl-amber">'Age'</span>].mean())</pre>
+  </div>
+
+  <div class="strat">
+    <div class="strat-header">
+      <div class="strat-icon" style="background:var(--purple-dim);color:var(--purple)">M</div>
+      <div><div class="strat-title" style="color:var(--purple)">Median fill</div><div class="strat-when">When: numeric, skewed distribution or has outliers — more robust than mean</div></div>
+    </div>
+    <pre>df[<span class="hl-amber">'Fare'</span>].fillna(df[<span class="hl-amber">'Fare'</span>].median())</pre>
+  </div>
+
+  <div class="strat">
+    <div class="strat-header">
+      <div class="strat-icon" style="background:var(--amber-dim);color:var(--amber)">Mo</div>
+      <div><div class="strat-title" style="color:var(--amber)">Mode fill</div><div class="strat-when">When: categorical column — fill with the most frequent value</div></div>
+    </div>
+    <pre>df[<span class="hl-amber">'Embarked'</span>].fillna(df[<span class="hl-amber">'Embarked'</span>].mode()[<span class="hl-blue">0</span>])</pre>
+  </div>
+
+  <div class="strat">
+    <div class="strat-header">
+      <div class="strat-icon" style="background:var(--teal-dim);color:var(--teal)">↕</div>
+      <div><div class="strat-title" style="color:var(--teal)">Forward / backward fill</div><div class="strat-when">When: time-series data — carry last known value forward</div></div>
+    </div>
+    <pre>df[<span class="hl-amber">'price'</span>].fillna(method=<span class="hl-amber">'ffill'</span>)   <span class="hl-muted"># carry forward</span>
+df[<span class="hl-amber">'price'</span>].fillna(method=<span class="hl-amber">'bfill'</span>)   <span class="hl-muted"># carry backward</span></pre>
+  </div>
+
+  <div class="strat">
+    <div class="strat-header">
+      <div class="strat-icon" style="background:var(--pink-dim);color:var(--pink)">G</div>
+      <div><div class="strat-title" style="color:var(--pink)">Group-wise fill</div><div class="strat-when">When: value depends on a group — use group median/mean, not global</div></div>
+    </div>
+    <pre><span class="hl-muted"># Fill Age with median age for that Pclass — much smarter than global mean</span>
+df[<span class="hl-amber">'Age'</span>] = df.groupby(<span class="hl-amber">'Pclass'</span>)[<span class="hl-amber">'Age'</span>].transform(
+    lambda x: x.fillna(x.median())
+)</pre>
+  </div>
+
+  <div class="strat">
+    <div class="strat-header">
+      <div class="strat-icon" style="background:var(--border);color:var(--muted)">~</div>
+      <div><div class="strat-title" style="color:var(--muted)">Interpolation</div><div class="strat-when">When: time-series with evenly spaced gaps</div></div>
+    </div>
+    <pre>df[<span class="hl-amber">'temp'</span>].interpolate(method=<span class="hl-amber">'linear'</span>)
+df[<span class="hl-amber">'temp'</span>].interpolate(method=<span class="hl-amber">'time'</span>)     <span class="hl-muted"># respects datetime index</span></pre>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(1)">← Back</button>
+    <button class="nav-btn primary" onclick="go(3)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 3: ML impact -->
+<div class="screen" id="s3">
+  <span class="tag tag-ml">ML impact</span>
+  <h2>Why fill strategy matters for your model</h2>
+  <p class="subtitle">This is the answer that impresses interviewers — connecting pandas decisions to model outcomes.</p>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;overflow-x:auto">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:.875rem">How different fill strategies distort your data:</p>
+    <table style="width:100%;font-size:12px;border-collapse:collapse;font-family:var(--mono)">
+      <tr>
+        <th style="text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted);font-size:11px">Strategy</th>
+        <th style="text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted);font-size:11px">Risk</th>
+        <th style="text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted);font-size:11px">Best for</th>
+      </tr>
+      <tr>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--blue)">mean fill</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--coral)">Inflates correlation, squishes variance</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted)">Symmetric, MCAR, small % missing</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--purple)">median fill</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--amber)">Slightly less bias than mean</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted)">Skewed distributions, outliers present</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--amber)">drop rows</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--coral)">Loses data, biases if MNAR</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted)">MCAR, &lt;5% missing</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--coral)">drop column</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--coral)">Loses potentially useful signal</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted)">&gt;60% missing, no recovery possible</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 10px;color:var(--pink)">group-wise</td>
+        <td style="padding:7px 10px;color:var(--teal)">Best accuracy, minimal bias</td>
+        <td style="padding:7px 10px;color:var(--muted)">When groups have different distributions</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="ml-box"><strong>The leakage trap:</strong> always compute fill values (mean, median) on the <em>training set only</em>, then apply the same value to the test set. If you compute on the full dataset before splitting, you're leaking test information into training.</div>
+
+  <pre><span class="hl-muted"># WRONG — leaks test data into fill value</span>
+df[<span class="hl-amber">'Age'</span>].fillna(df[<span class="hl-amber">'Age'</span>].mean(), inplace=<span class="hl-purple">True</span>)  <span class="hl-muted"># computed on all rows!</span>
+train, test = split(df)
+
+<span class="hl-muted"># CORRECT — compute on train, apply to both</span>
+train, test = split(df)
+age_median = train[<span class="hl-amber">'Age'</span>].median()             <span class="hl-muted"># computed on train only</span>
+train[<span class="hl-amber">'Age'</span>] = train[<span class="hl-amber">'Age'</span>].fillna(age_median)
+test[<span class="hl-amber">'Age'</span>]  = test[<span class="hl-amber">'Age'</span>].fillna(age_median)  <span class="hl-muted"># same value, not recomputed</span></pre>
+
+  <div class="tip-box"><strong>Power answer for interviews:</strong> "I'd first visualise missingness by column, test whether it's MCAR/MAR/MNAR, choose a group-wise median fill for numeric columns where the missing pattern relates to a categorical feature, and create a binary missingness indicator to preserve that signal for the model."</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(2)">← Back</button>
+    <button class="nav-btn primary" onclick="go(4)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 4: Quiz -->
+<div class="screen" id="s4">
+  <span class="tag tag-quiz">knowledge check</span>
+  <h2>Quick quiz — 4 questions</h2>
+  <p class="subtitle">Simulate the interview — answer before revealing.</p>
+
+  <div class="card" style="margin-bottom:1rem" id="q1">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q1. A column has 78% missing values. What's your first instinct?</h3>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">Fill with mean</button>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">Drop rows with nulls</button>
+    <button class="quiz-option" onclick="ans(this,'q1',true)">Consider dropping the column, or creating a binary 'was_missing' indicator</button>
+    <div class="quiz-feedback fb-correct" id="q1-fb-c">Correct! At 78% missing there's too little signal to fill reliably. Either drop it, or preserve whatever information the missingness itself carries by creating a binary indicator column.</div>
+    <div class="quiz-feedback fb-wrong" id="q1-fb-w">At 78% missing, filling fabricates most of the column. The right call is to drop it or encode the missingness itself as a binary feature — the fact that it's missing may be predictive.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q2">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q2. Why prefer median over mean when filling a salary column?</h3>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">Median is always more accurate</button>
+    <button class="quiz-option" onclick="ans(this,'q2',true)">Salary distributions are right-skewed — a few high earners pull the mean up, making it unrepresentative</button>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">Mean doesn't work on numeric columns</button>
+    <div class="quiz-feedback fb-correct" id="q2-fb-c">Correct! Salary is classically right-skewed. The mean is inflated by outliers (very high earners), so it would over-impute most missing values. Median is the central value unaffected by extremes.</div>
+    <div class="quiz-feedback fb-wrong" id="q2-fb-w">Salary is right-skewed — a few very high salaries pull the mean upward. Median is the 50th percentile and isn't affected by outliers, making it a more representative fill for skewed data.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q3">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q3. What does this code do? df.groupby('dept')['salary'].transform(lambda x: x.fillna(x.median()))</h3>
+    <button class="quiz-option" onclick="ans(this,'q3',true)">Fills each null salary with the median salary of that employee's department</button>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">Fills all nulls with the global salary median</button>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">Returns the median per department as a smaller Series</button>
+    <div class="quiz-feedback fb-correct" id="q3-fb-c">Correct! transform applies the function within each group and returns a same-length Series aligned to the original index — so each null gets its own group's median, not the overall median.</div>
+    <div class="quiz-feedback fb-wrong" id="q3-fb-w">groupby('dept') splits by department. transform returns a same-length result aligned to the original df. So each NaN gets replaced with the median of its specific department — much smarter than a global fill.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q4">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q4. You compute age_mean = df['age'].mean() before train/test split, then use it to fill both sets. What's wrong?</h3>
+    <button class="quiz-option" onclick="ans(this,'q4',false)">Nothing — this is the correct approach</button>
+    <button class="quiz-option" onclick="ans(this,'q4',true)">Data leakage — test set values influenced the fill statistic used on training data</button>
+    <button class="quiz-option" onclick="ans(this,'q4',false)">The mean should be computed on the test set, not the full dataset</button>
+    <div class="quiz-feedback fb-correct" id="q4-fb-c">Correct! Computing on the full dataset before splitting leaks information from the test set into training. Always compute fill statistics on training data only, then apply the same value to both train and test.</div>
+    <div class="quiz-feedback fb-wrong" id="q4-fb-w">This is data leakage. The test set's values are contributing to the mean, which then influences how training nulls are filled. Split first, compute on train only, apply to both.</div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(3)">← Back</button>
+    <button class="nav-btn primary" onclick="go(5)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 5: Exercises -->
+<div class="screen" id="s5">
+  <span class="tag tag-practice">hands-on exercise</span>
+  <h2>Now you code it</h2>
+  <p class="subtitle">Use the Titanic dataset (same as Day 2). These tasks mirror real DS interview take-home tests.</p>
+
+  <pre><span class="hl-muted"># Load Titanic</span>
+import pandas as pd
+url = <span class="hl-amber">'https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv'</span>
+df = pd.read_csv(url)</pre>
+
+  <div class="exercise-task">
+    <h4>Task 1 — Full missing value audit</h4>
+    <p>Print a sorted table showing: column name, null count, null percentage, and dtype. Which columns need attention? Categorise each as: drop / fill / indicator.</p>
+    <pre><span class="hl-muted"># starter</span>
+audit = pd.DataFrame({
+    <span class="hl-amber">'null_count'</span>: df.isnull().sum(),
+    <span class="hl-amber">'null_pct'</span>  : (df.isnull().mean() * <span class="hl-blue">100</span>).round(<span class="hl-blue">1</span>),
+    <span class="hl-amber">'dtype'</span>     : df.dtypes
+}).sort_values(<span class="hl-amber">'null_pct'</span>, ascending=<span class="hl-purple">False</span>)
+print(audit[audit[<span class="hl-amber">'null_count'</span>] > <span class="hl-blue">0</span>])</pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 2 — Is Age missingness random?</h4>
+    <p>Create a binary column <code>age_missing</code> (1 if Age is null, else 0). Check if survival rate differs between missing and non-missing Age groups. Is this MCAR, MAR, or MNAR? Explain your reasoning.</p>
+    <pre>df[<span class="hl-amber">'age_missing'</span>] = df[<span class="hl-amber">'Age'</span>].isnull().astype(<span class="hl-blue">int</span>)
+df.groupby(<span class="hl-amber">'age_missing'</span>)[<span class="hl-amber">'Survived'</span>].mean()</pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 3 — Smart Age fill</h4>
+    <p>Fill the Age column using <em>group-wise median</em> by Pclass and Sex combined. Compare the distribution of Age before and after filling using <code>.describe()</code>. Does the mean shift much?</p>
+    <pre>df[<span class="hl-amber">'Age'</span>] = df.groupby([<span class="hl-amber">'Pclass'</span>, <span class="hl-amber">'Sex'</span>])[<span class="hl-amber">'Age'</span>].transform(
+    lambda x: x.fillna(x.median())
+)</pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 4 — Handle Cabin the right way</h4>
+    <p>Don't drop or fill Cabin (77% missing). Instead: (1) create a binary <code>has_cabin</code> feature (1 if Cabin is not null), (2) drop the original Cabin column. Check if <code>has_cabin</code> correlates with Survived.</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 5 — Leakage-safe pipeline</h4>
+    <p>Split the DataFrame into train (80%) and test (20%) using <code>df.sample(frac=0.8)</code>. Compute Fare median on train only. Fill Fare nulls in both sets using that single value.</p>
+    <pre>train = df.sample(frac=<span class="hl-blue">0.8</span>, random_state=<span class="hl-blue">42</span>)
+test  = df.drop(train.index)
+fare_med = train[<span class="hl-amber">'Fare'</span>].median()  <span class="hl-muted"># train only!</span>
+train[<span class="hl-amber">'Fare'</span>] = train[<span class="hl-amber">'Fare'</span>].fillna(fare_med)
+test[<span class="hl-amber">'Fare'</span>]  = test[<span class="hl-amber">'Fare'</span>].fillna(fare_med)</pre>
+  </div>
+
+  <div class="complete-banner" style="margin-top:1.5rem">
+    <div class="big">🔍</div>
+    <h2>Day 3 complete!</h2>
+    <p>You covered the full missing value workflow — detection, understanding <em>why</em> data is missing (MCAR/MAR/MNAR), every fill strategy with the right context for each, the ML leakage trap, and 5 hands-on tasks.</p>
+    <p>Tomorrow: <strong style="color:var(--teal)">Day 4 — Data types & cleaning</strong>. dtypes, category, regex string cleaning, and duplicates.</p>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(4)">← Back</button>
+    <button class="nav-btn" style="opacity:.4;cursor:default" disabled>Day 4 tomorrow</button>
+  </div>
+</div>
+
+</div>
+<script>
+var cur=0, total=6, answered={};
+function go(n){
+  document.getElementById('s'+cur).classList.remove('on');
+  document.getElementById('ps'+cur).classList.remove('active');
+  document.getElementById('ps'+cur).classList.add('done');
+  cur=n;
+  document.getElementById('s'+cur).classList.add('on');
+  document.getElementById('ps'+cur).classList.add('active');
+  document.getElementById('ps'+cur).classList.remove('done');
+  document.getElementById('pcount').textContent=(cur+1)+' / '+total;
+  window.scrollTo(0,0);
+}
+function ans(btn,qid,correct){
+  if(answered[qid]) return;
+  answered[qid]=true;
+  btn.parentElement.querySelectorAll('.quiz-option').forEach(function(o){o.style.pointerEvents='none';});
+  btn.classList.add(correct?'correct':'wrong');
+  document.getElementById(qid+(correct?'-fb-c':'-fb-w')).classList.add('show');
+}
+</script>
+</body>
+</html>

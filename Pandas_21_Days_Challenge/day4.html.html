@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 4 — Data Types & Cleaning</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0f13;
+  --surface: #17171f;
+  --card: #1e1e28;
+  --border: #2e2e3e;
+  --teal: #2dd4a0;
+  --teal-dim: #1a4a3a;
+  --purple: #a78bfa;
+  --purple-dim: #2e1f5e;
+  --amber: #fbbf24;
+  --amber-dim: #3d2f0a;
+  --coral: #f87171;
+  --coral-dim: #3a1515;
+  --blue: #60a5fa;
+  --blue-dim: #1e2f4a;
+  --pink: #f472b6;
+  --pink-dim: #3a1530;
+  --green: #4ade80;
+  --green-dim: #1a3a1a;
+  --text: #e8e8f0;
+  --muted: #8888a8;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+
+.header{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border)}
+.header-top{display:flex;align-items:center;gap:.75rem;margin-bottom:4px;flex-wrap:wrap}
+.day-badge{background:var(--teal-dim);color:var(--teal);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:.05em}
+.sub-badge{background:var(--blue-dim);color:var(--blue);font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px}
+.header h1{font-size:18px;font-weight:600}
+.header p{font-size:13px;color:var(--muted);margin-top:2px}
+
+.progress-bar{display:flex;gap:4px;padding:1rem 2rem;border-bottom:1px solid var(--border);align-items:center}
+.pstep{height:3px;flex:1;border-radius:2px;background:var(--border);transition:background .2s}
+.pstep.done{background:var(--teal)}.pstep.active{background:var(--purple)}
+.pcount{font-size:12px;color:var(--muted);margin-left:.75rem;white-space:nowrap}
+
+.main{max-width:780px;margin:0 auto;padding:2rem}
+.screen{display:none}.screen.on{display:block}
+
+.tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:1rem;letter-spacing:.04em}
+.tag-concept{background:var(--teal-dim);color:var(--teal)}
+.tag-quiz{background:var(--purple-dim);color:var(--purple)}
+.tag-practice{background:var(--amber-dim);color:var(--amber)}
+.tag-perf{background:var(--blue-dim);color:var(--blue)}
+
+h2{font-size:20px;font-weight:600;margin-bottom:.5rem}
+.subtitle{font-size:14px;color:var(--muted);margin-bottom:1.5rem;line-height:1.7}
+
+pre{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;font-size:12.5px;line-height:1.8;overflow-x:auto;margin:.75rem 0 1.25rem;font-family:var(--mono)}
+code{font-family:var(--mono);font-size:12px}
+.hl-teal{color:var(--teal)}.hl-purple{color:var(--purple)}.hl-amber{color:var(--amber)}
+.hl-blue{color:var(--blue)}.hl-muted{color:var(--muted)}.hl-coral{color:var(--coral)}
+.hl-pink{color:var(--pink)}.hl-green{color:var(--green)}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:1.25rem}
+@media(max-width:560px){.two-col,.three-col{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.125rem;margin-bottom:.875rem}
+.card h3{font-size:13px;font-weight:600;margin-bottom:.5rem}
+.card p{font-size:13px;color:var(--muted);line-height:1.7}
+.card ul{padding-left:1rem}
+.card li{font-size:13px;color:var(--muted);line-height:1.8}
+
+.tip-box{border-left:3px solid var(--amber);background:var(--amber-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--amber);line-height:1.6}
+.danger-box{border-left:3px solid var(--coral);background:var(--coral-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--coral);line-height:1.6}
+.info-box{border-left:3px solid var(--blue);background:var(--blue-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--blue);line-height:1.6}
+.good-box{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--teal);line-height:1.6}
+
+/* dtype table */
+.dtype-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:.75rem 0 1.25rem}
+.dtype-table th{text-align:left;padding:7px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:11px;letter-spacing:.04em;font-weight:500}
+.dtype-table td{padding:7px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.dtype-table td:first-child{font-family:var(--mono);font-size:11.5px;color:var(--teal);white-space:nowrap}
+.dtype-table td:nth-child(2){font-family:var(--mono);font-size:11.5px;color:var(--amber)}
+.dtype-table td:last-child{color:var(--muted)}
+.dtype-table tr:last-child td{border-bottom:none}
+
+/* memory visualisation */
+.mem-bar-wrap{margin-bottom:.625rem}
+.mem-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px}
+.mem-label span:first-child{color:var(--muted);font-family:var(--mono)}
+.mem-label span:last-child{font-weight:600;font-family:var(--mono)}
+.mem-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.mem-fill{height:100%;border-radius:4px;transition:width .6s ease}
+
+/* before/after diff */
+.diff-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:.75rem}
+.diff-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem}
+.diff-box .label{font-size:11px;font-weight:600;margin-bottom:.5rem;letter-spacing:.04em}
+.diff-box pre{margin:0;font-size:11px;background:transparent;border:none;padding:0}
+
+.quiz-option{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-bottom:.5rem;cursor:pointer;font-size:13px;color:var(--text);font-family:var(--sans);transition:border-color .15s}
+.quiz-option:hover{border-color:var(--purple)}
+.quiz-option.correct{border-color:var(--teal);background:var(--teal-dim);color:var(--teal)}
+.quiz-option.wrong{border-color:var(--coral);background:var(--coral-dim);color:var(--coral)}
+.quiz-feedback{font-size:13px;margin-top:.75rem;padding:.75rem 1rem;border-radius:8px;display:none;line-height:1.6}
+.quiz-feedback.show{display:block}
+.fb-correct{background:var(--teal-dim);color:var(--teal)}
+.fb-wrong{background:var(--coral-dim);color:var(--coral)}
+
+.exercise-task{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.125rem;margin-bottom:1rem}
+.exercise-task h4{font-size:13px;font-weight:600;color:var(--amber);margin-bottom:.5rem}
+.exercise-task p{font-size:13px;color:var(--muted);line-height:1.7}
+.exercise-task pre{margin-top:.75rem;font-size:11.5px}
+
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px 20px;font-size:13px;cursor:pointer;color:var(--text);font-family:var(--sans);transition:all .15s}
+.nav-btn:hover{border-color:var(--muted)}
+.nav-btn.primary{background:var(--teal);color:#0f0f13;border-color:var(--teal);font-weight:600}
+.nav-btn.primary:hover{background:#25c090}
+.nav-btn:disabled{opacity:.3;cursor:default}
+
+.complete-banner{text-align:center;padding:2rem 1rem}
+.complete-banner .big{font-size:48px;margin-bottom:.5rem}
+.complete-banner h2{font-size:22px;margin-bottom:.5rem;color:var(--teal)}
+.complete-banner p{font-size:14px;color:var(--muted);margin-bottom:1rem;line-height:1.7}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="day-badge">Day 4 of 21</span>
+    <span class="sub-badge">Week 1 — Fundamentals</span>
+  </div>
+  <h1>Data Types & Cleaning</h1>
+  <p>dtypes, category dtype, string cleaning, duplicates — the full toolkit</p>
+</div>
+
+<div class="progress-bar">
+  <div class="pstep active" id="ps0"></div>
+  <div class="pstep" id="ps1"></div>
+  <div class="pstep" id="ps2"></div>
+  <div class="pstep" id="ps3"></div>
+  <div class="pstep" id="ps4"></div>
+  <div class="pstep" id="ps5"></div>
+  <span class="pcount" id="pcount">1 / 6</span>
+</div>
+
+<div class="main">
+
+<!-- SCREEN 0: dtypes -->
+<div class="screen on" id="s0">
+  <span class="tag tag-concept">concept</span>
+  <h2>Understanding dtypes</h2>
+  <p class="subtitle">Every column in a DataFrame has a dtype. Wrong dtypes silently break operations — sorting, arithmetic, groupby, merges. Always check dtypes first.</p>
+
+  <table class="dtype-table">
+    <tr><th>dtype</th><th>pandas alias</th><th>When you'll see it</th></tr>
+    <tr><td>int64</td><td>int64</td><td>Integer numbers. Becomes float64 if NaNs are present (NaN is float).</td></tr>
+    <tr><td>float64</td><td>float64</td><td>Decimals, or any int column that had a NaN at load time.</td></tr>
+    <tr><td>object</td><td>object</td><td>Strings (and mixed types). Default for anything pandas can't infer. Slow.</td></tr>
+    <tr><td>bool</td><td>bool</td><td>True/False. Watch out — mixed True/False/"True" loads as object.</td></tr>
+    <tr><td>datetime64[ns]</td><td>datetime64</td><td>Timestamps. Must be explicitly parsed — won't auto-convert from strings.</td></tr>
+    <tr><td>category</td><td>category</td><td>Low-cardinality strings/ints. Huge memory savings. Enables ordered sorts.</td></tr>
+    <tr><td>Int64</td><td>Int64 (capital I)</td><td>Nullable integer (pandas ≥1.0). Allows NaN in integer columns.</td></tr>
+  </table>
+
+  <pre><span class="hl-muted"># Inspect types</span>
+df.dtypes
+df.info()                          <span class="hl-muted"># types + null counts + memory</span>
+df.select_dtypes(include=<span class="hl-amber">'number'</span>) <span class="hl-muted"># only numeric columns</span>
+df.select_dtypes(include=<span class="hl-amber">'object'</span>) <span class="hl-muted"># only string columns</span>
+df.select_dtypes(exclude=<span class="hl-amber">'number'</span>) <span class="hl-muted"># exclude numeric</span>
+
+<span class="hl-muted"># Cast types</span>
+df[<span class="hl-amber">'age'</span>]    = df[<span class="hl-amber">'age'</span>].astype(<span class="hl-amber">'int64'</span>)
+df[<span class="hl-amber">'date'</span>]   = pd.to_datetime(df[<span class="hl-amber">'date'</span>])
+df[<span class="hl-amber">'price'</span>]  = pd.to_numeric(df[<span class="hl-amber">'price'</span>], errors=<span class="hl-amber">'coerce'</span>)  <span class="hl-muted"># bad → NaN</span>
+df[<span class="hl-amber">'active'</span>] = df[<span class="hl-amber">'active'</span>].map({<span class="hl-amber">'Y'</span>: <span class="hl-purple">True</span>, <span class="hl-amber">'N'</span>: <span class="hl-purple">False</span>})</pre>
+
+  <div class="danger-box"><strong>Classic trap:</strong> a column like <code>revenue</code> loads as <code>object</code> because some rows contain "$1,200" with a dollar sign. <code>df['revenue'].sum()</code> will concatenate strings instead of summing numbers. Always cast after stripping non-numeric characters.</div>
+
+  <div class="nav">
+    <button class="nav-btn" disabled>← Back</button>
+    <button class="nav-btn primary" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 1: category dtype -->
+<div class="screen" id="s1">
+  <span class="tag tag-perf">performance</span>
+  <h2>The category dtype — massively underused</h2>
+  <p class="subtitle">Converting low-cardinality string columns to <code>category</code> can cut memory by 5–10x and speed up groupby operations. Almost nobody uses it — which makes it a great interview talking point.</p>
+
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem" id="mem-vis">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:1rem">Memory usage — 1M row DataFrame with a "country" column (200 unique values):</p>
+    <div class="mem-bar-wrap">
+      <div class="mem-label"><span>object dtype</span><span style="color:var(--coral)">~76 MB</span></div>
+      <div class="mem-track"><div class="mem-fill" style="width:100%;background:var(--coral)"></div></div>
+    </div>
+    <div class="mem-bar-wrap" style="margin-top:.75rem">
+      <div class="mem-label"><span>category dtype</span><span style="color:var(--teal)">~1.2 MB</span></div>
+      <div class="mem-track"><div class="mem-fill" style="width:1.6%;background:var(--teal)"></div></div>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:.75rem">category stores integer codes + a lookup table — strings are never repeated in memory</p>
+  </div>
+
+  <pre><span class="hl-muted"># Convert to category</span>
+df[<span class="hl-amber">'country'</span>] = df[<span class="hl-amber">'country'</span>].astype(<span class="hl-amber">'category'</span>)
+df[<span class="hl-amber">'grade'</span>]   = df[<span class="hl-amber">'grade'</span>].astype(<span class="hl-amber">'category'</span>)
+
+<span class="hl-muted"># Ordered category — enables correct sort and comparison</span>
+from pandas.api.types import CategoricalDtype
+grade_order = CategoricalDtype([<span class="hl-amber">'F'</span>,<span class="hl-amber">'D'</span>,<span class="hl-amber">'C'</span>,<span class="hl-amber">'B'</span>,<span class="hl-amber">'A'</span>], ordered=<span class="hl-purple">True</span>)
+df[<span class="hl-amber">'grade'</span>] = df[<span class="hl-amber">'grade'</span>].astype(grade_order)
+
+df[df[<span class="hl-amber">'grade'</span>] > <span class="hl-amber">'C'</span>]   <span class="hl-muted"># works because ordered=True</span>
+df.sort_values(<span class="hl-amber">'grade'</span>)  <span class="hl-muted"># sorts F → A correctly</span>
+
+<span class="hl-muted"># Check category codes and categories</span>
+df[<span class="hl-amber">'country'</span>].cat.codes        <span class="hl-muted"># integer codes stored internally</span>
+df[<span class="hl-amber">'country'</span>].cat.categories    <span class="hl-muted"># unique values</span>
+
+<span class="hl-muted"># Convert all low-cardinality object columns at once</span>
+for col in df.select_dtypes(<span class="hl-amber">'object'</span>):
+    if df[col].nunique() / len(df) < <span class="hl-blue">0.5</span>:   <span class="hl-muted"># less than 50% unique → category</span>
+        df[col] = df[col].astype(<span class="hl-amber">'category'</span>)</pre>
+
+  <div class="tip-box"><strong>Rule of thumb:</strong> if a column has fewer than 50% unique values relative to row count, it's a candidate for <code>category</code>. Gender, country, status, department — almost always category.</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(0)">← Back</button>
+    <button class="nav-btn primary" onclick="go(2)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 2: String cleaning -->
+<div class="screen" id="s2">
+  <span class="tag tag-concept">concept</span>
+  <h2>String cleaning with the str accessor</h2>
+  <p class="subtitle">Real-world data is messy — inconsistent casing, extra whitespace, mixed formats. The <code>.str</code> accessor gives you vectorised string operations — no loops needed.</p>
+
+  <pre><span class="hl-muted"># Case and whitespace</span>
+df[<span class="hl-amber">'name'</span>].str.lower()
+df[<span class="hl-amber">'name'</span>].str.upper()
+df[<span class="hl-amber">'name'</span>].str.strip()          <span class="hl-muted"># remove leading/trailing spaces</span>
+df[<span class="hl-amber">'name'</span>].str.strip().str.lower() <span class="hl-muted"># chain them</span>
+
+<span class="hl-muted"># Replace and remove</span>
+df[<span class="hl-amber">'phone'</span>].str.replace(<span class="hl-amber">r'\D'</span>, <span class="hl-amber">''</span>, regex=<span class="hl-purple">True</span>)     <span class="hl-muted"># remove all non-digits</span>
+df[<span class="hl-amber">'price'</span>].str.replace(<span class="hl-amber">r'[$,]'</span>, <span class="hl-amber">''</span>, regex=<span class="hl-purple">True</span>)   <span class="hl-muted"># remove $ and commas</span>
+
+<span class="hl-muted"># Filter / detect</span>
+df[df[<span class="hl-amber">'email'</span>].str.contains(<span class="hl-amber">'@gmail'</span>, na=<span class="hl-purple">False</span>)]
+df[df[<span class="hl-amber">'code'</span>].str.startswith(<span class="hl-amber">'TX'</span>)]
+df[df[<span class="hl-amber">'name'</span>].str.match(<span class="hl-amber">r'^[A-Z]'</span>)]             <span class="hl-muted"># starts with capital</span>
+
+<span class="hl-muted"># Split and extract</span>
+df[<span class="hl-amber">'full_name'</span>].str.split(<span class="hl-amber">' '</span>, expand=<span class="hl-purple">True</span>)       <span class="hl-muted"># → two columns</span>
+df[[<span class="hl-amber">'first'</span>, <span class="hl-amber">'last'</span>]] = df[<span class="hl-amber">'full_name'</span>].str.split(<span class="hl-amber">' '</span>, expand=<span class="hl-purple">True</span>)
+df[<span class="hl-amber">'area_code'</span>] = df[<span class="hl-amber">'phone'</span>].str.extract(<span class="hl-amber">r'\((\d{3})\)'</span>) <span class="hl-muted"># regex group</span>
+
+<span class="hl-muted"># Length and padding</span>
+df[<span class="hl-amber">'name'</span>].str.len()
+df[<span class="hl-amber">'code'</span>].str.zfill(<span class="hl-blue">5</span>)          <span class="hl-muted"># pad with zeros: '42' → '00042'</span></pre>
+
+  <div class="two-col">
+    <div class="diff-box">
+      <div class="label" style="color:var(--coral)">BEFORE — raw data</div>
+      <pre style="font-size:11px">  Alice Smith
+BOB JONES
+carol  
+ Dave   O'Brien</pre>
+    </div>
+    <div class="diff-box">
+      <div class="label" style="color:var(--teal)">AFTER — cleaned</div>
+      <pre style="font-size:11px">alice smith
+bob jones
+carol
+dave   o'brien</pre>
+    </div>
+  </div>
+  <p style="font-size:11px;color:var(--muted);margin-bottom:1rem;margin-top:-.5rem">Code: <code style="color:var(--teal)">df['name'].str.strip().str.lower()</code></p>
+
+  <div class="danger-box"><strong>Watch out:</strong> always pass <code>na=False</code> to <code>str.contains()</code> — otherwise rows with NaN raise a TypeError. Default behaviour changed across pandas versions.</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(1)">← Back</button>
+    <button class="nav-btn primary" onclick="go(3)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 3: Duplicates -->
+<div class="screen" id="s3">
+  <span class="tag tag-concept">concept</span>
+  <h2>Handling duplicates</h2>
+  <p class="subtitle">Duplicate rows silently skew every aggregate — counts, means, groupby results. Always check before analysis.</p>
+
+  <pre><span class="hl-muted"># Detect duplicates</span>
+df.duplicated().sum()                       <span class="hl-muted"># total duplicate rows</span>
+df.duplicated(subset=[<span class="hl-amber">'user_id'</span>]).sum()    <span class="hl-muted"># duplicated on a key column</span>
+df[df.duplicated(keep=<span class="hl-purple">False</span>)]             <span class="hl-muted"># show ALL copies (not just 2nd+)</span>
+
+<span class="hl-muted"># Remove duplicates</span>
+df.drop_duplicates()                                    <span class="hl-muted"># all columns must match</span>
+df.drop_duplicates(subset=[<span class="hl-amber">'user_id'</span>])             <span class="hl-muted"># based on key column</span>
+df.drop_duplicates(subset=[<span class="hl-amber">'user_id'</span>], keep=<span class="hl-amber">'last'</span>) <span class="hl-muted"># keep most recent</span>
+df.drop_duplicates(keep=<span class="hl-purple">False</span>)                      <span class="hl-muted"># drop ALL copies of dupes</span></pre>
+
+  <div class="two-col">
+    <div class="card">
+      <h3 style="color:var(--amber)">keep='first' (default)</h3>
+      <p>Keeps the first occurrence of each duplicate group. Good when data is sorted by timestamp — first = earliest record.</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--teal)">keep='last'</h3>
+      <p>Keeps the last occurrence. Good when data is sorted by timestamp — last = most recent update (e.g. updated customer records).</p>
+    </div>
+  </div>
+
+  <pre><span class="hl-muted"># Real-world pattern: deduplicate events, keep latest per user</span>
+df_sorted = df.sort_values(<span class="hl-amber">'event_time'</span>)
+df_deduped = df_sorted.drop_duplicates(subset=[<span class="hl-amber">'user_id'</span>], keep=<span class="hl-amber">'last'</span>)
+
+<span class="hl-muted"># Check for near-duplicates (same name, different case)</span>
+df[<span class="hl-amber">'name_clean'</span>] = df[<span class="hl-amber">'name'</span>].str.lower().str.strip()
+df.drop_duplicates(subset=[<span class="hl-amber">'name_clean'</span>])
+
+<span class="hl-muted"># Find duplicate user_ids to investigate</span>
+dupe_ids = df[df.duplicated(subset=[<span class="hl-amber">'user_id'</span>], keep=<span class="hl-purple">False</span>)]
+dupe_ids.sort_values(<span class="hl-amber">'user_id'</span>)</pre>
+
+  <div class="tip-box"><strong>Interview pattern:</strong> when you see duplicates, always ask <em>why</em> before dropping. Are they from multiple data sources being concatenated? A logging bug? Intended (same user, multiple orders)? The reason determines the fix.</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(2)">← Back</button>
+    <button class="nav-btn primary" onclick="go(4)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 4: Quiz -->
+<div class="screen" id="s4">
+  <span class="tag tag-quiz">knowledge check</span>
+  <h2>Quick quiz — 4 questions</h2>
+  <p class="subtitle">Answer before revealing. These are real interview questions.</p>
+
+  <div class="card" style="margin-bottom:1rem" id="q1">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q1. A numeric column loads as <code>object</code> dtype. What's the most likely cause?</h3>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">The column has NaN values</button>
+    <button class="quiz-option" onclick="ans(this,'q1',true)">Some rows contain non-numeric strings like "$1,200" or "N/A"</button>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">The column name contains a space</button>
+    <div class="quiz-feedback fb-correct" id="q1-fb-c">Correct! Even one non-numeric value forces the entire column to object dtype. Fix: strip characters then use pd.to_numeric(col, errors='coerce') to convert valid values and turn bad ones into NaN.</div>
+    <div class="quiz-feedback fb-wrong" id="q1-fb-w">NaN values don't force object — they just make integers become float64. The real culprit is one or more non-numeric strings like "$1,200" mixed in. Fix with str.replace then pd.to_numeric(errors='coerce').</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q2">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q2. When should you use the <code>category</code> dtype?</h3>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">Always — it's faster than object for all strings</button>
+    <button class="quiz-option" onclick="ans(this,'q2',true)">For low-cardinality columns where unique values are much fewer than row count</button>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">Only for columns with fewer than 10 unique values</button>
+    <div class="quiz-feedback fb-correct" id="q2-fb-c">Correct! category saves memory by storing integer codes internally with a lookup table. It's most effective when the number of unique values is much smaller than the number of rows — like country, status, gender, department.</div>
+    <div class="quiz-feedback fb-wrong" id="q2-fb-w">category works best for low-cardinality columns — where unique values are a small fraction of total rows. There's no hard threshold like 10, but a rule of thumb is &lt;50% unique values relative to row count. High-cardinality columns (like names, IDs) don't benefit.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q3">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q3. What does <code>df['phone'].str.replace(r'\D', '', regex=True)</code> do?</h3>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">Replaces backslash-D with an empty string</button>
+    <button class="quiz-option" onclick="ans(this,'q3',true)">Removes all non-digit characters from the phone column</button>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">Replaces missing values with empty string</button>
+    <div class="quiz-feedback fb-correct" id="q3-fb-c">Correct! \D is the regex pattern for "any non-digit character". With regex=True, this strips everything that isn't 0–9 — parentheses, dashes, spaces, country codes — leaving only the raw digits.</div>
+    <div class="quiz-feedback fb-wrong" id="q3-fb-w">\D in regex means "any character that is NOT a digit". So str.replace(r'\D', '', regex=True) removes all non-digits — perfect for standardising phone numbers like "(91) 98765-43210" → "919876543210".</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q4">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q4. You have a customer table with duplicate user_ids because records were updated. How do you keep only the most recent record per user?</h3>
+    <button class="quiz-option" onclick="ans(this,'q4',false)">df.drop_duplicates(subset=['user_id'])</button>
+    <button class="quiz-option" onclick="ans(this,'q4',true)">Sort by timestamp, then df.drop_duplicates(subset=['user_id'], keep='last')</button>
+    <button class="quiz-option" onclick="ans(this,'q4',false)">df.drop_duplicates(keep=False)</button>
+    <div class="quiz-feedback fb-correct" id="q4-fb-c">Correct! Default keep='first' keeps the earliest record. You need to sort by the timestamp column first so that 'last' means most recent. keep=False would delete all copies of duplicated rows — not what you want.</div>
+    <div class="quiz-feedback fb-wrong" id="q4-fb-w">Without sorting first, keep='first' or keep='last' is arbitrary. Sort by your timestamp column ascending, then drop_duplicates(subset=['user_id'], keep='last') retains the most recent row per user.</div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(3)">← Back</button>
+    <button class="nav-btn primary" onclick="go(5)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 5: Exercises -->
+<div class="screen" id="s5">
+  <span class="tag tag-practice">hands-on exercise</span>
+  <h2>Now you code it</h2>
+  <p class="subtitle">A realistic messy dataset to clean from scratch — this mirrors real DS take-home tests.</p>
+
+  <pre><span class="hl-muted"># Create the messy dataset</span>
+import pandas as pd
+import numpy as np
+
+data = {
+    <span class="hl-amber">'user_id'</span>  : [<span class="hl-amber">'001'</span>, <span class="hl-amber">'002'</span>, <span class="hl-amber">'003'</span>, <span class="hl-amber">'002'</span>, <span class="hl-amber">'004'</span>, <span class="hl-amber">'005'</span>],
+    <span class="hl-amber">'name'</span>     : [<span class="hl-amber">'  Alice Smith '</span>, <span class="hl-amber">'BOB JONES'</span>, <span class="hl-amber">'carol white'</span>,
+                   <span class="hl-amber">'Bob Jones'</span>, <span class="hl-amber">'DAVE GREEN'</span>, <span class="hl-amber">'Eve Black  '</span>],
+    <span class="hl-amber">'revenue'</span>  : [<span class="hl-amber">'$1,200'</span>, <span class="hl-amber">'$850'</span>, <span class="hl-amber">'N/A'</span>, <span class="hl-amber">'$3,400'</span>, <span class="hl-amber">'$920'</span>, <span class="hl-amber">'$1,100'</span>],
+    <span class="hl-amber">'signup'</span>   : [<span class="hl-amber">'2023-01-15'</span>, <span class="hl-amber">'2023-03-02'</span>, <span class="hl-amber">'2023-07-21'</span>,
+                   <span class="hl-amber">'2023-11-05'</span>, <span class="hl-amber">'2024-01-10'</span>, <span class="hl-amber">'2024-02-28'</span>],
+    <span class="hl-amber">'tier'</span>     : [<span class="hl-amber">'gold'</span>, <span class="hl-amber">'silver'</span>, <span class="hl-amber">'bronze'</span>,
+                   <span class="hl-amber">'silver'</span>, <span class="hl-amber">'gold'</span>, <span class="hl-amber">'bronze'</span>],
+    <span class="hl-amber">'phone'</span>    : [<span class="hl-amber">'(91) 98765-43210'</span>, <span class="hl-amber">'+91-87654-32109'</span>, <span class="hl-amber">'76543 21098'</span>,
+                   <span class="hl-amber">'(91) 87654-32109'</span>, <span class="hl-amber">'9543210987'</span>, <span class="hl-amber">'(91)65432-10987'</span>]
+}
+df = pd.DataFrame(data)
+print(df.dtypes)</pre>
+
+  <div class="exercise-task">
+    <h4>Task 1 — Audit the types</h4>
+    <p>Print dtypes. Which columns have wrong types? What should each be? List the problems before writing any fix code.</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 2 — Clean the name column</h4>
+    <p>Strip whitespace, convert to title case (first letter of each word capitalised). Verify no leading/trailing spaces remain with <code>str.len()</code> before and after.</p>
+    <pre>df[<span class="hl-amber">'name'</span>] = df[<span class="hl-amber">'name'</span>].str.<span class="hl-muted">___</span>().str.<span class="hl-muted">___</span>()</pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 3 — Fix revenue to numeric</h4>
+    <p>Remove "$" and "," from the revenue column, convert to float using <code>pd.to_numeric</code> with <code>errors='coerce'</code> (so "N/A" becomes NaN), then fill the NaN with the column median.</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 4 — Parse dates and extract features</h4>
+    <p>Convert the <code>signup</code> column to datetime. Then create two new columns: <code>signup_year</code> and <code>signup_month</code>. Check the dtype of signup before and after.</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 5 — category dtype and memory</h4>
+    <p>Convert <code>tier</code> to an ordered category dtype with order: bronze &lt; silver &lt; gold. Then filter rows where tier &gt; 'bronze' using a comparison operator. Check memory usage before and after converting tier.</p>
+    <pre>from pandas.api.types import CategoricalDtype
+tier_order = CategoricalDtype([<span class="hl-amber">'bronze'</span>, <span class="hl-amber">'silver'</span>, <span class="hl-amber">'gold'</span>], ordered=<span class="hl-purple">True</span>)
+df[<span class="hl-amber">'tier'</span>] = df[<span class="hl-amber">'tier'</span>].astype(tier_order)
+df[df[<span class="hl-amber">'tier'</span>] > <span class="hl-amber">'bronze'</span>]   <span class="hl-muted"># does this work?</span></pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 6 — Deduplicate correctly</h4>
+    <p>There's a duplicate user_id '002'. Sort by signup date and keep only the most recent record per user_id. How many rows remain?</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 7 — Standardise phone numbers</h4>
+    <p>Extract only the last 10 digits from every phone number (strip all non-digit characters first). All Indian mobile numbers should be exactly 10 digits after removing the country code.</p>
+    <pre>df[<span class="hl-amber">'phone_clean'</span>] = df[<span class="hl-amber">'phone'</span>].str.replace(<span class="hl-amber">r'\D'</span>, <span class="hl-amber">''</span>, regex=<span class="hl-purple">True</span>).str[<span class="hl-blue">-10</span>:]</pre>
+  </div>
+
+  <div class="complete-banner" style="margin-top:1.5rem">
+    <div class="big">🧹</div>
+    <h2>Day 4 complete!</h2>
+    <p>You now have the full data cleaning toolkit — dtypes, category dtype, string cleaning with regex, and deduplication with the right keep strategy.</p>
+    <p>Tomorrow: <strong style="color:var(--teal)">Day 5 — Apply, map & vectorisation</strong>. The performance topic that trips up most mid-level candidates.</p>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(4)">← Back</button>
+    <button class="nav-btn" style="opacity:.4;cursor:default" disabled>Day 5 tomorrow</button>
+  </div>
+</div>
+
+</div>
+<script>
+var cur=0,total=6,answered={};
+function go(n){
+  document.getElementById('s'+cur).classList.remove('on');
+  document.getElementById('ps'+cur).classList.remove('active');
+  document.getElementById('ps'+cur).classList.add('done');
+  cur=n;
+  document.getElementById('s'+cur).classList.add('on');
+  document.getElementById('ps'+cur).classList.add('active');
+  document.getElementById('ps'+cur).classList.remove('done');
+  document.getElementById('pcount').textContent=(cur+1)+' / '+total;
+  window.scrollTo(0,0);
+}
+function ans(btn,qid,correct){
+  if(answered[qid])return;
+  answered[qid]=true;
+  btn.parentElement.querySelectorAll('.quiz-option').forEach(function(o){o.style.pointerEvents='none';});
+  btn.classList.add(correct?'correct':'wrong');
+  document.getElementById(qid+(correct?'-fb-c':'-fb-w')).classList.add('show');
+}
+</script>
+</body>
+</html>

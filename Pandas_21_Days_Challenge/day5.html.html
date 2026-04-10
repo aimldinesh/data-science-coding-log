@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 5 — Apply, Map & Vectorisation</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0f13;
+  --surface: #17171f;
+  --card: #1e1e28;
+  --border: #2e2e3e;
+  --teal: #2dd4a0;
+  --teal-dim: #1a4a3a;
+  --purple: #a78bfa;
+  --purple-dim: #2e1f5e;
+  --amber: #fbbf24;
+  --amber-dim: #3d2f0a;
+  --coral: #f87171;
+  --coral-dim: #3a1515;
+  --blue: #60a5fa;
+  --blue-dim: #1e2f4a;
+  --pink: #f472b6;
+  --pink-dim: #3a1530;
+  --green: #4ade80;
+  --green-dim: #1a3a1a;
+  --text: #e8e8f0;
+  --muted: #8888a8;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+
+.header{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border)}
+.header-top{display:flex;align-items:center;gap:.75rem;margin-bottom:4px;flex-wrap:wrap}
+.day-badge{background:var(--teal-dim);color:var(--teal);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:.05em}
+.perf-badge{background:var(--amber-dim);color:var(--amber);font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px}
+.header h1{font-size:18px;font-weight:600}
+.header p{font-size:13px;color:var(--muted);margin-top:2px}
+
+.progress-bar{display:flex;gap:4px;padding:1rem 2rem;border-bottom:1px solid var(--border);align-items:center}
+.pstep{height:3px;flex:1;border-radius:2px;background:var(--border);transition:background .2s}
+.pstep.done{background:var(--teal)}.pstep.active{background:var(--purple)}
+.pcount{font-size:12px;color:var(--muted);margin-left:.75rem;white-space:nowrap}
+
+.main{max-width:780px;margin:0 auto;padding:2rem}
+.screen{display:none}.screen.on{display:block}
+
+.tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:1rem;letter-spacing:.04em}
+.tag-concept{background:var(--teal-dim);color:var(--teal)}
+.tag-quiz{background:var(--purple-dim);color:var(--purple)}
+.tag-practice{background:var(--amber-dim);color:var(--amber)}
+.tag-perf{background:var(--blue-dim);color:var(--blue)}
+
+h2{font-size:20px;font-weight:600;margin-bottom:.5rem}
+.subtitle{font-size:14px;color:var(--muted);margin-bottom:1.5rem;line-height:1.7}
+
+pre{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;font-size:12.5px;line-height:1.8;overflow-x:auto;margin:.75rem 0 1.25rem;font-family:var(--mono)}
+code{font-family:var(--mono);font-size:12px}
+.hl-teal{color:var(--teal)}.hl-purple{color:var(--purple)}.hl-amber{color:var(--amber)}
+.hl-blue{color:var(--blue)}.hl-muted{color:var(--muted)}.hl-coral{color:var(--coral)}
+.hl-pink{color:var(--pink)}.hl-green{color:var(--green)}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:1.25rem}
+@media(max-width:560px){.two-col,.three-col{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.125rem;margin-bottom:.875rem}
+.card h3{font-size:13px;font-weight:600;margin-bottom:.5rem}
+.card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+.tip-box{border-left:3px solid var(--amber);background:var(--amber-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--amber);line-height:1.6}
+.danger-box{border-left:3px solid var(--coral);background:var(--coral-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--coral);line-height:1.6}
+.good-box{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--teal);line-height:1.6}
+.info-box{border-left:3px solid var(--blue);background:var(--blue-dim);border-radius:0 8px 8px 0;padding:.75rem 1rem;margin:1rem 0;font-size:13px;color:var(--blue);line-height:1.6}
+
+/* speed comparison bars */
+.speed-row{margin-bottom:.875rem}
+.speed-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.speed-label .method{font-size:13px;font-family:var(--mono)}
+.speed-label .time{font-size:12px;font-weight:600;font-family:var(--mono)}
+.speed-track{height:10px;background:var(--border);border-radius:5px;overflow:hidden}
+.speed-fill{height:100%;border-radius:5px}
+
+/* method comparison table */
+.method-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:.75rem 0 1.25rem}
+.method-table th{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:11px;letter-spacing:.04em;font-weight:500}
+.method-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+.method-table td:first-child{font-family:var(--mono);font-size:12px;color:var(--teal);white-space:nowrap}
+.method-table td:nth-child(2){color:var(--muted);font-size:12px}
+.method-table td:nth-child(3){font-size:12px}
+.method-table td:last-child{font-size:12px;color:var(--muted)}
+.method-table tr:last-child td{border-bottom:none}
+.tag-fast{background:var(--teal-dim);color:var(--teal);font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
+.tag-med{background:var(--amber-dim);color:var(--amber);font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
+.tag-slow{background:var(--coral-dim);color:var(--coral);font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
+
+/* flow diagram */
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:1rem 0 1.25rem}
+.flow-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.5rem .875rem;font-size:12px;font-family:var(--mono);text-align:center}
+.flow-arrow{color:var(--muted);font-size:18px}
+
+.quiz-option{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-bottom:.5rem;cursor:pointer;font-size:13px;color:var(--text);font-family:var(--sans);transition:border-color .15s}
+.quiz-option:hover{border-color:var(--purple)}
+.quiz-option.correct{border-color:var(--teal);background:var(--teal-dim);color:var(--teal)}
+.quiz-option.wrong{border-color:var(--coral);background:var(--coral-dim);color:var(--coral)}
+.quiz-feedback{font-size:13px;margin-top:.75rem;padding:.75rem 1rem;border-radius:8px;display:none;line-height:1.6}
+.quiz-feedback.show{display:block}
+.fb-correct{background:var(--teal-dim);color:var(--teal)}
+.fb-wrong{background:var(--coral-dim);color:var(--coral)}
+
+.exercise-task{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.125rem;margin-bottom:1rem}
+.exercise-task h4{font-size:13px;font-weight:600;color:var(--amber);margin-bottom:.5rem}
+.exercise-task p{font-size:13px;color:var(--muted);line-height:1.7}
+.exercise-task pre{margin-top:.75rem;font-size:11.5px}
+
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px 20px;font-size:13px;cursor:pointer;color:var(--text);font-family:var(--sans);transition:all .15s}
+.nav-btn:hover{border-color:var(--muted)}
+.nav-btn.primary{background:var(--teal);color:#0f0f13;border-color:var(--teal);font-weight:600}
+.nav-btn.primary:hover{background:#25c090}
+.nav-btn:disabled{opacity:.3;cursor:default}
+
+.week-complete{background:var(--card);border:2px solid var(--teal);border-radius:16px;padding:1.5rem;text-align:center;margin-bottom:1.5rem}
+.week-complete h3{font-size:16px;font-weight:600;color:var(--teal);margin-bottom:.5rem}
+.week-complete p{font-size:13px;color:var(--muted);line-height:1.7}
+.topics-done{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:.875rem}
+.topic-pill{background:var(--teal-dim);color:var(--teal);font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500}
+
+.complete-banner{text-align:center;padding:2rem 1rem}
+.complete-banner .big{font-size:48px;margin-bottom:.5rem}
+.complete-banner h2{font-size:22px;margin-bottom:.5rem;color:var(--teal)}
+.complete-banner p{font-size:14px;color:var(--muted);margin-bottom:1rem;line-height:1.7}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="day-badge">Day 5 of 21</span>
+    <span class="perf-badge">10–100x performance impact</span>
+  </div>
+  <h1>Apply, Map & Vectorisation</h1>
+  <p>The performance topic that separates junior from senior candidates</p>
+</div>
+
+<div class="progress-bar">
+  <div class="pstep active" id="ps0"></div>
+  <div class="pstep" id="ps1"></div>
+  <div class="pstep" id="ps2"></div>
+  <div class="pstep" id="ps3"></div>
+  <div class="pstep" id="ps4"></div>
+  <div class="pstep" id="ps5"></div>
+  <span class="pcount" id="pcount">1 / 6</span>
+</div>
+
+<div class="main">
+
+<!-- SCREEN 0: Why this matters -->
+<div class="screen on" id="s0">
+  <span class="tag tag-perf">performance</span>
+  <h2>Why vectorisation matters</h2>
+  <p class="subtitle">Python loops and <code>apply</code> process one row at a time in Python. Vectorised operations process the entire column at once in C — the language pandas is built on. The difference is dramatic.</p>
+
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:1.125rem">Computing <code style="color:var(--teal)">tax = salary * 0.3</code> on 1 million rows:</p>
+
+    <div class="speed-row">
+      <div class="speed-label">
+        <span class="method" style="color:var(--coral)">Python for loop</span>
+        <span class="time" style="color:var(--coral)">~4,800ms</span>
+      </div>
+      <div class="speed-track"><div class="speed-fill" style="width:100%;background:var(--coral)"></div></div>
+    </div>
+
+    <div class="speed-row">
+      <div class="speed-label">
+        <span class="method" style="color:var(--amber)">df.apply(lambda x: x*0.3)</span>
+        <span class="time" style="color:var(--amber)">~980ms</span>
+      </div>
+      <div class="speed-track"><div class="speed-fill" style="width:20%;background:var(--amber)"></div></div>
+    </div>
+
+    <div class="speed-row">
+      <div class="speed-label">
+        <span class="method" style="color:var(--teal)">df['salary'] * 0.3</span>
+        <span class="time" style="color:var(--teal)">~6ms</span>
+      </div>
+      <div class="speed-track"><div class="speed-fill" style="width:0.12%;background:var(--teal)"></div></div>
+    </div>
+
+    <p style="font-size:11px;color:var(--muted);margin-top:.875rem">Vectorised is ~800x faster than a loop, ~160x faster than apply for this simple case.</p>
+  </div>
+
+  <pre><span class="hl-muted"># SLOW — Python loop (never do this)</span>
+taxes = []
+for salary in df[<span class="hl-amber">'salary'</span>]:
+    taxes.append(salary * <span class="hl-blue">0.3</span>)
+df[<span class="hl-amber">'tax'</span>] = taxes
+
+<span class="hl-muted"># SLOWER than vectorised — apply</span>
+df[<span class="hl-amber">'tax'</span>] = df[<span class="hl-amber">'salary'</span>].apply(<span class="hl-purple">lambda</span> x: x * <span class="hl-blue">0.3</span>)
+
+<span class="hl-muted"># FAST — vectorised (always prefer this)</span>
+df[<span class="hl-amber">'tax'</span>] = df[<span class="hl-amber">'salary'</span>] * <span class="hl-blue">0.3</span></pre>
+
+  <div class="tip-box"><strong>Interview answer:</strong> "Pandas operations are built on NumPy, which executes in compiled C code and processes entire arrays at once. Python loops and apply() call Python bytecode once per row — that interpreter overhead adds up to thousands of function calls. Vectorised ops eliminate those calls entirely."</div>
+
+  <div class="nav">
+    <button class="nav-btn" disabled>← Back</button>
+    <button class="nav-btn primary" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 1: apply vs map vs applymap -->
+<div class="screen" id="s1">
+  <span class="tag tag-concept">concept</span>
+  <h2>apply vs map vs applymap — know the difference</h2>
+  <p class="subtitle">This exact question comes up in interviews. Each method has a specific input scope — get the scope wrong and you get a TypeError.</p>
+
+  <table class="method-table">
+    <tr>
+      <th>Method</th>
+      <th>Works on</th>
+      <th>Input to function</th>
+      <th>Speed</th>
+    </tr>
+    <tr>
+      <td>Series.map()</td>
+      <td>Series only</td>
+      <td>One scalar value at a time</td>
+      <td><span class="tag-med">medium</span></td>
+    </tr>
+    <tr>
+      <td>Series.apply()</td>
+      <td>Series only</td>
+      <td>One scalar (or can use raw=True for array)</td>
+      <td><span class="tag-med">medium</span></td>
+    </tr>
+    <tr>
+      <td>DataFrame.apply()</td>
+      <td>DataFrame</td>
+      <td>One column (axis=0) or one row (axis=1)</td>
+      <td><span class="tag-slow">slow</span></td>
+    </tr>
+    <tr>
+      <td>DataFrame.map()*</td>
+      <td>DataFrame</td>
+      <td>One cell at a time (element-wise)</td>
+      <td><span class="tag-slow">slowest</span></td>
+    </tr>
+  </table>
+  <p style="font-size:11px;color:var(--muted);margin-top:-.75rem;margin-bottom:1.25rem">*Called applymap() in pandas &lt;2.1. Renamed to map() in pandas 2.1+.</p>
+
+  <pre><span class="hl-muted"># Series.map — best for value substitution / lookup</span>
+df[<span class="hl-amber">'gender_code'</span>] = df[<span class="hl-amber">'gender'</span>].map({<span class="hl-amber">'M'</span>: <span class="hl-blue">0</span>, <span class="hl-amber">'F'</span>: <span class="hl-blue">1</span>})
+df[<span class="hl-amber">'tax'</span>]         = df[<span class="hl-amber">'salary'</span>].map(<span class="hl-purple">lambda</span> x: x * <span class="hl-blue">0.3</span>)
+
+<span class="hl-muted"># Series.apply — same as map for scalars, but can return Series</span>
+df[<span class="hl-amber">'category'</span>] = df[<span class="hl-amber">'score'</span>].apply(<span class="hl-purple">lambda</span> x: <span class="hl-amber">'high'</span> <span class="hl-purple">if</span> x > <span class="hl-blue">80</span> <span class="hl-purple">else</span> <span class="hl-amber">'low'</span>)
+
+<span class="hl-muted"># DataFrame.apply with axis=1 — receives one row as a Series</span>
+df[<span class="hl-amber">'full_label'</span>] = df.apply(
+    <span class="hl-purple">lambda</span> row: f"{row[<span class="hl-amber">'first'</span>]} {row[<span class="hl-amber">'last'</span>]} ({row[<span class="hl-amber">'dept'</span>]})",
+    axis=<span class="hl-blue">1</span>
+)
+
+<span class="hl-muted"># DataFrame.apply with axis=0 — receives one column as a Series</span>
+df.apply(<span class="hl-purple">lambda</span> col: col.max() - col.min())  <span class="hl-muted"># range per column</span>
+
+<span class="hl-muted"># DataFrame.map — element-wise across entire DataFrame</span>
+df.map(<span class="hl-purple">lambda</span> x: round(x, <span class="hl-blue">2</span>) <span class="hl-purple">if</span> isinstance(x, float) <span class="hl-purple">else</span> x)</pre>
+
+  <div class="danger-box"><strong>Common mistake:</strong> using <code>df.apply(lambda x: x*0.3, axis=1)</code> thinking it applies to each value — but with axis=1, <code>x</code> is an entire row (a Series). The multiplication actually works here by accident, but the intent is wrong and it's much slower than <code>df * 0.3</code>.</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(0)">← Back</button>
+    <button class="nav-btn primary" onclick="go(2)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 2: Vectorised replacements -->
+<div class="screen" id="s2">
+  <span class="tag tag-perf">performance</span>
+  <h2>Replacing apply with vectorised operations</h2>
+  <p class="subtitle">For every common apply pattern there's a faster vectorised equivalent. Know these cold — interviewers often ask you to optimise slow code.</p>
+
+  <pre><span class="hl-muted"># ── Conditional column ──────────────────────────────────────</span>
+
+<span class="hl-muted"># SLOW</span>
+df[<span class="hl-amber">'level'</span>] = df[<span class="hl-amber">'salary'</span>].apply(<span class="hl-purple">lambda</span> x: <span class="hl-amber">'senior'</span> <span class="hl-purple">if</span> x > <span class="hl-blue">80000</span> <span class="hl-purple">else</span> <span class="hl-amber">'junior'</span>)
+
+<span class="hl-muted"># FAST — np.where for binary condition</span>
+df[<span class="hl-amber">'level'</span>] = np.where(df[<span class="hl-amber">'salary'</span>] > <span class="hl-blue">80000</span>, <span class="hl-amber">'senior'</span>, <span class="hl-amber">'junior'</span>)
+
+
+<span class="hl-muted"># ── Multiple conditions ──────────────────────────────────────</span>
+
+<span class="hl-muted"># SLOW</span>
+<span class="hl-purple">def</span> tax_band(x):
+    <span class="hl-purple">if</span> x < <span class="hl-blue">30000</span>:   <span class="hl-purple">return</span> <span class="hl-blue">0.05</span>
+    <span class="hl-purple">elif</span> x < <span class="hl-blue">60000</span>: <span class="hl-purple">return</span> <span class="hl-blue">0.15</span>
+    <span class="hl-purple">else</span>:            <span class="hl-purple">return</span> <span class="hl-blue">0.30</span>
+df[<span class="hl-amber">'tax_rate'</span>] = df[<span class="hl-amber">'salary'</span>].apply(tax_band)
+
+<span class="hl-muted"># FAST — np.select for multiple conditions</span>
+conditions = [df[<span class="hl-amber">'salary'</span>] < <span class="hl-blue">30000</span>, df[<span class="hl-amber">'salary'</span>] < <span class="hl-blue">60000</span>]
+choices    = [<span class="hl-blue">0.05</span>, <span class="hl-blue">0.15</span>]
+df[<span class="hl-amber">'tax_rate'</span>] = np.select(conditions, choices, default=<span class="hl-blue">0.30</span>)
+
+
+<span class="hl-muted"># ── Value mapping ────────────────────────────────────────────</span>
+
+<span class="hl-muted"># SLOW</span>
+df[<span class="hl-amber">'dept_code'</span>] = df[<span class="hl-amber">'dept'</span>].apply(<span class="hl-purple">lambda</span> x: {<span class="hl-amber">'Eng'</span>:<span class="hl-blue">1</span>,<span class="hl-amber">'HR'</span>:<span class="hl-blue">2</span>,<span class="hl-amber">'Sales'</span>:<span class="hl-blue">3</span>}.get(x))
+
+<span class="hl-muted"># FAST — .map() with a dict</span>
+df[<span class="hl-amber">'dept_code'</span>] = df[<span class="hl-amber">'dept'</span>].map({<span class="hl-amber">'Eng'</span>:<span class="hl-blue">1</span>, <span class="hl-amber">'HR'</span>:<span class="hl-blue">2</span>, <span class="hl-amber">'Sales'</span>:<span class="hl-blue">3</span>})
+
+
+<span class="hl-muted"># ── String operations ────────────────────────────────────────</span>
+
+<span class="hl-muted"># SLOW</span>
+df[<span class="hl-amber">'name_clean'</span>] = df[<span class="hl-amber">'name'</span>].apply(<span class="hl-purple">lambda</span> x: x.strip().lower())
+
+<span class="hl-muted"># FAST — str accessor (vectorised C loop)</span>
+df[<span class="hl-amber">'name_clean'</span>] = df[<span class="hl-amber">'name'</span>].str.strip().str.lower()
+
+
+<span class="hl-muted"># ── Row-wise arithmetic ─────────────────────────────────────</span>
+
+<span class="hl-muted"># SLOW</span>
+df[<span class="hl-amber">'profit'</span>] = df.apply(<span class="hl-purple">lambda</span> r: r[<span class="hl-amber">'revenue'</span>] - r[<span class="hl-amber">'cost'</span>], axis=<span class="hl-blue">1</span>)
+
+<span class="hl-muted"># FAST — direct column arithmetic</span>
+df[<span class="hl-amber">'profit'</span>] = df[<span class="hl-amber">'revenue'</span>] - df[<span class="hl-amber">'cost'</span>]</pre>
+
+  <div class="good-box"><strong>Decision rule:</strong> before writing <code>apply</code>, ask — can I express this as arithmetic, <code>np.where</code>, <code>np.select</code>, <code>.map(dict)</code>, or a <code>.str</code> accessor? If yes, do that instead. Reserve <code>apply</code> only for logic that genuinely can't be vectorised.</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(1)">← Back</button>
+    <button class="nav-btn primary" onclick="go(3)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 3: When apply IS justified -->
+<div class="screen" id="s3">
+  <span class="tag tag-concept">concept</span>
+  <h2>When apply is actually the right tool</h2>
+  <p class="subtitle"><code>apply</code> gets a bad reputation, but there are real cases where it's the correct or only choice. Know them — interviewers respect nuance over blanket rules.</p>
+
+  <div class="card" style="margin-bottom:.875rem">
+    <h3 style="color:var(--teal)">1. Multi-column input, single output</h3>
+    <p>When a new column depends on logic across multiple columns that can't be expressed as simple arithmetic.</p>
+    <pre style="font-size:11.5px;margin-top:.625rem"><span class="hl-muted"># Classify based on two column combination</span>
+<span class="hl-purple">def</span> risk_level(row):
+    <span class="hl-purple">if</span> row[<span class="hl-amber">'age'</span>] > <span class="hl-blue">60</span> <span class="hl-purple">and</span> row[<span class="hl-amber">'smoker'</span>] == <span class="hl-amber">'yes'</span>: <span class="hl-purple">return</span> <span class="hl-amber">'high'</span>
+    <span class="hl-purple">if</span> row[<span class="hl-amber">'bmi'</span>] > <span class="hl-blue">30</span>:                              <span class="hl-purple">return</span> <span class="hl-amber">'medium'</span>
+    <span class="hl-purple">return</span> <span class="hl-amber">'low'</span>
+df[<span class="hl-amber">'risk'</span>] = df.apply(risk_level, axis=<span class="hl-blue">1</span>)</pre>
+  </div>
+
+  <div class="card" style="margin-bottom:.875rem">
+    <h3 style="color:var(--purple)">2. Returning multiple new columns</h3>
+    <p>When one function should produce several output columns at once.</p>
+    <pre style="font-size:11.5px;margin-top:.625rem"><span class="hl-purple">def</span> parse_address(addr):
+    parts = addr.split(<span class="hl-amber">','</span>)
+    <span class="hl-purple">return</span> pd.Series({<span class="hl-amber">'city'</span>: parts[<span class="hl-blue">0</span>].strip(),
+                       <span class="hl-amber">'state'</span>: parts[<span class="hl-blue">1</span>].strip() <span class="hl-purple">if</span> len(parts)><span class="hl-blue">1</span> <span class="hl-purple">else</span> <span class="hl-purple">None</span>})
+
+df[[<span class="hl-amber">'city'</span>, <span class="hl-amber">'state'</span>]] = df[<span class="hl-amber">'address'</span>].apply(parse_address)</pre>
+  </div>
+
+  <div class="card" style="margin-bottom:.875rem">
+    <h3 style="color:var(--amber)">3. Applying a column-level function</h3>
+    <p>Summarise or transform an entire column as a unit (axis=0).</p>
+    <pre style="font-size:11.5px;margin-top:.625rem"><span class="hl-muted"># coefficient of variation per column</span>
+df.select_dtypes(<span class="hl-amber">'number'</span>).apply(
+    <span class="hl-purple">lambda</span> col: col.std() / col.mean()
+)</pre>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--coral)">4. Calling external functions / APIs per row</h3>
+    <p>When each row needs to call a function you don't control — a geocoder, a model prediction, an API call. In this case apply is unavoidable. Mitigate with caching and batching.</p>
+  </div>
+
+  <div class="tip-box"><strong>Interview nuance:</strong> "apply is a last resort, not a first choice. I default to vectorised ops and np.where/np.select. I reach for apply when logic involves multiple columns, returns multiple outputs, or calls external functions. I always profile with %%timeit before optimising."</div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(2)">← Back</button>
+    <button class="nav-btn primary" onclick="go(4)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 4: Quiz -->
+<div class="screen" id="s4">
+  <span class="tag tag-quiz">knowledge check</span>
+  <h2>Quick quiz — 4 questions</h2>
+  <p class="subtitle">No peeking. Think through each before clicking.</p>
+
+  <div class="card" style="margin-bottom:1rem" id="q1">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q1. What does <code>df.apply(func, axis=1)</code> pass to <code>func</code>?</h3>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">One scalar value at a time</button>
+    <button class="quiz-option" onclick="ans(this,'q1',true)">One row at a time as a Series</button>
+    <button class="quiz-option" onclick="ans(this,'q1',false)">One column at a time as a Series</button>
+    <div class="quiz-feedback fb-correct" id="q1-fb-c">Correct! axis=1 means "apply across columns" — so func receives each row as a Series, where the index is the column names. axis=0 (default) passes each column as a Series.</div>
+    <div class="quiz-feedback fb-wrong" id="q1-fb-w">axis=1 means the function is applied row-wise. Each call receives one row as a Series (index = column names). axis=0 (default) passes one column at a time.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q2">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q2. What is the fastest way to create a column: 1 if salary > 80000 else 0?</h3>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">df['flag'] = df['salary'].apply(lambda x: 1 if x > 80000 else 0)</button>
+    <button class="quiz-option" onclick="ans(this,'q2',true)">df['flag'] = (df['salary'] > 80000).astype(int)</button>
+    <button class="quiz-option" onclick="ans(this,'q2',false)">df['flag'] = df['salary'].map(lambda x: 1 if x > 80000 else 0)</button>
+    <div class="quiz-feedback fb-correct" id="q2-fb-c">Correct! Boolean comparison on a Series is fully vectorised and returns a boolean Series. astype(int) converts True→1, False→0 — also vectorised. This is the fastest and most idiomatic pandas pattern.</div>
+    <div class="quiz-feedback fb-wrong" id="q2-fb-w">Both apply and map iterate row by row in Python. The fastest approach is (df['salary'] > 80000).astype(int) — the comparison is vectorised in C, and astype is also vectorised. No Python loop at all.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q3">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q3. You need to assign one of three tax rates based on three income brackets. What's the best vectorised approach?</h3>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">df.apply with a custom function</button>
+    <button class="quiz-option" onclick="ans(this,'q3',false)">Nested np.where</button>
+    <button class="quiz-option" onclick="ans(this,'q3',true)">np.select with a conditions list and choices list</button>
+    <div class="quiz-feedback fb-correct" id="q3-fb-c">Correct! np.select is designed exactly for multiple condition branches. Nested np.where works but becomes unreadable with 3+ conditions. np.select is cleaner, vectorised, and easier to maintain.</div>
+    <div class="quiz-feedback fb-wrong" id="q3-fb-w">For 3+ conditions, np.select is the right tool. It takes a list of conditions and a matching list of return values, with a default for unmatched rows. Much cleaner than nested np.where and faster than apply.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem" id="q4">
+    <h3 style="color:var(--text);font-size:14px;margin-bottom:.75rem">Q4. What is the difference between Series.map() and Series.apply() for scalar functions?</h3>
+    <button class="quiz-option" onclick="ans(this,'q4',false)">map() is faster and apply() is for DataFrames only</button>
+    <button class="quiz-option" onclick="ans(this,'q4',true)">For scalar functions they behave the same, but map() also accepts a dict or Series for value substitution</button>
+    <button class="quiz-option" onclick="ans(this,'q4',false)">apply() can handle NaN values but map() cannot</button>
+    <div class="quiz-feedback fb-correct" id="q4-fb-c">Correct! For lambda/scalar functions, map and apply on a Series are nearly identical in behaviour and speed. The key difference is that map() additionally accepts a dict (for value substitution) or another Series (index-aligned lookup) — making it more versatile for encoding tasks.</div>
+    <div class="quiz-feedback fb-wrong" id="q4-fb-w">For scalar lambda functions, map() and apply() on a Series behave almost identically. The practical difference is that map() also accepts a dict or Series for lookup/substitution — e.g. df['gender'].map({'M':0,'F':1}) — which is cleaner and slightly faster than a lambda for that use case.</div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(3)">← Back</button>
+    <button class="nav-btn primary" onclick="go(5)">Next →</button>
+  </div>
+</div>
+
+<!-- SCREEN 5: Exercises + Week 1 wrap -->
+<div class="screen" id="s5">
+  <span class="tag tag-practice">hands-on exercise</span>
+  <h2>Now you code it</h2>
+  <p class="subtitle">The key exercise today: solve each problem three ways, then benchmark them. The timing difference will stick in your memory forever.</p>
+
+  <pre><span class="hl-muted"># Setup — 500k row DataFrame</span>
+import pandas as pd
+import numpy as np
+
+np.random.seed(<span class="hl-blue">42</span>)
+n = <span class="hl-blue">500_000</span>
+df = pd.DataFrame({
+    <span class="hl-amber">'salary'</span>  : np.random.randint(<span class="hl-blue">20000</span>, <span class="hl-blue">150000</span>, n),
+    <span class="hl-amber">'age'</span>     : np.random.randint(<span class="hl-blue">22</span>, <span class="hl-blue">65</span>, n),
+    <span class="hl-amber">'dept'</span>    : np.random.choice([<span class="hl-amber">'Eng'</span>,<span class="hl-amber">'HR'</span>,<span class="hl-amber">'Sales'</span>,<span class="hl-amber">'Finance'</span>], n),
+    <span class="hl-amber">'score'</span>   : np.random.uniform(<span class="hl-blue">0</span>, <span class="hl-blue">100</span>, n),
+    <span class="hl-amber">'name'</span>    : [<span class="hl-amber">'  alice  '</span>, <span class="hl-amber">'BOB'</span>, <span class="hl-amber">'Carol '</span>] * (n // <span class="hl-blue">3</span>) + [<span class="hl-amber">'dave'</span>] * (n % <span class="hl-blue">3</span>)
+})</pre>
+
+  <div class="exercise-task">
+    <h4>Task 1 — Benchmark the three approaches</h4>
+    <p>Compute <code>tax = salary * 0.3</code> three ways: Python loop, apply with lambda, direct multiplication. Use <code>%%timeit</code> in Jupyter to time each. What's the ratio between slowest and fastest?</p>
+    <pre><span class="hl-muted"># Method 1 — loop (WARNING: slow)</span>
+<span class="hl-muted">%%timeit</span>
+taxes = [s * <span class="hl-blue">0.3</span> <span class="hl-purple">for</span> s <span class="hl-purple">in</span> df[<span class="hl-amber">'salary'</span>]]
+
+<span class="hl-muted"># Method 2 — apply</span>
+<span class="hl-muted">%%timeit</span>
+df[<span class="hl-amber">'salary'</span>].apply(<span class="hl-purple">lambda</span> x: x * <span class="hl-blue">0.3</span>)
+
+<span class="hl-muted"># Method 3 — vectorised</span>
+<span class="hl-muted">%%timeit</span>
+df[<span class="hl-amber">'salary'</span>] * <span class="hl-blue">0.3</span></pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 2 — np.where for binary condition</h4>
+    <p>Create a column <code>level</code>: 'senior' if salary > 80000, else 'junior'. Do it first with apply, then rewrite using np.where. Time both.</p>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 3 — np.select for three tax bands</h4>
+    <p>Create a <code>tax_rate</code> column using three bands: salary &lt; 30000 → 0.05, salary &lt; 80000 → 0.15, else → 0.30. Use np.select. Then compute the actual tax amount as a new column.</p>
+    <pre>conditions = [df[<span class="hl-amber">'salary'</span>] < <span class="hl-blue">30000</span>, df[<span class="hl-amber">'salary'</span>] < <span class="hl-blue">80000</span>]
+choices    = [<span class="hl-blue">0.05</span>, <span class="hl-blue">0.15</span>]
+df[<span class="hl-amber">'tax_rate'</span>] = np.select(conditions, choices, default=<span class="hl-blue">0.30</span>)
+df[<span class="hl-amber">'tax_amt'</span>]  = df[<span class="hl-amber">'salary'</span>] * df[<span class="hl-amber">'tax_rate'</span>]</pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 4 — Justified use of apply</h4>
+    <p>Create a <code>profile</code> column by combining name (cleaned), age, and dept into a string like "Alice | Age 34 | Eng". This requires multiple columns — use apply with axis=1. Is there a vectorised alternative?</p>
+    <pre><span class="hl-muted"># apply approach</span>
+df[<span class="hl-amber">'profile'</span>] = df.apply(
+    <span class="hl-purple">lambda</span> r: f"{r[<span class="hl-amber">'name'</span>].strip().title()} | Age {r[<span class="hl-amber">'age'</span>]} | {r[<span class="hl-amber">'dept'</span>]}",
+    axis=<span class="hl-blue">1</span>
+)
+<span class="hl-muted"># Can you rewrite this without apply? Try it and benchmark.</span></pre>
+  </div>
+
+  <div class="exercise-task">
+    <h4>Task 5 — map for value substitution</h4>
+    <p>Encode the <code>dept</code> column to integers using a dict: Eng→1, HR→2, Sales→3, Finance→4. Use <code>.map(dict)</code>. Then try the same with <code>.apply(lambda)</code>. Which is cleaner? Which is faster?</p>
+  </div>
+
+  <div style="margin-top:1.5rem">
+    <div class="week-complete">
+      <h3>Week 1 complete!</h3>
+      <p>You've covered all five Day 1-5 fundamentals. These are the building blocks every other pandas concept sits on.</p>
+      <div class="topics-done">
+        <span class="topic-pill">Series & DataFrame</span>
+        <span class="topic-pill">Reading & Writing</span>
+        <span class="topic-pill">Missing Values</span>
+        <span class="topic-pill">Data Types & Cleaning</span>
+        <span class="topic-pill">Vectorisation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="complete-banner">
+    <div class="big">🚀</div>
+    <h2>Day 5 complete!</h2>
+    <p>You now understand why vectorisation is fast, the exact scope difference between map/apply/applymap, and how to replace common apply patterns with np.where and np.select.</p>
+    <p>Day 6 is <strong style="color:var(--teal)">practice problems day</strong> — solve 5 real StrataScratch problems against the clock. Then Day 7 is review. Week 2 starts Day 8 with GroupBy.</p>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="go(4)">← Back</button>
+    <button class="nav-btn" style="opacity:.4;cursor:default" disabled>Day 6 tomorrow</button>
+  </div>
+</div>
+
+</div>
+<script>
+var cur=0,total=6,answered={};
+function go(n){
+  document.getElementById('s'+cur).classList.remove('on');
+  document.getElementById('ps'+cur).classList.remove('active');
+  document.getElementById('ps'+cur).classList.add('done');
+  cur=n;
+  document.getElementById('s'+cur).classList.add('on');
+  document.getElementById('ps'+cur).classList.add('active');
+  document.getElementById('ps'+cur).classList.remove('done');
+  document.getElementById('pcount').textContent=(cur+1)+' / '+total;
+  window.scrollTo(0,0);
+}
+function ans(btn,qid,correct){
+  if(answered[qid])return;
+  answered[qid]=true;
+  btn.parentElement.querySelectorAll('.quiz-option').forEach(function(o){o.style.pointerEvents='none';});
+  btn.classList.add(correct?'correct':'wrong');
+  document.getElementById(qid+(correct?'-fb-c':'-fb-w')).classList.add('show');
+}
+</script>
+</body>
+</html>
