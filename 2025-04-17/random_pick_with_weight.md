@@ -18,6 +18,7 @@ Example 1:
 Input
 ["Solution","pickIndex"]
 [[[1]],[]]
+
 Output
 [null,0]
 
@@ -29,6 +30,7 @@ Example 2:
 Input
 ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
 [[[1,3]],[],[],[],[],[]]
+
 Output
 [null,1,1,1,1,0]
 
