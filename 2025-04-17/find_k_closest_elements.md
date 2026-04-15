@@ -19,8 +19,10 @@ Given a **sorted array** `arr`, an integer `k`, and a target integer `x`, return
 ---
 ## Examples
 ```python
+
 Example 1:
 Input: arr = [1,2,3,4,5], k = 4, x = 3
+
 Output: [1,2,3,4]
 
 Example 2:
