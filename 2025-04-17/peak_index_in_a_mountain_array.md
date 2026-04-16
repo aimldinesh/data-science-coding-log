@@ -73,6 +73,62 @@ class Solution:
 ```
 
 ---
+## 🔍 Step-by-Step Execution
+```
+Input: arr = [0, 2, 4, 6, 3, 1] → n=6
+Indices:  0  1  2  3  4  5
+Values:   0  2  4  6  3  1
+                  ↑ peak at index 3
+```
+
+Iteration 1
+```
+left=0, right=5
+mid = (0+5)//2 = 2
+
+arr[2]=4 < arr[3]=6 → still climbing ✅
+left = mid+1 = 3
+```
+Iteration 2
+```
+left=3, right=5
+mid = (3+5)//2 = 4
+
+arr[4]=3 < arr[5]=1 → descending ❌
+right = mid = 4
+```
+Iteration 3
+```
+left=3, right=4
+mid = (3+4)//2 = 3
+
+arr[3]=6 > arr[4]=3 → descending ❌
+right = mid = 3
+```
+
+Loop ends: left=3 == right=3
+```
+return left = 3 ✅
+```
+💡 Why This Works
+```
+Left of peak:   arr[mid] < arr[mid+1]  →  safe to discard left half
+Right of peak:  arr[mid] > arr[mid+1]  →  safe to discard right half
+At peak:        arr[mid] > arr[mid+1]  →  right=mid, eventually left==right==peak
+```
+```
+        🏔️
+       /    \
+      /      \          arr[mid] < arr[mid+1] → go right →
+     /        \
+────/────mid───\────
+              ← arr[mid] > arr[mid+1] → go left
+```
+✅ Final Answer
+```
+return left = 3   →   arr[3] = 6  (peak)
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(log n), Binary search takes logarithmic time.
