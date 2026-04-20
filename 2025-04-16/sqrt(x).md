@@ -151,7 +151,7 @@ left  always lands one step too far (overshoots)
 ```
 ---
 
-###🔍 Exact Square Root Case
+### 🔍 Exact Square Root Case
 ```
 Input: x = 9
 
