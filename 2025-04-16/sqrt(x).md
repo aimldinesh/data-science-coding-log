@@ -26,17 +26,30 @@ Explanation: The square root of 8 is 2.82842..., and since we round it down to t
 ```
 ---
 
-## 🚀 My Approach
-We can use **Binary Search** to find the integer part of the square root efficiently.
+## 🚀 Approach : Binary Search
+🧠 Intuition
 
-- For `x = 0` or `x = 1`, the square root is `x` itself.
-- Otherwise, initialize a search range from `0` to `x`.
-- While `left <= right`, calculate the middle point `mid` and square it.
-- If `mid^2 == x`, then `mid` is the exact square root.
-- If `mid^2 < x`, then search in the right half of the range.
-- If `mid^2 > x`, then search in the left half of the range.
-- When the loop exits, `right` points to the largest integer such that `right^2 <= x`.
+Square root is monotonically increasing — so binary search works perfectly. Search for the largest integer mid where mid² ≤ x. Since we want the floor of the square root, when there's no exact answer, right ends up pointing to the best integer answer.
+```python
+x = 8  →  √8 = 2.82...  →  floor = 2
 
+Try mid=1 → 1²=1  < 8  → go right
+Try mid=2 → 2²=4  < 8  → go right
+Try mid=3 → 3²=9  > 8  → go left
+→ right = 2 ✅
+```
+---
+
+📌 Approach
+
+1. Handle base case — x < 2 returns x directly
+2. Binary search between left=0 and right=x
+3. At each mid:
+   - mid² == x → exact answer, return mid
+   - mid² < x  → too small → left = mid + 1
+   - mid² > x  → too big  → right = mid - 1
+
+4. Loop exits when left > right → return right
 
 ---
 
