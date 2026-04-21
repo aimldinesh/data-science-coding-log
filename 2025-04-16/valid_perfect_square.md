@@ -187,5 +187,5 @@ num=14  →  return False  (no integer squares to 14) ✅
 
 ---
 ## 💡 Tip: 
-      - There's also an O(1) math solution using int(num**0.5) ** 2 == num — but floating point precision can fail on large numbers. Binary search is the safe, interview-preferred approach as it avoids float precision issues entirely.
+There's also an O(1) math solution using int(num**0.5) ** 2 == num — but floating point precision can fail on large numbers. Binary search is the safe, interview-preferred approach as it avoids float precision issues entirely.
 
