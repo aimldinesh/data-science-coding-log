@@ -147,13 +147,13 @@ return False ✅
 ```
 ---
 ### 📊 Trace Table — num = 14
-
+```
 Iter          left     right       mid      mid²         mid² vs num        Action
 1             1        14          7        49            49 > 14 ❌        right=6
 2             1        6           3        9             9 < 14 ❌         left=4
 3             4        6           5        25            25 > 14 ❌        right=4
 4             4        4           4        16            16 > 14 ❌        right=3
-
+```
 ---
 ## 💡 isPerfectSquare vs mySqrt — Key Difference
 ```
