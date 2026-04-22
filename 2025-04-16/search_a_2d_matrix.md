@@ -25,7 +25,7 @@ Output: false
 ```
 ---
 
-## 🚀 My Approach: Binary Search in Two Phases
+## 🚀 Approach: Binary Search in Two Phases
 - Binary search to find the correct row where the target could exist (based on first and last elements of each row).
 - Binary search within that row to find the actual target.
 
