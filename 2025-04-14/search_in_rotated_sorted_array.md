@@ -28,17 +28,30 @@ Output: -1
 ```
 ---
 
-## 🚀 My Approach
-1. **Binary Search**: 
-   - We will use binary search, but since the array is rotated, we need to adjust our search approach to handle the rotation.
-   - We will check whether the left half or the right half is sorted and adjust the search space accordingly.
-   - If the target is within the sorted half, we narrow our search to that half; otherwise, we search the other half.
+## 🚀 Approach
 
-2. **Key Observations**:
-   - The array is split into two sorted subarrays due to the rotation.
-   - Depending on whether the left or right half is sorted, we can figure out if the target lies in that half and adjust our search space.
+🧠 Intuition
+A rotated sorted array is two sorted subarrays joined together. At any mid, one half is always fully sorted. Use that guaranteed sorted half to check if the target lies within it — if yes, search there; if no, search the other half.
+```
+[4, 5, 6, 7, 0, 1, 2]   target = 0
+left half [4,5,6,7] → sorted ✅ → 0 not in [4..7] → go right
+right half [0,1,2]  → sorted ✅ → 0 in [0..2]     → go left
+```
 
+📌 Approach
 
+1. Standard binary search with left=0, right=n-1
+2. If nums[mid] == target → return mid
+3. Check which half is sorted:
+   + nums[left] <= nums[mid] → left half is sorted
+     + Target in [nums[left]..nums[mid]] → go left
+     + Else → go right
+
+   + Else → right half is sorted
+     + Target in [nums[mid]..nums[right]] → go right
+     + Else → go left
+
+4. Return -1 if not found
 ---
 
 ## 💻 Code (Python)
