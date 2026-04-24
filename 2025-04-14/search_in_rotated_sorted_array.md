@@ -136,7 +136,20 @@ Iter        left      right     mid      nums[mid]       Sorted Half        Targ
 3           4         4         4        0               —                   0 == target ✅       return 4
 ```
 ---
+### 🔍 Case 2 — Target Not Found
+```
+Input: nums = [4, 5, 6, 7, 0, 1, 2], target = 3
 
+Iter       left      right      mid      nums[mid]       Sorted Half         Target in Range?       Action
+1          0         6          3        7               Left [4..7] ✅      3 < 4 ❌              left=4
+2          4         6          5        1               Left [0..1] ✅      3 > 1 ❌              left=6
+3          6         6          6        2               Left [2..2] ✅      3 > 2 ❌              left=7
+```
+```
+left=7 > right=6 → loop exits
+return -1 ✅
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(log n), because we are performing binary search on the array, and the array is halved each time.
