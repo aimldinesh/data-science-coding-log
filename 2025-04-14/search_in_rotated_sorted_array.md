@@ -150,7 +150,44 @@ left=7 > right=6 → loop exits
 return -1 ✅
 ```
 ---
+### 💡 The Core Logic Visualised
+```
+Rotated array always looks like one of these:
+
+Case A: left half sorted        Case B: right half sorted
+   ↗ pivot                              pivot ↘
+  /         \                          /         \
+ /    ↘       \                       /    ↗      \
+nums[left]<=nums[mid]            nums[left]>nums[mid]
+
+   ┌──────┐ ┌──┐                  ┌──┐ ┌──────┐
+   │sorted│ │  │                  │  │ │sorted│
+   └──────┘ └──┘                  └──┘ └──────┘
+   check here first               check here first
+```
+---
+### 💡 Why nums[left] <= nums[mid] (not strict <)?
+```
+# Equal handles the case where left == mid (2-element array)
+nums = [3, 1],  target = 1
+left=0, right=1, mid=0
+
+nums[left]=3 <= nums[mid]=3 → True (equal case)
+→ correctly identifies left half as sorted [3]
+→ 1 not in [3..3] → go right → finds 1 at index 1 ✅
+```
+---
+### ✅ Final Answers
+```
+target=0  →  return 4   ✅
+target=3  →  return -1  ✅
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(log n), because we are performing binary search on the array, and the array is halved each time.
 - **Space**: O(1), as we are using only a constant amount of extra space.
+
+---
+### Tip: 
+The key insight examiners listen for is "one half is always guaranteed to be sorted in a rotated array" — that's what makes binary search still applicable. Without stating that, the solution looks like magic. With it, the logic flows naturally.
