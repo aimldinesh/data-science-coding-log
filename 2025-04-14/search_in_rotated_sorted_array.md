@@ -91,6 +91,42 @@ class Solution:
 ```
 
 ---
+## 🔍 Step-by-Step Execution
+```
+Input: nums = [4, 5, 6, 7, 0, 1, 2], target = 0
+Indices:  0  1  2  3  4  5  6
+Values:   4  5  6  7  0  1  2
+                        ↑ target
+```
+Iteration 1
+```
+left=0, right=6
+mid = (0+6)//2 = 3
+nums[3] = 7 ≠ 0
+
+nums[left]=4 <= nums[mid]=7 → left half [4,5,6,7] is sorted ✅
+target=0 > nums[mid]=7?  → No
+target=0 < nums[left]=4? → Yes ❌ target NOT in left half
+→ left = mid+1 = 4
+```
+Iteration 2
+```
+left=4, right=6
+mid = (4+6)//2 = 5
+nums[5] = 1 ≠ 0
+
+nums[left]=0 <= nums[mid]=1 → left half [0,1] is sorted ✅
+target=0 > nums[mid]=1?  → No
+target=0 < nums[left]=0? → No ✅ target IS in left half
+→ right = mid-1 = 4
+```
+Iteration 3
+```
+left=4, right=4
+mid = (4+4)//2 = 4
+nums[4] = 0 == target ✅
+→ return 4
+```
 
 ## 💡 Time and Space Complexity
 - **Time**: O(log n), because we are performing binary search on the array, and the array is halved each time.
