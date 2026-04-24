@@ -127,6 +127,16 @@ mid = (4+4)//2 = 4
 nums[4] = 0 == target ✅
 → return 4
 ```
+---
+### 📊 Trace Table
+```
+Iter        left      right     mid      nums[mid]       Sorted Half        Target in Range?      Action 
+1           0         6         3        7               Left [4..7] ✅     0 < 4 ❌             left=4
+2           4         6         5        1               Left [0..1] ✅     0 in [0..1] ✅       right=4
+3           4         4         4        0               —                   0 == target ✅       return 4
+```
+---
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(log n), because we are performing binary search on the array, and the array is halved each time.
