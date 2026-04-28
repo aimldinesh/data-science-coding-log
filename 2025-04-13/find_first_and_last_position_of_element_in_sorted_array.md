@@ -86,6 +86,135 @@ class Solution:
 
 ---
 
+## 🔍 Step-by-Step Execution
+
+Input: nums = [5, 7, 7, 8, 8, 10], target = 8
+```
+Indices:  0  1  2  3  4   5
+Values:   5  7  7  8  8  10
+                   ↑  ↑
+               first  last
+```
+🔎 Left Biased Search (leftBias=True)
+
+Iteration 1
+```
+left=0, right=5
+mid = (0+5)//2 = 2
+nums[2] = 7 < 8
+→ left = mid+1 = 3
+```
+Iteration 2
+```
+left=3, right=5
+mid = (3+5)//2 = 4
+nums[4] = 8 == target ✅
+i = 4
+leftBias → right = mid-1 = 3   (keep searching left)
+```
+Iteration 3
+```
+left=3, right=3
+mid = (3+3)//2 = 3
+nums[3] = 8 == target ✅
+i = 3
+leftBias → right = mid-1 = 2   (keep searching left)
+```
+Loop ends: left=3 > right=2
+```
+return i = 3  (leftmost) ✅
+```
+---
+🔎 Right Biased Search (leftBias=False)
+
+Iteration 1
+```
+left=0, right=5
+mid = (0+5)//2 = 2
+nums[2] = 7 < 8
+→ left = mid+1 = 3
+```
+Iteration 2
+```
+left=3, right=5
+mid = (3+5)//2 = 4
+nums[4] = 8 == target ✅
+i = 4
+rightBias → left = mid+1 = 5   (keep searching right)
+```
+Iteration 3
+```
+left=5, right=5
+mid = (5+5)//2 = 5
+nums[5] = 10 > 8
+→ right = mid-1 = 4
+```
+Loop ends: left=5 > right=4
+```
+return i = 4  (rightmost) ✅
+```
+---
+
+## 📊 Trace Table — Left Biased
+```
+Iter    left      right        mid       nums[mid]           Action               i   
+1       0         5            2         7                   7 < 8 → left=3      -1
+2       3         5            4         8                   match → right=3      4
+3       3         3            3         8                   match → right=2      3
+```
+---
+
+## 📊 Trace Table — Right Biased
+```
+Iter         left          right          mid           nums[mid]            Action                 i
+1            0             5              2             7                    7 < 8 → left=3        -1
+2            3             5              4             8                    match → left=5         4 
+3            5             5              5             10                   10 > 8 → right=4       4
+```
+---
+
+## 💡 The Bias Trick Visualised
+```
+On finding target, don't stop — keep pushing:
+
+Left bias:              Right bias:
+  i=mid                   i=mid
+  right = mid-1           left = mid+1
+  ←←← keep searching      →→→ keep searching
+
+  Eventually lands on     Eventually lands on
+  FIRST occurrence        LAST occurrence
+```
+## 🔍 Edge Cases
+```
+python# Target not in array
+nums = [1, 2, 3],  target = 5
+→ i never updated → return [-1, -1] ✅
+
+# Single occurrence
+nums = [1, 2, 3],  target = 2
+→ left bias  returns 1
+→ right bias returns 1
+→ [1, 1] ✅
+
+# All same elements
+nums = [8, 8, 8],  target = 8
+→ left bias  returns 0
+→ right bias returns 2
+→ [0, 2] ✅
+```
+✅ Final Answer
+```
+return [3, 4]  ✅
+         ↑  ↑
+    first   last occurrence of 8
+```
+---
+
 ## 💡 Time and Space Complexity
 - **Time**: O(log n), Two binary searches → O(log n) + O(log n) = O(log n)
-- **Space**: O(1), Constant space used.
+- **Space**: O(1), Constant space used, Only pointers and index variable used
+
+---
+### 💡 Tip: 
+The elegant insight here is "don't return on match — record and keep searching". This same pattern of continuing past a match is used in Find First and Last Position, Count of target occurrences, and Leftmost insertion point problems — all variations of the same biased binary search idea.
