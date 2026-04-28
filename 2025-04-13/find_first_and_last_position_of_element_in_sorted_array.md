@@ -27,14 +27,27 @@ Output: [-1,-1]
 ```
 ---
 
-## 🚀 My Approach
-- Use **binary search** twice:
-  - First, to find the **leftmost (first)** occurrence of the target.
-  - Second, to find the **rightmost (last)** occurrence of the target.
-- Binary search is modified slightly with a `leftBias` flag to find either side of the target.
-- If the target is not found, we return `[-1, -1]`.
+## 🚀 Approach : Binary Search
+🧠 Intuition
+When a target appears multiple times, standard binary search stops at any occurrence. To find the first and last positions, run binary search twice with different biases — once pushing left to find the leftmost, once pushing right to find the rightmost. The key trick: don't stop when you find the target, keep searching in the biased direction.
+```
+nums = [5, 7, 7, 8, 8, 10]  target = 8
 
+Standard search → lands on index 3 or 4 (unpredictable)
+Left  biased    → always lands on index 3 (first 8)
+Right biased    → always lands on index 4 (last 8)
+```
 ---
+📌 Approach
+
+1. Call binSearch twice — once with leftBias=True, once with leftBias=False
+2. Inside binSearch:
+   + Standard binary search until target == nums[mid]
+   + On match → record i = mid but don't stop
+     + leftBias=True  → right = mid - 1 (keep searching left)
+     + leftBias=False → left = mid + 1  (keep searching right)
+
+3. Return [leftmost_index, rightmost_index]
 
 ## 💻 Code (Python)
 
