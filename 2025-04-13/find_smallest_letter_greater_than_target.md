@@ -35,17 +35,30 @@ Explanation: There are no characters in letters that is lexicographically greate
 ```
 ---
 
-## 🚀 My Approach
-### 🔹 Key Insight
-We need to find the **first element > target**.  
-Because the array is sorted, binary search is the best approach:
+## 🚀 Approach : Binary Search
+🧠 Intuition
+The letters list is sorted — so binary search for the smallest letter strictly greater than target. If no such letter exists (target ≥ all letters), wrap around and return letters[0]. This is essentially finding the leftmost insertion point of target+1.
+```
+letters = ['c', 'f', 'j'],  target = 'd'
 
-- If `letters[mid] <= target` → search **right half**
-- If `letters[mid] > target` → search **left half**
+'d' fits between 'c' and 'f'
+→ smallest letter > 'd' is 'f' ✅
 
-After binary search ends:
-- `left` will point to the **first letter greater than target**
-- If `left` goes out of bounds → return the **first letter** (wrap-around)
+target = 'j'  (equal to last element)
+→ no letter > 'j' exists → wrap → return 'c' ✅
+```
+📌 Approach
+
+1. Binary search with left=0, right=n-1
+2. At each mid:
+   + letters[mid] <= target → need something bigger → left = mid + 1
+   + letters[mid] > target  → possible answer, but search left for smaller → right = mid - 1
+
+
+3. After loop, left is the answer index
+   + If left < len(letters) → return letters[left]
+   + Else → wrap around → return letters[0]
+     
 ---
 
 ## 💻 Code (Python)
