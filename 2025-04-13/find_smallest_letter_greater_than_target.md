@@ -37,6 +37,7 @@ Explanation: There are no characters in letters that is lexicographically greate
 
 ## 🚀 Approach : Binary Search
 🧠 Intuition
+
 The letters list is sorted — so binary search for the smallest letter strictly greater than target. If no such letter exists (target ≥ all letters), wrap around and return letters[0]. This is essentially finding the leftmost insertion point of target+1.
 ```
 letters = ['c', 'f', 'j'],  target = 'd'
