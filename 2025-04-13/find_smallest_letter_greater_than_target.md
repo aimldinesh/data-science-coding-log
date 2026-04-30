@@ -92,47 +92,109 @@ class Solution:
 
 ---
 ## ▶️ Step-by-Step Execution with Example
-```python
-Example:
 
-letters = ["c","f","j"]
-target = "c"
+Input: letters = ['c', 'f', 'j'], target = 'd'
+```
+Indices:  0    1    2
+Values:  'c'  'f'  'j'
+               ↑ answer
+```
+Iteration 1
+```
+left=0, right=2
+mid = (0+2)//2 = 1
+letters[1] = 'f'
 
-Initial:
-left = 0, right = 2
+'f' > 'd' → possible answer, search left
+right = mid-1 = 0
+```
+Iteration 2
+```
+left=0, right=0
+mid = (0+0)//2 = 0
+letters[0] = 'c'
 
-Step1:
-mid = 1 → letters[1] = 'f'
-'f' > 'c' → move right = mid - 1 = 0
-
-Step2:
-mid = 0 → letters[0] = 'c'
-'c' <= 'c' → move left = mid + 1 = 1
-
-Loop ends because left > right.
-
-✔ Final left = 1
-✔ Return letters[1] → 'f'
-
+'c' <= 'd' → too small, search right
+left = mid+1 = 1
+```
+Loop ends: left=1 > right=0
+```
+left=1 < len(letters)=3
+return letters[1] = 'f' ✅
 ```
 ---
+### 📊 Trace Table — target = 'd'
+```
+Iter           left        right       mid          letters[mid]          <=target?           Action
+1              0           2            1           'f'                   ❌ 'f'>'d'          right=0
+2              0           0            0           'c'                   ✅ 'c'<='d'         left=1
+```
+```
+return letters[1] = 'f' ✅
+```
+### 🔍 Case 2 — Wrap Around
 
-```python
-Example (wrap-around case):
-letters = ["x","x","y","y"]
-target = "y"
+Input: letters = ['c', 'f', 'j'], target = 'j'
+```
+Iter        left          right          mid            letters[mid]       <=target?            Action
+1           0             2              1              'f'                ✅ 'f'<='j'         left=2
+2           2             2              2              'j'                ✅ 'j'<='j'         left=3
+```
+```
+left=3 == len(letters)=3
+→ wrap around
+return letters[0] = 'c' ✅
+```
+### 🔍 Case 3 — Target Smaller Than All
 
-Process:
- All elements 'x','x','y','y' are <= target ('y')
- Binary search pushes left = len(letters)
- left = 4 → out of range
- Return letters[0] → 'x'
+Input: letters = ['c', 'f', 'j'], target = 'a'
+```
+Iter       left     right            mid             letters[mid]           <=target?           Action
+1          0        2                1               'f'                    ❌ 'f'>'a'          right=0
+2          0        0                0               'c'                    ❌ 'c'>'a'          right=-1
+```
+```
+left=0 < len(letters)=3
+return letters[0] = 'c' ✅
+```
+---
+### 💡 All Cases Summarised
+```
+letters = ['c', 'f', 'j']
 
-✔ Correct due to wrap-around rule.
+target = 'a'  →  'a' < all  →  return 'c'  (first)
+target = 'c'  →  'c' == 'c' →  return 'f'  (strictly greater, not equal)
+target = 'd'  →  'c'<'d'<'f'→  return 'f'  (next greatest)
+target = 'f'  →  'f' == 'f' →  return 'j'  (strictly greater)
+target = 'j'  →  'j' >= all →  return 'c'  (wrap around)
+target = 'z'  →  'z' > all  →  return 'c'  (wrap around)
+```
+---
+### 💡 Why <= Not Just <?
+```
+# letters[mid] <= target covers TWO cases:
 
+# Case 1: letters[mid] < target → clearly too small
+letters = ['c','f','j'],  mid=0 → 'c' < 'd' → go right ✅
+
+# Case 2: letters[mid] == target → equal doesn't count (need STRICTLY greater)
+letters = ['c','f','j'],  mid=1 → 'f' == 'f' → go right, skip 'f' ✅
+
+# Without == in condition, we'd return target itself — wrong answer
+```
+---
+### ✅ Final Answers
+```
+target='d'  →  'f'  ✅
+target='j'  →  'c'  ✅  (wrap around)
+target='a'  →  'c'  ✅  (smallest in list)
 ```
 ---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn),  where n is the length of letters. Binary search reduces the problem size by half at each step.
-- **Space**: O(1), as no additional space is used except for the pointers.
+- **Space**: O(1), as no additional space is used except for the pointers, Only two pointers used
+
+---
+### 💡 Interview tip: 
+The wrap-around check letters[left % len(letters)] is a cleaner one-liner than the if-else — left % len(letters) naturally returns 0 when left == len(letters). Both are correct — the modulo version signals circular array thinking which interviewers appreciate.
