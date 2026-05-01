@@ -128,6 +128,11 @@ return left = 2 ✅
 ### 🔍 All Cases Covered
 
 Case 1 — Target Found: target = 5
+```
+Iter            left         right            mid        nums[mid]         Action
+1               0            3                1          3                 3 < 5 → left=2
+2               2            3                2          5                 5 == 5 → return 2 ✅
+```
 
 
 ## 💡 Time and Space Complexity
