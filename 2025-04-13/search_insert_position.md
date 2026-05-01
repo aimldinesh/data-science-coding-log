@@ -28,11 +28,29 @@ Output: 4
 ```
 ---
 
-## 🚀 My Approach
-- Since the array is sorted, I used **Binary Search**.
-- Used `left` and `right` pointers to narrow down the search.
-- If the target is found during search, return its index.
-- If not found, `left` will be at the correct **insertion position**.
+## 🚀 Approach : Binary Search
+🧠 Intuition
+
+Standard binary search with one extra insight — if the target isn't found, where would it go? When the loop exits, left has naturally moved to the exact position where target should be inserted to keep the array sorted. No extra logic needed.
+```
+nums = [1, 3, 5, 6],  target = 4
+
+4 fits between 3 and 5 → insertion index = 2
+
+After binary search exits:
+  right → index 1 (points at 3, too small)
+  left  → index 2 (points at 5, first element > target) ✅
+```
+📌 Approach
+
+1. Binary search with left=0, right=n-1
+2. At each mid:
+   + nums[mid] == target → found → return mid
+   + nums[mid] < target  → go right → left = mid + 1
+   + nums[mid] > target  → go left → right = mid - 1
+
+3. Loop exits → return left as insertion point
+
 ---
 
 ## 💻 Code (Python)
