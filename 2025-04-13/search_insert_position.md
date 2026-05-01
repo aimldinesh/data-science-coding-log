@@ -153,6 +153,26 @@ Iter         left          right              mid        nums[mid]           Act
 left=4 → return 4 ✅  (insert after everything)
 ```
 ---
+### 💡 Why left is Always the Insertion Point
+```
+Loop exit condition: left > right
+
+At that moment:
+  right → last index where nums[right] < target  (too small)
+  left  → first index where nums[left] > target  (too big)
+
+Inserting at left maintains sorted order:
+  [..., nums[right], TARGET, nums[left], ...]
+              <target           >target   ✅
+```
+```
+nums  = [1,  3,  5,  6]    target = 4
+         ↑       ↑
+       right=1  left=2   after loop
+
+Insert at index 2:
+[1, 3, | 4 | , 5, 6] ✅
+```
 
 
 ## 💡 Time and Space Complexity
