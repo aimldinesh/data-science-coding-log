@@ -83,6 +83,52 @@ class Solution:
 ```
 
 ---
+## 🔍 Step-by-Step Execution
+
+Input: nums = [1, 3, 5, 6], target = 4
+```
+Indices:  0  1  2  3
+Values:   1  3  5  6
+               ↑ insert here (index 2)
+```
+
+Iteration 1
+```
+left=0, right=3
+mid = (0+3)//2 = 1
+nums[1] = 3
+
+3 < 4 → too small, go right
+left = mid+1 = 2
+```
+Iteration 2
+```
+left=2, right=3
+mid = (2+3)//2 = 2
+nums[2] = 5
+
+5 > 4 → too big, go left
+right = mid-1 = 1
+```
+Loop ends: left=2 > right=1
+```
+return left = 2 ✅
+```
+---
+### 📊 Trace Table — target = 4
+```
+Iter        left        right       mid       nums[mid]                vs target          Action   
+1           0           3           1          3                       3 < 4 ❌           left=2
+2           2           3           2          5                       5 > 4 ❌           right=1
+```
+```
+return left = 2 ✅
+```
+---
+### 🔍 All Cases Covered
+
+Case 1 — Target Found: target = 5
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn), Binary search halves the search space each step.
