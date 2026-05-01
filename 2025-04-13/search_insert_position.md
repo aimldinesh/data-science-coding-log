@@ -173,8 +173,28 @@ nums  = [1,  3,  5,  6]    target = 4
 Insert at index 2:
 [1, 3, | 4 | , 5, 6] ✅
 ```
+---
+### 🔍 All Scenarios at a Glance
+```
+nums = [1, 3, 5, 6]
 
+target = 0  →  return 0  (before all)
+target = 1  →  return 0  (exact match)
+target = 2  →  return 1  (between 1 and 3)
+target = 3  →  return 1  (exact match)
+target = 4  →  return 2  (between 3 and 5)
+target = 5  →  return 2  (exact match)
+target = 7  →  return 4  (after all)
+```
+---
+### ✅ Final Answer
+```
+target=4  →  return left = 2  ✅
+target=5  →  return mid  = 2  ✅  (exact match)
+target=7  →  return left = 4  ✅  (insert at end)
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn), Binary search halves the search space each step.
-- **Space**: O(1), Constant space used.
+- **Space**: O(1), Constant space used.Only two pointers used
