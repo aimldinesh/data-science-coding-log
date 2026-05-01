@@ -133,7 +133,12 @@ Iter            left         right            mid        nums[mid]         Actio
 1               0            3                1          3                 3 < 5 → left=2
 2               2            3                2          5                 5 == 5 → return 2 ✅
 ```
-
+### Case 2 — Insert at Start: target = 0
+```
+Iter         left           right             mid        nums[mid]          Action
+1            0              3                 1          3                  3 > 0 → right=0
+2            0              0                 0          1                  1 > 0 → right=-1
+```
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn), Binary search halves the search space each step.
