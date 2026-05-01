@@ -139,6 +139,21 @@ Iter         left           right             mid        nums[mid]          Acti
 1            0              3                 1          3                  3 > 0 → right=0
 2            0              0                 0          1                  1 > 0 → right=-1
 ```
+```
+left=0 → return 0 ✅  (insert before everything)
+```
+### Case 3 — Insert at End: target = 7
+```
+Iter         left          right              mid        nums[mid]           Action
+1            0             3                  1          3                   3 < 7 → left=2
+2            2             3                  2          5                   5 < 7 → left=3
+3            3             3                  3          6                   6 < 7 → left=4
+```
+```
+left=4 → return 4 ✅  (insert after everything)
+```
+---
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn), Binary search halves the search space each step.
