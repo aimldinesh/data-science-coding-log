@@ -41,6 +41,7 @@ Explanation: The answer is "wke", with length 3.
 
 ## 🚀 Approach : Sliding Window with HashSet
 🧠 Intuition
+
 Imagine a sliding window moving across the string. We expand it to the right greedily — but the moment we hit a duplicate character, we shrink from the left until the duplicate is gone. A set tracks what's currently inside the window, giving us O(1) duplicate checks.
 
 📌 Approach
