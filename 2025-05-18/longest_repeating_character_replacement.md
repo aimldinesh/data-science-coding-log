@@ -85,6 +85,91 @@ class Solution:
 ```
 
 ---
+## 🔍 Step-by-Step Execution
+
+Input: s = "AABABBA", k = 1
+```
+Indices:  0  1  2  3  4  5  6
+Values:   A  A  B  A  B  B  A
+```
+
+i=0
+j=0
+```
+count={'A':1}, maxf=1
+window="A", size=1
+replacements = 1-1 = 0 ≤ 1 ✅
+res = max(0,1) = 1
+```
+j=1
+```
+count={'A':2}, maxf=2
+window="AA", size=2
+replacements = 2-2 = 0 ≤ 1 ✅
+res = max(1,2) = 2
+```
+j=2
+```
+count={'A':2,'B':1}, maxf=2
+window="AAB", size=3
+replacements = 3-2 = 1 ≤ 1 ✅
+res = max(2,3) = 3
+```
+j=3
+```
+count={'A':3,'B':1}, maxf=3
+window="AABA", size=4
+replacements = 4-3 = 1 ≤ 1 ✅
+res = max(3,4) = 4
+```
+j=4
+```
+count={'A':3,'B':2}, maxf=3
+window="AABAB", size=5
+replacements = 5-3 = 2 > 1 ❌
+```
+j=5
+```
+count={'A':3,'B':3}, maxf=3
+window="AABABB", size=6
+replacements = 6-3 = 3 > 1 ❌
+```
+j=6
+```
+count={'A':4,'B':3}, maxf=4
+window="AABABBA", size=7
+replacements = 7-4 = 3 > 1 ❌
+```
+i=1
+j=1
+```
+count={'A':1}, maxf=1
+window="A", size=1
+replacements = 1-1 = 0 ≤ 1 ✅
+res = max(4,1) = 4
+```
+j=2
+```
+count={'A':1,'B':1}, maxf=1
+window="AB", size=2
+replacements = 2-1 = 1 ≤ 1 ✅
+res = max(4,2) = 4
+```
+j=3
+```
+count={'A':2,'B':1}, maxf=2
+window="ABA", size=3
+replacements = 3-2 = 1 ≤ 1 ✅
+res = max(4,3) = 4
+````
+j=4
+```
+count={'A':2,'B':2}, maxf=2
+window="ABAB", size=4
+replacements = 4-2 = 2 > 1 ❌
+```
+
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n² × 26) = O(n²)
