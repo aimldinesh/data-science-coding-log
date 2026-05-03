@@ -118,7 +118,11 @@ Loop ends: left=3 > right=2
 return -1 ✅
 ```
 ---
-
+### 📊 Trace Table — target = 7 (found)
+```
+Iter      left       right        mid           nums[mid]               vs target        Action
+1         0          6            3             7                       == 7 ✅         return 3
+```
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn), Efficient search using binary strategy.
