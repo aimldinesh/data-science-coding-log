@@ -25,13 +25,26 @@ Explanation: 2 does not exist in nums so return -1
 ```
 ---
 
-## 🚀 My Approach
-- Since the array is sorted, I used **Binary Search**.
-- I maintained two pointers: `left` and `right`.
-- I repeatedly calculated the middle index `mid`, and compared `nums[mid]` with the `target`.
-- If found, I returned `mid`.
-- If the `target` was smaller, I searched the **left** subarray.
-- If larger, I searched the **right** subarray.
+## 🚀 Approach : Binary Search
+🧠 Intuition
+
+The array is sorted — so at any mid, you can immediately eliminate half the search space. If target < nums[mid], it can't be in the right half. If target > nums[mid], it can't be in the left half. Keep halving until found or exhausted.
+```
+nums = [1, 3, 5, 7, 9],  target = 7
+
+mid=9 → too big  → go left
+mid=3 → too small → go right
+mid=7 → found ✅
+```
+📌 Approach
+
+1. left=0, right=n-1
+2. At each mid:
+   + nums[mid] == target → return mid
+   + nums[mid] > target  → right = mid - 1
+   + nums[mid] < target  → left = mid + 1
+
+3. Loop exits → return -1
 
 ---
 
