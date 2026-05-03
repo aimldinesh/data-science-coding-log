@@ -123,7 +123,64 @@ return -1 ✅
 Iter      left       right        mid           nums[mid]               vs target        Action
 1         0          6            3             7                       == 7 ✅         return 3
 ```
+### 📊 Trace Table — target = 6 (not found)
+```
+Iter      left       right         mid          nums[mid]                vs target         Action
+1         0          6             3            7                        7 > 6             right=2
+2         0          2             1            3                        3 < 6             left=2
+3         2          2             2            5                        5 < 6             left=3
+```
+```
+left=3 > right=2 → return -1 ✅
+```
+---
+### 💡 Search Space Visualised
+```
+nums = [1, 3, 5, 7, 9, 11, 13],  target=6
+
+Iter 1:  [1  3  5  7  9  11  13]   mid=7 > 6 → cut right
+                  ↑
+Iter 2:  [1  3  5]                 mid=3 < 6 → cut left
+             ↑
+Iter 3:     [5]                    mid=5 < 6 → cut left
+              ↑
+          []                       empty → return -1
+```
+---
+
+### 🔍 Edge Cases
+```
+python# Single element — found
+nums=[5], target=5  →  mid=0, nums[0]==5  →  return 0 ✅
+
+# Single element — not found
+nums=[5], target=3  →  mid=0, nums[0]>3  →  right=-1
+                    →  left=0 > right=-1  →  return -1 ✅
+
+# Target at boundaries
+nums=[1,3,5,7,9], target=1  →  return 0 ✅  (leftmost)
+nums=[1,3,5,7,9], target=9  →  return 4 ✅  (rightmost)
+```
+---
+### ✅ Final Answers
+```
+target=7  →  return 3   ✅  (found)
+target=6  →  return -1  ✅  (not found)
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn), Efficient search using binary strategy.
 - **Space**: O(1), Only constant extra space is used.
+
+---
+### Common mistakes
+```
+  while left < right   → misses single element case
+  left = mid           → infinite loop when left+1==right
+  right = mid          → infinite loop when left+1==right
+```
+---
+
+### 💡 Interview tip: 
+Binary search looks simple but has subtle bugs. The three most common mistakes are using < instead of <=, using mid instead of mid±1 when updating pointers, and integer overflow on mid (use left + (right-left)//2 in languages without big integers like Java/C++).
