@@ -35,11 +35,26 @@ Explanation: Replace the third 'A' to get "AABBBBA", the longest is "ABBB".
 ---
 
 ## 🚀 Approach 1 : Brute Force + Frequency Count
-🔸 Idea:
-- Try every possible window [i...j] in the string.
-- For each window, count the frequency of characters.
-- If (window size - max frequency) is ≤ k, it's a valid window.
-- Update the result with the maximum valid window length.
+
+🧠 Intuition
+
+In any window, the most frequent character stays, and everything else gets replaced. So the number of replacements needed = window size - max frequency. If that's ≤ k, the window is valid. Try every possible window with two nested loops — brute force but clear.
+```
+s = "AABABBA",  k = 1
+
+Window "AABA" → maxf=3(A), replacements=4-3=1 ≤ k ✅ valid, length=4
+Window "ABAB" → maxf=2(A), replacements=4-2=2 > k ❌ invalid
+```
+📌 Approach
+
+1. For every starting index i, expand j rightward
+2. Track character frequencies in current window
+3. At each step: replacements = (j - i + 1) - maxf
+   + ≤ k → valid window → update res
+   + > k → invalid → break inner loop (window can only get worse)
+
+4. Return res
+
 ---
 
 ## 💻 Code (Python)
