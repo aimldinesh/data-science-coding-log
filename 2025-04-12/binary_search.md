@@ -75,6 +75,50 @@ class Solution:
 ```
 
 ---
+## 🔍 Step-by-Step Execution
+
+Input: nums = [1, 3, 5, 7, 9, 11, 13], target = 7
+```
+Indices:  0  1  2  3  4   5   6
+Values:   1  3  5  7  9  11  13
+                  ↑ target
+```
+Iteration 1
+```
+left=0, right=6
+mid = (0+6)//2 = 3
+nums[3] = 7 == target ✅
+return 3
+```
+Input: nums = [1, 3, 5, 7, 9, 11, 13], target = 6
+
+Iteration 1
+```
+left=0, right=6
+mid = (0+6)//2 = 3
+nums[3] = 7 > 6
+→ right = mid-1 = 2
+```
+Iteration 2
+```
+left=0, right=2
+mid = (0+2)//2 = 1
+nums[1] = 3 < 6
+→ left = mid+1 = 2
+```
+Iteration 3
+```
+left=2, right=2
+mid = (2+2)//2 = 2
+nums[2] = 5 < 6
+→ left = mid+1 = 3
+```
+Loop ends: left=3 > right=2
+```
+return -1 ✅
+```
+---
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn), Efficient search using binary strategy.
