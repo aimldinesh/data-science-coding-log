@@ -168,8 +168,31 @@ count={'A':2,'B':2}, maxf=2
 window="ABAB", size=4
 replacements = 4-2 = 2 > 1 ❌
 ```
+---
+i=2,3,4,5,6 — All windows ≤ 4, res stays 4
+---
 
+###  📊 Trace Table
+```
+i     j        window                  count                maxf             size-maxf          ≤k?        res
+0     0        "A"                     {A:1}                1                0                  ✅        1
+0     1        "AA"                    {A:2}                2                0                  ✅        2
+0     2        "AAB"                   {A:2,B:1}            2                1                  ✅        3
+0     3        "AABA"                  {A:3,B:1}            3                1                  ✅        4
+0     4        "AABAB"                 {A:3,B:2}            3                2                  ❌        4
+0     5        "AABABB"                {A:3,B:3}            3                3                  ❌        4
+0     6        "AABABBA"               {A:4,B:3}            4                3                  ❌        4
+1     1        "A"                     {A:1}                1                0                  ✅        4 
+1     2        "AB"                    {A:1,B:1}            1                1                  ✅        4 
+1     3        "ABA"                   {A:2,B:1}            2                1                  ✅        4
+1     4        "ABAB"                  {A:2,B:2}            2                2                  ❌        4
 
+```
+### ✅ Final Answer
+```
+return res = 4   →   "AABA" (replace B with A) ✅
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n² × 26) = O(n²)
