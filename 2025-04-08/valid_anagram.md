@@ -20,7 +20,6 @@ An **anagram** is a word or phrase formed by rearranging the letters of another 
 
 **Input:**  
 `s = "anagram"`, `t = "nagaram"`  
-
 **Output:** `True`
 
 ### Example 2:
