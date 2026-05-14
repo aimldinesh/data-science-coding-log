@@ -30,8 +30,43 @@ Explanation: Your function should return k = 5, with the first five elements of 
 It does not matter what you leave beyond the returned k (hence they are underscores).
 ```
 ---
+##  🚀 Approach : Brute Force (Using Set + Sorted)
 
-## 🚀 Approach
+🧠 Intuition
+Use a set to track seen elements, collect all unique values in order, then write them back into the array.
+
+## 💻 Code (Python)
+```
+def removeDuplicates(self, nums: List[int]) -> int:
+    unique = sorted(set(nums))   # get unique elements in sorted order
+    
+    for i, val in enumerate(unique):
+        nums[i] = val            # overwrite array from start
+    
+    return len(unique)
+```
+---
+Walkthrough: nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+```
+set(nums)      = {0, 1, 2, 3, 4}
+sorted(...)    = [0, 1, 2, 3, 4]
+
+Write back:
+  nums[0]=0, nums[1]=1, nums[2]=2, nums[3]=3, nums[4]=4
+
+nums = [0, 1, 2, 3, 4, 2, 2, 3, 3, 4]
+return 5 ✅
+```
+---
+## ## 💡 Time and Space Complexity
+- **Time**: O(n log n)
+- **Space**: O(n), uses extra space
+
+---
+
+
+
+## 🚀 Approach : Two Pointer(Optimal)
 🧠 Intuition
 
 The array is already sorted — so duplicates are always adjacent. Use two pointers: r scans every element, l marks where the next unique element should be written. Whenever r finds something different from its previous element, it's a new unique — write it at l and advance l.
@@ -153,8 +188,44 @@ r          nums[r]          nums[r-1]         Unique?            nums[l] =      
 9          4                3                 ✅                 nums[4]=4         5           [0,1,2,3,4]
 ```
 ---
+### 💡 Two Pointer Visualised
+```
+Initial:
+  0  0  1  1  1  2  2  3  3  4
+  ↑l
+     ↑r
 
+r=2 finds 1 (new):        r=5 finds 2 (new):
+  0  1  1  1  1  ...        0  1  2  1  1  ...
+     ↑l                           ↑l
+        ↑r                              ↑r
 
+Final:
+  0  1  2  3  4  |  2  2  3  3  4
+  ───────────────   (don't care)
+      l=5 ↑
+```
+---
+### 🔍 Edge Cases
+```
+# All duplicates
+nums = [1, 1, 1, 1]  →  l=1  →  return 1  →  [1] ✅
+
+# No duplicates
+nums = [1, 2, 3, 4]  →  l=4  →  return 4  →  [1,2,3,4] ✅
+
+# Two elements, same
+nums = [1, 1]        →  l=1  →  return 1  →  [1] ✅
+
+# Two elements, different
+nums = [1, 2]        →  l=2  →  return 2  →  [1,2] ✅
+```
+---
+### ✅ Final Answer
+```
+return l = 5
+nums[:5] = [0, 1, 2, 3, 4] ✅
+```
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
    - We iterate through the array once using a single loop.
