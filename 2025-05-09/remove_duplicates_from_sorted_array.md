@@ -31,20 +31,27 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 ```
 ---
 
-## 🧠 Intuition
-- Since the array is sorted, all duplicates will be adjacent.
-- Use two pointers:
-   - r scans through the array.
-   - l keeps track of the position where the next unique element should be placed.
+## 🚀 Approach
+🧠 Intuition
 
-## 🚀 My Approach
-- Start with l = 1, since the first element is always unique.
-- For every element from index 1 to end:
-   - If the current element is different from the previous one:
-        - Assign it to position l.
-        - Increment l.
-- The value of l will be the count of unique elements.
+The array is already sorted — so duplicates are always adjacent. Use two pointers: r scans every element, l marks where the next unique element should be written. Whenever r finds something different from its previous element, it's a new unique — write it at l and advance l.
+```
+nums = [1, 1, 2, 2, 3]
 
+r scans →  finds new unique → writes at l
+                                        l moves →
+Result: [1, 2, 3, _, _]   return l=3
+```
+
+## 📌 Approach
+
+1. Start l=1 — index 0 is always unique, no need to check
+2. r iterates from index 1 to end
+3. If nums[r] != nums[r-1] → new unique found:
+   + Write nums[r] at nums[l]
+   + Increment l
+
+4. Return l — count of unique elements
 ---
 
 ## 💻 Code (Python)
