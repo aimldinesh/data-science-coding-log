@@ -22,6 +22,7 @@ Output: [1,2,2,3,5,6]
 ## 🚀 Approach
 
 🧠 Intuition
+
 Merging from the front would overwrite unprocessed elements in nums1. Instead, merge from the back — the end of nums1 has n empty slots, so writing the largest elements there first never overwrites anything needed. Compare the largest unplaced elements from both arrays and place the bigger one at last.
 ```
 nums1 = [1, 3, 5, _, _, _]   m=3
@@ -33,7 +34,7 @@ Merge from back →
   compare 3 vs 4 → place 4
   ... and so on
 ```
-## 📌 Approach
+📌 Approach
 
 1. Start last = m + n - 1 (last index of nums1)
 2. Compare nums1[m-1] vs nums2[n-1] — place the larger at nums1[last]
