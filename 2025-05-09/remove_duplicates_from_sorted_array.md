@@ -234,3 +234,19 @@ nums[:5] = [0, 1, 2, 3, 4] ✅
    - The algorithm uses only constant extra space:
       - Two pointers (l and r).
    - No additional data structures are used.
+
+---
+### 💡 Why Brute Force Works Here But Is Overkill
+```
+Brute force ignores the sorted property entirely →
+  checks every element against all seen elements
+
+Two pointer exploits sorted property →
+  only checks against immediate previous (nums[r] != nums[r-1])
+  because duplicates MUST be adjacent in a sorted array
+
+Sorted property turns O(n²) → O(n) ✅
+```
+---
+💡 Interview tip: 
+Always mention the brute force first, then say "but since the array is sorted, duplicates are always adjacent — so I only need to compare each element with its immediate predecessor, which reduces it to a single O(n) pass." That transition shows clear thinking.
