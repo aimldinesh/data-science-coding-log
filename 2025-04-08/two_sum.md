@@ -116,16 +116,99 @@ class Solution:
 
 ```
 ---
-### Step by step code execution
-```python
-Input: nums = [3, 2, 4], target = 6  
-Output: [1, 2]
+### 🔍 Step-by-Step Execution 
 
-Step-by-step:
-- i=0, n=3 → target-n=3 → not in dict → add 3:0
-- i=1, n=2 → target-n=4 → not in dict → add 2:1
-- i=2, n=4 → target-n=2 → found in dict → return [1, 2]
+Input: nums = [2, 7, 11, 15], target = 9
+```
+Indices:  0   1   2   3
+Values:   2   7  11  15
+          ↑   ↑
+       pair found here
+```
 
+i=0, n=2
+```
+diff = 9 - 2 = 7
+7 in {}? ❌
+store indices = {2: 0}
+```
+i=1, n=7
+```
+diff = 9 - 7 = 2
+2 in {2:0}? ✅
+return [indices[2], 1] = [0, 1]
+```
+---
+### 📊 Trace Table
+```
+i          n            diff            diff in map?         indices       action
+0          2            7               ❌                   {2:0}        store 2
+1          7            2               ✅                   {2:0}        return [0,1]
+```
+---
+### 🔍 Case 2 — Answer at End
+
+Input: nums = [3, 2, 4], target = 6
+i=0, n=3
+```
+diff = 6-3 = 3
+3 in {}? ❌
+indices = {3:0}
+```
+i=1, n=2
+```
+diff = 6-2 = 4
+4 in {3:0}? ❌
+indices = {3:0, 2:1}
+```
+i=2, n=4
+```
+diff = 6-4 = 2
+2 in {3:0, 2:1}? ✅
+return [indices[2], 2] = [1, 2]
+```
+---
+### 📊 Trace Table
+```
+i     n      diff            diff in map?           indices            action
+0     3      3               ❌                     {3:0}              store 3
+1     2      4               ❌                     {3:0, 2:1}         store 2 
+2     4      2               ✅                     {3:0, 2:1}         return [1,2]
+```
+---
+### 🔍 Case 3 — Same Number Twice
+
+Input: nums = [3, 3], target = 6
+i=0, n=3
+```
+diff = 6-3 = 3
+3 in {}? ❌
+indices = {3:0}
+```
+i=1, n=3
+```
+diff = 6-3 = 3
+3 in {3:0}? ✅
+return [indices[3], 1] = [0, 1] ✅
+```
+```
+Works correctly because we check BEFORE storing — so indices[3] still points to index 0, not overwritten by index 1.
+```
+---
+### 💡 Why Check Before Store?
+```
+for i, n in enumerate(nums):
+    diff = target - n
+    if diff in indices:      # ← check first
+        return [indices[diff], i]
+    indices[n] = i           # ← store after
+
+# If we stored first:
+# nums=[3,3], target=6
+# i=0: store {3:0}
+# i=1: n=3, diff=3
+#       store {3:1}  ← overwrites!
+#       3 in {3:1}? ✅ but returns [1,1] ❌ same index used twice
 ```
 ---
 
@@ -136,6 +219,15 @@ Step-by-step:
     - Extra space used to store up to n elements in the dictionary.
 
 ---
+### 🆚 Brute Force vs HashMap
+```
+Approach        Time                Space            Notes
+Brute Force     O(n²)               O(1)             Two nested loops
+HashMap         O(n)                O(n)             ✅ One pass, optimal
+```
+
+---
+
 ## 🚀  Approach 3 : Hash Map (Two-Pass)
 Intuition
 
