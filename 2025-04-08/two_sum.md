@@ -70,17 +70,22 @@ class Solution:
      - For every number, we check if the complement (i.e. target - current_number) is already in the dictionary.
      - If it is, we’ve found our answer.
 - This works because the dictionary helps us instantly look up if we've already seen the number needed to complete the pair.
+```
+nums = [2, 7, 11, 15],  target = 9
 
+At n=2:  need 7  → not in map yet → store {2:0}
+At n=7:  need 2  → 2 IS in map ✅ → return [0, 1]
+```
 
 🧠 Approach :
-- Create an empty dictionary called indices to store the number and its index.
-- Loop through the array nums using enumerate to get both index and number.
-- For each number n, calculate the complement as target - n.
-- Check if the complement is already in the dictionary:
-     - If yes, return the indices of the complement and current number.
-     - If no, store n with its index in the dictionary.
 
-- If no such pair is found (though problem guarantees one), return an empty list.
+1. Initialize empty indices = {}
+2. For each (i, n):
+   + Compute diff = target - n
+   + If diff in indices → return [indices[diff], i]
+   + Else → store indices[n] = i
+
+4. Return [] if no pair found
 
 
 ---
