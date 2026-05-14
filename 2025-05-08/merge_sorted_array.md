@@ -19,13 +19,26 @@ Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
 Output: [1,2,2,3,5,6]
 ```
 ---
-## 🧠 Intuition
-- Start merging from the end to avoid overwriting elements in nums1.
-- Use two pointers from the back of nums1 and nums2, and a third pointer to place elements from the back.
 ## 🚀 Approach
-- Initialize a pointer last at the end of the merged array.
-- Compare elements from the back of both arrays and place the larger one at last.
-- After one array is exhausted, copy any remaining elements from nums2 (since nums1’s remaining elements are already in place).
+
+🧠 Intuition
+Merging from the front would overwrite unprocessed elements in nums1. Instead, merge from the back — the end of nums1 has n empty slots, so writing the largest elements there first never overwrites anything needed. Compare the largest unplaced elements from both arrays and place the bigger one at last.
+```
+nums1 = [1, 3, 5, _, _, _]   m=3
+nums2 = [2, 4, 6]             n=3
+
+Merge from back →
+  compare 5 vs 6 → place 6 at last
+  compare 5 vs 4 → place 5
+  compare 3 vs 4 → place 4
+  ... and so on
+```
+## 📌 Approach
+
+1. Start last = m + n - 1 (last index of nums1)
+2. Compare nums1[m-1] vs nums2[n-1] — place the larger at nums1[last]
+3. Decrement the pointer of whichever array was used, and last
+4. If nums2 has leftovers → copy them in (nums1 leftovers are already in place)
 
 ---
 ### Key Insight: Fill from the Back
@@ -73,44 +86,99 @@ class Solution:
 ```
 
 ---
-Step-by-Step Walkthrough
-Initial state:
-```python
+### 🔍 Step-by-Step Execution
+
+Input:
+```
 nums1 = [1, 2, 3, 0, 0, 0]   m=3
-nums2 = [2, 5, 6]             n=3, last=5
+nums2 = [2, 5, 6]             n=3
+last  = 5
 ```
-----
 ```
-Step  Compare                         Winner          nums1            m     n      last
-1     nums1[2]=3 vs nums2[2]=6        6 wins          [1,2,3,0,0,6]     3     2       4
-2     nums1[2]=3 vs nums2[1]=5        5 wins          [1,2,3,0,5,6]     3     1       3
-3     nums1[2]=3 vs nums2[0]=2        3 wins          [1,2,3,3,5,6]     2     1       2
-4     nums1[1]=2 vs nums2[0]=2        2 wins (nums2)  [1,2,2,3,5,6]     2     0       1
+Indices:  0  1  2  3  4  5
+nums1:    1  2  3  _  _  _
+nums2:    2  5  6
 ```
-n=0 → main while loop ends ✅
-No leftover n elements, so second while skips.
+
+Step 1: m=3, n=3, last=5
 ```
-Final: [1, 2, 2, 3, 5, 6] ✅
+nums1[2]=3  vs  nums2[2]=6
+6 > 3 → nums1[5] = 6
+n=2, last=4
+nums1 = [1, 2, 3, 0, 0, 6]
+```
+Step 2: m=3, n=2, last=4
+```
+nums1[2]=3  vs  nums2[1]=5
+5 > 3 → nums1[4] = 5
+n=1, last=3
+
+nums1 = [1, 2, 3, 0, 5, 6]
+```
+
+Step 3: m=3, n=1, last=3
+```
+nums1[2]=3  vs  nums2[0]=2
+3 > 2 → nums1[3] = 3
+m=2, last=2
+
+nums1 = [1, 2, 3, 3, 5, 6]
+```
+Step 4: m=2, n=1, last=2
+```
+nums1[1]=2  vs  nums2[0]=2
+2 == 2 → nums2 wins (else branch) → nums1[2] = 2
+n=0, last=1
+
+nums1 = [1, 2, 2, 3, 5, 6]
+```
+Loop ends: n=0 → exit while loop
+```
+No remaining nums2 elements
+nums1 = [1, 2, 2, 3, 5, 6] ✅
+```
+
+---
+### 💡 Why No Need to Handle nums1 Leftovers?
+```
+If nums2 runs out first (n=0):
+  Remaining nums1 elements are already in their correct position
+  No copying needed ✅
+
+If nums1 runs out first (m=0):
+  Remaining nums2 elements must be copied into nums1
+  The second while loop handles this ✅
+
+nums1 = [4, 5, 6, _, _, _]    nums2 = [1, 2, 3]
+  → nums2 runs out first                 → nums1 leftover stays ✅
+
+nums1 = [1, 2, 3, _, _, _]    nums2 = [4, 5, 6]
+  → nums1 runs out first       → copy remaining nums2 into front ✅
 ```
 ---
-
-Why the Second While Loop?
-Handles leftover nums2 elements if nums1 runs out first.
+### 🔍 Edge Cases
 ```
-nums1 = [4, 0, 0],  m=1
-nums2 = [1, 2],     n=2
+# nums1 is empty (m=0)
+nums1=[0,0,0], m=0, nums2=[1,2,3], n=3
+→ first while skipped entirely
+→ second while copies all nums2
+→ nums1=[1,2,3] ✅
 
-Step 1: 4 vs 2 → place 4 → [4,0,4]  m=0, n=2
-# main loop ends (m=0)
+# nums2 is empty (n=0)
+nums1=[1,2,3], m=3, nums2=[], n=0
+→ both while loops skipped
+→ nums1=[1,2,3] unchanged ✅
 
-Second loop kicks in:
-
-→ place nums2[1]=2 → [4,2,4]
-→ place nums2[0]=1 → [1,2,4]  ✅
+# All nums2 smaller than nums1
+nums1=[4,5,6,_,_,_], m=3, nums2=[1,2,3], n=3
+→ nums1 elements placed first at back
+→ second while copies 1,2,3 into front ✅
 ```
-Note: We never need a second loop for nums1 leftovers — they're already in place!
-
 ---
+### ✅ Final Answer
+```
+nums1 = [1, 2, 2, 3, 5, 6] ✅  (sorted in-place)
+```
 
 ## 💡 Time and Space Complexity
 - **Time**: O(m + n)
@@ -162,4 +230,11 @@ nums1[m:] = nums2[:n]  → O(n)         slice assignment
 nums1.sort()           → O((m+n) log(m+n))  Timsort on full array
                                   ↑
                             dominates overall
+```
 ### Space: O(1) or O(m+n)
+
+---
+### 💡 Interview tip: 
+
+The key insight interviewers listen for is "merge from the back to avoid overwriting unprocessed elements". The naive approach of merging from the front and shifting elements right is O(m×n) — recognising that the empty slots at the end of nums1 let us merge in O(1) space is what makes this solution elegant.
+
