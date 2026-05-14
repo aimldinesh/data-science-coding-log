@@ -43,7 +43,7 @@ r scans →  finds new unique → writes at l
 Result: [1, 2, 3, _, _]   return l=3
 ```
 
-## 📌 Approach
+📌 Approach
 
 1. Start l=1 — index 0 is always unique, no need to check
 2. r iterates from index 1 to end
@@ -76,6 +76,84 @@ class Solution:
 ```
 
 ---
+
+### 🔍 Step-by-Step Execution
+
+Input: nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+```
+Indices:  0  1  2  3  4  5  6  7  8  9
+Values:   0  0  1  1  1  2  2  3  3  4
+```
+
+r=1 → nums[1]=0, nums[0]=0
+```
+0 == 0 → duplicate, skip
+l=1
+```
+r=2 → nums[2]=1, nums[1]=0
+```
+1 != 0 → unique ✅
+nums[1] = 1
+l=2
+array: [0, 1, 1, 1, 1, 2, 2, 3, 3, 4]
+```
+r=3 → nums[3]=1, nums[2]=1
+```
+1 == 1 → duplicate, skip
+l=2
+```
+r=4 → nums[4]=1, nums[3]=1
+```
+1 == 1 → duplicate, skip
+l=2
+```
+r=5 → nums[5]=2, nums[4]=1
+```
+2 != 1 → unique ✅
+nums[2] = 2
+l=3
+array: [0, 1, 2, 1, 1, 2, 2, 3, 3, 4]
+```
+r=6 → nums[6]=2, nums[5]=2
+```
+2 == 2 → duplicate, skip
+l=3
+```
+r=7 → nums[7]=3, nums[6]=2
+```
+3 != 2 → unique ✅
+nums[3] = 3
+l=4
+array: [0, 1, 2, 3, 1, 2, 2, 3, 3, 4]
+```
+r=8 → nums[8]=3, nums[7]=3
+```
+3 == 3 → duplicate, skip
+l=4
+```
+r=9 → nums[9]=4, nums[8]=3
+```
+4 != 3 → unique ✅
+nums[4] = 4
+l=5
+array: [0, 1, 2, 3, 4, 2, 2, 3, 3, 4]
+```
+---
+### 📊 Trace Table
+```
+r          nums[r]          nums[r-1]         Unique?            nums[l] =         l           Array (first l elements)
+1          0                0                 ❌                 —                 1           [0]
+2          1                0                 ✅                 nums[1]=1         2           [0,1]
+3          1                1                 ❌                 —                 2           [0,1]
+4          1                1                 ❌                 —                 2           [0,1]
+5          2                1                 ✅                 nums[2]=2         3           [0,1,2]
+6          2                2                 ❌                 —                 3           [0,1,2]
+7          3                2                 ✅                 nums[3]=3         4           [0,1,2,3]
+8          3                3                 ❌                 —                 4           [0,1,2,3]
+9          4                3                 ✅                 nums[4]=4         5           [0,1,2,3,4]
+```
+---
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
