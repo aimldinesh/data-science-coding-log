@@ -65,6 +65,7 @@ class Solution:
 
 ## 🚀 Approach 2: Set (Efficient Time)
 💡 Intuition:
+
 - We need to find whether any number appears more than once in the array.
 - If we can keep track of all the numbers we've seen so far using a set, then:
      - If a number already exists in the set, it's a duplicate.
@@ -106,6 +107,7 @@ class Solution:
 
 ## 🚀 Approach 3: Sorting (Efficient Space)
 💡 Intuition:
+
 If we sort the array, any duplicates will be next to each other.
 So we just need to compare adjacent elements.
 
