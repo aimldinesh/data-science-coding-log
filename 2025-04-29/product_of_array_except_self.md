@@ -72,6 +72,58 @@ class Solution:
         return res
 ```
 ---
+### 🔍 Step-by-Step Execution
+
+Input: nums = [1, 2, 3, 4]
+```
+Indices:  0  1  2  3
+Values:   1  2  3  4
+```
+
+i=0 → skip j=0, multiply rest
+```
+j=1: prod = 1 × 2 = 2
+j=2: prod = 2 × 3 = 6
+j=3: prod = 6 × 4 = 24
+res[0] = 24
+```
+i=1 → skip j=1, multiply rest
+```
+j=0: prod = 1 × 1 = 1
+j=2: prod = 1 × 3 = 3
+j=3: prod = 3 × 4 = 12
+res[1] = 12
+```
+i=2 → skip j=2, multiply rest
+```
+j=0: prod = 1 × 1 = 1
+j=1: prod = 1 × 2 = 2
+j=3: prod = 2 × 4 = 8
+res[2] = 8
+```
+i=3 → skip j=3, multiply rest
+```
+j=0: prod = 1 × 1 = 1
+j=1: prod = 1 × 2 = 2
+j=2: prod = 2 × 3 = 6
+res[3] = 6
+```
+---
+### 📊 Trace Table
+```
+i           skipped         jvisited         prod          res
+0           nums[0]=1       1,2,3            2×3×4=24      [24, 0, 0, 0]
+1           nums[1]=2       0,2,3            1×3×4=12      [24, 12, 0, 0]
+2           nums[2]=3       0,1,3            1×2×4=8       [24, 12, 8, 0]
+3           nums[3]=4       0,1,2            1×2×3=6       [24, 12, 8, 6]
+```
+---
+## ✅ Final Answer
+```
+return [24, 12, 8, 6] ✅
+```
+---
+
 ## 💡 Time and Space Complexity
 - **Time**: O(n²)
     -  For each index, we traverse the entire array.
