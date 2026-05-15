@@ -199,6 +199,76 @@ class Solution:
 
 ```
 ---
+### 🔍 Step-by-Step Execution
+
+Input: nums = [1, 2, 3, 4]
+```
+Indices:  0  1  2  3
+Values:   1  2  3  4
+```
+
+🔎 Pass 1 — Prefix (left → right)
+
+i=0
+```
+res[0] = prefix = 1          (nothing to left)
+prefix = 1 × nums[0] = 1×1 = 1
+res = [1, 1, 1, 1]
+```
+i=1
+```
+res[1] = prefix = 1          (only nums[0]=1 to left)
+prefix = 1 × nums[1] = 1×2 = 2
+res = [1, 1, 1, 1]
+```
+i=2
+```
+res[2] = prefix = 2          (nums[0]×nums[1] = 1×2)
+prefix = 2 × nums[2] = 2×3 = 6
+res = [1, 1, 2, 1]
+```
+i=3
+```
+res[3] = prefix = 6          (nums[0]×nums[1]×nums[2] = 1×2×3)
+prefix = 6 × nums[3] = 6×4 = 24
+res = [1, 1, 2, 6]
+```
+---
+🔎 Pass 2 — Postfix (right → left)
+
+i=3
+```
+res[3] = res[3] × postfix = 6×1 = 6    (nothing to right)
+postfix = 1 × nums[3] = 1×4 = 4
+res = [1, 1, 2, 6]
+```
+i=2
+```
+res[2] = res[2] × postfix = 2×4 = 8    (only nums[3]=4 to right)
+postfix = 4 × nums[2] = 4×3 = 12
+res = [1, 1, 8, 6]
+```
+i=1
+```
+res[1] = res[1] × postfix = 1×12 = 12  (nums[2]×nums[3] = 3×4)
+postfix = 12 × nums[1] = 12×2 = 24
+res = [1, 12, 8, 6]
+```
+i=0
+```
+res[0] = res[0] × postfix = 1×24 = 24  (nums[1]×nums[2]×nums[3] = 2×3×4)
+postfix = 24 × nums[0] = 24×1 = 24
+res = [24, 12, 8, 6]
+```
+---
+### 📊 Prefix Pass Table
+i           nums[i]             prefix (before)                 res[i]            prefix (after)
+0           1                   1                               1                 1 
+1           2                   1                               1                 2
+2           3                   2                               2                 6
+3           4                   6                               6                 24
+
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n
