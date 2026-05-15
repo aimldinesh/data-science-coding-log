@@ -63,23 +63,26 @@ class Solution:
 ---
 
 ## 🚀 Approach 2 : Two Pointers (Single Pass)
-### 🧠 Intuition
+🧠 Intuition
 
-We want to buy low and sell high, but the buy must happen before the sell.
-A brute-force approach would check every pair of days — but that's O(n²). The key insight is: if we're at a day with a lower price than our current buy day, there's no reason to keep the old buy day. We can never do better by buying at a higher price. So we greedily shift our buy pointer to the cheaper day and keep scanning forward.
-This means we only ever need one pass through the array.
+Track the cheapest buy day with l and scan every future day with r. If prices[r] > prices[l] → calculate profit. If prices[r] <= prices[l] → a cheaper buy day found, shift l to r. One pass captures the best buy-sell pair.
+```
+prices = [7, 1, 5, 3, 6, 4]
 
-### 📌 Approach
-We use a two-pointer (sliding window) technique:
+Day 1 (price=7) → buy here
+Day 2 (price=1) → cheaper! new buy day
+Day 5 (price=6) → sell here → profit = 6-1 = 5 ✅
+```
 
-1. Start l = 0 (buy) and r = 1 (sell)
-2. While r is within bounds:
-   - If prices[r] > prices[l] → we have a profitable transaction, compute and update maxProfit
-   - If prices[r] <= prices[l] → prices[r] is a cheaper buy day, move l = r
-   - Always increment r
+📌 Approach : two-pointer (sliding window) technique:
+
+1. l=0 (buy), r=1 (sell), maxProfit=0
+2. While r < len(prices):
+   + prices[l] < prices[r] → profitable → update maxProfit
+   + prices[l] >= prices[r] → cheaper buy found → l = r
+   + Always increment r
+     
 3. Return maxProfit
-
-- The window expands when we find profit, and resets when we find a cheaper price to buy at.
 ---
 
 ## 💻 Code (Python)
