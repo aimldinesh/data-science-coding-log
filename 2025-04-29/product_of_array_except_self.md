@@ -262,13 +262,68 @@ res = [24, 12, 8, 6]
 ```
 ---
 ### 📊 Prefix Pass Table
+```
 i           nums[i]             prefix (before)                 res[i]            prefix (after)
 0           1                   1                               1                 1 
 1           2                   1                               1                 2
 2           3                   2                               2                 6
 3           4                   6                               6                 24
+```
+---
+### 📊 Postfix Pass Table
+```
+i           nums[i]             res[i]before             postfix (before)    res[i] after   postfix (after)
+3           4                   6                        1                   6              4
+2           3                   2                        4                   8              12
+1           2                   1                        12                  12             24
+0           1                   1                        24                  24             24
+```
+---
+### 💡 What res Contains After Each Pass
+```
+nums      =  [ 1,   2,   3,   4]
 
+After prefix pass:
+res       =  [ 1,   1,   2,   6]
+              ↑     ↑    ↑    ↑
+             ( )  (1)  (1×2)(1×2×3)   ← left products
 
+After postfix pass:
+res       =  [24,  12,   8,   6]
+              ↑     ↑    ↑    ↑
+        (2×3×4)(3×4) (4)  ( )   ← multiplied by right products
+```
+---
+### 🔍 Edge Case — Array Contains Zero
+
+Input: nums = [1, 0, 3, 4]
+Prefix pass:
+```
+i         prefix         res[i]
+0         1              1
+1         1              1
+2         0              0
+3         0              0
+```
+Postfix pass:
+```
+i        postfix        res[i]
+3        1              0×1=0
+2        4              0×4=0
+1        12             1×12=12
+0        0              1×0=0
+```
+```
+return [0, 12, 0, 0] ✅
+Only index 1 (the zero) gets a non-zero product
+```
+---
+## ✅ Final Answer
+```
+nums = [1, 2, 3, 4]
+return [24, 12, 8, 6] ✅
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n
@@ -277,3 +332,7 @@ i           nums[i]             prefix (before)                 res[i]          
 - **Space**: O(1)
     - Output array is not considered extra space per LeetCode rules
     - Only two variables: prefix and postfix
+---
+### 💡 Interview tip: 
+
+If the interviewer asks "can you do it without the output array counting as space?" — that's not possible since you need somewhere to write the answer. The O(1) space claim here means no extra auxiliary arrays beyond res — which is the accepted standard for this problem.
