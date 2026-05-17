@@ -32,14 +32,14 @@ Output: 1
 ```
 ---
 
-## 🚀 My Approach:Binary Search
+## 🚀 My Approach: Binary Search
 We can solve this problem using **Binary Search** to efficiently find the peak element.
 
-### 🔸 Observations:
+🔸 Observations:
 - The peak element is the highest value, and it will always have values less than itself both before and after it.
 - The array strictly increases and then decreases, so it guarantees a unique peak element.
 
-### 🔸 Steps:
+🔸 Steps:
 1. Initialize two pointers: `left = 0` and `right = len(arr) - 1`.
 2. Run a binary search:
    - Compute `mid = (left + right) // 2`.
