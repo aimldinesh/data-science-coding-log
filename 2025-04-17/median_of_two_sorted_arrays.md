@@ -32,7 +32,7 @@ Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
 ## 🚀 My Approach: Merge and Sort
 We can solve this problem by **merging both arrays**, sorting the result, and then finding the median.
 
-### 🔸 Steps:
+🔸 Steps:
 
 1. **Merge** the two input arrays into one.
 2. **Sort** the merged array.
