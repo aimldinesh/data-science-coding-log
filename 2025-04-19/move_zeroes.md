@@ -185,7 +185,7 @@ nums = [1, 3, 12, 0, 0] ✅  (modified in-place)
 ---
 ## 🆚 Alternative — Two Pass (Write then Fill)
 
-```
+```python
 # Pass 1: overwrite from front with non-zeros
 def moveZeroes(self, nums):
     non_zero_index = 0
