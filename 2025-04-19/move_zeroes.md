@@ -119,7 +119,7 @@ i        nums[i]            non_zero_index             swap?              nums a
 1        1                  0                          ✅swap(1,0)        [1, 0, 0, 3, 12]
 2        0                  1                          ❌                 [1, 0, 0, 3, 12]
 3        3                  1                          ✅ swap(3,1)       [1, 3, 0, 0, 12]
-4        1                  2                          2✅ swap(4,2)      [1, 3, 12, 0, 0]
+4        12                 2                          ✅ swap(4,2)       [1, 3, 12, 0, 0]
 ```
 ---
 ### 💡 Two Pointer Visualised
