@@ -189,5 +189,5 @@ target=3  →  return -1  ✅
 - **Space**: O(1), as we are using only a constant amount of extra space.
 
 ---
-### Tip: 
+### Interview Tip: 
 The key insight examiners listen for is "one half is always guaranteed to be sorted in a rotated array" — that's what makes binary search still applicable. Without stating that, the solution looks like magic. With it, the logic flows naturally.
