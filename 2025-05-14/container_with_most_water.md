@@ -20,17 +20,28 @@ The lines at index 1 and 8 can hold the most water.
 min(8, 7) * (8 - 1) = 7 * 7 = 49
 ```
 ---
-## 🧠 Intuition
-- A brute-force method would be to try every pair of lines, but that takes O(n²) time.
-- Using the two-pointer approach, we can move inward from both ends and keep track of the maximum area.
-- The key insight is that the shorter line limits the height, so we move the shorter line inward to potentially find a better container.
-
----
 ## 🚀 Approach 1 : Brute Force (O(n²))
-🔸 Steps:
-- Use two nested loops to try every pair (i, j).
-- For each pair, calculate the area.
-- Track the maximum.
+
+🧠 Intuition
+
+Try every possible pair of lines (i, j) and compute the water they can hold. Area = width × height where width = j - i and height = the shorter of the two lines (water spills over the shorter one). Track the maximum across all pairs.
+```
+height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+
+Try all pairs:
+(0,1) → min(1,8) × 1 = 1
+(1,7) → min(8,3) × 6 = 18
+(1,8) → min(8,7) × 7 = 49 ✅ max
+```
+
+📌 Approach
+
+1. Outer loop i from 0 to n-1
+2. Inner loop j from i+1 to n-1
+3. area = (j - i) * min(height[i], height[j])
+4. Update max_area
+5. Return max_area
+
 ---
 
 ## 💻 Code (Python)
