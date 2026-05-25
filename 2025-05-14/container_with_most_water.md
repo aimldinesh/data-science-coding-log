@@ -69,11 +69,28 @@ class Solution:
    - No extra space is used.
 
 ## 🚀 Approach 2 : Two Pointers (Optimized O(n))
-🔸 Steps:
-- Initialize two pointers — one at the start (left) and one at the end (right).
-- Calculate the area between them.
-- Update the maximum area.
-- Move the pointer pointing to the shorter line inward to possibly find a taller line.
+
+🧠 Intuition
+Start with the widest possible container (pointers at both ends). Width can only shrink as pointers move inward — so the only hope of finding a bigger area is finding a taller line. Always move the shorter line inward — keeping it guarantees area stays same or shrinks, moving it gives a chance to find something taller.
+```
+height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+          ↑                          ↑
+        left                       right
+        
+Width is maximum here — move inward only if height can compensate
+```
+
+📌 Approach
+
+1. left=0, right=n-1, res=0
+2. While left < right:
+   + Compute area = (right - left) × min(height[left], height[right])
+   + Update res
+   + Move shorter pointer inward
+
+3. Return res
+
+
 
 ---
 
