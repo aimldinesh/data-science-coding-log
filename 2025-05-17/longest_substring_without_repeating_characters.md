@@ -19,7 +19,7 @@
 Example 1:
 
 Input: s = "abcabcbb"
-Output: 
+Output: abc
 
 Explanation: The answer is "abc", with length 3.
 
