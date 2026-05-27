@@ -338,12 +338,58 @@ r=6        [B  A  B  B  A] →shrink×2
                     [B  B  A]    size=3 ✅
 ```
 ---
+### ⚠️ This Version vs Optimised Version
+```python
+# This version — uses max(count.values())
+while (r-l+1) - max(count.values()) > k:  # O(26) each check
 
+# Optimised version — tracks maxf, never decreases it
+maxf = max(maxf, count[s[r]])
+if (r-l+1) - maxf > k:    # O(1) — just an if, no while needed
+    count[s[l]] -= 1
+    l += 1
+```
+```python
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        count = {}
+        l = 0
+        res = 0
+        maxf = 0
 
+        for r in range(len(s)):
+            count[s[r]] = 1 + count.get(s[r],0)
+
+            maxf = max(maxf, count[s[r]])
+
+            if (r - l + 1) - maxf > k:
+                count[s[l]] -= 1
+                l += 1
+
+            res = max(res, r - l + 1)
+
+        return res        
+```
+```
+Why maxf never needs to decrease:
+  A smaller window than our current best is useless
+  We only care when window GROWS beyond best
+  So maxf only matters when it INCREASES ✅
+```
+---
+## ✅ Final Answer
+```
+return res = 4   →   "AABA" or "BABB" (replace 1 char) ✅
+```
 
 ## 💡 Time and Space Complexity
-- **Time**: O(26 × n) = O(n)
-     - Each character is processed once.
-     - max(count.values()) is bounded by 26 (uppercase letters only).
-- **Space**: O(26) = O(1)
-     - Dictionary holds at most 26 characters.
+```
+Version                        Time                    Space                    Notes
+This (max values)              O(n×26)                 O(26)                    max()over fixed alphabet
+Optimised(track maxf)          O(n)                    O(26)                    Single if, no while
+```
+---
+
+💡 Interview tip: 
+
+The formula (window size - maxFrequency) ≤ k is the single most important line in this problem — state it immediately before writing any code. Then mention the optimisation of tracking maxf without ever decrementing it, since only a larger window can beat the current best.
