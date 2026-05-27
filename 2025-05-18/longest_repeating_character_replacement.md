@@ -29,7 +29,7 @@ Example 2:
 Input: s = "AABABBA", k = 1
 Output: 4
 
-Explanation: Replace the third 'A' to get "AABBBBA", the longest is "ABBB".
+Explanation: Replace the third 'A' to get "AABBBBA", the longest is "BBBB".
 
 ```
 ---
