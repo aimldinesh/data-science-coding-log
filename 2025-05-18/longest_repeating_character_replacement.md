@@ -202,12 +202,24 @@ return res = 4   →   "AABA" (replace B with A) ✅
      - Only uses a dictionary for uppercase letter frequencies.
 
 ## 🚀 Approach 2 : Sliding Window + Character Frequency
-🔸 Key Insight:
-- The goal is to maintain the longest window such that we can convert all characters in that window to the most frequent character using at most k replacements.
-🔸 Steps:
-- Use a dictionary count to track the frequency of each character in the current window.
-- If (window size - max frequency) exceeds k, shrink the window from the left.
-- Update res with the length of the valid window.
+
+🧠 Intuition
+
+In any valid window, keep the most frequent character and replace everything else. Replacements needed = window size - max frequency. If that exceeds k, shrink from left until valid again. The largest valid window seen is the answer.
+```
+s = "AABABBA",  k = 1
+
+Window "AABA" → maxf=3(A), replacements=4-3=1 ≤ 1 ✅ length=4
+Window "AABAB" → maxf=3(A), replacements=5-3=2 > 1 ❌ shrink
+```
+
+📌 Approach
+
+1. count={}, l=0, res=0
+2. Expand r each step, update count[s[r]]
+3. While (r-l+1) - max(count.values()) > k → shrink: count[s[l]] -= 1, l += 1
+4. Update res = max(res, r-l+1)
+5. Return res
 
 ---
 
@@ -240,6 +252,94 @@ class Solution:
 ```
 
 ---
+### 🔍 Step-by-Step Execution
+
+Input: s = "AABABBA", k = 1
+```
+Indices:  0  1  2  3  4  5  6
+Values:   A  A  B  A  B  B  A
+```
+
+r=0 → s[r]='A'
+```
+count={'A':1}
+window="A",   size=1, maxf=1
+(1-1)=0 ≤ 1 ✅
+res=1
+```
+r=1 → s[r]='A'
+```
+count={'A':2}
+window="AA",  size=2, maxf=2
+(2-2)=0 ≤ 1 ✅
+res=2
+```
+r=2 → s[r]='B'
+```
+count={'A':2,'B':1}
+window="AAB", size=3, maxf=2
+(3-2)=1 ≤ 1 ✅
+res=3
+```
+r=3 → s[r]='A'
+```
+count={'A':3,'B':1}
+window="AABA", size=4, maxf=3
+(4-3)=1 ≤ 1 ✅
+res=4
+```
+r=4 → s[r]='B'
+```
+count={'A':3,'B':2}
+window="AABAB", size=5, maxf=3
+(5-3)=2 > 1 ❌ → shrink
+  remove s[0]='A' → count={'A':2,'B':2}, l=1
+  window="ABAB", size=4, maxf=2
+  (4-2)=2 > 1 ❌ → shrink again
+  remove s[1]='A' → count={'A':1,'B':2}, l=2
+  window="BAB", size=3, maxf=2
+  (3-2)=1 ≤ 1 ✅
+res=max(4,3)=4
+```
+r=5 → s[r]='B'
+```
+count={'A':1,'B':3}
+window="BABB", size=4, maxf=3
+(4-3)=1 ≤ 1 ✅
+res=max(4,4)=4
+```
+r=6 → s[r]='A'
+```
+count={'A':2,'B':3}
+window="BABBA", size=5, maxf=3
+(5-3)=2 > 1 ❌ → shrink
+  remove s[2]='B' → count={'A':2,'B':2}, l=3
+  window="ABBA", size=4, maxf=2
+  (4-2)=2 > 1 ❌ → shrink again
+  remove s[3]='A' → count={'A':1,'B':2}, l=4
+  window="BBA", size=3, maxf=2
+  (3-2)=1 ≤ 1 ✅
+res=max(4,3)=4
+```
+---
+### 💡 Window Lifecycle
+```
+s =  A  A  B  A  B  B  A
+     0  1  2  3  4  5  6
+
+r=0  [A]                         size=1 ✅
+r=1  [A  A]                      size=2 ✅
+r=2  [A  A  B]                   size=3 ✅
+r=3  [A  A  B  A]                size=4 ✅ ← max
+r=4  [A  A  B  A  B] →shrink×2
+           [B  A  B]             size=3 ✅
+r=5        [B  A  B  B]          size=4 ✅
+r=6        [B  A  B  B  A] →shrink×2
+                    [B  B  A]    size=3 ✅
+```
+---
+
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(26 × n) = O(n)
