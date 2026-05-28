@@ -410,6 +410,6 @@ Still the same space class as sorting method, but faster.
 ## 🧩 Comparison
 | Approach     | Technique           | Time        | Space  | Notes                 |
 | ------------ | ------------------- | ----------- | ------ | --------------------- |
-| 1️⃣ Sorting  | Sort word letters   | O(N·M·logM) | O(N·M) | Easier to understand  |
-| 2️⃣ Counting | Character frequency | O(N·M)      | O(N·M) | Faster for long words |
+| 1️⃣ Sorting  | Sort word letters   | O(n * klogk) | O(n.k)) | Easier to understand  |
+| 2️⃣ Counting | Character frequency | O(n.k))      | O(n.k) | Faster for long words |
 
