@@ -20,6 +20,7 @@ Output: 2
 Example 2:
 Input: nums = [3,3,7,7,10,11,11]
 Output: 10
+
 ```
 ---
 
