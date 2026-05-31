@@ -47,6 +47,15 @@ This means:
 + If we have seen current_sum - k before,
 + Then a subarray ending at the current index sums to k.
 
+```
+nums = [1, 2, 3],  k = 3
+
+prefixSums: 0, 1, 3, 6
+                ↑  ↑
+         3-0=3 ✅  6-3=3 ✅  → 2 subarrays
+         [1,2,3]   [3]
+```
+
 We use a hash map to store how many times each prefix sum has appeared.
 
 🧩 Algorithm
