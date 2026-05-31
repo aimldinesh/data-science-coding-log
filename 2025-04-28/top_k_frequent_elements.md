@@ -247,3 +247,10 @@ Final Output
 ```python
 [1, 2]
 ```
+
+---
+
+⏳ Complexity Analysis
+
++ Time Complexity: O(n log n)
++ Space Complexity: O(n)
