@@ -190,6 +190,103 @@ Final Tree:
 
 ```
 ---
+## 🔍 Step-by-Step Execution
+Input Tree:
+```
+        4
+      /   \
+     2     7
+    / \   / \
+   1   3 6   9
+```
+Initial: stack = [4]
+
+Iteration 1 — pop 4
+```
+node = 4
+swap: left=7, right=2
+
+        4
+      /   \
+     7     2        ← swapped
+    / \   / \
+   6   9 1   3
+
+push left=7  → stack=[7]
+push right=2 → stack=[7, 2]
+```
+Iteration 2 — pop 2
+```
+node = 2
+swap: left=3, right=1
+
+        4
+      /   \
+     7     2
+    / \   / \
+   6   9 3   1     ← swapped
+
+push left=3  → stack=[7, 3]
+push right=1 → stack=[7, 3, 1]
+```
+Iteration 3 — pop 1
+```
+node = 1
+1 is a leaf → swap None,None (no effect)
+no children to push
+stack=[7, 3]
+```
+Iteration 4 — pop 3
+```
+node = 3
+3 is a leaf → swap None,None (no effect)
+no children to push
+stack=[7]
+```
+Iteration 5 — pop 7
+```
+node = 7
+swap: left=9, right=6
+
+        4
+      /   \
+     7     2
+    / \   / \
+   9   6 3   1     ← swapped
+
+push left=9  → stack=[9]
+push right=6 → stack=[9, 6]
+```
+Iteration 6 — pop 6
+```
+node = 6
+6 is a leaf → no effect
+stack=[9]
+```
+Iteration 7 — pop 9
+```
+node = 9
+9 is a leaf → no effect
+stack=[]
+```
+Loop ends: stack empty
+
+---
+
+### 💡 Stack Order Visualised
+```
+stack grows →
+
+Start:     [4]
+After 4:   [7, 2]       ← 2 on top, processed next
+After 2:   [7, 3, 1]    ← 1 on top
+After 1:   [7, 3]
+After 3:   [7]
+After 7:   [9, 6]
+After 6:   [9]
+After 9:   []
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
@@ -199,3 +296,7 @@ Final Tree:
     - O(n) for skewed
 
 ---
+
+### 💡 Interview tip: 
+
+For a balanced tree space is O(log n), for a skewed tree (linked list shape) space is O(n). Always clarify this when stating space complexity for tree problems — it shows depth of understanding.
