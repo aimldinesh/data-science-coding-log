@@ -30,22 +30,28 @@
 ---
 
 ## 🚀 Approach
-💡 Intuition:
-- In recursion, the call stack handles node processing order. In the iterative version, we simulate this using an explicit stack to manage traversal manually.
 
-👣 Approach:
-- Initialize:
-    - res to store the final output
-    - stack to simulate recursion
-    - cur pointer to the root node
+🧠 Intuition
 
-- While cur is not null or stack is not empty:
-    - Go as far left as possible, pushing each node onto the stack.
-    - Once you reach a null left, backtrack by popping from the stack.
-    - Add the node’s value to res.
-    - Move to the right child.
+Inorder traversal visits nodes in Left → Root → Right order. The iterative approach simulates the call stack manually — dive as far left as possible pushing nodes, then pop and visit, then explore the right subtree. For a BST this produces a sorted sequence.
+```
+        4
+      /   \
+     2     6
+    / \   / \
+   1   3 5   7
 
-- Repeat until all nodes are processed.
+Inorder → [1, 2, 3, 4, 5, 6, 7] ✅ (sorted!)
+```
+📌 Approach
+
+1. cur = root, stack = [], res = []
+2. While cur or stack not empty:
+   - Dive left — push all left nodes onto stack
+   - Pop — visit node, add to res
+   - Go right — set cur = cur.right
+
+3. Return res
 ---
 
 ## 💻 Code (Python)
