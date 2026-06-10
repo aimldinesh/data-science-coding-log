@@ -124,6 +124,7 @@ Iteration 3:
 Remaining:
  Stack has None entries → pop → cur = None → loop ends
 
+
 Final result: [1, 2, 3]
 
 
