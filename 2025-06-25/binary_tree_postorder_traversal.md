@@ -31,6 +31,7 @@ output:
 ---
 
 ## 🚀 Approach
+
 💡 Intuition
 - In postorder traversal, we visit:
    - Left child
