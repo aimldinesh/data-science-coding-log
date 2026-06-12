@@ -42,7 +42,6 @@ To simulate recursion iteratively, we use:
    - A stack to control the traversal flow
    - A visit flag to know whether a node is being visited for the first time (so we can push children) or the second time (so we can process it)
 
-
 👣 Approach
 - Initialize stack = [root] and visit = [False]
 - While stack is not empty:
