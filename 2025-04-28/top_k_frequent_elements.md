@@ -17,6 +17,7 @@ You may return the answer in **any order**.
 - Output: `[1,2]`
 
 **Example 2**:
+
 - Input: `nums = [1]`, `k = 1`
 - Output: `[1]`
 
