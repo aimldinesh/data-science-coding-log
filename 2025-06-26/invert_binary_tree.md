@@ -39,7 +39,6 @@ Output (Inverted):
      - Swaps the children
      - Inverts the left and right subtrees
        
-
 👣 Approach
 - Base case: If the node is None, return None.
 - Swap the left and right children.
