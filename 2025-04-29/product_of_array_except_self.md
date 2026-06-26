@@ -74,6 +74,7 @@ class Solution:
 ---
 ### 🔍 Step-by-Step Execution
 
+
 Input: nums = [1, 2, 3, 4]
 ```
 Indices:  0  1  2  3
