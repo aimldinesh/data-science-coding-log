@@ -21,6 +21,8 @@ Input Tree:
     4   5
 
 Output:True (balanced)
+
+
 ```
 ---
 
