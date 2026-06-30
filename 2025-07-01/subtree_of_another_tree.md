@@ -44,24 +44,24 @@ Because the subtree rooted at the left child of 3 matches subRoot.
 ## 🧠 Approach
 
 ### 🔹 Base Cases:
-     + If `subRoot` is `None`, it’s always a subtree — an empty tree is considered a subtree of any tree.
-     + If `root` is `None` but `subRoot` is not, return `False` — we've reached the end of `root` without finding `subRoot`.
++ If `subRoot` is `None`, it’s always a subtree — an empty tree is considered a subtree of any tree.
++ If `root` is `None` but `subRoot` is not, return `False` — we've reached the end of `root` without finding `subRoot`.
 
 
 ### 🔹 Recursive Check:
-     + For each node in the main tree (`root`), use a helper function `sameTree()` to check if the subtree rooted at that node is **identical** to `subRoot`.
++ For each node in the main tree (`root`), use a helper function `sameTree()` to check if the subtree rooted at that node is **identical** to `subRoot`.
 
 
 ### 🔹 `sameTree` Function Logic:
-     + This function checks whether two trees are **exactly identical** in both structure and node values.
++ This function checks whether two trees are **exactly identical** in both structure and node values.
 
-     + It returns `True` if:
-       + Both nodes are `None` (i.e., both subtrees are empty at that position), **or**
-       + Both nodes exist, their values match, and their left and right children match recursively.
++ It returns `True` if:
+  + Both nodes are `None` (i.e., both subtrees are empty at that position), **or**
+  + Both nodes exist, their values match, and their left and right children match recursively.
 
 
 ### 🔹 Explore Entire Main Tree:
-     + If the current node does **not** match `subRoot`, recursively check the **left** and **right** subtrees of `root`.
++ If the current node does **not** match `subRoot`, recursively check the **left** and **right** subtrees of `root`.
 
 
 ---
