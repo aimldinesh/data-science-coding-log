@@ -39,7 +39,7 @@ Because the subtree rooted at the left child of 3 matches subRoot.
 +  We need to determine if subRoot is an exact subtree of root.
 +  This means that there should be a node in root where the structure and values of its subtree exactly match the entire structure and values of subRoot.
 
-    +  Think of it like scanning the main tree at every node, and checking:"Does the subtree starting at this node look exactly like subRoot?"
++  Think of it like scanning the main tree at every node, and checking:"Does the subtree starting at this node look exactly like subRoot?"
 
 ## 🧠 Approach
 
