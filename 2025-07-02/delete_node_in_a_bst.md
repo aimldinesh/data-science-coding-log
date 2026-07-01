@@ -12,6 +12,7 @@
 Given the root of a Binary Search Tree (BST) and an integer key, delete the node with value key and return the updated root of the tree.
 ### 📌 Example
 ```python
+Example 1:
 
 Input Tree:
 
@@ -27,6 +28,24 @@ Output Tree :
        5
       / \
      2   6
+
+
+Example 2:
+
+Tree:                Key:3
+       5
+      / \
+     3   6
+    / \   \
+   2   4   7
+
+Output Tree:
+
+       5
+      / \
+     4   6
+    /     \
+   2       7
 
 
 ```
