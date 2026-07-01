@@ -34,26 +34,20 @@ Output Tree :
 
 ## 🚀 Approach
 💡 Intuition
-- A node in a BST can be deleted in three possible scenarios:
-   - Leaf Node (no children) → Just remove it.
-   - One child (left or right) → Replace node with its child.
-   - Two children → Replace the node with its in-order successor (smallest value in right subtree), and delete the successor node recursively.
 
-👣 Approach
-- Traverse the BST like normal using:
-   - key < root.val → go left
-   - key > root.val → go right
-   - key == root.val → found the node to delete
+To delete a node in a BST, we first need to locate it using the BST property (left children are smaller, right children are larger). Once found, we handle three cases: if the node has no left child, replace it with its right child; if no right child, replace with the left child. The tricky case is when the node has both children. We find the in-order successor (the smallest node in the right subtree), copy its value to the current node, and then delete that successor node. This approach swaps values rather than restructuring pointers.
 
-- Deletion logic:
-   - If the node has no left child → return root.right
-   - If the node has no right child → return root.left
-   - If the node has two children:
-      - Find in-order successor (leftmost node in root.right)
-      - Copy its value to root
-      - Recursively delete the successor from the right subtree
+👣 Algorithm
 
-- Return the updated root
+1. If the root is null, return null.
+2. If the key is greater than the root's value, recursively delete from the right subtree.
+3. If the key is less than the root's value, recursively delete from the left subtree.
+4. If the key matches the root's value:
+   + If there is no left child, return the right child.
+   + If there is no right child, return the left child.
+   + Otherwise, find the in-order successor (leftmost node in the right subtree), copy its value to the current node, and recursively delete the successor.
+
+5. Return the root.
 
 
 ---
