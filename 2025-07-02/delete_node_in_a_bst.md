@@ -122,9 +122,179 @@ class Solution:
 ```
 
 ---
+📌 Three Deletion Cases
+
+```
+Case 1: No left child  →  return root.right
+Case 2: No right child →  return root.left
+Case 3: Two children   →  find inorder successor
+                          copy its val to root
+                          delete successor from right subtree
+```
+---
+
+### 🔍 Step-by-Step Execution
+
+Input Tree, key = 3:
+```
+        5
+      /   \
+     3     6
+    / \
+   2   4
+```
+Call 1: deleteNode(5, 3)
+
+```
+key=3 < root.val=5
+→ root.left = deleteNode(3, 3)
+
+```
+Call 2: deleteNode(3, 3)
+```
+key=3 == root.val=3 → found!
+
+Case 3: has both children (left=2, right=4)
+  Find inorder successor:
+    cur = root.right = 4
+    4.left = None → stop
+    successor = 4
+
+  root.val = 4   ← copy successor value
+
+        5
+      /   \
+     4     6      ← node val replaced
+    / \
+   2   4          ← 4 still exists in right subtree
+
+  root.right = deleteNode(4, 4)  ← delete old successor
+```
+Call 3: deleteNode(4, 4) (right subtree of node 4)
+```
+key=4 == root.val=4 → found!
+Case 1: no left child → return root.right = None
+```
+Back in Call 2:
+```
+root.right = None
+
+        5
+      /   \
+     4     6
+    /
+   2
+return node(4)
+```
+Back in Call 1:
+```
+root.left = node(4)
+
+Final tree:
+        5
+      /   \
+     4     6
+    /
+   2
+return node(5) ✅
+```
+---
+### 💡 All Three Cases Visualised
+```
+CASE 1 — No left child:
+    [5]              [7]
+      \      →
+      [7]
+  return root.right
+
+CASE 2 — No right child:
+    [5]          [3]
+    /      →
+  [3]
+  return root.left
+
+CASE 3 — Two children:
+      [5]              [6]
+      / \    →         / \
+    [3] [7]          [3] [7]
+        /
+       [6] ← successor
+  copy 6→5, delete 6 from right subtree
+```
+---
+### 💡 Why Inorder Successor?
+```
+BST property: left < root < right
+
+After deletion, replacement must satisfy:
+  > all nodes in left subtree  ← inorder successor is > everything in left ✅
+  < all nodes in right subtree ← inorder successor is SMALLEST in right    ✅
+
+Inorder successor = leftmost node of right subtree
+  = smallest value greater than root
+  = perfect replacement ✅
+
+Could also use inorder PREDECESSOR (largest in left subtree):
+  cur = root.left
+  while cur.right: cur = cur.right
+  (either works, successor is more common)
+````
+---
+### 🔍 All Deletion Scenarios
+```
+# Delete leaf node (no children) → case 1 or 2
+     [3]                 (None)
+  no children   →   parent.child = None
+
+# Delete node with one child
+     [3]               [3]
+       \       →         \
+       [5]               [7]
+         \
+         [7]
+
+# Delete root with two children
+        [5]            [6]
+       /   \    →     /   \
+     [3]   [7]      [3]   [7]
+           /
+          [6]
+```
+---
+### 🔄 Recursive Call Flow
+```
+deleteNode(root=5, key=3)
+  └─ deleteNode(root=3, key=3)   ← found here
+       successor = 4
+       root.val  = 4
+       └─ deleteNode(root=4, key=4)  ← delete successor
+            no left → return None
+       root.right = None
+       return node(4)
+  root.left = node(4)
+  return node(5)
+```
+---
+### ✅ Final Tree
+```
+Before:          After deleting 3:
+    5                  5
+   / \                / \
+  3   6      →       4   6
+ / \                /
+2   4              2
+```
+
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(h)
     - Where h = height of the tree → O(log n) for balanced, O(n) for skewe
 - **Space**: O(h)
     - For recursive call stack
+
+---
+
+💡 Interview tip: 
+
+The three cases must be stated clearly before coding — interviewers specifically check that you handle all of them. The most common mistake is forgetting to delete the successor from the right subtree after copying its value — leaving a duplicate node. Always say "copy the value then recursively delete the original successor".
