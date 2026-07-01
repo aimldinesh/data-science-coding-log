@@ -187,7 +187,7 @@ root.right = None
 return node(4)
 ```
 Back in Call 1:
-```
+```python
 root.left = node(4)
 
 Final tree:
