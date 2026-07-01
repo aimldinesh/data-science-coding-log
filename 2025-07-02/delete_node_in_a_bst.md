@@ -145,13 +145,13 @@ Input Tree, key = 3:
 ```
 Call 1: deleteNode(5, 3)
 
-```
+```python
 key=3 < root.val=5
 → root.left = deleteNode(3, 3)
 
 ```
 Call 2: deleteNode(3, 3)
-```
+```python
 key=3 == root.val=3 → found!
 
 Case 3: has both children (left=2, right=4)
@@ -171,12 +171,12 @@ Case 3: has both children (left=2, right=4)
   root.right = deleteNode(4, 4)  ← delete old successor
 ```
 Call 3: deleteNode(4, 4) (right subtree of node 4)
-```
+```python
 key=4 == root.val=4 → found!
 Case 1: no left child → return root.right = None
 ```
 Back in Call 2:
-```
+```python
 root.right = None
 
         5
@@ -200,7 +200,7 @@ return node(5) ✅
 ```
 ---
 ### 💡 All Three Cases Visualised
-```
+```python
 CASE 1 — No left child:
     [5]              [7]
       \      →
@@ -223,7 +223,7 @@ CASE 3 — Two children:
 ```
 ---
 ### 💡 Why Inorder Successor?
-```
+```python
 BST property: left < root < right
 
 After deletion, replacement must satisfy:
@@ -241,7 +241,7 @@ Could also use inorder PREDECESSOR (largest in left subtree):
 ````
 ---
 ### 🔍 All Deletion Scenarios
-```
+```python
 # Delete leaf node (no children) → case 1 or 2
      [3]                 (None)
   no children   →   parent.child = None
@@ -262,7 +262,7 @@ Could also use inorder PREDECESSOR (largest in left subtree):
 ```
 ---
 ### 🔄 Recursive Call Flow
-```
+```python
 deleteNode(root=5, key=3)
   └─ deleteNode(root=3, key=3)   ← found here
        successor = 4
@@ -276,7 +276,7 @@ deleteNode(root=5, key=3)
 ```
 ---
 ### ✅ Final Tree
-```
+```python
 Before:          After deleting 3:
     5                  5
    / \                / \
