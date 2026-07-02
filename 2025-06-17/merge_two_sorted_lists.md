@@ -247,11 +247,11 @@ def mergeTwoLists(self, list1, list2):
 ```
 ---
 ### 🆚 Comparison
-
+```python
 Approach             Time               Space            Notes
 Iterative           O(n+m)O             (1)             ✅ In-place, no call stack
 Recursive           O(n+m)              O(n+m)           Clean but uses call stack
-
+```
 ---
 
 ## ✅ Final Answer
