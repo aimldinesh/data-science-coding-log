@@ -28,8 +28,23 @@ Output: [0]
 ---
 
 ## 🚀 Approach
-🔍 Intuition:
-- Since both lists are already sorted, you can use two pointers (list1 and list2) to compare elements one by one and build a new sorted list. This way, no sorting is needed afterward.
+🧠 Intuition
+Use a dummy node as a fake head so you never need special logic for the first node. Keep a tail pointer at the end of the merged list. At each step, compare the current nodes of both lists — attach the smaller one to tail and advance that list's pointer. When one list runs out, attach the remaining list directly.
+```python
+list1: 1 → 3 → 5
+list2: 2 → 4 → 6
+
+Compare heads, pick smaller, advance:
+1 < 2 → take 1
+2 < 3 → take 2
+3 < 4 → take 3
+4 < 5 → take 4
+5 < 6 → take 5
+list1 empty → attach rest of list2 (6)
+
+Result: 1 → 2 → 3 → 4 → 5 → 6
+```
+---
 
 🧠 Approach:
 - Create a dummy node to act as the head of the new merged list.
