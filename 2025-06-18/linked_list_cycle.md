@@ -95,6 +95,49 @@ class Solution:
 ```
 
 ---
+### 💡 Why They Always Meet in a Cycle
+```python
+Once both pointers are inside the cycle:
+  fast gains 1 step on slow every iteration
+  (fast moves 2, slow moves 1 → gap closes by 1 each step)
+
+If cycle length = L:
+  worst case → L iterations to catch up
+  guaranteed to meet ✅
+
+Example: cycle length=4, fast is 3 behind slow
+  Step 1: gap = 2
+  Step 2: gap = 1
+  Step 3: gap = 0 → meet ✅
+```
+---
+### 🔍 Edge Cases
+```python
+# Empty list
+head = None
+→ while condition: fast=None → fails immediately
+→ return False ✅
+
+# Single node, no cycle
+head = [1] → None
+→ fast.next = None → fails immediately
+→ return False ✅
+
+# Single node, self cycle
+head = [1] → points to itself
+→ slow=1, fast=1
+→ step: slow=1, fast=1 → meet immediately ✅
+
+# Two nodes, no cycle
+1 → 2 → None
+→ step1: slow=2, fast=None → exit → False ✅
+
+# Two nodes, cycle
+1 → 2 → (back to 1)
+→ step1: slow=2, fast=2 → meet ✅
+```
+---
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
