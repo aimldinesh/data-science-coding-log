@@ -162,7 +162,47 @@ dummy → 1 → 2 → 3 → 5 → None
 ---
 
 ### 🔍 Edge Cases
+
 Remove head (n = length of list)
+```python
+Input: [1, 2, 3],  n=3
+
+Phase 1: right moves 3 steps → right=None
+Phase 2: right already None → skip entirely
+left = dummy
+
+left.next = left.next.next = node(2)
+dummy → 2 → 3
+
+return dummy.next = [2, 3] ✅
+```
+Single node list
+```python
+Input: [1],  n=1
+
+dummy → 1 → None
+left=dummy, right=1
+
+Phase 1: right = right.next = None
+Phase 2: right=None → skip
+
+left.next = left.next.next = None
+dummy → None
+
+return dummy.next = None ✅
+```
+Two nodes, remove last
+```python
+Input: [1, 2],  n=1
+
+Phase 1: right = 2
+Phase 2: left=1, right=None → stop
+left.next = left.next.next = None
+
+return [1] ✅
+```
+---
+
 
 
 ## 💡 Time and Space Complexity
