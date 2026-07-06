@@ -31,6 +31,18 @@ List: 1 → 2 → 3 → 5 (the 4 is removed, which is the 2nd from the end)
      - Move the right pointer n steps ahead.
      - Then move both left and right together until right reaches the end.
      - Now left is just before the node we need to delete.
+```python
+Remove 2nd from end in [1, 2, 3, 4, 5]
+
+right moves n=2 steps ahead:
+left=dummy, right=3
+
+then both move together until right=None:
+left=3, right=None
+
+left.next = left.next.next → skip 4
+Result: [1, 2, 3, 5] ✅
+```
 
 👣 Approach
 - Create a dummy node pointing to head. This helps handle edge cases (like deleting the first node).
@@ -88,29 +100,7 @@ head = 1 → 2 → 3 → 4 → 5, n = 2
 Initialization:
 dummy → 0 → 1 → 2 → 3 → 4 → 5
 
-left = dummy
-
-right = head (1)
-
-Step 1: Move right 2 steps ahead:
-After 1st move: right = 2
-
-After 2nd move: right = 3
-
-Step 2: Move both until right reaches end:
-Move 1: left = 1, right = 4
-
-Move 2: left = 2, right = 5
-
-Move 3: left = 3, right = None
-
-Step 3: Remove node:
-left.next = 4 → change to left.next = 5
-
-List becomes: 1 → 2 → 3 → 5
-
 ```
-
 ## 💡 Time and Space Complexity
 - **Time**: O(L)
     - Where L is the length of the linked list. We traverse the list at most twice.
