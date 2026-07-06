@@ -99,8 +99,72 @@ head = 1 → 2 → 3 → 4 → 5, n = 2
 
 Initialization:
 dummy → 0 → 1 → 2 → 3 → 4 → 5
-
 ```
+```python
+dummy → 1 → 2 → 3 → 4 → 5 → None
+  ↑left
+        ↑right
+```
+---
+
+Phase 1 — Move right n=2 steps
+n=2: right = right.next = 2
+```
+dummy → 1 → 2 → 3 → 4 → 5 → None
+  ↑left     ↑right
+```
+n=1: right = right.next = 3
+```python
+dummy → 1 → 2 → 3 → 4 → 5 → None
+  ↑left          ↑right
+```
+n=0: stop
+---
+
+Phase 2 — Move both until right=None
+Step 1:
+```python
+left  = left.next  = 1
+right = right.next = 4
+
+dummy → 1 → 2 → 3 → 4 → 5 → None
+        ↑left       ↑right
+```
+Step 2:
+```python
+left  = left.next  = 2
+right = right.next = 5
+
+dummy → 1 → 2 → 3 → 4 → 5 → None
+            ↑left       ↑right
+```
+Step 3:
+```python
+left  = left.next  = 3
+right = right.next = None
+
+dummy → 1 → 2 → 3 → 4 → 5 → None
+                ↑left        ↑right
+```
+right=None → stop
+
+---
+
+Phase 3 — Delete target
+```python
+left = node(3)
+left.next = node(4)   ← this is the node to delete
+left.next = left.next.next = node(5)
+
+dummy → 1 → 2 → 3 → 5 → None
+                  ↑left  ↑(skipped 4)
+```
+---
+
+### 🔍 Edge Cases
+Remove head (n = length of list)
+
+
 ## 💡 Time and Space Complexity
 - **Time**: O(L)
     - Where L is the length of the linked list. We traverse the list at most twice.
