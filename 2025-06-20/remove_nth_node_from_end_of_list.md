@@ -203,10 +203,35 @@ return [1] ✅
 ```
 ---
 
+### 💡 Why Dummy Node?
+```python
 
+Without dummy — removing head needs special case:
+if n == len(list):
+    return head.next   # special case ❌ extra logic
+
+# With dummy — uniform for ALL cases including head removal:
+dummy → head
+left  = dummy         # left can sit before head ✅
+# left.next = left.next.next works even when deleting head
+
+```
+---
+## ✅ Final Answer
+```python
+Input:  [1, 2, 3, 4, 5],  n=2
+Output: [1, 2, 3, 5]       ✅  (4th node removed = 2nd from end)
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(L)
     - Where L is the length of the linked list. We traverse the list at most twice.
 - **Space**: O(1)
     - No extra space is used aside from pointers.
+
+---
+
+## 💡 Interview tip: 
+
+The gap technique — "advance one pointer by n steps first, then move both together" — is a fundamental linked list pattern. It also solves Middle of Linked List (gap = length/2), Linked List Cycle II (gap = cycle entry distance), and Reorder List (find midpoint). Naming the pattern explicitly earns points with interviewers.
