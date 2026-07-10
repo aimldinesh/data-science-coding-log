@@ -166,6 +166,31 @@ The -1 shifts 1-26 → 0-25 so modulo and division work correctly
 ```
 ---
 
+### 💡 Why Build Backwards Then Reverse?
+```python
+columnNumber = 28
+
+We extract the RIGHTMOST digit first (like % in any base):
+  iter 1 → 'B'  (rightmost, units place)
+  iter 2 → 'A'  (leftmost, 26s place)
+
+Built:    "BA"
+Reversed: "AB" ✅
+
+Same reason we reverse in any base-N conversion —
+modulo always gives least significant digit first
+```
+---
+✅ Final Answers
+```python
+columnNumber=1   →  "A"   ✅
+columnNumber=26  →  "Z"   ✅
+columnNumber=27  →  "AA"  ✅
+columnNumber=28  →  "AB"  ✅
+columnNumber=52  →  "AZ"  ✅
+columnNumber=701 →  "ZY"  ✅
+```
+---
 
 
 
