@@ -37,13 +37,22 @@ Output: "ZY"
 ```
 ---
 
-## 💡 Approach
-1. Initialize an empty string `res`.
-2. While `columnNumber > 0`:
-   - Compute `offset = (columnNumber - 1) % 26` to find the letter index.
-   - Append the corresponding character (`A` + offset) to `res`.
-   - Update `columnNumber = (columnNumber - 1) // 26`.
-3. Since characters are built in reverse, return `res[::-1]`.
+## 🧠 Intuition
+Excel columns follow a base-26 system but with no zero — A=1, B=2, ... Z=26, AA=27. Unlike regular base conversion, there's no 0 digit. The trick is columnNumber - 1 before each modulo/division — this shifts the range from 1-26 to 0-25, making standard base-26 math work correctly.
+```python
+Regular base 26:   0-25  →  digits 0,1,...,25
+Excel base 26:     1-26  →  digits A,B,...,Z  (no zero!)
+
+Fix: subtract 1 before each operation to align them
+```
+📌 Approach
+
+1. While columnNumber > 0:
+   - offset = (columnNumber - 1) % 26 → current letter (0=A, 25=Z)
+   - Append chr(ord('A') + offset) to res
+   - columnNumber = (columnNumber - 1) // 26 → move left
+
+2. Reverse res and return
 
 ---
 
