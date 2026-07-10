@@ -45,7 +45,7 @@ Excel base 26:     1-26  →  digits A,B,...,Z  (no zero!)
 
 Fix: subtract 1 before each operation to align them
 ```
-📌 Approach
+## 📌 Approach
 
 1. While columnNumber > 0:
    - offset = (columnNumber - 1) % 26 → current letter (0=A, 25=Z)
@@ -76,6 +76,54 @@ class Solution:
 ```
 
 ---
+### 🔍 Step-by-Step Execution
+
+Example 1: columnNumber = 28 → expected "AB"
+
+Iteration 1:
+```python
+offset      = (28-1) % 26  = 27 % 26 = 1
+char        = chr(65 + 1)  = 'B'
+res         = "B"
+columnNumber = (28-1) // 26 = 27 // 26 = 1
+```
+Iteration 2:
+```python
+offset      = (1-1) % 26  = 0 % 26 = 0
+char        = chr(65 + 0) = 'A'
+res         = "BA"
+columnNumber = (1-1) // 26 = 0 // 26 = 0
+```
+Loop ends: columnNumber = 0
+```python
+res[::-1] = "AB" ✅
+```
+---
+
+Example 2: columnNumber = 701 → expected "ZY"
+
+Iteration 1:
+```python
+offset      = (701-1) % 26  = 700 % 26 = 24
+char        = chr(65 + 24)  = 'Y'
+res         = "Y"
+columnNumber = (701-1) // 26 = 700 // 26 = 26
+```
+Iteration 2:
+```python
+offset      = (26-1) % 26  = 25 % 26 = 25
+char        = chr(65 + 25)  = 'Z'
+res         = "YZ"
+columnNumber = (26-1) // 26 = 25 // 26 = 0
+```
+Loop ends:
+```python
+res[::-1] = "ZY" ✅
+```
+---
+
+
+
 
 ## 💡 Time and Space Complexity
 - **Time**: O(log₍26₎ columnNumber)
