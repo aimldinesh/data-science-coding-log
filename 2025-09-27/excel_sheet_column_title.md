@@ -192,10 +192,6 @@ columnNumber=701 →  "ZY"  ✅
 ```
 ---
 
-
-
-
-
 ## 💡 Time and Space Complexity
 - **Time**: O(log₍26₎ columnNumber)
     - Each step divides columnNumber by 26.
