@@ -121,6 +121,52 @@ Loop ends:
 res[::-1] = "ZY" ✅
 ```
 ---
+Example 3: columnNumber = 52 → expected "AZ"
+
+Iteration 1:
+```python
+offset      = (52-1) % 26  = 51 % 26 = 25
+char        = chr(65 + 25)  = 'Z'
+res         = "Z"
+columnNumber = (52-1) // 26 = 51 // 26 = 1
+```
+Iteration 2:
+```python
+offset      = (1-1) % 26  = 0
+char        = chr(65 + 0) = 'A'
+res         = "ZA"
+columnNumber = (1-1) // 26 = 0
+```
+Loop ends:
+```python
+res[::-1] = "AZ" ✅
+```
+---
+### 💡 Why columnNumber - 1?
+```python
+Without -1:          With -1 (correct):
+Z = 26               Z = 26
+26 % 26 = 0  ❌      (26-1) % 26 = 25 → 'Z' ✅
+chr(65+0)='A'        chr(65+25)='Z'
+
+26 // 26 = 1  ❌     (26-1) // 26 = 0  ✅
+(thinks there's      (correctly stops
+ more to process)     after Z)
+
+The -1 shifts 1-26 → 0-25 so modulo and division work correctly
+```
+---
+💡 Excel Column Map
+```
+1  → A      27 → AA     703 → AAA
+2  → B      28 → AB     704 → AAB
+...         ...
+26 → Z      52 → AZ     728 → AAZ
+            53 → BA     729 → ABA
+```
+---
+
+
 
 
 
