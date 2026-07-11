@@ -150,6 +150,7 @@ Algorithm (concise)
 - Let g = gcd(len(str1), len(str2)).
 - Return str1[:g].
 
+
 Why gcd(len1, len2)?
 - If str1 = x^a and str2 = x^b, then len1 = a*len(x), len2 = b*len(x) → len(x) divides both lengths → len(x) divides gcd(len1,len2). The largest candidate length is gcd(len1,len2). If str1 + str2 == str2 + str1, the prefix of length g will repeat to form both, hence it's the answer.
 ---
