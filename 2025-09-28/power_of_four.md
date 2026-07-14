@@ -12,6 +12,7 @@
 You are given an integer `n`.  
 Return **true** if `n` is a power of four, otherwise return **false**.  
 
+
 Formally, `n` is a power of four if there exists an integer `x` such that:  
 
 \[
