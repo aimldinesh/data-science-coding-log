@@ -204,3 +204,36 @@ s = "([)]"    →  return False ✅
     - Each character is processed once.
 - **Space**: O(n)
     - Stack could grow up to length n in the worst case (e.g., all opening brackets).
+
+---
+
+## Nested If-Else Version
+```python
+def isValid(self, s: str) -> bool:
+    stack = []
+    
+    for c in s:
+        # Opening brackets → push
+        if c == '(' or c == '[' or c == '{':
+            stack.append(c)
+        
+        # Closing brackets → check match
+        elif c == ')':
+            if not stack or stack[-1] != '(':
+                return False
+            stack.pop()
+        
+        elif c == ']':
+            if not stack or stack[-1] != '[':
+                return False
+            stack.pop()
+        
+        elif c == '}':
+            if not stack or stack[-1] != '{':
+                return False
+            stack.pop()
+    
+    return not stack
+```
+---
+
