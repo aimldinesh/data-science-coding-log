@@ -140,7 +140,64 @@ Loop ends:
 ```python
 stack = [] → empty → return True ✅
 ```
+---
+### 💡 Stack Behaviour Visualised
+```python
+s = "({[]})"
 
+Step:  (    {    [    ]    }    )
+       ↓    ↓    ↓    ↑    ↑    ↑
+      push push push pop  pop  pop
+
+stack:
+[(]
+[(,{]
+[(,{,[]
+[(,{]     ← ] matched [
+[(]       ← } matched {
+[]        ← ) matched (
+→ empty → True ✅
+```
+---
+### 💡 Why HashMap Instead of if-else?
+```python
+# Without HashMap — verbose:
+if c == ')':
+    if not stack or stack[-1] != '(':
+        return False
+elif c == ']':
+    if not stack or stack[-1] != '[':
+        return False
+elif c == '}':
+    if not stack or stack[-1] != '{':
+        return False
+
+# With HashMap — clean O(1) lookup:
+CloseToOpen = {")":"(", "}":"{", "]":"["}
+if stack and stack[-1] == CloseToOpen[c]:
+    stack.pop()
+```
+---
+
+### 🔍 All Test Cases
+```python
+"()"      → True  ✅
+"()[]{}"  → True  ✅
+"(]"      → False ✅
+"([)]"    → False ✅
+"{[]}"    → True  ✅
+""        → True  ✅  (empty string, empty stack)
+"("       → False ✅  (unclosed bracket)
+")("      → False ✅  (closing before opening)
+```
+---
+
+## ✅ Final Answer
+```python
+s = "({[]})"  →  return True  ✅
+s = "([)]"    →  return False ✅
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
