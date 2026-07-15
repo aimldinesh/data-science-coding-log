@@ -94,6 +94,54 @@ class Solution:
 
 ---
 
+### 🔍 Step-by-Step Execution
+
+Input: s = "({[]})"
+```python
+CloseToOpen = { ')':'(', '}':'{', ']':'[' }
+```
+c='('
+```python
+'(' is opening → push
+stack = ['(']
+```
+c='{'
+```python
+'{' is opening → push
+stack = ['(', '{']
+```
+c='['
+```python
+'[' is opening → push
+stack = ['(', '{', '[']
+```
+c=']'
+```python
+']' is closing
+CloseToOpen[']'] = '['
+stack[-1] = '[' == '[' ✅ → pop
+stack = ['(', '{']
+```
+c='}'
+```python
+'}' is closing
+CloseToOpen['}'] = '{'
+stack[-1] = '{' == '{' ✅ → pop
+stack = ['(']
+```
+c=')'
+```python
+')' is closing
+CloseToOpen[')'] = '('
+stack[-1] = '(' == '(' ✅ → pop
+stack = []
+```
+Loop ends:
+```python
+stack = [] → empty → return True ✅
+```
+
+
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
     - Each character is processed once.
