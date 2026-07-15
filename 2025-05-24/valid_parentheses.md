@@ -41,19 +41,31 @@ Final stack is empty ⇒ ✅ Valid
 ---
 
 ## 🚀 Approach : Stack Matching
-🧠 Intuition:
-- Use a stack to keep track of the last unmatched opening bracket.
-- Whenever a closing bracket is encountered, check if it matches the most recent opening bracket on top of the stack.
 
-🔧 Steps:
-- Create a dictionary CloseToOpen mapping closing to opening brackets.
-- Initialize an empty stack.
-- Iterate through each character in s:
-     - If it's a closing bracket, check if the stack is not empty and its top matches the corresponding opening bracket.
-          - If it matches, pop it.
-          - If not, return False.
-     - If it's an opening bracket, push it onto the stack.
-- At the end, return True only if the stack is empty (all brackets matched).
+🧠 Intuition
+Every closing bracket must match the most recently opened unmatched bracket — classic Last In First Out → use a stack. Push opening brackets, and when a closing bracket arrives, check if the top of the stack is its matching pair. If at any point it doesn't match, or stack is empty when expecting a match → invalid.
+```python
+s = "({[]})"
+
+Push (  → stack=[(]
+Push {  → stack=[(, {]
+Push [  → stack=[(, {, []
+] arrives → matches [ on top → pop → stack=[(, {]
+} arrives → matches { on top → pop → stack=[(]
+) arrives → matches ( on top → pop → stack=[]
+Empty stack → True ✅
+```
+📌 Approach
+
+1. stack=[], CloseToOpen = {")":"(", "}":"{", "]":"["}
+2. For each character c:
+   - If closing bracket → check stack[-1] == CloseToOpen[c]
+     - Match → stack.pop()
+     - No match or empty → return False
+
+   - If opening bracket → stack.append(c)
+
+3. Return True if stack empty, else False
 ---
 
 ## 💻 Code (Python)
