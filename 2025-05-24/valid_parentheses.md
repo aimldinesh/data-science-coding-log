@@ -237,3 +237,36 @@ def isValid(self, s: str) -> bool:
 ```
 ---
 
+### 🆚 Comparison
+```python
+                   HashMap                                    VersionNested If-Else
+Lines              ~8                                         ~15
+Readability       ✅ Concise                                 ✅ Explicit
+Performance       O(1) lookup                                 O(1) comparison
+Extensibility     Add one dict entry                          Add entire elif block
+Interview         Shows Pythonic thinking                     Shows clear logic flow
+```
+---
+## 💡 Key Difference
+```python
+# HashMap — one universal check:
+if stack and stack[-1] == CloseToOpen[c]:
+    stack.pop()
+
+# If-Else — repeated pattern three times:
+elif c == ')':
+    if not stack or stack[-1] != '(':  ← same pattern
+        return False
+    stack.pop()
+
+elif c == ']':
+    if not stack or stack[-1] != '[':  ← same pattern
+        return False
+    stack.pop()
+```
+---
+
+### 💡 Interview tip: 
+
+Start with the nested if-else to show your logic clearly, then refactor to the HashMap version saying "I can clean this up by extracting the repeated pattern into a lookup table" — this demonstrates both correctness and code quality thinking.
+
