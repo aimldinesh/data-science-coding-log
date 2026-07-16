@@ -26,6 +26,7 @@ Output: `true`
 
 Explanation: 1² + 2² = 5  
 
+
 **Example 2:**  
 
 Input: `c = 3`  
