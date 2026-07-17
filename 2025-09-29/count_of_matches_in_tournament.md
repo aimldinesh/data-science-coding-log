@@ -20,7 +20,8 @@ Return the **total number of matches played** until there is exactly one winner.
 
 ## 🔹 Examples
 
-**Example 1:**  
+**Example 1:** 
+
 Input: `n = 7`  
 Output: `6`  
 
