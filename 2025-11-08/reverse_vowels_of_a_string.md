@@ -16,6 +16,7 @@ Vowels include: `a, e, i, o, u` (both lowercase and uppercase).
 Example 1:
 Input: s = "IceCreAm"
 Output: "AceCreIm"
+
 Explanation:The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
 
 Example 2:
