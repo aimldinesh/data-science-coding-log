@@ -14,6 +14,7 @@ Your task is to determine the **minimum number of characters you need to append 
 
 A subsequence of a string is a new string generated from the original string with some characters (possibly none) deleted without changing the relative order of the remaining characters.
 
+
 Return the minimum number of characters to append.
 
 ---
