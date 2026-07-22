@@ -22,7 +22,6 @@ Return all strings in `words` that are a **substring of another word** in the ar
 
 ```python
 Input:
-
 words = ["mass","as","hero","superhero"]
 
 Output:
