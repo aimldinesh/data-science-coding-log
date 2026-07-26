@@ -19,6 +19,7 @@ Otherwise, return `False`.
 **Example 1:**  
 Input: `n = 12`  
 Output: `true`  
+
 Explanation: 12 = 3¹ + 3² = 3 + 9  
 
 **Example 2:**  
