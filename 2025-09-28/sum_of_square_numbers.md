@@ -39,6 +39,7 @@ Explanation: No integers `a` and `b` exist such that a² + b² = 3.
 🧠 Approach 1: Brute Force (O(√c²) = O(c))
 
 🔹 Intuition
+
     - We can try every possible value of a and b, and check if any pair satisfies a² + b² = c.
 
 ## Code(Python)
