@@ -37,6 +37,7 @@ Output: `false`
 
 Explanation: 14 = 2 × 7 (7 is not allowed).  
 
+
 ---
 
 ## 🔹 Approach
