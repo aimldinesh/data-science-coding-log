@@ -16,6 +16,7 @@ Given an integer array `nums` of **distinct** positive integers, return the numb
 
 Tuples are ordered — i.e., `(a,b,c,d)` is different from `(c,d,a,b)` and order inside a pair matters (so `(a,b,...)` and `(b,a,...)` are different tuples).
 
+
 ---
 
 ## 🔹 Example
