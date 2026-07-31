@@ -45,7 +45,6 @@ We simulate the process of filling the matrix in spiral order:
 4. After each step, adjust the respective boundary (`top++, right--, bottom--, left++`).  
 5. Continue until `val > n²`.
 
-
 ---
 
 ## 💻 Code (Python)
