@@ -69,7 +69,7 @@ class Solution:
                 val += 1
             top += 1
 
-            # 2. Fill right column
+            # 2. Fill the right column
             for r in range(top, bottom + 1):
                 mat[r][right] = val
                 val += 1
