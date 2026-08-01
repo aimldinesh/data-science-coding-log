@@ -159,6 +159,7 @@ stack:
 → empty → True ✅
 ```
 ---
+
 ### 💡 Why HashMap Instead of if-else?
 ```python
 # Without HashMap — verbose:
