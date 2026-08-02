@@ -9,6 +9,7 @@
 ---
 
 ## 📌 Problem Statement
+
 Given a 2D integer matrix, return the **transpose** of the matrix.  
 The transpose of a matrix is obtained by swapping rows with columns.
 
