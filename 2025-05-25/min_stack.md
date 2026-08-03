@@ -9,6 +9,7 @@
 ---
 
 ## ✅ Problem Statement
+
 - Design a stack that supports:
    - push(val): Pushes an element onto the stack.
    - pop(): Removes the element on the top of the stack.
