@@ -55,6 +55,7 @@ Because 6 is the lowest node that has both 2 and 8 in its subtree.
 ## 💻 Code (Python)
 
 ```python
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
