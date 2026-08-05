@@ -9,6 +9,7 @@
 ---
 
 ## ✅ Problem Statement
+
 - Given the root of a Binary Search Tree and two nodes p and q, find their Lowest Common Ancestor (LCA).
 - The Lowest Common Ancestor is the lowest node in the tree that has both p and q as descendants (a node can be a descendant of itself).
 
