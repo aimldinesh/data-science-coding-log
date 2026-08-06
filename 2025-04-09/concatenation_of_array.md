@@ -15,6 +15,7 @@ Given an integer array `nums` of length `n`, return an array `ans` of length `2n
 ```python
 Example 1:
 Input: nums = [1,2,1]
+
 Output: [1,2,1,1,2,1]
 
 Explanation: The array ans is formed as follows:
