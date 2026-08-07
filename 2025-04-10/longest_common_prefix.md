@@ -14,6 +14,7 @@
 ---
 ## Examples
 ```python
+
 Example 1:
 Input: strs = ["flower","flow","flight"]
 Output: "fl"
