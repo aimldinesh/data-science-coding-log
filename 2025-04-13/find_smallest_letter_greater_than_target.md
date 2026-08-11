@@ -10,7 +10,6 @@
 ## ✅ Problem Statement
 - Given a list of **sorted** characters `letters` and a **target** character `target`, return the **smallest** character in the list that is **greater than** the target. Note that the letters wrap around in a circular fashion (i.e., if the target is greater than or equal to the largest letter, the next greatest letter is the smallest letter).
 
-
 ---
 ## Examples
 ```python
