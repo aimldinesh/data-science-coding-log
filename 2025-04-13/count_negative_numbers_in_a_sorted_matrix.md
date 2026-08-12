@@ -27,6 +27,7 @@ Output: 0
 ---
 
 ## 🚀 My Approach
+
 - Since each row is sorted in **non-increasing** order, we can use **binary search** to find the **first negative number** in each row.
 - Once we have the index of the first negative number, all elements to the right of it will also be negative.
 - The number of negatives in that row = `len(row) - index`.
