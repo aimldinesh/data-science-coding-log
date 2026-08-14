@@ -16,6 +16,7 @@
 Example 1:
 Input: intervals = [[1,2]]
 Output: [-1]
+
 Explanation: There is only one interval in the collection, so it outputs -1.
 
 Example 2:
