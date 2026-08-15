@@ -9,7 +9,6 @@
 
 ## ✅ Problem Statement
 - Implement a `SnapshotArray` class with the following operations:
-
   - `set(index, val)`: Sets the element at the given index to `val`.
   - `snap()`: Takes a snapshot and returns the `snap_id`.
   - `get(index, snap_id)`: Returns the value at the index at the time of the given `snap_id`.
