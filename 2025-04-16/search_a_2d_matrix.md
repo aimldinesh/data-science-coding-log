@@ -8,6 +8,7 @@
 ---
 
 ## ✅ Problem Statement
+
 - Write an efficient algorithm to search for a value in a 2D matrix. This matrix has the following properties:
   - Integers in each row are sorted from left to right.
   - The first integer of each row is greater than the last integer of the previous row.
