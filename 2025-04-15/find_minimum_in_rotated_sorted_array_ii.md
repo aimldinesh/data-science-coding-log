@@ -22,6 +22,7 @@ Example 2:
 Input: nums = [2,2,2,0,1]
 Output: 0
 ```
+
 --- 
 
 ## 🚀 My Approach
