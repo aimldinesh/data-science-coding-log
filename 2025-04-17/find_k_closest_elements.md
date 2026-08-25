@@ -11,6 +11,7 @@
 Given a **sorted array** `arr`, an integer `k`, and a target integer `x`, return the `k` closest integers to `x` in the array.
 
 ### 📝 Conditions:
+
 - The result should be sorted in **ascending order**.
 - An integer `a` is closer to `x` than an integer `b` if:
   - `|a - x| < |b - x|`, or
