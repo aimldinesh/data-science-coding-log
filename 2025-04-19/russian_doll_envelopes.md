@@ -29,6 +29,7 @@ Output: 1
 ---
 
 ## 🚀 My Approach : Sorting + Longest Increasing Subsequence (LIS)
+
 ### 💡 Key Insight:
 - We cannot apply LIS directly on both dimensions.
 - So we **sort envelopes** by:
