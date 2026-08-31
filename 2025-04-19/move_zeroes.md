@@ -29,6 +29,7 @@ Output: [0]
 ## 🚀 Approach : Two-pointer technique
 
 🧠 Intuition
+
 Use two pointers — non_zero_index marks where the next non-zero should land, i scans every element. Whenever i finds a non-zero, swap it to non_zero_index position and advance non_zero_index. Zeros naturally bubble to the back as non-zeros get swapped forward.
 ```
 nums = [0, 1, 0, 3, 12]
