@@ -83,6 +83,7 @@ Values:   0  1  0  3  12
 ```
 
 i=0 → nums[0]=0
+
 ```
 0 == 0 → skip
 non_zero_index = 0
