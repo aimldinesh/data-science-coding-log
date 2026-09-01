@@ -26,6 +26,7 @@ Output: "y"
 ---
 
 ## 🚀 My Approach 1 : Frequency Counting using Dictionary
+
 ### 💡 Key Insight:
 - Count the frequency of characters in string `s`.
 - Then iterate over string `t` and decrease the count.
