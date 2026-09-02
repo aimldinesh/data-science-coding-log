@@ -14,7 +14,6 @@ Given a **mountain array**, which is an array where:
   
 Find the index of the **peak element** (the element where the array stops increasing and starts decreasing).
 
-
 ---
 ## Examples
 ```python
@@ -32,14 +31,14 @@ Output: 1
 ```
 ---
 
-## 🚀 My Approach:Binary Search
+## 🚀 My Approach: Binary Search
 We can solve this problem using **Binary Search** to efficiently find the peak element.
 
-### 🔸 Observations:
+🔸 Observations:
 - The peak element is the highest value, and it will always have values less than itself both before and after it.
 - The array strictly increases and then decreases, so it guarantees a unique peak element.
 
-### 🔸 Steps:
+🔸 Steps:
 1. Initialize two pointers: `left = 0` and `right = len(arr) - 1`.
 2. Run a binary search:
    - Compute `mid = (left + right) // 2`.
@@ -72,6 +71,62 @@ class Solution:
         return left
 ```
 
+---
+## 🔍 Step-by-Step Execution
+```
+Input: arr = [0, 2, 4, 6, 3, 1] → n=6
+Indices:  0  1  2  3  4  5
+Values:   0  2  4  6  3  1
+                  ↑ peak at index 3
+```
+
+Iteration 1
+```
+left=0, right=5
+mid = (0+5)//2 = 2
+
+arr[2]=4 < arr[3]=6 → still climbing ✅
+left = mid+1 = 3
+```
+Iteration 2
+```
+left=3, right=5
+mid = (3+5)//2 = 4
+
+arr[4]=3 < arr[5]=1 → descending ❌
+right = mid = 4
+```
+Iteration 3
+```
+left=3, right=4
+mid = (3+4)//2 = 3
+
+arr[3]=6 > arr[4]=3 → descending ❌
+right = mid = 3
+```
+
+Loop ends: left=3 == right=3
+```
+return left = 3 ✅
+```
+💡 Why This Works
+```
+Left of peak:   arr[mid] < arr[mid+1]  →  safe to discard left half
+Right of peak:  arr[mid] > arr[mid+1]  →  safe to discard right half
+At peak:        arr[mid] > arr[mid+1]  →  right=mid, eventually left==right==peak
+```
+```
+        🏔️
+       /    \
+      /      \          arr[mid] < arr[mid+1] → go right →
+     /        \
+────/────mid───\────
+              ← arr[mid] > arr[mid+1] → go left
+```
+✅ Final Answer
+```
+return left = 3   →   arr[3] = 6  (peak)
+```
 ---
 
 ## 💡 Time and Space Complexity

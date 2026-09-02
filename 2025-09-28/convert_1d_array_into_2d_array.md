@@ -19,6 +19,7 @@ Construct and return a **2D array** with `m` rows and `n` columns using all elem
 
 ## 🔹 Examples
 ```text
+
 Example 1:
 
 Input: original = [1,2,3,4], m = 2, n = 2
@@ -50,6 +51,7 @@ It is impossible to fit 2 elements in a 1x1 2D array, so return an empty 2D arra
 - Check feasibility
   - The total number of elements len(original) must equal m * n.
   - If not, return [].
+
 
 - Construct 2D array
   - Iterate m times (for each row).

@@ -11,8 +11,24 @@
 - You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version has some bugs.Your goal is to find the first bad version among n versions using the isBadVersion API.
 
 ---
+## Examples
+```
+Example 1:
+Input: n = 5, bad = 4
+Output: 4
 
-## 🚀 My Approach
+Explanation:
+call isBadVersion(3) -> false
+call isBadVersion(5) -> true
+call isBadVersion(4) -> true
+Then 4 is the first bad version.
+
+Example 2:
+Input: n = 1, bad = 1
+Output: 1
+```
+
+## 🚀 Approach
 - We use Binary Search to reduce the search space.
 - If mid is a bad version, we move the right pointer to mid.
 - If mid is not bad, we move the left pointer to mid + 1.

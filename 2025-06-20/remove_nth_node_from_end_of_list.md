@@ -31,6 +31,18 @@ List: 1 → 2 → 3 → 5 (the 4 is removed, which is the 2nd from the end)
      - Move the right pointer n steps ahead.
      - Then move both left and right together until right reaches the end.
      - Now left is just before the node we need to delete.
+```python
+Remove 2nd from end in [1, 2, 3, 4, 5]
+
+right moves n=2 steps ahead:
+left=dummy, right=3
+
+then both move together until right=None:
+left=3, right=None
+
+left.next = left.next.next → skip 4
+Result: [1, 2, 3, 5] ✅
+```
 
 👣 Approach
 - Create a dummy node pointing to head. This helps handle edge cases (like deleting the first node).
@@ -87,32 +99,139 @@ head = 1 → 2 → 3 → 4 → 5, n = 2
 
 Initialization:
 dummy → 0 → 1 → 2 → 3 → 4 → 5
+```
+```python
+dummy → 1 → 2 → 3 → 4 → 5 → None
+  ↑left
+        ↑right
+```
+---
 
+Phase 1 — Move right n=2 steps
+n=2: right = right.next = 2
+```
+dummy → 1 → 2 → 3 → 4 → 5 → None
+  ↑left     ↑right
+```
+n=1: right = right.next = 3
+```python
+dummy → 1 → 2 → 3 → 4 → 5 → None
+  ↑left          ↑right
+```
+n=0: stop
+---
+
+Phase 2 — Move both until right=None
+Step 1:
+```python
+left  = left.next  = 1
+right = right.next = 4
+
+dummy → 1 → 2 → 3 → 4 → 5 → None
+        ↑left       ↑right
+```
+Step 2:
+```python
+left  = left.next  = 2
+right = right.next = 5
+
+dummy → 1 → 2 → 3 → 4 → 5 → None
+            ↑left       ↑right
+```
+Step 3:
+```python
+left  = left.next  = 3
+right = right.next = None
+
+dummy → 1 → 2 → 3 → 4 → 5 → None
+                ↑left        ↑right
+```
+right=None → stop
+
+---
+
+Phase 3 — Delete target
+```python
+left = node(3)
+left.next = node(4)   ← this is the node to delete
+left.next = left.next.next = node(5)
+
+dummy → 1 → 2 → 3 → 5 → None
+                  ↑left  ↑(skipped 4)
+```
+---
+
+### 🔍 Edge Cases
+
+Remove head (n = length of list)
+```python
+Input: [1, 2, 3],  n=3
+
+Phase 1: right moves 3 steps → right=None
+Phase 2: right already None → skip entirely
 left = dummy
 
-right = head (1)
+left.next = left.next.next = node(2)
+dummy → 2 → 3
 
-Step 1: Move right 2 steps ahead:
-After 1st move: right = 2
+return dummy.next = [2, 3] ✅
+```
+Single node list
+```python
+Input: [1],  n=1
 
-After 2nd move: right = 3
+dummy → 1 → None
+left=dummy, right=1
 
-Step 2: Move both until right reaches end:
-Move 1: left = 1, right = 4
+Phase 1: right = right.next = None
+Phase 2: right=None → skip
 
-Move 2: left = 2, right = 5
+left.next = left.next.next = None
+dummy → None
 
-Move 3: left = 3, right = None
+return dummy.next = None ✅
+```
+Two nodes, remove last
+```python
+Input: [1, 2],  n=1
 
-Step 3: Remove node:
-left.next = 4 → change to left.next = 5
+Phase 1: right = 2
+Phase 2: left=1, right=None → stop
+left.next = left.next.next = None
 
-List becomes: 1 → 2 → 3 → 5
+return [1] ✅
+```
+---
+
+### 💡 Why Dummy Node?
+```python
+
+Without dummy — removing head needs special case:
+if n == len(list):
+    return head.next   # special case ❌ extra logic
+
+# With dummy — uniform for ALL cases including head removal:
+dummy → head
+left  = dummy         # left can sit before head ✅
+# left.next = left.next.next works even when deleting head
 
 ```
+---
+## ✅ Final Answer
+```python
+Input:  [1, 2, 3, 4, 5],  n=2
+Output: [1, 2, 3, 5]       ✅  (4th node removed = 2nd from end)
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(L)
     - Where L is the length of the linked list. We traverse the list at most twice.
 - **Space**: O(1)
     - No extra space is used aside from pointers.
+
+---
+
+## 💡 Interview tip: 
+
+The gap technique — "advance one pointer by n steps first, then move both together" — is a fundamental linked list pattern. It also solves Middle of Linked List (gap = length/2), Linked List Cycle II (gap = cycle entry distance), and Reorder List (find midpoint). Naming the pattern explicitly earns points with interviewers.

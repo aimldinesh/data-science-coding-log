@@ -21,12 +21,15 @@ Input Tree:
     4   5
 
 Output:True (balanced)
+
+
 ```
 ---
 
 ## 🚀 Approach
 💡 Intuition
 - Instead of recalculating the height at each node repeatedly, we combine the balance check and height calculation in a single DFS traversal.
+  
 - We return:
    - [True, height] if subtree is balanced
    - [False, height] if not

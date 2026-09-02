@@ -41,19 +41,31 @@ Final stack is empty ⇒ ✅ Valid
 ---
 
 ## 🚀 Approach : Stack Matching
-🧠 Intuition:
-- Use a stack to keep track of the last unmatched opening bracket.
-- Whenever a closing bracket is encountered, check if it matches the most recent opening bracket on top of the stack.
 
-🔧 Steps:
-- Create a dictionary CloseToOpen mapping closing to opening brackets.
-- Initialize an empty stack.
-- Iterate through each character in s:
-     - If it's a closing bracket, check if the stack is not empty and its top matches the corresponding opening bracket.
-          - If it matches, pop it.
-          - If not, return False.
-     - If it's an opening bracket, push it onto the stack.
-- At the end, return True only if the stack is empty (all brackets matched).
+🧠 Intuition
+Every closing bracket must match the most recently opened unmatched bracket — classic Last In First Out → use a stack. Push opening brackets, and when a closing bracket arrives, check if the top of the stack is its matching pair. If at any point it doesn't match, or stack is empty when expecting a match → invalid.
+```python
+s = "({[]})"
+
+Push (  → stack=[(]
+Push {  → stack=[(, {]
+Push [  → stack=[(, {, []
+] arrives → matches [ on top → pop → stack=[(, {]
+} arrives → matches { on top → pop → stack=[(]
+) arrives → matches ( on top → pop → stack=[]
+Empty stack → True ✅
+```
+📌 Approach
+
+1. stack=[], CloseToOpen = {")":"(", "}":"{", "]":"["}
+2. For each character c:
+   - If closing bracket → check stack[-1] == CloseToOpen[c]
+     - Match → stack.pop()
+     - No match or empty → return False
+
+   - If opening bracket → stack.append(c)
+
+3. Return True if stack empty, else False
 ---
 
 ## 💻 Code (Python)
@@ -82,8 +94,180 @@ class Solution:
 
 ---
 
+### 🔍 Step-by-Step Execution
+
+Input: s = "({[]})"
+```python
+CloseToOpen = { ')':'(', '}':'{', ']':'[' }
+```
+c='('
+```python
+'(' is opening → push
+stack = ['(']
+```
+c='{'
+```python
+'{' is opening → push
+stack = ['(', '{']
+```
+c='['
+```python
+'[' is opening → push
+stack = ['(', '{', '[']
+```
+c=']'
+```python
+']' is closing
+CloseToOpen[']'] = '['
+stack[-1] = '[' == '[' ✅ → pop
+stack = ['(', '{']
+```
+c='}'
+```python
+'}' is closing
+CloseToOpen['}'] = '{'
+stack[-1] = '{' == '{' ✅ → pop
+stack = ['(']
+```
+c=')'
+```python
+')' is closing
+CloseToOpen[')'] = '('
+stack[-1] = '(' == '(' ✅ → pop
+stack = []
+```
+Loop ends:
+```python
+stack = [] → empty → return True ✅
+```
+---
+### 💡 Stack Behaviour Visualised
+```python
+s = "({[]})"
+
+Step:  (    {    [    ]    }    )
+       ↓    ↓    ↓    ↑    ↑    ↑
+      push push push pop  pop  pop
+
+stack:
+[(]
+[(,{]
+[(,{,[]
+[(,{]     ← ] matched [
+[(]       ← } matched {
+[]        ← ) matched (
+→ empty → True ✅
+```
+---
+
+### 💡 Why HashMap Instead of if-else?
+```python
+# Without HashMap — verbose:
+if c == ')':
+    if not stack or stack[-1] != '(':
+        return False
+elif c == ']':
+    if not stack or stack[-1] != '[':
+        return False
+elif c == '}':
+    if not stack or stack[-1] != '{':
+        return False
+
+# With HashMap — clean O(1) lookup:
+CloseToOpen = {")":"(", "}":"{", "]":"["}
+if stack and stack[-1] == CloseToOpen[c]:
+    stack.pop()
+```
+---
+
+### 🔍 All Test Cases
+```python
+"()"      → True  ✅
+"()[]{}"  → True  ✅
+"(]"      → False ✅
+"([)]"    → False ✅
+"{[]}"    → True  ✅
+""        → True  ✅  (empty string, empty stack)
+"("       → False ✅  (unclosed bracket)
+")("      → False ✅  (closing before opening)
+```
+---
+
+## ✅ Final Answer
+```python
+s = "({[]})"  →  return True  ✅
+s = "([)]"    →  return False ✅
+```
+---
+
 ## 💡 Time and Space Complexity
 - **Time**: O(n)
     - Each character is processed once.
 - **Space**: O(n)
     - Stack could grow up to length n in the worst case (e.g., all opening brackets).
+
+---
+
+## Nested If-Else Version
+```python
+def isValid(self, s: str) -> bool:
+    stack = []
+    
+    for c in s:
+        # Opening brackets → push
+        if c == '(' or c == '[' or c == '{':
+            stack.append(c)
+        
+        # Closing brackets → check match
+        elif c == ')':
+            if not stack or stack[-1] != '(':
+                return False
+            stack.pop()
+        
+        elif c == ']':
+            if not stack or stack[-1] != '[':
+                return False
+            stack.pop()
+        
+        elif c == '}':
+            if not stack or stack[-1] != '{':
+                return False
+            stack.pop()
+    
+    return not stack
+```
+---
+
+### 🆚 Comparison
+```python
+                   HashMap                                    VersionNested If-Else
+Lines              ~8                                         ~15
+Readability       ✅ Concise                                 ✅ Explicit
+Performance       O(1) lookup                                 O(1) comparison
+Extensibility     Add one dict entry                          Add entire elif block
+Interview         Shows Pythonic thinking                     Shows clear logic flow
+```
+---
+## 💡 Key Difference
+```python
+# HashMap — one universal check:
+if stack and stack[-1] == CloseToOpen[c]:
+    stack.pop()
+
+# If-Else — repeated pattern three times:
+elif c == ')':
+    if not stack or stack[-1] != '(':  ← same pattern
+        return False
+    stack.pop()
+
+elif c == ']':
+    if not stack or stack[-1] != '[':  ← same pattern
+        return False
+    stack.pop()
+```
+---
+
+### 💡 Interview tip: 
+
+Start with the nested if-else to show your logic clearly, then refactor to the HashMap version saying "I can clean this up by extracting the repeated pattern into a lookup table" — this demonstrates both correctness and code quality thinking.
+

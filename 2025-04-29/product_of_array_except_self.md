@@ -72,6 +72,59 @@ class Solution:
         return res
 ```
 ---
+### 🔍 Step-by-Step Execution
+
+
+Input: nums = [1, 2, 3, 4]
+```
+Indices:  0  1  2  3
+Values:   1  2  3  4
+```
+
+i=0 → skip j=0, multiply rest
+```
+j=1: prod = 1 × 2 = 2
+j=2: prod = 2 × 3 = 6
+j=3: prod = 6 × 4 = 24
+res[0] = 24
+```
+i=1 → skip j=1, multiply rest
+```
+j=0: prod = 1 × 1 = 1
+j=2: prod = 1 × 3 = 3
+j=3: prod = 3 × 4 = 12
+res[1] = 12
+```
+i=2 → skip j=2, multiply rest
+```
+j=0: prod = 1 × 1 = 1
+j=1: prod = 1 × 2 = 2
+j=3: prod = 2 × 4 = 8
+res[2] = 8
+```
+i=3 → skip j=3, multiply rest
+```
+j=0: prod = 1 × 1 = 1
+j=1: prod = 1 × 2 = 2
+j=2: prod = 2 × 3 = 6
+res[3] = 6
+```
+---
+### 📊 Trace Table
+```
+i           skipped         jvisited         prod          res
+0           nums[0]=1       1,2,3            2×3×4=24      [24, 0, 0, 0]
+1           nums[1]=2       0,2,3            1×3×4=12      [24, 12, 0, 0]
+2           nums[2]=3       0,1,3            1×2×4=8       [24, 12, 8, 0]
+3           nums[3]=4       0,1,2            1×2×3=6       [24, 12, 8, 6]
+```
+---
+## ✅ Final Answer
+```
+return [24, 12, 8, 6] ✅
+```
+---
+
 ## 💡 Time and Space Complexity
 - **Time**: O(n²)
     -  For each index, we traverse the entire array.
@@ -147,6 +200,131 @@ class Solution:
 
 ```
 ---
+### 🔍 Step-by-Step Execution
+
+Input: nums = [1, 2, 3, 4]
+```
+Indices:  0  1  2  3
+Values:   1  2  3  4
+```
+
+🔎 Pass 1 — Prefix (left → right)
+
+i=0
+```
+res[0] = prefix = 1          (nothing to left)
+prefix = 1 × nums[0] = 1×1 = 1
+res = [1, 1, 1, 1]
+```
+i=1
+```
+res[1] = prefix = 1          (only nums[0]=1 to left)
+prefix = 1 × nums[1] = 1×2 = 2
+res = [1, 1, 1, 1]
+```
+i=2
+```
+res[2] = prefix = 2          (nums[0]×nums[1] = 1×2)
+prefix = 2 × nums[2] = 2×3 = 6
+res = [1, 1, 2, 1]
+```
+i=3
+```
+res[3] = prefix = 6          (nums[0]×nums[1]×nums[2] = 1×2×3)
+prefix = 6 × nums[3] = 6×4 = 24
+res = [1, 1, 2, 6]
+```
+---
+🔎 Pass 2 — Postfix (right → left)
+
+i=3
+```
+res[3] = res[3] × postfix = 6×1 = 6    (nothing to right)
+postfix = 1 × nums[3] = 1×4 = 4
+res = [1, 1, 2, 6]
+```
+i=2
+```
+res[2] = res[2] × postfix = 2×4 = 8    (only nums[3]=4 to right)
+postfix = 4 × nums[2] = 4×3 = 12
+res = [1, 1, 8, 6]
+```
+i=1
+```
+res[1] = res[1] × postfix = 1×12 = 12  (nums[2]×nums[3] = 3×4)
+postfix = 12 × nums[1] = 12×2 = 24
+res = [1, 12, 8, 6]
+```
+i=0
+```
+res[0] = res[0] × postfix = 1×24 = 24  (nums[1]×nums[2]×nums[3] = 2×3×4)
+postfix = 24 × nums[0] = 24×1 = 24
+res = [24, 12, 8, 6]
+```
+---
+### 📊 Prefix Pass Table
+```
+i           nums[i]             prefix (before)                 res[i]            prefix (after)
+0           1                   1                               1                 1 
+1           2                   1                               1                 2
+2           3                   2                               2                 6
+3           4                   6                               6                 24
+```
+---
+### 📊 Postfix Pass Table
+```
+i           nums[i]             res[i]before             postfix (before)    res[i] after   postfix (after)
+3           4                   6                        1                   6              4
+2           3                   2                        4                   8              12
+1           2                   1                        12                  12             24
+0           1                   1                        24                  24             24
+```
+---
+### 💡 What res Contains After Each Pass
+```
+nums      =  [ 1,   2,   3,   4]
+
+After prefix pass:
+res       =  [ 1,   1,   2,   6]
+              ↑     ↑    ↑    ↑
+             ( )  (1)  (1×2)(1×2×3)   ← left products
+
+After postfix pass:
+res       =  [24,  12,   8,   6]
+              ↑     ↑    ↑    ↑
+        (2×3×4)(3×4) (4)  ( )   ← multiplied by right products
+```
+---
+### 🔍 Edge Case — Array Contains Zero
+
+Input: nums = [1, 0, 3, 4]
+Prefix pass:
+```
+i         prefix         res[i]
+0         1              1
+1         1              1
+2         0              0
+3         0              0
+```
+Postfix pass:
+```
+i        postfix        res[i]
+3        1              0×1=0
+2        4              0×4=0
+1        12             1×12=12
+0        0              1×0=0
+```
+```
+return [0, 12, 0, 0] ✅
+Only index 1 (the zero) gets a non-zero product
+```
+---
+## ✅ Final Answer
+```
+nums = [1, 2, 3, 4]
+return [24, 12, 8, 6] ✅
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n
@@ -155,3 +333,7 @@ class Solution:
 - **Space**: O(1)
     - Output array is not considered extra space per LeetCode rules
     - Only two variables: prefix and postfix
+---
+### 💡 Interview tip: 
+
+If the interviewer asks "can you do it without the output array counting as space?" — that's not possible since you need somewhere to write the answer. The O(1) space claim here means no extra auxiliary arrays beyond res — which is the accepted standard for this problem.

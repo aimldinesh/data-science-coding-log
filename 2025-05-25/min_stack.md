@@ -9,6 +9,7 @@
 ---
 
 ## ✅ Problem Statement
+
 - Design a stack that supports:
    - push(val): Pushes an element onto the stack.
    - pop(): Removes the element on the top of the stack.
@@ -21,6 +22,7 @@
 Input:
 ["MinStack","push","push","push","getMin","pop","top","getMin"]
 [[],         [-2],  [0],   [-3],   [],      [],   [],    []]
+
 
 Output:
 [None, None, None, None, -3, None, 0, -2]

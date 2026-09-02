@@ -9,6 +9,7 @@
 ---
 
 ## ✅ Problem Statement
+
 - Given the root of a Binary Search Tree and two nodes p and q, find their Lowest Common Ancestor (LCA).
 - The Lowest Common Ancestor is the lowest node in the tree that has both p and q as descendants (a node can be a descendant of itself).
 
@@ -27,6 +28,7 @@ Input:
 p = 2, q = 8
 
 Output: 6
+
 Because 6 is the lowest node that has both 2 and 8 in its subtree.
 ```
 ---
@@ -54,6 +56,7 @@ Because 6 is the lowest node that has both 2 and 8 in its subtree.
 ## 💻 Code (Python)
 
 ```python
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):

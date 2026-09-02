@@ -14,6 +14,7 @@ Your task is to determine the **minimum number of characters you need to append 
 
 A subsequence of a string is a new string generated from the original string with some characters (possibly none) deleted without changing the relative order of the remaining characters.
 
+
 Return the minimum number of characters to append.
 
 ---
@@ -21,8 +22,10 @@ Return the minimum number of characters to append.
 ## 🔹 Example
 
 **Example 1:**  
+
 Input: `s = "coaching"`, `t = "coding"`  
-Output: `1`  
+Output: `1`
+
 Explanation: The longest prefix of `t` in `s` as a subsequence is `"coing"`.  
 Remaining part of `t` = `"d"`.  
 So, we need to append **1** character.  
@@ -30,6 +33,7 @@ So, we need to append **1** character.
 ---
 
 **Example 2:**  
+
 Input: `s = "abc"`, `t = "abc"`  
 Output: `0`  
 

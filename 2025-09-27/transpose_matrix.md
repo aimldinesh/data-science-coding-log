@@ -9,6 +9,7 @@
 ---
 
 ## 📌 Problem Statement
+
 Given a 2D integer matrix, return the **transpose** of the matrix.  
 The transpose of a matrix is obtained by swapping rows with columns.
 
@@ -25,7 +26,8 @@ matrix = [
     [4, 5, 6]
 ]
 
-# Output: [[1, 4],
+# Output:
+          [[1, 4],
            [2, 5],
            [3, 6]]
 

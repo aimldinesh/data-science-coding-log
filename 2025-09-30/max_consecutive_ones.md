@@ -17,7 +17,8 @@ Return the **maximum number of consecutive 1's** in the array.
 
 ## 🔹 Example  
 ```text
-Input:  
+Input:
+
 nums = [1,1,0,1,1,1]
 Output:3
 

@@ -32,7 +32,7 @@ Some examples of subtractive notation:
 - `CM` = 900 (1000 - 100)
 
 ### 🧪 Example:
-
+```python
 Input: s = "MCMXCIV"
 Output: 1994
 
@@ -40,8 +40,10 @@ Explanation:
 M = 1000  
 CM = 900  
 XC = 90  
-IV = 4  
+IV = 4 
+
 Total = 1000 + 900 + 90 + 4 = 1994
+```
 
 ---
 

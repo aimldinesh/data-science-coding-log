@@ -18,6 +18,7 @@ Example 1:
 Input
 ["Solution","pickIndex"]
 [[[1]],[]]
+
 Output
 [null,0]
 
@@ -26,9 +27,11 @@ Solution solution = new Solution([1]);
 solution.pickIndex(); // return 0. The only option is to return 0 since there is only one element in w.
 
 Example 2:
+
 Input
 ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
 [[[1,3]],[],[],[],[],[]]
+
 Output
 [null,1,1,1,1,0]
 

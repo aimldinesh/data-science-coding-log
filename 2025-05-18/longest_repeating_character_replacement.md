@@ -29,17 +29,32 @@ Example 2:
 Input: s = "AABABBA", k = 1
 Output: 4
 
-Explanation: Replace the third 'A' to get "AABBBBA", the longest is "ABBB".
+Explanation: Replace the third 'A' to get "AABBBBA", the longest is "BBBB".
 
 ```
 ---
 
 ## 🚀 Approach 1 : Brute Force + Frequency Count
-🔸 Idea:
-- Try every possible window [i...j] in the string.
-- For each window, count the frequency of characters.
-- If (window size - max frequency) is ≤ k, it's a valid window.
-- Update the result with the maximum valid window length.
+
+🧠 Intuition
+
+In any window, the most frequent character stays, and everything else gets replaced. So the number of replacements needed = window size - max frequency. If that's ≤ k, the window is valid. Try every possible window with two nested loops — brute force but clear.
+```
+s = "AABABBA",  k = 1
+
+Window "AABA" → maxf=3(A), replacements=4-3=1 ≤ k ✅ valid, length=4
+Window "ABAB" → maxf=2(A), replacements=4-2=2 > k ❌ invalid
+```
+📌 Approach
+
+1. For every starting index i, expand j rightward
+2. Track character frequencies in current window
+3. At each step: replacements = (j - i + 1) - maxf
+   + ≤ k → valid window → update res
+   + > k → invalid → break inner loop (window can only get worse)
+
+4. Return res
+
 ---
 
 ## 💻 Code (Python)
@@ -70,6 +85,114 @@ class Solution:
 ```
 
 ---
+## 🔍 Step-by-Step Execution
+
+Input: s = "AABABBA", k = 1
+```
+Indices:  0  1  2  3  4  5  6
+Values:   A  A  B  A  B  B  A
+```
+
+i=0
+j=0
+```
+count={'A':1}, maxf=1
+window="A", size=1
+replacements = 1-1 = 0 ≤ 1 ✅
+res = max(0,1) = 1
+```
+j=1
+```
+count={'A':2}, maxf=2
+window="AA", size=2
+replacements = 2-2 = 0 ≤ 1 ✅
+res = max(1,2) = 2
+```
+j=2
+```
+count={'A':2,'B':1}, maxf=2
+window="AAB", size=3
+replacements = 3-2 = 1 ≤ 1 ✅
+res = max(2,3) = 3
+```
+j=3
+```
+count={'A':3,'B':1}, maxf=3
+window="AABA", size=4
+replacements = 4-3 = 1 ≤ 1 ✅
+res = max(3,4) = 4
+```
+j=4
+```
+count={'A':3,'B':2}, maxf=3
+window="AABAB", size=5
+replacements = 5-3 = 2 > 1 ❌
+```
+j=5
+```
+count={'A':3,'B':3}, maxf=3
+window="AABABB", size=6
+replacements = 6-3 = 3 > 1 ❌
+```
+j=6
+```
+count={'A':4,'B':3}, maxf=4
+window="AABABBA", size=7
+replacements = 7-4 = 3 > 1 ❌
+```
+i=1
+j=1
+```
+count={'A':1}, maxf=1
+window="A", size=1
+replacements = 1-1 = 0 ≤ 1 ✅
+res = max(4,1) = 4
+```
+j=2
+```
+count={'A':1,'B':1}, maxf=1
+window="AB", size=2
+replacements = 2-1 = 1 ≤ 1 ✅
+res = max(4,2) = 4
+```
+j=3
+```
+count={'A':2,'B':1}, maxf=2
+window="ABA", size=3
+replacements = 3-2 = 1 ≤ 1 ✅
+res = max(4,3) = 4
+````
+j=4
+```
+count={'A':2,'B':2}, maxf=2
+window="ABAB", size=4
+replacements = 4-2 = 2 > 1 ❌
+```
+---
+i=2,3,4,5,6 — All windows ≤ 4, res stays 4
+---
+
+###  📊 Trace Table
+```
+i     j        window                  count                maxf             size-maxf          ≤k?        res
+0     0        "A"                     {A:1}                1                0                  ✅        1
+0     1        "AA"                    {A:2}                2                0                  ✅        2
+0     2        "AAB"                   {A:2,B:1}            2                1                  ✅        3
+0     3        "AABA"                  {A:3,B:1}            3                1                  ✅        4
+0     4        "AABAB"                 {A:3,B:2}            3                2                  ❌        4
+0     5        "AABABB"                {A:3,B:3}            3                3                  ❌        4
+0     6        "AABABBA"               {A:4,B:3}            4                3                  ❌        4
+1     1        "A"                     {A:1}                1                0                  ✅        4 
+1     2        "AB"                    {A:1,B:1}            1                1                  ✅        4 
+1     3        "ABA"                   {A:2,B:1}            2                1                  ✅        4
+1     4        "ABAB"                  {A:2,B:2}            2                2                  ❌        4
+
+```
+### ✅ Final Answer
+```
+return res = 4   →   "AABA" (replace B with A) ✅
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(n² × 26) = O(n²)
@@ -79,12 +202,24 @@ class Solution:
      - Only uses a dictionary for uppercase letter frequencies.
 
 ## 🚀 Approach 2 : Sliding Window + Character Frequency
-🔸 Key Insight:
-- The goal is to maintain the longest window such that we can convert all characters in that window to the most frequent character using at most k replacements.
-🔸 Steps:
-- Use a dictionary count to track the frequency of each character in the current window.
-- If (window size - max frequency) exceeds k, shrink the window from the left.
-- Update res with the length of the valid window.
+
+🧠 Intuition
+
+In any valid window, keep the most frequent character and replace everything else. Replacements needed = window size - max frequency. If that exceeds k, shrink from left until valid again. The largest valid window seen is the answer.
+```
+s = "AABABBA",  k = 1
+
+Window "AABA" → maxf=3(A), replacements=4-3=1 ≤ 1 ✅ length=4
+Window "AABAB" → maxf=3(A), replacements=5-3=2 > 1 ❌ shrink
+```
+
+📌 Approach
+
+1. count={}, l=0, res=0
+2. Expand r each step, update count[s[r]]
+3. While (r-l+1) - max(count.values()) > k → shrink: count[s[l]] -= 1, l += 1
+4. Update res = max(res, r-l+1)
+5. Return res
 
 ---
 
@@ -117,10 +252,144 @@ class Solution:
 ```
 
 ---
+### 🔍 Step-by-Step Execution
+
+Input: s = "AABABBA", k = 1
+```
+Indices:  0  1  2  3  4  5  6
+Values:   A  A  B  A  B  B  A
+```
+
+r=0 → s[r]='A'
+```
+count={'A':1}
+window="A",   size=1, maxf=1
+(1-1)=0 ≤ 1 ✅
+res=1
+```
+r=1 → s[r]='A'
+```
+count={'A':2}
+window="AA",  size=2, maxf=2
+(2-2)=0 ≤ 1 ✅
+res=2
+```
+r=2 → s[r]='B'
+```
+count={'A':2,'B':1}
+window="AAB", size=3, maxf=2
+(3-2)=1 ≤ 1 ✅
+res=3
+```
+r=3 → s[r]='A'
+```
+count={'A':3,'B':1}
+window="AABA", size=4, maxf=3
+(4-3)=1 ≤ 1 ✅
+res=4
+```
+r=4 → s[r]='B'
+```
+count={'A':3,'B':2}
+window="AABAB", size=5, maxf=3
+(5-3)=2 > 1 ❌ → shrink
+  remove s[0]='A' → count={'A':2,'B':2}, l=1
+  window="ABAB", size=4, maxf=2
+  (4-2)=2 > 1 ❌ → shrink again
+  remove s[1]='A' → count={'A':1,'B':2}, l=2
+  window="BAB", size=3, maxf=2
+  (3-2)=1 ≤ 1 ✅
+res=max(4,3)=4
+```
+r=5 → s[r]='B'
+```
+count={'A':1,'B':3}
+window="BABB", size=4, maxf=3
+(4-3)=1 ≤ 1 ✅
+res=max(4,4)=4
+```
+r=6 → s[r]='A'
+```
+count={'A':2,'B':3}
+window="BABBA", size=5, maxf=3
+(5-3)=2 > 1 ❌ → shrink
+  remove s[2]='B' → count={'A':2,'B':2}, l=3
+  window="ABBA", size=4, maxf=2
+  (4-2)=2 > 1 ❌ → shrink again
+  remove s[3]='A' → count={'A':1,'B':2}, l=4
+  window="BBA", size=3, maxf=2
+  (3-2)=1 ≤ 1 ✅
+res=max(4,3)=4
+```
+---
+### 💡 Window Lifecycle
+```
+s =  A  A  B  A  B  B  A
+     0  1  2  3  4  5  6
+
+r=0  [A]                         size=1 ✅
+r=1  [A  A]                      size=2 ✅
+r=2  [A  A  B]                   size=3 ✅
+r=3  [A  A  B  A]                size=4 ✅ ← max
+r=4  [A  A  B  A  B] →shrink×2
+           [B  A  B]             size=3 ✅
+r=5        [B  A  B  B]          size=4 ✅
+r=6        [B  A  B  B  A] →shrink×2
+                    [B  B  A]    size=3 ✅
+```
+---
+### ⚠️ This Version vs Optimised Version
+```python
+# This version — uses max(count.values())
+while (r-l+1) - max(count.values()) > k:  # O(26) each check
+
+# Optimised version — tracks maxf, never decreases it
+maxf = max(maxf, count[s[r]])
+if (r-l+1) - maxf > k:    # O(1) — just an if, no while needed
+    count[s[l]] -= 1
+    l += 1
+```
+```python
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        count = {}
+        l = 0
+        res = 0
+        maxf = 0
+
+        for r in range(len(s)):
+            count[s[r]] = 1 + count.get(s[r],0)
+
+            maxf = max(maxf, count[s[r]])
+
+            if (r - l + 1) - maxf > k:
+                count[s[l]] -= 1
+                l += 1
+
+            res = max(res, r - l + 1)
+
+        return res        
+```
+```
+Why maxf never needs to decrease:
+  A smaller window than our current best is useless
+  We only care when window GROWS beyond best
+  So maxf only matters when it INCREASES ✅
+```
+---
+## ✅ Final Answer
+```
+return res = 4   →   "AABA" or "BABB" (replace 1 char) ✅
+```
 
 ## 💡 Time and Space Complexity
-- **Time**: O(26 × n) = O(n)
-     - Each character is processed once.
-     - max(count.values()) is bounded by 26 (uppercase letters only).
-- **Space**: O(26) = O(1)
-     - Dictionary holds at most 26 characters.
+```
+Version                        Time                    Space                    Notes
+This (max values)              O(n×26)                 O(26)                    max()over fixed alphabet
+Optimised(track maxf)          O(n)                    O(26)                    Single if, no while
+```
+---
+
+💡 Interview tip: 
+
+The formula (window size - maxFrequency) ≤ k is the single most important line in this problem — state it immediately before writing any code. Then mention the optimisation of tracking maxf without ever decrementing it, since only a larger window can beat the current best.

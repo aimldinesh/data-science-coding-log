@@ -16,7 +16,8 @@ Given a positive integer `n`, generate an `n x n` matrix filled with elements fr
 ## 🔹 Examples
 ```text
 **Example 1:**  
-Input: `n = 3`  
+Input: `n = 3`
+
 Output: 
 [[1, 2, 3],
 [8, 9, 4],
@@ -44,7 +45,6 @@ We simulate the process of filling the matrix in spiral order:
 4. After each step, adjust the respective boundary (`top++, right--, bottom--, left++`).  
 5. Continue until `val > n²`.
 
-
 ---
 
 ## 💻 Code (Python)
@@ -69,7 +69,7 @@ class Solution:
                 val += 1
             top += 1
 
-            # 2. Fill right column
+            # 2. Fill the right column
             for r in range(top, bottom + 1):
                 mat[r][right] = val
                 val += 1

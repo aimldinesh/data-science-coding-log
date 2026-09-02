@@ -19,6 +19,7 @@ Return the **maximum number of envelopes** you can Russian doll (put one inside 
 Example 1:
 Input: envelopes = [[5,4],[6,4],[6,7],[2,3]]
 Output: 3
+
 Explanation: The maximum number of envelopes you can Russian doll is 3 ([2,3] => [5,4] => [6,7]).
 
 Example 2:
@@ -28,6 +29,7 @@ Output: 1
 ---
 
 ## 🚀 My Approach : Sorting + Longest Increasing Subsequence (LIS)
+
 ### 💡 Key Insight:
 - We cannot apply LIS directly on both dimensions.
 - So we **sort envelopes** by:

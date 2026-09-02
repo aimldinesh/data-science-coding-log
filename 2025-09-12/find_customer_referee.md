@@ -20,6 +20,7 @@ Table: `Customer`
 - `id` is the primary key for this table.  
 - Each row of this table indicates the ID of a customer, their name, and the ID of the customer who referred them.  
 
+
 **Task:**  
 Write an SQL query to report the names of customers **who are not referred by the customer with id = 2**.  
 Return the result table in **any order**.  

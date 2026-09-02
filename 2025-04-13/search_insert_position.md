@@ -13,26 +13,48 @@
 ---
 ## Examples
 ```python
+
 Example 1:
+
 Input: nums = [1,3,5,6], target = 5
 Output: 2
 
 Example 2:
+
 Input: nums = [1,3,5,6], target = 2
 Output: 1
 
 Example 3:
+
 Input: nums = [1,3,5,6], target = 7
 Output: 4
 
 ```
 ---
 
-## 🚀 My Approach
-- Since the array is sorted, I used **Binary Search**.
-- Used `left` and `right` pointers to narrow down the search.
-- If the target is found during search, return its index.
-- If not found, `left` will be at the correct **insertion position**.
+## 🚀 Approach : Binary Search
+🧠 Intuition
+
+Standard binary search with one extra insight — if the target isn't found, where would it go? When the loop exits, left has naturally moved to the exact position where target should be inserted to keep the array sorted. No extra logic needed.
+```
+nums = [1, 3, 5, 6],  target = 4
+
+4 fits between 3 and 5 → insertion index = 2
+
+After binary search exits:
+  right → index 1 (points at 3, too small)
+  left  → index 2 (points at 5, first element > target) ✅
+```
+📌 Approach
+
+1. Binary search with left=0, right=n-1
+2. At each mid:
+   + nums[mid] == target → found → return mid
+   + nums[mid] < target  → go right → left = mid + 1
+   + nums[mid] > target  → go left → right = mid - 1
+
+3. Loop exits → return left as insertion point
+
 ---
 
 ## 💻 Code (Python)
@@ -65,7 +87,118 @@ class Solution:
 ```
 
 ---
+## 🔍 Step-by-Step Execution
+
+Input: nums = [1, 3, 5, 6], target = 4
+```
+Indices:  0  1  2  3
+Values:   1  3  5  6
+               ↑ insert here (index 2)
+```
+
+Iteration 1
+```
+left=0, right=3
+mid = (0+3)//2 = 1
+nums[1] = 3
+
+3 < 4 → too small, go right
+left = mid+1 = 2
+```
+Iteration 2
+```
+left=2, right=3
+mid = (2+3)//2 = 2
+nums[2] = 5
+
+5 > 4 → too big, go left
+right = mid-1 = 1
+```
+Loop ends: left=2 > right=1
+```
+return left = 2 ✅
+```
+---
+### 📊 Trace Table — target = 4
+```
+Iter        left        right       mid       nums[mid]                vs target          Action   
+1           0           3           1          3                       3 < 4 ❌           left=2
+2           2           3           2          5                       5 > 4 ❌           right=1
+```
+```
+return left = 2 ✅
+```
+---
+### 🔍 All Cases Covered
+
+Case 1 — Target Found: target = 5
+```
+Iter            left         right            mid        nums[mid]         Action
+1               0            3                1          3                 3 < 5 → left=2
+2               2            3                2          5                 5 == 5 → return 2 ✅
+```
+### Case 2 — Insert at Start: target = 0
+```
+Iter         left           right             mid        nums[mid]          Action
+1            0              3                 1          3                  3 > 0 → right=0
+2            0              0                 0          1                  1 > 0 → right=-1
+```
+```
+left=0 → return 0 ✅  (insert before everything)
+```
+### Case 3 — Insert at End: target = 7
+```
+Iter         left          right              mid        nums[mid]           Action
+1            0             3                  1          3                   3 < 7 → left=2
+2            2             3                  2          5                   5 < 7 → left=3
+3            3             3                  3          6                   6 < 7 → left=4
+```
+```
+left=4 → return 4 ✅  (insert after everything)
+```
+---
+### 💡 Why left is Always the Insertion Point
+```
+Loop exit condition: left > right
+
+At that moment:
+  right → last index where nums[right] < target  (too small)
+  left  → first index where nums[left] > target  (too big)
+
+Inserting at left maintains sorted order:
+  [..., nums[right], TARGET, nums[left], ...]
+              <target           >target   ✅
+```
+```
+nums  = [1,  3,  5,  6]    target = 4
+         ↑       ↑
+       right=1  left=2   after loop
+
+Insert at index 2:
+[1, 3, | 4 | , 5, 6] ✅
+```
+---
+### 🔍 All Scenarios at a Glance
+```
+nums = [1, 3, 5, 6]
+
+target = 0  →  return 0  (before all)
+target = 1  →  return 0  (exact match)
+target = 2  →  return 1  (between 1 and 3)
+target = 3  →  return 1  (exact match)
+target = 4  →  return 2  (between 3 and 5)
+target = 5  →  return 2  (exact match)
+target = 7  →  return 4  (after all)
+```
+---
+### ✅ Final Answer
+```
+target=4  →  return left = 2  ✅
+target=5  →  return mid  = 2  ✅  (exact match)
+target=7  →  return left = 4  ✅  (insert at end)
+```
+---
 
 ## 💡 Time and Space Complexity
 - **Time**: O(logn), Binary search halves the search space each step.
-- **Space**: O(1), Constant space used.
+- **Space**: O(1), Constant space used.Only two pointers used

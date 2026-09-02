@@ -9,7 +9,6 @@
 
 ## ✅ Problem Statement
 - Implement a `SnapshotArray` class with the following operations:
-
   - `set(index, val)`: Sets the element at the given index to `val`.
   - `snap()`: Takes a snapshot and returns the `snap_id`.
   - `get(index, snap_id)`: Returns the value at the index at the time of the given `snap_id`.
@@ -23,6 +22,7 @@ Example 1:
 Input: ["SnapshotArray","set","snap","set","get"]
 [[3],[0,5],[],[0,6],[0,0]]
 Output: [null,null,0,null,5]
+
 Explanation: 
 SnapshotArray snapshotArr = new SnapshotArray(3); // set the length to be 3
 snapshotArr.set(0,5);  // Set array[0] = 5
@@ -32,7 +32,7 @@ snapshotArr.get(0,0);  // Get the value of array[0] with snap_id = 0, return 5
 ```
 ---
 
-## 🚀 My Approach
+## 🚀 Approach
 1. **Data Structure**:
    - Maintain an array of lists. Each list stores `(snap_id, value)` pairs for each index.
    - This allows us to store only updates, not full snapshots.
