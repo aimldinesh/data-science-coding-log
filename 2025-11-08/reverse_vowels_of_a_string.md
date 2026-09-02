@@ -14,6 +14,7 @@ Vowels include: `a, e, i, o, u` (both lowercase and uppercase).
 
 ```python
 Example 1:
+
 Input: s = "IceCreAm"
 Output: "AceCreIm"
 Explanation:The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
@@ -35,7 +36,7 @@ Output: `"Aa"`
 ---
 
 
-# 🧠 Approach 1: Brute Force (Collect & Replace)
+# 🧠 Approach 1: Brute Force
 
 ### 🔹 Idea:
 1. Traverse the string and **collect all vowels** in a list.
