@@ -26,7 +26,7 @@ Output: 2
 ```
 ---
 
-## 🚀 Approach 1 : Brute Force
+## 🚀 Approach 1: Brute Force
 ### 💡 Intuition:
 - For each element in the array, count how many times it appears. If its count exceeds `n // 2`, it is the majority element.
 
