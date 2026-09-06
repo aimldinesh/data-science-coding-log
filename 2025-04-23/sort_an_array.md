@@ -34,6 +34,7 @@ Explanation: Note that the values of nums are not necessarily unique.
 - Merge Sort is a classic divide-and-conquer sorting algorithm:
    - Divide the array recursively into two halves until each subarray contains only one element.
    - Merge the sorted halves back together by comparing elements and building a sorted array.
+     
 ### Why Merge Sort?
 - Merge Sort guarantees O(n log n) time complexity.
 - It’s stable and works well for large datasets.
