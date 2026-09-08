@@ -41,6 +41,7 @@ Explanation: There is no way to reorder the elements to obtain an arithmetic pro
 ## 💻 Code (Python)
 
 ```python
+
 class Solution:
     def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
         # Sort the array to check consecutive differences
