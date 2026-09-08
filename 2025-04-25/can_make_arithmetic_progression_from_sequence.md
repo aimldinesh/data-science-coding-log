@@ -10,7 +10,8 @@
 
 ## ✅ Problem Statement
 Given an array of numbers `arr`, return `True` if the array can be rearranged to form an **arithmetic progression**. Otherwise, return `False`.
-> An arithmetic progression is a sequence of numbers such that the difference between consecutive elements is constant.
+
+- An arithmetic progression is a sequence of numbers such that the difference between consecutive elements is constant.
 ---
 ## Examples
 ```
