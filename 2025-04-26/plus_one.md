@@ -106,6 +106,7 @@ Iteration 1
 ```
 digits → [1, 2, 9, 0]
 ```
+
 Iteration 2
 
 + i = 2
