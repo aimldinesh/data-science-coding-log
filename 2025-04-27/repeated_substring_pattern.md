@@ -43,6 +43,7 @@ Explanation: It is the substring "abc" four times or the substring "abcabc" twic
 + If a string s is made by repeating a substring, then:
   + s will appear inside (s + s)[1:-1]
 
+
 Why?
 
 + Concatenating s + s creates overlapping patterns.
