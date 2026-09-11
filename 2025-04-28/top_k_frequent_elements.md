@@ -25,6 +25,7 @@ You may return the answer in **any order**.
 ---
 
 ## 🚀 Approach 1: Using Bucket Sort
+
  - Use a **hashmap** (`count`) to store the frequency of each element.
 - Use a **bucket sort** idea:
   - Create a list of empty lists `freq`, where `freq[i]` holds numbers that appear exactly `i` times.
