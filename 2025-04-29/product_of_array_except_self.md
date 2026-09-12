@@ -51,7 +51,9 @@
 4. Return the result array res.
 ----
 ## Code(Python)
+
 ```python
+
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         n = len(nums)
