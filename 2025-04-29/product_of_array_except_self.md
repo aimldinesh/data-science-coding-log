@@ -49,7 +49,9 @@
      - If i != j, multiply prod by nums[j].
    - Store prod into res[i].
 4. Return the result array res.
+   
 ----
+
 ## Code(Python)
 
 ```python
