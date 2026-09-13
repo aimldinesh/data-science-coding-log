@@ -38,6 +38,7 @@ The Sudoku board could be partially filled, where empty cells are filled with th
 ## 💻 Code (Python)
 
 ```python
+
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         # Initialize dictionaries to track seen numbers in rows, columns, and 3x3 squares.
