@@ -38,6 +38,7 @@ Return the **sum of all valid scores**.
 ---
 
 ## 🚀 Approach
+
 - Use a **stack** to keep track of valid scores.
 - Iterate through the list of operations:
   - `"C"` → Remove the last score using `pop()`.
