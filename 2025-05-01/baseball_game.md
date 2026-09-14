@@ -77,6 +77,7 @@ class Solution:
 ---
 
 ## 💡 Time and Space Complexity
+
 - **Time**: O(n)
    -  Each operation is processed once.
 - **Space**: O(n)
