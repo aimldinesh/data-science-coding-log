@@ -34,6 +34,7 @@ Output:
 ```
 
 ## 🚀 Approach
+
 - Use the first row and first column as markers to track rows and columns that need to be zeroed.
 - First, check if the first row or first column contains a 0 and store that info in flags.
 - Then iterate through the matrix and for every cell that is 0, mark the first cell of that row and column as 0.
