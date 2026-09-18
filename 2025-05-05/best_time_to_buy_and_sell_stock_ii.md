@@ -9,6 +9,7 @@
 ---
 
 ## ✅ Problem Statement
+
 You are given an integer array `prices` where `prices[i]` is the price of a given stock on the `i-th` day.
 
 On each day, you may decide to:
