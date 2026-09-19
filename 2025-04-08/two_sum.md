@@ -62,6 +62,7 @@ class Solution:
 
 ---
 ## 🚀  Approach 2 : Optimized - One Pass Hash Map
+
 💡 Intuition:
 - We want to find two numbers in the list that add up to a given target.
 - A brute force way would be to check all pairs, but that takes O(n²) time.
