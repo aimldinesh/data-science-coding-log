@@ -21,6 +21,7 @@ Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 ---
 
 ## 🚀  Approach : Brute Force
+
 💡 Intuition:
 - We are looking for two numbers in the array whose sum equals the target.
 - The simplest way is to check every possible pair in the array.
