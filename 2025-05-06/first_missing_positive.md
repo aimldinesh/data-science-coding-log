@@ -39,6 +39,7 @@ Explanation: 1 is in the array but 2 is missing.
 
 
 ## 🚀 Approach 1 : Cyclic Sort Style
+
 ### Step 1: Index Placement  
 - For every number, if it's in the range `[1, n]`, place it at index `num - 1` using swapping.
 
