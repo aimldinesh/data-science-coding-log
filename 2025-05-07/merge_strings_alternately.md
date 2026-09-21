@@ -9,6 +9,7 @@
 ---
 
 ## ✅ Problem Statement
+
 You are given two strings `word1` and `word2`. Merge the strings by adding letters in alternating order, starting with `word1`. If one string is longer than the other, append the remaining letters at the end.
 
 ### 🔍 Examples
