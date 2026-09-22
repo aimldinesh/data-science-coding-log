@@ -73,6 +73,7 @@ class Solution:
 
 ---
 ## 🔍 Step-by-Step Execution
+
 ```
 Input: arr = [0, 2, 4, 6, 3, 1] → n=6
 Indices:  0  1  2  3  4  5
