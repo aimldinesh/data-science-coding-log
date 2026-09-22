@@ -112,6 +112,7 @@ Loop ends: left=3 == right=3
 return left = 3 ✅
 ```
 💡 Why This Works
+
 ```
 Left of peak:   arr[mid] < arr[mid+1]  →  safe to discard left half
 Right of peak:  arr[mid] > arr[mid+1]  →  safe to discard right half
