@@ -39,6 +39,7 @@ We can solve this problem using **Binary Search** to efficiently find the peak e
 - The array strictly increases and then decreases, so it guarantees a unique peak element.
 
 🔸 Steps:
+
 1. Initialize two pointers: `left = 0` and `right = len(arr) - 1`.
 2. Run a binary search:
    - Compute `mid = (left + right) // 2`.
