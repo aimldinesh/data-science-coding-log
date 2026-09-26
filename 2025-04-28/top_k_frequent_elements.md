@@ -85,6 +85,7 @@ class Solution:
      freq = {1: 3, 2: 2, 3: 1}
      ```
 
+
 2. **Sort by Frequency**
    - Convert the dictionary into a list of `(number, frequency)` tuples using `.items()`.
    - Sort this list by frequency **in descending order**:
