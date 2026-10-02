@@ -85,6 +85,7 @@ class Solution:
 ```
 
 ---
+
 ## 🔍 Step-by-Step Execution
 
 Input: s = "AABABBA", k = 1
