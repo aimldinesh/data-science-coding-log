@@ -25,7 +25,6 @@ Output: 4
 Explanation: Replace the two 'A's or two 'B's to get "BBBB" or "AAAA".
 
 Example 2:
-
 Input: s = "AABABBA", k = 1
 Output: 4
 
@@ -39,6 +38,7 @@ Explanation: Replace the third 'A' to get "AABBBBA", the longest is "BBBB".
 🧠 Intuition
 
 In any window, the most frequent character stays, and everything else gets replaced. So the number of replacements needed = window size - max frequency. If that's ≤ k, the window is valid. Try every possible window with two nested loops — brute force but clear.
+
 ```
 s = "AABABBA",  k = 1
 
