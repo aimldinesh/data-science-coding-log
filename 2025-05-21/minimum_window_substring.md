@@ -32,6 +32,7 @@ Output: ""
 ---
 
 ## 🚀 Approach : Sliding Window + Hash Map
+
 🧠 Intuition:
 - We want to find the smallest substring in s that contains all characters from t (including duplicates).
 - This is a classic case for the sliding window technique with frequency tracking using hash maps.
