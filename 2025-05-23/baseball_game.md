@@ -37,6 +37,7 @@ Final sum = **27**
 ---
 
 ## 🚀 Approach : Stack Simulation
+
 🧠 Intuition:
 - We use a stack to track all the valid scores. Each operation is handled based on its meaning.
 
