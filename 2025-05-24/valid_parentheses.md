@@ -17,6 +17,7 @@
 
 ### 🔍 Examples
 ```python
+
 Input: s = "()"
 Output: True
 
