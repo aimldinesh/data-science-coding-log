@@ -31,6 +31,7 @@ Output: ["()"]
    - Only add ) if it won’t exceed the number of ( used.
 
 🔧 Steps:
+
 - Use a stack to track the current string (combination being built).
 - Use a recursive function to backtrack:
    - Add ( if open count < n.
