@@ -12,6 +12,7 @@
 Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 
 ### 🔍 Examples
+
 ```python
 Example 1:
 Input: n = 3
