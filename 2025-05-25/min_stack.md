@@ -17,7 +17,9 @@
    - getMin(): Retrieves the minimum element in the stack.
 
 - Implement the above operations in O(1) time.
-  
+
+---
+
 ### 🔍 Example
 ```python
 Input:
