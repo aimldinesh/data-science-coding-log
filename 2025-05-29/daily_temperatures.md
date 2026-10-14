@@ -43,6 +43,7 @@ Explanation:
     - Check every day after i to find a warmer day.
     - If found, store the number of days waited.
     - If not found, store 0.
+
 ---
 
 ## 💻 Code (Python)
