@@ -26,10 +26,12 @@ Explanation:
 - Day 5: 72 → 76 (1 day)
 - Day 6: 76 → no warmer day → 0
 - Day 7: 73 → no warmer day → 0
+
 ```
 ---
 
 ## 🚀 Approach 1 : Brute Force
+
 🧠 Intuition:
 - For each day, we look ahead in the array to find the next day with a higher temperature.
     - If found, we calculate how many days it takes and store it in the result.
