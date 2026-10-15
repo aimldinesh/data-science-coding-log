@@ -29,6 +29,7 @@ Output:
 ---
 
 ## 🚀 Approach 1 : Brute Force (Array)
+
 - The problem requires computing the stock span — the number of consecutive days before today (including today) where the stock price was less than or equal to today's price.
 - This brute-force approach stores all previous prices in a list. For each new price:
      - We append it to the list.
