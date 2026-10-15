@@ -17,7 +17,8 @@
 
 ### 🔍 Example
 ```python
-Input: 
+Input:
+
 ["StockSpanner", "next", "next", "next", "next", "next", "next", "next"]
 [[], [100], [80], [60], [70], [60], [75], [85]]
 
