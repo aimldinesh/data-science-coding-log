@@ -28,6 +28,7 @@ speed = [2, 4, 1, 1, 3]
 Output: 3
 
 Explanation:
+
 We sort the cars by their position from nearest to farthest from the target (i.e., right to left):
 | Position | Speed | Time to reach target                                 |
 | -------- | ----- | ---------------------------------------------------- |
