@@ -18,7 +18,9 @@
      - Multiple slashes // are treated as a single slash /.
 
 ### 🌰 Example:
+
 ```python
+
 Input: 
 
 path = "/a/./b/../../c/"
