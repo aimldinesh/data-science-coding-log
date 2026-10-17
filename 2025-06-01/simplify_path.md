@@ -55,6 +55,7 @@ So final path = "/c"
           - Reset cur
      - Else, keep building the segment name
 - Finally, join all elements in the stack with '/'.
+  
 ---
 
 ## 💻 Code (Python)
