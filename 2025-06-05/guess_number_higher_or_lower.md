@@ -19,6 +19,7 @@ There is a pre-defined API int guess(int num):
    - 0 if your guess is correct.
 
 ### Example:
+
 ```python
 Example 1:
 
