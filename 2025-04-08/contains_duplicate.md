@@ -41,6 +41,7 @@ Output: True
 ## 💻 Code (Python)
 
 ```python
+
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         # Loop through each element in the list
