@@ -13,6 +13,7 @@ Given a string `s`, return `true` if it is a palindrome, or `false` otherwise.
 A palindrome is a word, phrase, or sequence that reads the same backward as forward after removing non-alphanumeric characters and converting all letters to lowercase.
 
 ---
+
 ## Examples:
 ```python
 Example 1:
