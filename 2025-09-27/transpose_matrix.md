@@ -19,6 +19,7 @@ Formally:
 - Each element `matrix[r][c]` becomes `res[c][r]`.
 
 ---
+
 # ✅ Example usage:
 ```python
 matrix = [
