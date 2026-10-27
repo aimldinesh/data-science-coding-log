@@ -9,6 +9,7 @@
 ---
 
 ## 📌 Problem Statement
+
 Given a positive integer `columnNumber`, return its corresponding Excel column title.
 
 - Excel labels columns as:
