@@ -17,7 +17,9 @@ A string `x` is a divisor of string `y` if and only if:
 The GCD string is the **largest string** that can divide both `str1` and `str2`.
 
 ---
+
 ## ✅ Example:
+
 ```text
 Example 1:
 
