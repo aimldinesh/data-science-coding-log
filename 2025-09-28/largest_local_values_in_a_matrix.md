@@ -27,6 +27,7 @@ res[i][j] = \max \{ grid[r][c] \mid i \le r < i+3, j \le c < j+3 \}
 
 Input:  
 ```python
+
 grid = [
   [9, 9, 8, 1],
   [5, 6, 2, 6],
