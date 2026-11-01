@@ -20,6 +20,7 @@ res[i][j] = \max \{ grid[r][c] \mid i \le r < i+3, j \le c < j+3 \}
 
 ---
 
+
 ## 🔹 Example
 
 **Example 1:**  
