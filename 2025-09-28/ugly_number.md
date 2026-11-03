@@ -32,6 +32,7 @@ Output: `true`
 Explanation: 1 is considered an ugly number by convention.  
 
 **Example 3:**  
+
 Input: `n = 14`  
 Output: `false`  
 
