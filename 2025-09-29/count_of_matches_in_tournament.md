@@ -56,6 +56,7 @@ So the simulation works, but we can simplify to a **one-liner**.
 
 ---
 
+
 ## 🔹 Code (Simulation)
 
 ```python
