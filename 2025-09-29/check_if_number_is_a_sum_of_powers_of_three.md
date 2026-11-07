@@ -6,6 +6,7 @@
 - **Tags**: DSA, Math
 - **Difficulty**: Medium
 
+
 ---
 
 
@@ -45,7 +46,7 @@ Reason:
 1. While `n > 0`:
    - If `n % 3 == 2`, return `False` (invalid, since digit = 2).  
    - Otherwise, divide `n //= 3`.  
-2. If loop finishes, return `True`.
+2. If loop finishes, return `True`
 
 ---
 
@@ -100,6 +101,7 @@ That means we’d need 2*(3²) = 18 in the sum, which repeats a power. Not allow
 Answer = False
 
 ```
+
 ---
 
 ## 💡 Time and Space Complexity
@@ -107,3 +109,5 @@ Answer = False
     - We divide n by 3 each step.
 - **Space**: O(1)
     - Constant extra memory.
+ 
+---
