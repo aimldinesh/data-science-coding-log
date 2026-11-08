@@ -45,7 +45,6 @@ Input: `s = "zaz"`
 
 Total = 25 + 25 = **50**
 
-
 Output: `50`
 
 ---
