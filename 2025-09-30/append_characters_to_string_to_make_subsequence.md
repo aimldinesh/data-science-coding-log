@@ -90,6 +90,7 @@ class Solution:
 Dry Run of One-Liner (Example: s = "coaching", t = "coding")
 
 We create an iterator it = iter("coaching").
+
 Now check each character of t sequentially:
 
 ch = 'c': Is 'c' in iterator "coaching"? ✅ Yes → consume up to 'c'. (Matched count = 1)
