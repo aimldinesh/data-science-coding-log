@@ -64,6 +64,7 @@ We must append all of `t` (5 characters).
 ## 🔹 Code (Python)
 
 ### ✨ Two-Pointer Solution
+
 ```python
 class Solution:
     def appendCharacters(self, s: str, t: str) -> int:
