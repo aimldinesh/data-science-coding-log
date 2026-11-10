@@ -39,6 +39,8 @@ Step-by-step:
 
 Output: 2
 ```
+---
+
 **Example 2:**
 ```python
 Input:
