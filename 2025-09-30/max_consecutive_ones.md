@@ -42,6 +42,7 @@ Hence, the maximum consecutive ones = `3`.
 
 ---
 
+
 ## 💻 Code (Python)
 
 ```python
