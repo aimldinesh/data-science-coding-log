@@ -101,6 +101,7 @@ class Solution:
 
 ---
 
+
 ## 💡 Time and Space Complexity
 - **Time**: O(n² * m) worst case (still compares all substrings), but fewer checks due to sorting
 - **Space**: O(n) for result list
