@@ -31,6 +31,7 @@ Explanation:
 - "as" is a substring of "mass".
 - "hero" is a substring of "superhero".
 ```
+
 ---
 
 ## 🔹 Approach 1 — Brute Force
