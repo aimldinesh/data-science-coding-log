@@ -20,6 +20,7 @@ A new flower cannot be planted in **adjacent** plots.
 - Return **False** otherwise.
 
 ```python
+
 Example 1:
 
 Input: flowerbed = [1,0,0,0,1], n = 1
