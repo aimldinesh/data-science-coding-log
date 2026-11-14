@@ -24,6 +24,7 @@
 - Output: `[0,0,9,0,0]`
 
 ---
+
 ##  Approach 1 : Brute Force
 
 🧠 Intuition
@@ -38,6 +39,8 @@
   - Multiply all the others.
 
 - Although this approach is simple and easy to understand, it is inefficient, because for every index we re-scan the whole array —resulting in O(n²) time.
+
+---
 
 🛠 Algorithm
 
