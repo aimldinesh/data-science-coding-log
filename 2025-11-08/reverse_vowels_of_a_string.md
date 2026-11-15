@@ -37,7 +37,7 @@ Output: `"Aa"`
 ---
 
 
-# 🧠 Approach 1: Brute Force
+# 🧠 Approach 1: Brute Force Approach
 
 ### 🔹 Idea:
 1. Traverse the string and **collect all vowels** in a list.
