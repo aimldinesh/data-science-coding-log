@@ -16,6 +16,7 @@ Given a **mountain array**, which is an array where:
 Find the index of the **peak element** (the element where the array stops increasing and starts decreasing).
 
 ---
+
 ## Examples
 ```python
 Example 1:
