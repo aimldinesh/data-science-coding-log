@@ -5,6 +5,7 @@
 - **Date Solved**: 2025-04-17
 - **Tags**: Binary Search, Array, DSA
 - **Difficulty**: Medium
+  
 ---
 
 ## ✅ Problem Statement
