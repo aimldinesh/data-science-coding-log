@@ -25,7 +25,8 @@ rotate 3 steps -> [5,6,7,1,2,3,4]
 
 Example 2: 
 Input:  nums = [-1,-100,3,99], k = 2  
-Output: [3,99,-1,-100]  
+Output: [3,99,-1,-100]
+
 Explanation:  
 rotate 1 step  -> [99,-1,-100,3]  
 rotate 2 steps -> [3,99,-1,-100]  
