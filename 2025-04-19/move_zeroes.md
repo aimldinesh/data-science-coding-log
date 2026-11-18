@@ -125,6 +125,7 @@ i        nums[i]            non_zero_index             swap?              nums a
 4        12                 2                          ✅ swap(4,2)       [1, 3, 12, 0, 0]
 ```
 ---
+
 ### 💡 Two Pointer Visualised
 ```
 [0,  1,  0,  3,  12]
@@ -152,6 +153,7 @@ i        nums[i]            non_zero_index             swap?              nums a
 
 ```
 ---
+
 ### 🔍 Edge Cases
 ```
 # All zeros
