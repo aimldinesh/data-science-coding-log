@@ -14,6 +14,7 @@
   - The first integer of each row is greater than the last integer of the previous row.
 
 ---
+
 ## Examples
 ```python
 Example1:
