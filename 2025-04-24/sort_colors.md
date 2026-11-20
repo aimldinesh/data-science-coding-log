@@ -16,6 +16,7 @@
 ---
 
 ## Examples
+
 ```
 Example 1:
 Input: nums = [2,0,2,1,1,0]
