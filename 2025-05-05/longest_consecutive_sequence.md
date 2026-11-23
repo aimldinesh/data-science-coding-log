@@ -25,6 +25,7 @@ Explanation:The longest consecutive sequence is [1, 2, 3, 4], which has length 4
 
 ```
 ---
+
 ## 🧠 Approach: Set + Brute Force Expansion
 
 🧠 Intuition
