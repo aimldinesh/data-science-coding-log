@@ -9,6 +9,7 @@
 ---
 
 ## Problem Statement
+
 We need to query the **second highest distinct salary** from the `Employee` table.  
 - If there is **no second highest salary** (i.e., only one distinct salary exists), we must return `NULL`.
 
