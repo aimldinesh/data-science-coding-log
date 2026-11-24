@@ -37,7 +37,9 @@ We need to query the **second highest distinct salary** from the `Employee` tabl
 | 3  | 300    |
 +----+--------+
 ```
+
 #### Output:
+
 ```text
 +---------------------+
 | SecondHighestSalary |
