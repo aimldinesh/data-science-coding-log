@@ -11,6 +11,7 @@
 - You're given a **sorted** array where every element appears exactly **twice**, except for one element which appears **only once**.Find that single element in `O(log n)` time and `O(1)` space.
 
 ---
+
 ## Examples
 
 ```python
