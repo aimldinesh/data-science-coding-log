@@ -57,6 +57,7 @@ This approach is straightforward and easy to understand, though it uses extra sp
      
 3. Copy elements from temp back into nums (in-place update).
 4. Return the length of temp (number of elements not equal to val).
+
 ---
 
 ## 💻 Code (Python)
