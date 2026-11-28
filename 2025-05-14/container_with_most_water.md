@@ -22,6 +22,7 @@ The lines at index 1 and 8 can hold the most water.
 min(8, 7) * (8 - 1) = 7 * 7 = 49
 ```
 ---
+
 ## 🚀 Approach 1 : Brute Force (O(n²))
 
 🧠 Intuition
